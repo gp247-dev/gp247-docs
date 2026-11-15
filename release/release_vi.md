@@ -4,23 +4,23 @@
 
 ## Giới thiệu
 Trang này dành cho **chủ site và người vận hành** S-Cart (dòng 3.x): cho biết mỗi bản phát hành có gì mới, nên dùng phiên
-bản nào và cách cập nhật. Bản mới nhất: **S-Cart 3.7.0** (2026-11-13).
+bản nào và cách cập nhật. Bản mới nhất: **S-Cart 3.8.0** (2026-11-15).
 
 ## Phiên bản nên dùng
 Chạy `php artisan gp247:info` (hoặc `composer show "gp247/*"`) rồi so từng dòng với cột **Tối thiểu khuyến nghị**:
 
 | Package | Tối thiểu khuyến nghị | Mới nhất |
 | --- | --- | --- |
-| gp247/core | **3.12.1** | 3.12.1 |
-| gp247/front | **3.8.1** | 3.8.1 |
-| gp247/shop | **3.10.1** | 3.10.1 |
-| gp247/mcp | **2.0.1** | 2.0.2 |
+| gp247/core | **3.12.1** | 3.14.0 |
+| gp247/front | **3.8.1** | 3.9.1 |
+| gp247/shop | **3.10.1** | 3.11.1 |
+| gp247/mcp | **2.0.1** | 2.0.3 |
 
 - **Thấp hơn** cột "Tối thiểu khuyến nghị" → nên [cập nhật](#cập-nhật-thế-nào).
 - **Đã đạt** → site đã có đủ các cải tiến quan trọng, kể cả khi bạn chưa cài lại S-Cart.
 - **Thư viện bên thứ ba** → chạy thêm `composer audit` để kiểm, xem [Thư viện bên thứ ba](#thư-viện-bên-thứ-ba).
 
-> ⚠️ **Lưu ý:** cập nhật **cả bộ package cùng lúc**: `gp247/front` 3.8.1 và `gp247/shop` 3.10.1 cần `gp247/core` ≥ 3.12.1, `gp247/front` 3.7.0 và `gp247/shop` 3.9.0 cần `gp247/core` ≥ 3.11, `gp247/shop` 3.8.1 cần `gp247/core` ≥ 3.10.3, `gp247/mcp` 2.0.1 cần `gp247/core` ≥ 3.9, `gp247/shop` 3.6.0 cần `gp247/core` ≥ 3.7,
+> ⚠️ **Lưu ý:** cập nhật **cả bộ package cùng lúc**: `gp247/front` 3.9.1 và `gp247/shop` 3.11.1 cần `gp247/core` ≥ 3.14, `gp247/front` 3.8.1 và `gp247/shop` 3.10.1 cần `gp247/core` ≥ 3.12.1, `gp247/front` 3.7.0 và `gp247/shop` 3.9.0 cần `gp247/core` ≥ 3.11, `gp247/shop` 3.8.1 cần `gp247/core` ≥ 3.10.3, `gp247/mcp` 2.0.1 cần `gp247/core` ≥ 3.9, `gp247/shop` 3.6.0 cần `gp247/core` ≥ 3.7,
 > `gp247/front` 3.2.3 cần `gp247/core` ≥ 3.2.3. Dòng nào còn được hỗ trợ: xem [Vòng đời hỗ trợ](#vòng-đời-hỗ-trợ).
 
 ## Vòng đời hỗ trợ
@@ -36,10 +36,9 @@ Chạy `php artisan gp247:info` (hoặc `composer show "gp247/*"`) rồi so từ
   `composer require … -W` và `php artisan gp247:update` — xem [Nâng cấp lên dòng 3.x](../install-upgrade/upgrade_vi.md).
 
 ## Điểm mới nổi bật
-- **Chữ lưu đúng như gõ** — tên có `&`, `<`, `"` hiện đúng ở quản trị, cửa hàng và API *(S-Cart 3.7)*
-- **Mật khẩu và khoá bí mật giữ nguyên ký tự** — mật khẩu có `& < > "` đăng nhập được *(S-Cart 3.7)*
-- **Cảnh báo chỗ in HTML thô** — chỉ ra template, plugin in biến bằng `{!! !!}` *(S-Cart 3.7)*
-- **Cảnh báo proxy chưa khai báo** — kèm giá trị cần thêm vào `TRUSTED_PROXIES` *(S-Cart 3.7)*
+- **Sắp xếp sản phẩm cho khách** — Nổi bật, Mới nhất, Bán chạy, Giá, Tên A–Z *(S-Cart 3.8)*
+- **Thanh lọc sản phẩm gọn hơn** — tìm kiếm, sắp xếp, khoảng giá, thương hiệu trên hai hàng *(S-Cart 3.8)*
+- **Thư viện extension trực tuyến hiện đủ** — ghi rõ extension nào cần core mới hơn *(S-Cart 3.8)*
 
 ## Cập nhật thế nào
 **Bước 1 —** Sao lưu cơ sở dữ liệu và thư mục site.
@@ -62,6 +61,27 @@ Chi tiết từng bước: [Cập nhật GP247 và S-Cart](../install-upgrade/up
 
 ## Các bản phát hành
 Mới nhất ở trên. Bản *x.**Y*** có tính năng mới; bản *x.y.**Z*** chỉ sửa lỗi.
+
+### S-Cart 3.8.0 — 2026-11-15
+**Khách sắp xếp sản phẩm theo ý mình; thư viện extension hiện đủ, ghi rõ bản cần core mới.**
+
+**✨ Mới**
+- **Sắp xếp sản phẩm cho khách** — Nổi bật, Mới nhất, Bán chạy, Giá thấp/cao, Tên A–Z; sắp theo giá dùng đúng giá khuyến mãi
+  đang chạy
+- **Thanh lọc sản phẩm gọn hơn** — tìm kiếm và sắp xếp chung một hàng, khoảng giá và thương hiệu một hàng, Enter là lọc giá
+- **Thư viện extension trực tuyến hiện đủ** — extension cần core mới hơn ghi rõ "Cần core X.Y+" thay vì nút Cài; lọc nhóm tính
+  trên cả thư viện
+- **Cho lập trình viên:** dữ liệu mẫu `gp247:shop-sample` dùng bộ ảnh S-Cart thay ảnh ngẫu nhiên
+
+**🔧 Cải thiện:** thẻ `og:image` chỉ dùng ảnh của trang hoặc ảnh chia sẻ của cửa hàng; origin bổ sung của MCP server hoạt động
+trở lại; site cài mới không chạy lại migration cũ ở lần `gp247:update` đầu
+
+**📋 Cần làm khi cập nhật**
+- Chạy `composer update` rồi `php artisan gp247:update`
+- Ảnh chia sẻ mẫu `org.jpg` đã bỏ: muốn có ảnh khi chia sẻ link, đặt ảnh của bạn ở **Thông tin website**
+- *(Link cũ có `sort_asc` / `sort_desc`)* nay hiển thị theo thứ tự mặc định do quản trị đặt
+
+<sub>Gồm core 3.14.0 · front 3.9.1 · shop 3.11.1 · mcp 2.0.3 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.8.0)</sub>
 
 ### S-Cart 3.7.0 — 2026-11-13
 **Tên và nội dung hiển thị đúng như bạn gõ — hết `&amp;`.**
@@ -168,33 +188,10 @@ lấy từ proxy đã khai báo; bộ Docker mặc định không tin proxy nào
 
 <sub>Gồm core 3.10.3 · front 3.5.2 · shop 3.8.1 · mcp 2.0.1 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.5.2)</sub>
 
-### S-Cart 3.5.1 — 2026-11-05
-**Trang quản trị tự báo cấu hình chưa an toàn; cài đặt qua web gọn hơn.**
-
-**✨ Mới**
-- **Cảnh báo hệ thống** — dashboard tóm tắt cấu hình chưa an toàn (debug, HTTPS, mật khẩu admin mặc định, MFA…) kèm trang
-  chi tiết và hướng dẫn sửa; chỉ Administrator thấy ([tài liệu](../security/security-built-in_vi.md))
-- **Cài đặt qua web xong trong một lượt** — chọn tên đăng nhập admin; tài khoản nhập ở trình cài thay tài khoản mặc định
-- **Form 2 cột gọn hơn** — nút "+ Tạo mới" ở đầu form khi đang sửa, danh sách giữ nguyên trang và từ khoá *(màn quản trị
-  của core)*
-- **Cho lập trình viên:** `gp247:doctor` chạy cùng bộ kiểm tra bảo mật (WARN/PASS, mã thoát không đổi); package khác thêm
-  được mục kiểm tra
-
-**🛡️ Thư viện bên thứ ba:** Livewire 4.4.8 và symfony/mime 7.4.22 vá 2 lỗi đã công bố — [xem chi tiết](#thư-viện-bên-thứ-ba).
-**Nên cập nhật ngay.**
-
-**🔧 Cải thiện:** `gp247:update` giữ đúng một block "Cảnh báo hệ thống"; nút Gỡ bỏ nay xoá được thư mục extension còn sót;
-ô chọn có tìm kiếm không tự mở khi sửa dòng khác
-
-**📋 Cần làm khi cập nhật**
-- Chạy `composer update` (kéo Livewire ≥ 4.4.8, symfony/mime ≥ 7.4.22) rồi `php artisan gp247:update`
-- *(Site có `SESSION_DRIVER` khác `file`)* mọi người dùng phải đăng nhập lại một lần sau khi cập nhật
-
-<sub>Gồm core 3.10.2 · front 3.5.2 · shop 3.7.0 · mcp 2.0.1 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.5.1)</sub>
-
 ### Các bản cũ hơn
 | Bản | Ngày | Tóm tắt |
 | --- | --- | --- |
+| [S-Cart 3.5.1](https://github.com/gp247net/s-cart/releases/tag/3.5.1) | 2026-11-05 | Trang quản trị tự báo cấu hình chưa an toàn; cài đặt qua web gọn hơn |
 | [S-Cart 3.5.0](https://github.com/gp247net/s-cart/releases/tag/3.5.0) | 2026-11-03 | MCP server có sẵn: hỏi và quản lý cửa hàng bằng AI agent |
 | [S-Cart 3.4.0](https://github.com/gp247net/s-cart/releases/tag/3.4.0) | 2026-11-02 | Bán hàng qua ứng dụng riêng và đồng bộ ERP qua REST API |
 | [S-Cart 3.3.1](https://github.com/gp247net/s-cart/releases/tag/3.3.1) | 2026-10-29 | Form liên hệ có hộp thư; bật/tắt REST API trong trang quản trị |
@@ -248,4 +245,4 @@ trước khi có bản vá.
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-13 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-15 · ✍️ **Tác giả (Author):** GP247</sub>

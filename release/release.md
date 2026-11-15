@@ -4,23 +4,23 @@
 
 ## Introduction
 This page is for S-Cart (3.x line) **site owners and operators**: it tells you what each release brings, which version to run
-and how to update. Latest release: **S-Cart 3.7.0** (2026-11-13).
+and how to update. Latest release: **S-Cart 3.8.0** (2026-11-15).
 
 ## Recommended versions
 Run `php artisan gp247:info` (or `composer show "gp247/*"`) and compare each line with the **Recommended minimum** column:
 
 | Package | Recommended minimum | Latest |
 | --- | --- | --- |
-| gp247/core | **3.12.1** | 3.12.1 |
-| gp247/front | **3.8.1** | 3.8.1 |
-| gp247/shop | **3.10.1** | 3.10.1 |
-| gp247/mcp | **2.0.1** | 2.0.2 |
+| gp247/core | **3.12.1** | 3.14.0 |
+| gp247/front | **3.8.1** | 3.9.1 |
+| gp247/shop | **3.10.1** | 3.11.1 |
+| gp247/mcp | **2.0.1** | 2.0.3 |
 
 - **Below** the "Recommended minimum" column → [update](#how-to-update) when you can.
 - **At or above it** → your site has all the important improvements, even if you have not reinstalled S-Cart.
 - **Third-party libraries** → also run `composer audit`; see [Third-party libraries](#third-party-libraries).
 
-> ⚠️ **Note:** update **all the packages together**: `gp247/front` 3.8.1 and `gp247/shop` 3.10.1 need `gp247/core` ≥ 3.12.1, `gp247/front` 3.7.0 and `gp247/shop` 3.9.0 need `gp247/core` ≥ 3.11, `gp247/shop` 3.8.1 needs `gp247/core` ≥ 3.10.3, `gp247/mcp` 2.0.1 needs `gp247/core` ≥ 3.9, `gp247/shop` 3.6.0 needs `gp247/core` ≥ 3.7,
+> ⚠️ **Note:** update **all the packages together**: `gp247/front` 3.9.1 and `gp247/shop` 3.11.1 need `gp247/core` ≥ 3.14, `gp247/front` 3.8.1 and `gp247/shop` 3.10.1 need `gp247/core` ≥ 3.12.1, `gp247/front` 3.7.0 and `gp247/shop` 3.9.0 need `gp247/core` ≥ 3.11, `gp247/shop` 3.8.1 needs `gp247/core` ≥ 3.10.3, `gp247/mcp` 2.0.1 needs `gp247/core` ≥ 3.9, `gp247/shop` 3.6.0 needs `gp247/core` ≥ 3.7,
 > `gp247/front` 3.2.3 needs `gp247/core` ≥ 3.2.3. Which lines are still supported: see [Support lifecycle](#support-lifecycle).
 
 ## Support lifecycle
@@ -36,10 +36,9 @@ Run `php artisan gp247:info` (or `composer show "gp247/*"`) and compare each lin
   `composer require … -W` and `php artisan gp247:update` — see [Upgrading to the 3.x line](../install-upgrade/upgrade.md).
 
 ## Highlights
-- **Text stored as typed** — names with `&`, `<`, `"` show correctly in the admin, the storefront and the API *(S-Cart 3.7)*
-- **Passwords and secrets keep every character** — passwords with `& < > "` sign in *(S-Cart 3.7)*
-- **Raw HTML output warning** — points to templates and plugins that print a variable with `{!! !!}` *(S-Cart 3.7)*
-- **Untrusted proxy warning** — with the value to add to `TRUSTED_PROXIES` *(S-Cart 3.7)*
+- **Product sorting for shoppers** — Featured, Newest, Best selling, Price, Name A–Z *(S-Cart 3.8)*
+- **Tidier product filter bar** — search, sort, price range and brands on two rows *(S-Cart 3.8)*
+- **Full online extension library** — says which extensions need a newer core *(S-Cart 3.8)*
 
 ## How to update
 **Step 1 —** Back up the database and the site folder.
@@ -62,6 +61,27 @@ Step-by-step details: [Updating GP247 and S-Cart](../install-upgrade/update.md).
 
 ## Releases
 Newest first. An *x.**Y*** release brings new features; an *x.y.**Z*** release only fixes bugs.
+
+### S-Cart 3.8.0 — 2026-11-15
+**Shoppers sort products their way; the extension library shows everything and which core each needs.**
+
+**✨ New**
+- **Product sorting for shoppers** — Featured, Newest, Best selling, Price low/high, Name A–Z; price sorting uses the running
+  promotion price
+- **Tidier product filter bar** — search and sort on one row, price range and brands on another, Enter applies the price
+- **Full online extension library** — extensions that need a newer core say "Needs core X.Y+" instead of Install; group
+  filters count across the whole library
+- **For developers:** `gp247:shop-sample` uses the S-Cart photo set instead of random images
+
+**🔧 Improvements:** `og:image` uses only the page image or the store's share image; extra allowed origins of the MCP server
+work again; a fresh site no longer re-runs old upgrade migrations on its first `gp247:update`
+
+**📋 To do when updating**
+- Run `composer update`, then `php artisan gp247:update`
+- The sample share image `org.jpg` is gone: set your own under **Website information** if you want an image when links are shared
+- *(Old links with `sort_asc` / `sort_desc`)* now show the default order set in the admin
+
+<sub>Includes core 3.14.0 · front 3.9.1 · shop 3.11.1 · mcp 2.0.3 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.8.0)</sub>
 
 ### S-Cart 3.7.0 — 2026-11-13
 **Names and content show exactly as you type them — no more `&amp;`.**
@@ -171,33 +191,10 @@ IP and domain are only taken from a declared proxy; the Docker stack trusts no p
 
 <sub>Includes core 3.10.3 · front 3.5.2 · shop 3.8.1 · mcp 2.0.1 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.5.2)</sub>
 
-### S-Cart 3.5.1 — 2026-11-05
-**The admin now flags unsafe settings; the web installer is simpler.**
-
-**✨ New**
-- **System alerts** — the dashboard summarises unsafe settings (debug, HTTPS, default admin password, MFA…) with a detail
-  page and fix guides; Administrators only ([docs](../security/security-built-in.md))
-- **Web install finishes in one run** — choose the admin username; the account entered in the installer replaces the default one
-- **Tidier two-column forms** — "+ Create new" in the form header while editing; the list keeps its page and keyword *(core
-  admin screens)*
-- **For developers:** `gp247:doctor` runs the same security checks (WARN/PASS, exit code unchanged); other packages can add
-  checks
-
-**🛡️ Third-party libraries:** Livewire 4.4.8 and symfony/mime 7.4.22 fix 2 published flaws — [see details](#third-party-libraries).
-**Update now.**
-
-**🔧 Improvements:** `gp247:update` keeps a single "System alerts" block; the Remove button now clears leftover extension
-folders; searchable selects stay closed while you edit another row
-
-**📋 To do when updating**
-- Run `composer update` (pulls Livewire ≥ 4.4.8, symfony/mime ≥ 7.4.22), then `php artisan gp247:update`
-- *(Sites whose `SESSION_DRIVER` is not `file`)* every user signs in again once after the update
-
-<sub>Includes core 3.10.2 · front 3.5.2 · shop 3.7.0 · mcp 2.0.1 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.5.1)</sub>
-
 ### Older releases
 | Release | Date | Summary |
 | --- | --- | --- |
+| [S-Cart 3.5.1](https://github.com/gp247net/s-cart/releases/tag/3.5.1) | 2026-11-05 | The admin flags unsafe settings; a simpler web installer |
 | [S-Cart 3.5.0](https://github.com/gp247net/s-cart/releases/tag/3.5.0) | 2026-11-03 | Built-in MCP server: ask and manage your shop with an AI agent |
 | [S-Cart 3.4.0](https://github.com/gp247net/s-cart/releases/tag/3.4.0) | 2026-11-02 | Sell through your own app and sync with your ERP over the REST API |
 | [S-Cart 3.3.1](https://github.com/gp247net/s-cart/releases/tag/3.3.1) | 2026-10-29 | Contact form with an inbox; REST API switched on and off from the admin |
@@ -251,4 +248,4 @@ exposed before a fix is released.
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-13 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-15 · ✍️ **Author:** GP247</sub>
