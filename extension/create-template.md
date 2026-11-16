@@ -157,6 +157,21 @@ installs/uninstalls/enables/disables the template. The difference from a plugin:
 method is used to **assign the template to a store** (it updates the `template` column of `AdminStore`).
 The scaffolded stub already works; you usually only add your own logic.
 
+**The template's settings page.** A template with its own settings screen (colours, fonts, layout...) only declares `clickApp()`
+returning a redirect to that screen — the same as a plugin:
+
+```php
+public function clickApp()
+{
+    return redirect()->route('admin_mytheme.settings');
+}
+```
+
+From `gp247/core` 3.14.2 + `gp247/front` 3.10 the site owner opens it from two built-in places: the ⚙ button on the template's row in
+**Template manager** (also while the template is in use) and **Extension → Customize theme**, which always opens the settings of the
+template the store uses. **Do not add an admin menu entry** for a template. The template's admin routes load only while it is enabled,
+so `clickApp()` must do nothing but return the redirect. A template without a settings screen keeps the default (`null`): no ⚙ button.
+
 ### 5.2. Overall layout and pages
 
 - `layout.blade.php` (or `layout/`): the overall shell with `<head>`, header, content area, footer.
@@ -343,6 +358,7 @@ For full details on the safe-update mechanism, see the
 - [ ] If you added new Tailwind classes: you recompiled the CSS and included the output in `public/`.
 - [ ] You have clearly decided which shop pages to override (copied into the template's `screen/`) and which to leave on the default fallback.
 - [ ] `config.php` contains only defaults; site-owner choices live in `admin_config` (safe on update).
+- [ ] With a settings screen: `clickApp()` returns a redirect to it; the template adds **no** admin menu entry of its own.
 - [ ] You ran `php artisan optimize:clear`, installed it (admin or `gp247:ext-install --type=template`) and activated it on **Website information** successfully; home page and shop pages display correctly.
 - [ ] Checked responsive (phone) and dark mode (if supported).
 
@@ -407,10 +423,11 @@ most common issue, caused by Laravel still holding the old cache.
 
 | Date | GP247 version | Change |
 | --- | --- | --- |
+| 2026-11-17 | gp247/core 3.14.2 · gp247/front 3.10 | Added "The template's settings page" (5.1): a `clickApp()` redirect gives the ⚙ button on Template manager and the **Customize theme** entry; templates add no menu entry |
 | 2026-11-13 | gp247/core 3.12 | Added the rule for printing text (section 5.2): text is stored as typed, print it with `{{ }}`; `{!! !!}` only for trusted HTML, other raw prints are reported by the `raw_output_scan` item |
 | 2026-11-03 | gp247/core 3.9 | Key `requireUpdateFrom` renamed to `minUpdateFrom` (lowest installed version, ≥, allowed to update straight); the old name still works with a deprecation warning and is removed in core 4.0 |
 | 2026-10-18 | gp247/core 3.1 | **Fixed:** `requireCore` follows the running core (`php artisan gp247:info`) — the old `"2.1"` is refused by a 3.x core; section titles no longer carry a "Step" number that disagreed with the section number |
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-13 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-17 · ✍️ **Author:** GP247</sub>

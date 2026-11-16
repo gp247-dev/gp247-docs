@@ -154,6 +154,21 @@ File này kế thừa `ExtensionConfigDefault`, định nghĩa việc xảy ra k
 hàng** (cập nhật cột `template` của `AdminStore`). Khung sinh sẵn đã chạy được, bạn thường chỉ cần bổ
 sung logic riêng.
 
+**Trang tuỳ chỉnh của template.** Template có màn cài đặt riêng (màu, phông, bố cục...) chỉ cần khai `clickApp()` trả về chuyển
+hướng tới màn đó — giống plugin:
+
+```php
+public function clickApp()
+{
+    return redirect()->route('admin_mytheme.settings');
+}
+```
+
+Từ `gp247/core` 3.14.2 + `gp247/front` 3.10, chủ site mở màn này ở hai chỗ có sẵn: nút ⚙ trên dòng template ở **Quản lý giao diện**
+(cả khi template đang được dùng) và mục **Phần mở rộng → Tuỳ chỉnh giao diện**, mục luôn mở phần tuỳ chỉnh của template mà cửa hàng
+đang dùng. **Không tự thêm mục menu admin** cho template. Route admin của template chỉ được nạp khi template đang bật, nên `clickApp()`
+không được làm việc gì khác ngoài trả chuyển hướng. Template không có màn cài đặt thì giữ mặc định (`null`): không có nút ⚙.
+
 ### 5.2. Layout tổng và các trang
 
 - `layout.blade.php` (hoặc `layout/`): khung tổng gồm `<head>`, header, vùng nội dung, footer.
@@ -338,6 +353,7 @@ Chi tiết đầy đủ về cơ chế update-an-toàn xem tài liệu
 - [ ] Nếu thêm class Tailwind mới: đã biên dịch lại CSS và kèm bản output trong `public/`.
 - [ ] Đã quyết định rõ trang shop nào override (chép vào `screen/` template), trang nào để fallback mặc định.
 - [ ] `config.php` chỉ chứa mặc định; lựa chọn chủ-site nằm trong `admin_config` (an toàn khi update).
+- [ ] Có màn cài đặt: `clickApp()` trả chuyển hướng tới màn đó; template **không** tự thêm mục menu admin.
 - [ ] Đã `php artisan optimize:clear`, cài (admin hoặc `gp247:ext-install --type=template`) và kích hoạt ở **Thông tin website** thử thành công; trang chủ và trang shop hiển thị đúng.
 - [ ] Kiểm tra responsive (điện thoại) và dark-mode (nếu hỗ trợ).
 
@@ -402,10 +418,11 @@ nhất do Laravel còn giữ cache cũ.
 
 | Ngày | Phiên bản GP247 | Thay đổi |
 | --- | --- | --- |
+| 2026-11-17 | gp247/core 3.14.2 · gp247/front 3.10 | Thêm mục "Trang tuỳ chỉnh của template" (5.1): `clickApp()` trả chuyển hướng là có nút ⚙ trên Quản lý giao diện và mục **Tuỳ chỉnh giao diện**; template không tự thêm mục menu |
 | 2026-11-13 | gp247/core 3.12 | Thêm quy tắc in chữ (mục 5.2): chữ lưu đúng như gõ, in bằng `{{ }}`; `{!! !!}` chỉ cho HTML tin cậy, chỗ in thô khác bị mục `raw_output_scan` báo |
 | 2026-11-03 | gp247/core 3.9 | Khoá `requireUpdateFrom` đổi tên thành `minUpdateFrom` (bản đang cài thấp nhất, ≥, được cập nhật thẳng); tên cũ vẫn chạy kèm cảnh báo deprecated và bị gỡ ở core 4.0 |
 | 2026-10-18 | gp247/core 3.1 | **Sửa:** `requireCore` ghi theo lõi đang chạy (`php artisan gp247:info`) — giá trị `"2.1"` cũ bị lõi 3.x từ chối; tiêu đề mục bỏ số "Bước" lệch với số mục |
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-13 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-17 · ✍️ **Tác giả (Author):** GP247</sub>
