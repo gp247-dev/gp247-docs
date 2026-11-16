@@ -172,6 +172,17 @@ From `gp247/core` 3.14.2 + `gp247/front` 3.10 the site owner opens it from two b
 template the store uses. **Do not add an admin menu entry** for a template. The template's admin routes load only while it is enabled,
 so `clickApp()` must do nothing but return the redirect. A template without a settings screen keeps the default (`null`): no ⚙ button.
 
+**Put the settings route under `<admin>/theme/<key>`** (lowercase key) — the shared root of every template's settings page. That way
+**Customize theme** stays highlighted while the owner is on it (from `gp247/front` 3.10.1):
+
+```php
+// Route.php — inside the block that runs only while the template is enabled
+Route::group(['prefix' => GP247_ADMIN_PREFIX.'/theme', 'middleware' => GP247_ADMIN_MIDDLEWARE], function () {
+    Route::get('mytheme', \App\GP247\Templates\MyTheme\Admin\Settings::class)
+        ->name('admin_mytheme.settings');
+});
+```
+
 ### 5.2. Overall layout and pages
 
 - `layout.blade.php` (or `layout/`): the overall shell with `<head>`, header, content area, footer.
@@ -423,7 +434,7 @@ most common issue, caused by Laravel still holding the old cache.
 
 | Date | GP247 version | Change |
 | --- | --- | --- |
-| 2026-11-17 | gp247/core 3.14.2 · gp247/front 3.10 | Added "The template's settings page" (5.1): a `clickApp()` redirect gives the ⚙ button on Template manager and the **Customize theme** entry; templates add no menu entry |
+| 2026-11-17 | gp247/core 3.14.2 · gp247/front 3.10.1 | Settings route under the shared root `<admin>/theme/<key>` so **Customize theme** is highlighted. Added "The template's settings page" (5.1): a `clickApp()` redirect gives the ⚙ button on Template manager and the **Customize theme** entry; templates add no menu entry |
 | 2026-11-13 | gp247/core 3.12 | Added the rule for printing text (section 5.2): text is stored as typed, print it with `{{ }}`; `{!! !!}` only for trusted HTML, other raw prints are reported by the `raw_output_scan` item |
 | 2026-11-03 | gp247/core 3.9 | Key `requireUpdateFrom` renamed to `minUpdateFrom` (lowest installed version, ≥, allowed to update straight); the old name still works with a deprecation warning and is removed in core 4.0 |
 | 2026-10-18 | gp247/core 3.1 | **Fixed:** `requireCore` follows the running core (`php artisan gp247:info`) — the old `"2.1"` is refused by a 3.x core; section titles no longer carry a "Step" number that disagreed with the section number |

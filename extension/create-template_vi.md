@@ -169,6 +169,17 @@ Từ `gp247/core` 3.14.2 + `gp247/front` 3.10, chủ site mở màn này ở hai
 đang dùng. **Không tự thêm mục menu admin** cho template. Route admin của template chỉ được nạp khi template đang bật, nên `clickApp()`
 không được làm việc gì khác ngoài trả chuyển hướng. Template không có màn cài đặt thì giữ mặc định (`null`): không có nút ⚙.
 
+**Đặt route màn cài đặt dưới `<admin>/theme/<key>`** (key viết thường) — gốc chung cho trang cài đặt của mọi template. Nhờ vậy mục
+**Tuỳ chỉnh giao diện** sáng khi chủ site đang ở màn này (từ `gp247/front` 3.10.1):
+
+```php
+// Route.php — inside the block that runs only while the template is enabled
+Route::group(['prefix' => GP247_ADMIN_PREFIX.'/theme', 'middleware' => GP247_ADMIN_MIDDLEWARE], function () {
+    Route::get('mytheme', \App\GP247\Templates\MyTheme\Admin\Settings::class)
+        ->name('admin_mytheme.settings');
+});
+```
+
 ### 5.2. Layout tổng và các trang
 
 - `layout.blade.php` (hoặc `layout/`): khung tổng gồm `<head>`, header, vùng nội dung, footer.
@@ -418,7 +429,7 @@ nhất do Laravel còn giữ cache cũ.
 
 | Ngày | Phiên bản GP247 | Thay đổi |
 | --- | --- | --- |
-| 2026-11-17 | gp247/core 3.14.2 · gp247/front 3.10 | Thêm mục "Trang tuỳ chỉnh của template" (5.1): `clickApp()` trả chuyển hướng là có nút ⚙ trên Quản lý giao diện và mục **Tuỳ chỉnh giao diện**; template không tự thêm mục menu |
+| 2026-11-17 | gp247/core 3.14.2 · gp247/front 3.10.1 | Route màn cài đặt đặt dưới gốc chung `<admin>/theme/<key>` để mục **Tuỳ chỉnh giao diện** sáng đúng. Thêm mục "Trang tuỳ chỉnh của template" (5.1): `clickApp()` trả chuyển hướng là có nút ⚙ trên Quản lý giao diện và mục **Tuỳ chỉnh giao diện**; template không tự thêm mục menu |
 | 2026-11-13 | gp247/core 3.12 | Thêm quy tắc in chữ (mục 5.2): chữ lưu đúng như gõ, in bằng `{{ }}`; `{!! !!}` chỉ cho HTML tin cậy, chỗ in thô khác bị mục `raw_output_scan` báo |
 | 2026-11-03 | gp247/core 3.9 | Khoá `requireUpdateFrom` đổi tên thành `minUpdateFrom` (bản đang cài thấp nhất, ≥, được cập nhật thẳng); tên cũ vẫn chạy kèm cảnh báo deprecated và bị gỡ ở core 4.0 |
 | 2026-10-18 | gp247/core 3.1 | **Sửa:** `requireCore` ghi theo lõi đang chạy (`php artisan gp247:info`) — giá trị `"2.1"` cũ bị lõi 3.x từ chối; tiêu đề mục bỏ số "Bước" lệch với số mục |
