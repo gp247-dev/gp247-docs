@@ -4,13 +4,13 @@
 
 ## Giới thiệu
 
-Trang này liệt kê **15 công cụ** mà MCP server của GP247 cung cấp cho AI agent: mỗi công cụ làm gì, cần quyền nào trên trang quản trị, nhận
+Trang này liệt kê **18 công cụ** mà MCP server của GP247 cung cấp cho AI agent: mỗi công cụ làm gì, cần quyền nào trên trang quản trị, nhận
 những tham số gì và bạn có thể hỏi agent ra sao. Tài liệu dành cho chủ site (để quyết định bật công cụ nào) và người dùng agent (để biết
 nên hỏi gì). Bạn không cần nhớ tên công cụ — agent tự chọn; bảng dưới giúp bạn hiểu vì sao agent làm được hoặc không làm được một việc.
 
 ## Nhìn nhanh
 
-Công cụ chia thành 7 nhóm theo việc; nhóm **Ghi** tắt sẵn và luôn cần token mức *Đọc + ghi*:
+Công cụ chia thành 8 nhóm theo việc; nhóm **Ghi** tắt sẵn và luôn cần token mức *Đọc + ghi*:
 
 ```mermaid
 flowchart LR
@@ -20,24 +20,27 @@ flowchart LR
     A --> C["Khách hàng<br/>2 công cụ"]
     A --> S["Số liệu<br/>sales_summary"]
     A --> R["Thay đổi gần đây<br/>recent_changes"]
-    A -.->|"tắt sẵn"| W["Ghi<br/>4 công cụ"]
+    A --> E["SEO<br/>2 công cụ đọc"]
+    A -.->|"tắt sẵn"| W["Ghi<br/>5 công cụ"]
 ```
 
-- **11 công cụ đọc bật sẵn**, **4 công cụ ghi tắt sẵn** — chủ site bật/tắt từng công cụ trong **Cấu hình MCP Server**.
+- **13 công cụ đọc bật sẵn**, **5 công cụ ghi tắt sẵn** — chủ site bật/tắt từng công cụ trong **Cấu hình MCP Server**.
 - **Agent chỉ thấy công cụ nó được dùng** — công cụ tắt, ngoài mức token hoặc chủ token không có quyền màn tương ứng thì không hiện trong danh sách.
 - **Gọi `store_info` trước** — các công cụ khác dùng mã trạng thái và tiền tệ lấy từ đây.
-- **Ba công cụ ghi cần xem trước + xác nhận**; riêng thêm ghi chú đơn thì không ([xem bên dưới](#công-cụ-ghi-xem-trước-rồi-mới-xác-nhận)).
+- **Ba công cụ ghi luôn cần xem trước + xác nhận**; `update_seo` chỉ cần khi đổi điều quyết định trang có lên Google hay không, còn thêm ghi chú
+  đơn thì không ([xem bên dưới](#công-cụ-ghi-xem-trước-rồi-mới-xác-nhận)).
 
 ## Trong trang này
 
-- [Bảng tổng hợp](#bảng-tổng-hợp) — 15 công cụ, mức, quyền cần có, bật sẵn hay không
+- [Bảng tổng hợp](#bảng-tổng-hợp) — 18 công cụ, mức, quyền cần có, bật sẵn hay không
 - [Cửa hàng](#cửa-hàng) — thông tin và bảng mã
 - [Sản phẩm & kho](#sản-phẩm--kho) — tìm, xem chi tiết, danh mục, hàng sắp hết
 - [Đơn hàng](#đơn-hàng) — tìm và xem đơn
 - [Khách hàng](#khách-hàng) — tìm và xem khách
 - [Số liệu bán hàng](#số-liệu-bán-hàng) — doanh thu, sản phẩm bán chạy
 - [Thay đổi gần đây](#thay-đổi-gần-đây) — "có gì mới từ hôm qua"
-- [Công cụ ghi](#công-cụ-ghi-xem-trước-rồi-mới-xác-nhận) — đổi trạng thái, ghi chú, nhập/xuất kho
+- [SEO](#seo) — kết quả Kiểm tra SEO, giá trị SEO của từng nội dung
+- [Công cụ ghi](#công-cụ-ghi-xem-trước-rồi-mới-xác-nhận) — đổi trạng thái, ghi chú, nhập/xuất kho, sửa SEO
 
 ## Bảng tổng hợp
 
@@ -56,10 +59,13 @@ Mỗi công cụ yêu cầu chủ token có quyền ở **màn quản trị** t�
 | `get_customer` | Đọc | Khách hàng | Có |
 | `sales_summary` | Đọc | Báo cáo (sản phẩm) | Có |
 | `recent_changes` | Đọc | Màn của từng loại thay đổi | Có |
+| `seo_audit` | Đọc | Kiểm tra SEO | Có |
+| `get_seo` | Đọc | Kiểm tra SEO + màn của nội dung | Có |
 | `update_order_status` | Ghi, xác nhận | Sửa chi tiết đơn | Không |
 | `update_shipping_status` | Ghi, xác nhận | Sửa chi tiết đơn | Không |
 | `add_order_note` | Ghi | Sửa chi tiết đơn | Không |
 | `adjust_stock` | Ghi, xác nhận | Sửa sản phẩm | Không |
+| `update_seo` | Ghi, xác nhận khi đổi `noindex` / `nofollow` / `canonical` | Sửa ở Kiểm tra SEO + sửa màn của nội dung | Không |
 
 > ℹ️ **Thông tin:** danh sách tham số dưới đây để bạn hiểu agent hỏi được gì; khi dùng thật, agent tự điền tham số từ câu hỏi của bạn.
 > Ngày dùng dạng `YYYY-MM-DD`. Danh sách có phân trang: `page` (từ 1), `per_page` tối đa **50**.
@@ -165,9 +171,38 @@ Doanh thu theo **từng tiền tệ** (đơn Hoàn tất), số đơn theo trạ
 > ⚠️ **Lưu ý:** công cụ này đọc **nhật ký sự kiện** của REST API. Nhật ký đang tắt thì công cụ trả `enabled: false` kèm gợi ý — bật ở màn
 > quản lý API (xem [Đồng bộ dữ liệu](../api/api-sync_vi.md)). Mỗi loại sự kiện chỉ hiện khi chủ token có quyền ở màn tương ứng.
 
+## SEO
+
+Hai công cụ đọc giúp agent rà lỗi SEO của cửa hàng và xem giá trị SEO của từng nội dung; muốn sửa thì dùng công cụ ghi `update_seo`
+([xem bên dưới](#công-cụ-ghi-xem-trước-rồi-mới-xác-nhận)). Ý nghĩa từng lỗi và cách sửa trên trang quản trị: xem
+[Theo dõi & sửa lỗi SEO](../seo/seo-monitoring_vi.md).
+
+> ℹ️ **Thông tin:** ba công cụ SEO chỉ hiện khi site chạy gp247/mcp 2.1.0 trở lên **cùng** gp247/front 3.11.0 trở lên — với gp247/front
+> cũ hơn, chúng tự ẩn.
+
+### `seo_audit` — kết quả Kiểm tra SEO
+
+Trả kết quả **Kiểm tra SEO** gần nhất đã lưu của cửa hàng gắn với token: các lỗi tìm thấy (mã lỗi, mức **Cần sửa** / **Nên xem**, số lượng,
+tối đa 20 ví dụ), thời điểm kiểm `checked_at` và cờ `complete` (đã kiểm hết hay chưa).
+
+- **Tham số:** `refresh` (tuỳ chọn, `true` = chạy một lần kiểm tra mới). Lần kiểm mới dừng sau 20 giây, khi đó `complete=false`. Mỗi 2 phút
+  chỉ kiểm lại được một lần — gọi sớm hơn thì nhận kết quả đang lưu kèm `refreshed: false` và `retry_after_seconds` (số giây phải chờ).
+- **Hỏi thử:** *"Cửa hàng có lỗi SEO nào cần sửa?"* · *"Kiểm tra SEO lại giúp tôi."*
+
+### `get_seo` — giá trị SEO của một nội dung
+
+Trả các giá trị **hiển thị trên trang công khai** theo từng ngôn ngữ (tiêu đề, mô tả, canonical, robots…) và giá trị SEO riêng đã đặt cho
+nội dung đó. Cần quyền màn Kiểm tra SEO **và** quyền xem màn của nội dung (Sản phẩm / Danh mục / Thương hiệu / Quản lý trang).
+
+- **Tham số:** `type` (`product` | `category` | `brand` | `page`), `id`.
+- **Hỏi thử:** *"Sản phẩm này đang hiện tiêu đề và mô tả gì trên Google?"*
+
+> ℹ️ **Thông tin:** chỉ đọc nội dung của cửa hàng gắn với token — nội dung của cửa hàng khác trả "không tìm thấy", loại khác bốn loại trên
+> trả "loại không được hỗ trợ". Nội dung do plugin thêm (ví dụ tin tức) không đọc được bằng công cụ này.
+
 ## Công cụ ghi: xem trước rồi mới xác nhận
 
-Bốn công cụ ghi giúp agent làm việc thay bạn, nên được rào chắn kỹ nhất:
+Năm công cụ ghi giúp agent làm việc thay bạn, nên được rào chắn kỹ nhất:
 
 - **Tắt sẵn, bật từng cái** — không có công tắc "bật tất cả".
 - **Cần token mức *Đọc + ghi*** và chủ token có quyền **sửa** ở màn tương ứng.
@@ -180,8 +215,9 @@ Bốn công cụ ghi giúp agent làm việc thay bạn, nên được rào ch�
 | `update_shipping_status` | Đổi trạng thái giao hàng | `order_id`, `shipping_status`, `note` (≤ 500 ký tự) | Có |
 | `adjust_stock` | Nhập (số dương) / xuất (số âm) kho ngoài bán hàng | `product_id`, `delta` (≠ 0, tối đa 4 chữ số thập phân), `reason` (≤ 255) | Có |
 | `add_order_note` | Thêm ghi chú nội bộ vào lịch sử đơn (gắn nhãn [MCP]) | `order_id`, `note` (≤ 1000 ký tự, chữ thường) | Không |
+| `update_seo` | Sửa SEO của **một** nội dung theo một ngôn ngữ | `type`, `id`, `lang` và một hoặc nhiều trường `title`, `description`, `canonical`, `og_image`, `noindex`, `nofollow` | Khi đổi `noindex`, `nofollow`, `canonical` |
 
-Với ba công cụ có xác nhận, agent luôn gọi **hai lần**. Ví dụ bạn bảo *"Chuyển đơn OR-1024 sang Đang xử lý"*:
+Với ba công cụ luôn có xác nhận (và `update_seo` khi cần xác nhận), agent gọi **hai lần**. Ví dụ bạn bảo *"Chuyển đơn OR-1024 sang Đang xử lý"*:
 
 ```mermaid
 sequenceDiagram
@@ -204,6 +240,8 @@ sequenceDiagram
 - **Mã sống 5 phút, dùng một lần, gắn đúng token + bản ghi + thay đổi** — đổi sang giá trị khác phải xem trước lại; mã sai hay hết hạn thì không ghi.
 - **Agent đúng chuẩn sẽ hỏi bạn giữa hai lần gọi** — chỉ cấp token ghi cho agent bạn tin cậy.
 - **`add_order_note` ghi ngay một lần gọi** vì chỉ *thêm* một dòng lịch sử, không đổi tiền, kho hay trạng thái.
+- **`update_seo` chỉ cần xác nhận khi đổi `noindex`, `nofollow` hoặc `canonical`** — những thứ quyết định trang có hiện trên Google hay không;
+  chỉ đổi tiêu đề, mô tả hoặc ảnh chia sẻ thì ghi ngay một lần gọi.
 
 ## Điều kiện & ràng buộc (hiểu trước khi thao tác)
 
@@ -218,6 +256,10 @@ sequenceDiagram
 - **Đơn đã chốt vẫn đổi được như trên trang quản trị**, bản xem trước có ghi chú để bạn cân nhắc.
 - **Tồn kho không bao giờ âm** — thay đổi làm tồn âm bị từ chối, kể cả khi tồn bị dùng mất giữa lúc xem trước và lúc xác nhận.
 - **`adjust_stock` chỉ cộng/trừ chênh lệch**, không ghi đè số tồn tuyệt đối và không đụng số đã bán.
+- **`update_seo` sửa đúng một nội dung mỗi lần gọi**, cần quyền sửa ở cả màn Kiểm tra SEO lẫn màn của nội dung; tham số gửi giá trị `null`
+  được coi như không gửi.
+- **Giá trị SEO không hợp lệ bị từ chối, không ghi gì** — canonical phải là URL tuyệt đối `http`/`https`, tiêu đề tối đa 255 ký tự, mô tả
+  tối đa 500 ký tự. Cách kiểm tra và lưu giống hệt tab SEO trên trang quản trị.
 - **Khi site đang ở chế độ demo chỉ-đọc, mọi thao tác ghi qua MCP bị chặn.**
 
 ## Hỏi & Đáp (Q&A)
@@ -261,4 +303,4 @@ có quyền ở màn quản trị tương ứng không (ví dụ màn Khách hà
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-04 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-17 · ✍️ **Tác giả (Author):** GP247</sub>

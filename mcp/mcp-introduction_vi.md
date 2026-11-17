@@ -37,9 +37,9 @@ flowchart TB
 ```
 
 - **Có sẵn, tắt sẵn** — MCP đi cùng S-Cart nhưng **tắt** cho tới khi bạn bật; không dùng thì không tốn gì, không cần cron hay dịch vụ chạy nền.
-- **15 công cụ** — 11 công cụ đọc (sản phẩm, kho, đơn, khách, doanh thu, thay đổi gần đây) và 4 công cụ ghi, mặc định tắt ([Danh mục công cụ](./mcp-tools_vi.md)).
+- **18 công cụ** — 13 công cụ đọc (sản phẩm, kho, đơn, khách, doanh thu, thay đổi gần đây, SEO) và 5 công cụ ghi, mặc định tắt ([Danh mục công cụ](./mcp-tools_vi.md)).
 - **Không bao giờ vượt quyền** — agent hành động thay một tài khoản quản trị, không làm được nhiều hơn tài khoản đó trên trang quản trị ([An toàn & phân quyền](./mcp-security_vi.md)).
-- **Ghi thì phải xem trước** — đổi trạng thái đơn, giao hàng, tồn kho luôn có bản xem trước và mã xác nhận một lần.
+- **Ghi thì phải xem trước** — đổi trạng thái đơn, giao hàng, tồn kho, hay đổi thiết lập SEO quyết định trang có lên Google, luôn có bản xem trước và mã xác nhận một lần.
 - **Mọi lần gọi đều có nhật ký** — biết agent nào, của ai, đã đọc/sửa gì, lúc nào.
 
 ## MCP làm được gì cho cửa hàng của bạn
@@ -69,7 +69,7 @@ GP247 có hai "cửa" cho phần mềm bên ngoài. Cả hai dùng chung tài kh
 | **Cách dùng** | Hỏi bằng lời thường, agent tự gọi công cụ | Viết code gọi từng địa chỉ (endpoint) |
 | **Địa chỉ** | Một địa chỉ duy nhất: `https://<tên-miền>/api/core/mcp` | Nhiều địa chỉ dưới `api/v2/core`, `api/v2/front` |
 | **Chìa khoá** | Token MCP tạo ở màn **MCP Server**, có hạn dùng | Token đăng nhập của API (`login`) |
-| **Làm được** | 15 việc chọn lọc, an toàn cho trợ lý AI | Toàn bộ nghiệp vụ: giỏ hàng, checkout, đồng bộ, ghi hàng loạt… |
+| **Làm được** | 18 việc chọn lọc, an toàn cho trợ lý AI | Toàn bộ nghiệp vụ: giỏ hàng, checkout, đồng bộ, ghi hàng loạt… |
 | **Ghi dữ liệu** | Từng bản ghi, luôn xem trước + xác nhận | Theo hợp đồng của từng endpoint |
 
 - **Token không dùng lẫn được** — token MCP không gọi được REST API và ngược lại.
@@ -143,8 +143,9 @@ khai header). Agent chỉ hỗ trợ đăng nhập OAuth (ví dụ ChatGPT) chư
 
 **Câu 4: Agent có tự ý xoá hay sửa dữ liệu của tôi không?**
 
-→ Không có công cụ xoá. Bốn công cụ ghi đều **tắt sẵn**, cần token mức *Đọc + ghi*, và ba trong số đó (đổi trạng thái đơn, đổi trạng thái giao
-hàng, nhập/xuất kho) luôn qua bước xem trước — agent phải hỏi bạn rồi mới xác nhận. Chi tiết ở [Danh mục công cụ](./mcp-tools_vi.md#công-cụ-ghi-xem-trước-rồi-mới-xác-nhận).
+→ Không có công cụ xoá. Năm công cụ ghi đều **tắt sẵn**, cần token mức *Đọc + ghi*, và ba trong số đó (đổi trạng thái đơn, đổi trạng thái giao
+hàng, nhập/xuất kho) luôn qua bước xem trước — agent phải hỏi bạn rồi mới xác nhận; sửa SEO cũng qua bước này khi đổi `noindex`, `nofollow`
+hay `canonical`. Chi tiết ở [Danh mục công cụ](./mcp-tools_vi.md#công-cụ-ghi-xem-trước-rồi-mới-xác-nhận).
 
 **Câu 5: Dữ liệu cửa hàng có bị gửi lên AI không?**
 
@@ -172,4 +173,4 @@ mình và chỉ thấy dữ liệu cửa hàng đó. Không có hỗ trợ đó 
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-04 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-17 · ✍️ **Tác giả (Author):** GP247</sub>

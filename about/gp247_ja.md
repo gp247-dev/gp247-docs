@@ -45,8 +45,8 @@ flowchart TB
   OpenAPI 3.1 の仕様書を備えています。ERP、在庫管理ソフト、CRM は `updated_since`、イベントログ、署名付き Webhook でデータを
   同期できます。詳しくは [API 入門](../api/api-introduction_ja.md)と [ERP とのデータ同期](../api/api-sync_ja.md)をご覧ください。
 - **MCP サーバー — AI エージェントと連携** — S-Cart に標準搭載され、有効にするまではオフです。ストアオーナーは Claude Code、
-  Claude Desktop / claude.ai、Cursor、VS Code から普段の言葉で、注文の確認、在庫の確認、売上の要約を依頼できます。ツールは 15 個
-  （読み取り 11 個、書き込み 4 個は初期状態でオフ）。書き込み操作は必ずプレビューと 1 回限りの確認コードを伴います。詳しくは
+  Claude Desktop / claude.ai、Cursor、VS Code から普段の言葉で、注文の確認、在庫の確認、売上の要約を依頼できます。ツールは 18 個
+  （読み取り 13 個、書き込み 5 個は初期状態でオフ）。書き込み操作は必ずプレビューと 1 回限りの確認コードを伴います。詳しくは
   [MCP サーバーの紹介](../mcp/mcp-introduction_ja.md)をご覧ください。
 
 ### 高度で一元管理されたセキュリティ

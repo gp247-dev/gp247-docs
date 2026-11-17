@@ -37,9 +37,9 @@ flowchart TB
 ```
 
 - **Built in, off by default** — MCP ships with S-Cart but stays **off** until you turn it on; unused it costs nothing, no cron or background service needed.
-- **15 tools** — 11 read tools (products, stock, orders, customers, sales, recent changes) and 4 write tools, off by default ([Tool catalogue](./mcp-tools.md)).
+- **18 tools** — 13 read tools (products, stock, orders, customers, sales, recent changes, SEO) and 5 write tools, off by default ([Tool catalogue](./mcp-tools.md)).
 - **Never more than its owner** — the agent acts for one admin account and can never do more than that account can in the admin panel ([Security & permissions](./mcp-security.md)).
-- **Writes are previewed first** — changing an order status, a shipping status or stock always comes with a preview and a single-use confirm code.
+- **Writes are previewed first** — changing an order status, a shipping status or stock, or an SEO setting that decides whether a page appears on Google, always comes with a preview and a single-use confirm code.
 - **Every call is logged** — you know which agent, whose token, read or changed what, and when.
 
 ## What MCP can do for your shop
@@ -69,7 +69,7 @@ GP247 has two "doors" for outside software. Both use the same admin accounts, pe
 | **How** | Ask in plain language, the agent calls the tools | Write code that calls each address (endpoint) |
 | **Address** | A single address: `https://<your-domain>/api/core/mcp` | Many addresses under `api/v2/core`, `api/v2/front` |
 | **Key** | An MCP token created on the **MCP Server** screen, with an expiry | The API login token (`login`) |
-| **Can do** | 15 selected jobs that are safe for an AI assistant | The whole business: cart, checkout, sync, bulk writes… |
+| **Can do** | 18 selected jobs that are safe for an AI assistant | The whole business: cart, checkout, sync, bulk writes… |
 | **Writes** | One record at a time, always preview + confirm | As defined by each endpoint |
 
 - **Tokens are not interchangeable** — an MCP token cannot call the REST API and vice versa.
@@ -143,8 +143,9 @@ your account has a header field). Agents that only support OAuth sign-in (e.g. C
 
 **Q4: Can the agent delete or change my data on its own?**
 
-→ There is no delete tool. The four write tools are all **off by default**, need a *Read + write* token, and three of them (order status,
-shipping status, stock receive/issue) always go through a preview — the agent must ask you before confirming. Details in [Tool catalogue](./mcp-tools.md#write-tools-preview-then-confirm).
+→ There is no delete tool. The five write tools are all **off by default**, need a *Read + write* token, and three of them (order status,
+shipping status, stock receive/issue) always go through a preview — the agent must ask you before confirming; SEO edits go through it too when
+they change `noindex`, `nofollow` or `canonical`. Details in [Tool catalogue](./mcp-tools.md#write-tools-preview-then-confirm).
 
 **Q5: Is my shop data sent to the AI?**
 
@@ -172,4 +173,4 @@ store's domain and only sees that store's data. Without that support, only the t
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-04 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-17 · ✍️ **Author:** GP247</sub>

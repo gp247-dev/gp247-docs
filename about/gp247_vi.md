@@ -44,8 +44,8 @@ flowchart TB
   OpenAPI 3.1. ERP, phần mềm kho hay CRM đồng bộ dữ liệu bằng `updated_since`, nhật ký sự kiện và webhook có chữ ký. Xem
   [Giới thiệu API](../api/api-introduction_vi.md) và [Đồng bộ dữ liệu với ERP](../api/api-sync_vi.md).
 - **MCP server — làm việc với AI agent** — có sẵn trong S-Cart, tắt sẵn cho tới khi bạn bật. Chủ cửa hàng hỏi bằng lời thường
-  trong Claude Code, Claude Desktop / claude.ai, Cursor hay VS Code để tra đơn, xem tồn kho, tóm tắt doanh thu. 15 công cụ (11 đọc,
-  4 ghi mặc định tắt); thao tác ghi luôn có bản xem trước và mã xác nhận. Xem [Giới thiệu MCP server](../mcp/mcp-introduction_vi.md).
+  trong Claude Code, Claude Desktop / claude.ai, Cursor hay VS Code để tra đơn, xem tồn kho, tóm tắt doanh thu. 18 công cụ (13 đọc,
+  5 ghi mặc định tắt); thao tác ghi luôn có bản xem trước và mã xác nhận. Xem [Giới thiệu MCP server](../mcp/mcp-introduction_vi.md).
 
 ### Bảo mật nâng cao, quản lý tập trung
 

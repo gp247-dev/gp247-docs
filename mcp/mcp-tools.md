@@ -4,14 +4,14 @@
 
 ## Introduction
 
-This page lists the **15 tools** the GP247 MCP server offers to AI agents: what each tool does, which admin permission it needs, which
+This page lists the **18 tools** the GP247 MCP server offers to AI agents: what each tool does, which admin permission it needs, which
 parameters it takes and how you can ask the agent for it. It is written for site owners (to decide which tools to turn on) and agent users
 (to know what to ask). You do not need to remember tool names — the agent picks them itself; the tables below help you understand why the
 agent can or cannot do something.
 
 ## At a glance
 
-Tools fall into 7 groups by job; the **Write** group is off by default and always needs a *Read + write* token:
+Tools fall into 8 groups by job; the **Write** group is off by default and always needs a *Read + write* token:
 
 ```mermaid
 flowchart LR
@@ -21,24 +21,27 @@ flowchart LR
     A --> C["Customers<br/>2 tools"]
     A --> S["Figures<br/>sales_summary"]
     A --> R["Recent changes<br/>recent_changes"]
-    A -.->|"off by default"| W["Write<br/>4 tools"]
+    A --> E["SEO<br/>2 read tools"]
+    A -.->|"off by default"| W["Write<br/>5 tools"]
 ```
 
-- **11 read tools on by default**, **4 write tools off by default** — the site owner turns each tool on/off in **MCP Server settings**.
+- **13 read tools on by default**, **5 write tools off by default** — the site owner turns each tool on/off in **MCP Server settings**.
 - **The agent only sees the tools it may use** — a tool that is off, outside the token level, or on a screen the token owner cannot open does not appear in the list.
 - **Call `store_info` first** — other tools use the status codes and currency it returns.
-- **Three write tools need a preview + confirm**; adding an order note does not ([see below](#write-tools-preview-then-confirm)).
+- **Three write tools always need a preview + confirm**; `update_seo` only needs one when it changes what decides whether a page appears on
+  Google, and adding an order note never does ([see below](#write-tools-preview-then-confirm)).
 
 ## On this page
 
-- [Summary table](#summary-table) — 15 tools, level, required permission, on by default or not
+- [Summary table](#summary-table) — 18 tools, level, required permission, on by default or not
 - [Store](#store) — information and code tables
 - [Products & stock](#products--stock) — search, details, categories, low stock
 - [Orders](#orders) — search and view orders
 - [Customers](#customers) — search and view customers
 - [Sales figures](#sales-figures) — revenue, best sellers
 - [Recent changes](#recent-changes) — "what is new since yesterday"
-- [Write tools](#write-tools-preview-then-confirm) — status changes, notes, stock receive/issue
+- [SEO](#seo) — SEO check result, SEO values of each content item
+- [Write tools](#write-tools-preview-then-confirm) — status changes, notes, stock receive/issue, SEO edits
 
 ## Summary table
 
@@ -57,10 +60,13 @@ Each tool requires the token owner to have permission on the matching **admin sc
 | `get_customer` | Read | Customers | Yes |
 | `sales_summary` | Read | Report (products) | Yes |
 | `recent_changes` | Read | The screen of each kind of change | Yes |
+| `seo_audit` | Read | SEO check | Yes |
+| `get_seo` | Read | SEO check + the content's screen | Yes |
 | `update_order_status` | Write, confirm | Edit order detail | No |
 | `update_shipping_status` | Write, confirm | Edit order detail | No |
 | `add_order_note` | Write | Edit order detail | No |
 | `adjust_stock` | Write, confirm | Edit products | No |
+| `update_seo` | Write, confirm when changing `noindex` / `nofollow` / `canonical` | Edit on SEO check + edit the content's screen | No |
 
 > ℹ️ **Note:** the parameter lists below help you understand what the agent can ask for; in real use the agent fills them in from your question.
 > Dates use `YYYY-MM-DD`. Lists are paginated: `page` (from 1), `per_page` at most **50**.
@@ -166,9 +172,38 @@ New orders, order / payment / shipping status changes, stock movements, product 
 > ⚠️ **Warning:** this tool reads the REST API **event log**. When the log is off, the tool returns `enabled: false` with a hint — turn it on on the
 > API management screen (see [Data sync](../api/api-sync.md)). Each event type only appears when the token owner has permission on the matching screen.
 
+## SEO
+
+Two read tools let the agent review your store's SEO problems and look at the SEO values of each content item; to edit, it uses the write tool
+`update_seo` ([see below](#write-tools-preview-then-confirm)). What each problem means and how to fix it in the admin: see
+[Monitoring & fixing SEO problems](../seo/seo-monitoring.md).
+
+> ℹ️ **Note:** the three SEO tools only appear when the site runs gp247/mcp 2.1.0 or later **together with** gp247/front 3.11.0 or later — on
+> an older gp247/front they hide themselves.
+
+### `seo_audit` — SEO check result
+
+Returns the latest stored **SEO check** result of the token's store: the problems found (code, level **To fix** / **To review**, count, up to
+20 examples), the time of the check `checked_at` and a `complete` flag (whether everything was checked).
+
+- **Parameters:** `refresh` (optional, `true` = run a new check). A new check stops after 20 seconds, and then `complete=false`. A new check can
+  run at most once every 2 minutes — calling earlier returns the stored result with `refreshed: false` and `retry_after_seconds` (seconds to wait).
+- **Try asking:** *"Does the store have any SEO problems to fix?"* · *"Run the SEO check again for me."*
+
+### `get_seo` — SEO values of one content item
+
+Returns the values **shown on the public page** per language (title, description, canonical, robots…) and the item's own SEO values. Needs
+permission on the SEO check screen **and** view permission on the content's screen (Products / Categories / Brands / Page manager).
+
+- **Parameters:** `type` (`product` | `category` | `brand` | `page`), `id`.
+- **Try asking:** *"What title and description does this product show on Google?"*
+
+> ℹ️ **Note:** only content of the token's store can be read — content of another store answers "not found", any type other than the four above
+> answers "type not supported". Content added by a plugin (e.g. news) cannot be read with this tool.
+
 ## Write tools: preview, then confirm
 
-The four write tools let the agent act for you, so they have the strongest safeguards:
+The five write tools let the agent act for you, so they have the strongest safeguards:
 
 - **Off by default, turned on one by one** — there is no "turn all on" switch.
 - **They need a *Read + write* token** and the token owner must have **edit** permission on the matching screen.
@@ -181,8 +216,9 @@ The four write tools let the agent act for you, so they have the strongest safeg
 | `update_shipping_status` | Change an order's shipping status | `order_id`, `shipping_status`, `note` (≤ 500 characters) | Yes |
 | `adjust_stock` | Receive (positive) / issue (negative) stock outside a sale | `product_id`, `delta` (≠ 0, up to 4 decimals), `reason` (≤ 255) | Yes |
 | `add_order_note` | Add an internal note to the order history (labelled [MCP]) | `order_id`, `note` (≤ 1000 characters, plain text) | No |
+| `update_seo` | Edit the SEO of **one** content item in one language | `type`, `id`, `lang` and one or more of `title`, `description`, `canonical`, `og_image`, `noindex`, `nofollow` | When changing `noindex`, `nofollow`, `canonical` |
 
-For the three tools with confirmation, the agent always calls **twice**. For example you say *"Move order OR-1024 to Processing"*:
+For the three tools that always confirm (and `update_seo` when it needs confirmation), the agent calls **twice**. For example you say *"Move order OR-1024 to Processing"*:
 
 ```mermaid
 sequenceDiagram
@@ -205,6 +241,8 @@ sequenceDiagram
 - **The code lives 5 minutes, works once and is bound to the exact token + record + change** — changing to another value needs a new preview; a wrong or expired code writes nothing.
 - **A well-behaved agent asks you between the two calls** — only give write tokens to agents you trust.
 - **`add_order_note` writes in a single call** because it only *adds* one history line, without touching money, stock or status.
+- **`update_seo` only needs confirmation when it changes `noindex`, `nofollow` or `canonical`** — the things that decide whether a page appears
+  on Google; changing only the title, description or share image writes in a single call.
 
 ## Conditions & Rules (know before you act)
 
@@ -219,6 +257,10 @@ sequenceDiagram
 - **Finalised orders can still be changed, as in the admin panel**; the preview carries a note so you can think twice.
 - **Stock never goes below zero** — a change that would make it negative is refused, even if stock was used up between the preview and the confirmation.
 - **`adjust_stock` only adds/subtracts a difference**; it never overwrites the absolute stock and never touches the sold counter.
+- **`update_seo` edits exactly one content item per call** and needs edit permission on both the SEO check screen and the content's screen;
+  a parameter sent as `null` counts as not given.
+- **Invalid SEO values are refused and nothing is written** — canonical must be an absolute `http`/`https` URL, the title at most 255 characters,
+  the description at most 500 characters. Checks and saving are exactly the same as the SEO tab in the admin.
 - **While the site runs in read-only demo mode, every write through MCP is blocked.**
 
 ## Q&A
@@ -262,4 +304,4 @@ the matching admin screen (e.g. the Customers screen for `search_customers`).
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-04 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-17 · ✍️ **Author:** GP247</sub>
