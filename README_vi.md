@@ -39,6 +39,11 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 | --- | --- | --- |
 | [Bảo mật hệ thống GP247](./security/security-introduction_vi.md) | Trang chính của bộ tài liệu Bảo mật: GP247 tự lo gì, bạn phải làm gì — cấu hình production, khoá mã hoá & sao lưu, tài khoản & phân quyền, cập nhật & xử lý sự cố, checklist và những lỗi hay gặp | 2026-11-13 |
 
+### SEO
+| Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
+| --- | --- | --- |
+| [SEO trong GP247](./seo/seo-introduction_vi.md) | Trang chính của bộ tài liệu SEO: những gì hệ thống tự làm, cài đặt toàn cửa hàng (xác minh Google/Bing, robots, sitemap, mẫu tiêu đề, IndexNow), tab SEO từng nội dung và tự 301, Kiểm tra SEO, nhật ký 404, AI agent, hook cho lập trình viên | 2026-11-17 |
+
 ### Sao lưu & phục hồi
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
@@ -53,7 +58,7 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 | [Tạo plugin thanh toán](./extension/create-payment-plugin_vi.md) | Từng bước có code: plugin chuyển khoản chạy được ngay + khung nối cổng thanh toán online (ghi tiền đúng một lần, webhook) | 2026-11-03 |
 | [Tạo plugin vận chuyển](./extension/create-shipping-plugin_vi.md) | Từng bước có code: plugin phí theo khối lượng chạy được ngay + khung nối hãng vận chuyển có API (vận đơn, webhook, thu hộ) | 2026-11-03 |
 | [Plugin an toàn khi cập nhật](./extension/create-plugin-update-safety_vi.md) | Cập nhật chạy thế nào, 7 quy tắc, hook `update()`, bảng dữ liệu riêng | 2026-11-17 |
-| [Plugin nâng cao](./extension/create-plugin-advanced_vi.md) | Cấu hình theo cửa hàng, khoá bí mật, trang / khối / điểm cắm storefront, mã giảm giá, menu | 2026-10-22 |
+| [Plugin nâng cao](./extension/create-plugin-advanced_vi.md) | Cấu hình theo cửa hàng, khoá bí mật, trang / khối / điểm cắm storefront, mã giảm giá, menu | 2026-11-17 |
 | [Hướng dẫn tạo Template (giao diện)](./extension/create-template_vi.md) | Tạo template storefront mới; cơ chế fallback view của gp247/shop | 2026-11-13 |
 | [Cài đặt Plugin & Template](./extension/install-extension_vi.md) | 4 cách cài: online (thư viện), import (.zip), thủ công, CLI (`gp247:ext-*`) | 2026-11-17 |
 | [Cập nhật Plugin & Template](./extension/update-extension_vi.md) | Cập nhật từ thư viện (trang quản trị, dòng lệnh), chép đè bản mới (git pull, FTP, `.zip`), xử lý khi thiếu hoặc cũ file trong `public/`, khôi phục khi lỗi | 2026-11-17 |

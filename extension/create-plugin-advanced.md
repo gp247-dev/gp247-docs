@@ -97,7 +97,7 @@ Route::group(['middleware' => GP247_FRONT_MIDDLEWARE, 'prefix' => 'plugin/myplug
 
 The page's view uses the running template's layout: `@extends($GP247TemplatePath.'.layout')` and
 `@section('block_main_content_center')`. To add the page to `sitemap.xml`, keep `Seo.php` (its `sitemapUrls($storeId)` returns
-each URL with `loc` and `alias`) and its registration in `Provider.php`. To let the store owner target layout blocks at this
+each URL with `loc` and `alias`) and its registration in `Provider.php`. For an own SEO tab, noindex, JSON-LD and the other SEO hooks, see [SEO hooks for developers](../seo/seo-for-developers.md). To let the store owner target layout blocks at this
 page, register a page type:
 
 ```php
@@ -238,4 +238,4 @@ AdminMenu::where('uri', self::MENU_URI)->delete();
 
 ---
 
-<sub>📅 **Last updated:** 2026-10-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-17 · ✍️ **Author:** GP247</sub>

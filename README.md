@@ -39,6 +39,11 @@ New to GP247? Read [About GP247](./about/gp247.md).
 | --- | --- | --- |
 | [GP247 system security](./security/security-introduction.md) | Entry page of the Security documentation: what GP247 handles and what you must do — production configuration, encryption keys & backups, accounts & permissions, updates & incident response, checklist and common mistakes | 2026-11-13 |
 
+### SEO
+| Document | Summary | Last updated |
+| --- | --- | --- |
+| [SEO in GP247](./seo/seo-introduction.md) | Entry page of the SEO documentation: what the system does by itself, store-wide settings (Google/Bing verification, robots, sitemap, title templates, IndexNow), the per-content SEO tab and automatic 301, SEO check, 404 log, AI agent, hooks for developers | 2026-11-17 |
+
 ### Backup & restore
 | Document | Summary | Last updated |
 | --- | --- | --- |
@@ -53,7 +58,7 @@ New to GP247? Read [About GP247](./about/gp247.md).
 | [Creating a payment plugin](./extension/create-payment-plugin.md) | Step by step with code: a bank transfer plugin that works right away + a skeleton for an online gateway (money recorded once, webhook) | 2026-11-03 |
 | [Creating a shipping plugin](./extension/create-shipping-plugin.md) | Step by step with code: a weight-based price plugin that works right away + a skeleton for a carrier with an API (shipments, webhook, COD) | 2026-11-03 |
 | [Update-safe plugins](./extension/create-plugin-update-safety.md) | How updates run, 7 rules, the `update()` hook, own data tables | 2026-11-17 |
-| [Advanced plugins](./extension/create-plugin-advanced.md) | Per-store settings, secret keys, storefront pages / blocks / hooks, coupons, menus | 2026-10-22 |
+| [Advanced plugins](./extension/create-plugin-advanced.md) | Per-store settings, secret keys, storefront pages / blocks / hooks, coupons, menus | 2026-11-17 |
 | [Creating a Template (storefront theme)](./extension/create-template.md) | Build a new storefront template; the gp247/shop view fallback mechanism | 2026-11-13 |
 | [Installing Plugins & Templates](./extension/install-extension.md) | 4 methods: online (library), import (.zip), manual, CLI (`gp247:ext-*`) | 2026-11-17 |
 | [Updating Plugins & Templates](./extension/update-extension.md) | Update from the library (admin, command line), copy a new version over (git pull, FTP, `.zip`), fix missing or outdated files in `public/`, restore on error | 2026-11-17 |

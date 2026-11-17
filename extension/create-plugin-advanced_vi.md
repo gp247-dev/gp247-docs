@@ -94,7 +94,7 @@ Route::group(['middleware' => GP247_FRONT_MIDDLEWARE, 'prefix' => 'plugin/myplug
 
 View của trang dùng bố cục của template đang chạy: `@extends($GP247TemplatePath.'.layout')` và
 `@section('block_main_content_center')`. Muốn trang vào `sitemap.xml`, giữ `Seo.php` (hàm `sitemapUrls($storeId)` trả mỗi URL có
-`loc` và `alias`) cùng đoạn đăng ký trong `Provider.php`. Muốn chủ cửa hàng nhắm khối layout vào trang này, đăng ký loại trang:
+`loc` và `alias`) cùng đoạn đăng ký trong `Provider.php`. Tab SEO riêng cho nội dung, noindex, JSON-LD và các điểm cắm SEO khác: xem [Hook SEO cho lập trình viên](../seo/seo-for-developers_vi.md). Muốn chủ cửa hàng nhắm khối layout vào trang này, đăng ký loại trang:
 
 ```php
 $layoutPage = config('gp247-config.front.layout_page', []);
@@ -233,4 +233,4 @@ AdminMenu::where('uri', self::MENU_URI)->delete();
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-10-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-17 · ✍️ **Tác giả (Author):** GP247</sub>

@@ -94,7 +94,7 @@ Route::group(['middleware' => GP247_FRONT_MIDDLEWARE, 'prefix' => 'plugin/myplug
 
 ページのビューは、稼働中のテンプレートのレイアウトを使います：`@extends($GP247TemplatePath.'.layout')` と
 `@section('block_main_content_center')`。ページを `sitemap.xml` に入れたい場合は、`Seo.php`（関数 `sitemapUrls($storeId)` が各 URL を
-`loc` と `alias` 付きで返します）と、`Provider.php` 内の登録部分を残します。ストアオーナーがこのページにレイアウトブロックを指定できるようにするには、ページ種別を登録します。
+`loc` と `alias` 付きで返します）と、`Provider.php` 内の登録部分を残します。コンテンツ専用の SEO タブ、noindex、JSON-LD などの SEO フックは[開発者向け SEO フック](../seo/seo-for-developers_ja.md)を参照してください。ストアオーナーがこのページにレイアウトブロックを指定できるようにするには、ページ種別を登録します。
 
 ```php
 $layoutPage = config('gp247-config.front.layout_page', []);
@@ -233,4 +233,4 @@ AdminMenu::where('uri', self::MENU_URI)->delete();
 
 ---
 
-<sub>📅 **最終更新:** 2026-10-22 · ✍️ **作成者 (Author):** GP247</sub>
+<sub>📅 **最終更新:** 2026-11-17 · ✍️ **作成者 (Author):** GP247</sub>
