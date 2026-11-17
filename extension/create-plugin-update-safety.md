@@ -28,7 +28,9 @@ flowchart LR
 ```
 
 - 1-click: before overwriting, the system checks the checksum, `configKey`, `version`, `minUpdateFrom`, `requireCore`; a
-  failure while overwriting or in `update()` → the plugin is **restored** from the backup.
+  failure while overwriting or in `update()` → the plugin is **restored** from the backup. From gp247/core 3.14.3, if the
+  plugin's classes were already loaded in that request (usually because another plugin read one of its constants at boot),
+  `update()` runs in a new request to make sure it is the new version's code — see [Rule 7](#rule-7--do-not-load-another-plugins-classes-at-boot).
 - Files replaced by hand (`git pull`, Composer, manual copy; then `gp247:update`, `gp247:ext-update --local` or the **Apply data
   update** button): there is no file backup; a failure in `update()` only leaves the plugin "pending" so it can run again. A
   site installed before GP247 recorded versions calls `update()` **once with `$fromVersion = null`**.
@@ -42,7 +44,7 @@ flowchart LR
 
 ---
 
-## The 6 rules
+## The 7 rules
 
 | # | Rule | Why |
 |---|---|---|
@@ -52,6 +54,7 @@ flowchart LR
 | 4 | Never store user uploads inside the plugin folder | The folder is deleted and replaced on update |
 | 5 | Set `requireCore` and `minUpdateFrom` correctly | Blocks installing on an untested core and jumping from a too-old version |
 | 6 | Own data tables can be rebuilt on reinstall | Uninstall → reinstall must create every table again |
+| 7 | `Provider.php` does not load another plugin's classes at boot | A loaded class stays the old code when the other plugin is updated |
 
 ### Rule 1 — `version` increases, `configKey` stays
 
@@ -187,6 +190,32 @@ Call `(new ExtensionModel)->installExtension()` in `install()` and `uninstallExt
 
 > Data that is **the store's records** (orders, money, accounting) is not plugin data — never delete it on uninstall.
 
+### Rule 7 — Do not load another plugin's classes at boot
+
+This rule is for a plugin that **attaches to another plugin** (a Pro edition unlocking a free one, an add-on, a plugin listening to
+another plugin's events). PHP does not reload a class that is already in memory. If your `Provider.php` reads a **constant** or calls
+a **static method** of a class from the other plugin (`\App\GP247\Plugins\Other\AppConfig::SOME_EVENT`), that class is loaded at
+boot — and when the store owner updates the other plugin, the **old version's** `update()` can run after the new files were copied.
+
+- **Write shared names as strings** (event names, config keys) instead of reading the other plugin's constants; add a test that
+  compares the string with the original constant so the two never drift apart.
+- **`::class` is safe** — it is only the class name as a string and loads nothing.
+- **Call the other plugin's classes inside a closure** (listener, callback) — a closure only runs when the event happens, not at boot.
+
+```php
+// Do: a string, the other plugin's class is not loaded
+\Illuminate\Support\Facades\Event::listen('other.seed', function () {
+    \App\GP247\Plugins\MyPlugin\AppConfig::seedLanguage();
+});
+config(['Plugins/Other.my_provider' => \App\GP247\Plugins\MyPlugin\MyAdapter::class]);
+
+// Avoid: reading a constant loads the other plugin's class at boot
+\Illuminate\Support\Facades\Event::listen(\App\GP247\Plugins\Other\AppConfig::SEED_EVENT, /* … */);
+```
+
+> ℹ️ **Available since:** gp247/core 3.14.3 — core detects that the plugin's classes are already loaded and runs `update()` in a
+> new request. This rule is still needed for sites on an older core, and keeps your plugin's boot independent of load order.
+
 ---
 
 ## Testing an update before release
@@ -210,6 +239,8 @@ Call `(new ExtensionModel)->installExtension()` in `install()` and `uninstallExt
 - **Uninstall a plugin you are developing with `--only-data`** — a plain uninstall also deletes the source folder (`app/…` and `public/…`).
 - **When `update()` fails on the hand-replaced path, files are not restored** — it only stays pending to run again; write `update()`
   so a re-run is always safe.
+- **From gp247/core 3.14.3, the Apply step copies the plugin's `public/` again before calling `update()`** — `update()` may use the
+  new version's static files; if they cannot be copied, `update()` does not run.
 
 ---
 
@@ -247,6 +278,13 @@ Call `(new ExtensionModel)->installExtension()` in `install()` and `uninstallExt
 
 → When the new version cannot migrate from an old line — people on that line must reinstall instead of updating straight.
 
+## Change history
+<!-- Only when logic/behavior changed. Newest row on top. One row per day: merge same-day changes into the existing row, never add a new row for the same date. -->
+
+| Date | GP247 version | Change |
+| --- | --- | --- |
+| 2026-11-17 | gp247/core 3.14.3 | Added Rule 7 (do not load another plugin's classes at boot); `update()` runs in a new request when the plugin's classes are already loaded; the Apply step copies `public/` before `update()` |
+
 ---
 
-<sub>📅 **Last updated:** 2026-11-03 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-17 · ✍️ **Author:** GP247</sub>

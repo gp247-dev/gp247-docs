@@ -28,8 +28,9 @@ flowchart TB
   khi lỗi.
 - **Tự chép file thì phải làm đủ ba phần**: mã nguồn trong `app/`, file tĩnh trong `public/`, và bước **Áp dụng cập nhật dữ
   liệu**. Thiếu phần nào thì site lệch phần đó.
-- **Nút "Áp dụng cập nhật dữ liệu" không chép file tĩnh.** Chép đè mà quên `public/` là lý do phổ biến nhất khiến giao diện
-  vẫn cũ hoặc vỡ sau cập nhật.
+- **Từ gp247/core 3.14.3, bước "Áp dụng cập nhật dữ liệu" tự chép file tĩnh** ra `public/` trước khi cập nhật dữ liệu. Core
+  thấp hơn thì nút này **không** chép file tĩnh — chép đè mà quên `public/` là lý do phổ biến nhất khiến giao diện vẫn cũ hoặc
+  vỡ sau cập nhật.
 - **Template `GP247Front` đi kèm S-Cart không cập nhật ở đây** — nó lên bản mới cùng `composer update` của bộ gói GP247.
 
 ## Trong trang này
@@ -48,7 +49,7 @@ có ba phần nằm ở ba nơi khác nhau:
 | Phần | Nằm ở | Cập nhật từ thư viện (Cách 1, 2) | Tự chép bản mới (Cách 3) |
 | --- | --- | --- | --- |
 | **Mã nguồn** (PHP, giao diện, ngôn ngữ) | `app/GP247/<Plugins\|Templates>/<Key>/` | Tự thay | Bạn chép |
-| **File tĩnh** (CSS, JS, ảnh) | `public/GP247/<Plugins\|Templates>/<Key>/` | Tự thay | Bạn chép, hoặc chạy `gp247:ext-publish` |
+| **File tĩnh** (CSS, JS, ảnh) | `public/GP247/<Plugins\|Templates>/<Key>/` | Tự thay | Bước Áp dụng tự chép (từ core 3.14.3); core thấp hơn: bạn chép, hoặc chạy `gp247:ext-publish` |
 | **Dữ liệu** (cấu hình mới, bảng mới, chuyển dữ liệu cũ) | Cơ sở dữ liệu | Tự chạy | Bấm **Áp dụng cập nhật dữ liệu** hoặc chạy lệnh |
 
 - **`<Key>`** là tên thư mục của extension, trùng `configKey` trong file `gp247.json`.
@@ -85,6 +86,14 @@ Cách này dành cho extension cài từ thư viện GP247 và hợp với mọi
    để dừng (chưa có gì thay đổi), hoặc **OK** để cập nhật tiếp.
 6. Chờ trang tải lại. Thành công thì hiện **"Đã cập nhật <Key> lên phiên bản x.y.z"**, nhãn "Có bản mới" biến mất.
 
+> ℹ️ **Có từ:** gp247/core 3.14.3
+>
+> Có lúc trang hiện thêm **"Đã thay file <Key> bản x.y.z, đang áp dụng cập nhật dữ liệu…"** rồi mới báo thành công. Đó là khi
+> một plugin khác đang dùng mã của extension vừa cập nhật (ví dụ bản Pro chạy cùng bản miễn phí): GP247 thay file trước, rồi
+> trang tự gửi thêm một bước để cập nhật dữ liệu **bằng mã của bản mới**. Bạn không cần làm gì, chỉ chờ trang tải lại. Lỡ đóng
+> trang giữa chừng: extension hiện nhãn **"Chờ cập nhật dữ liệu"** trên menu **Plugin** (hoặc **Template**) — bấm **Áp dụng cập
+> nhật dữ liệu** để hoàn tất.
+
 GP247 làm các việc sau, theo đúng thứ tự:
 
 ```mermaid
@@ -111,6 +120,8 @@ flowchart TB
   phục file từ backup. Lỗi: …"**. Xem [Khi cập nhật báo lỗi](#khi-cập-nhật-báo-lỗi).
 - **Bản sao lưu file nằm ở** `storage/backups/extensions/<Plugins|Templates>/<Key>/<phiên-bản-cũ>_<thời-điểm>/`; GP247 giữ 3
   bản gần nhất cho mỗi extension.
+- **Cập nhật dữ liệu ở bước thứ hai** (từ core 3.14.3, trường hợp ở ghi chú trên) vẫn có cùng lưới an toàn: bước này lỗi thì
+  GP247 trả lại file bản cũ từ bản sao lưu và giữ phiên bản cũ.
 
 **Các nhãn đặc biệt thay cho nút Cập nhật** trên tab **Tải từ thư viện**:
 
@@ -150,6 +161,10 @@ Lệnh nói rõ khi không cập nhật được:
 | `<Key> is already up to date` | Đã là bản mới nhất, hoặc thư viện không có bản mới hơn | `0` |
 | `check_failed` | Không hỏi được thư viện (mạng, chứng chỉ SSL, giấy phép kết nối); thông báo kèm lỗi thư viện trả về | khác `0` |
 | `not_installed` | Không có thư mục `app/GP247/<Plugins\|Templates>/<Key>/` trên máy chủ | khác `0` |
+| `data_update_pending` *(từ core 3.14.3)* | File đã thay, nhưng lệnh không tự chạy được bước cập nhật dữ liệu ở tiến trình mới (hosting chặn chạy tiến trình con); thông báo nêu đúng lệnh cần chạy, thường là `php artisan gp247:ext-update --local --type=plugin --key=<Key>` | khác `0` |
+
+Từ core 3.14.3, khi mã của extension đã được nạp trong lúc chạy lệnh (một plugin khác dùng nó), lệnh thay file rồi tự chạy bước
+cập nhật dữ liệu ở **một tiến trình PHP mới** để dùng mã của bản mới; bước đó lỗi thì file bản cũ được trả lại như Cách 1.
 
 - **Thêm `--json`** để nhận kết quả dạng máy đọc được, dùng trong script và CI.
 - **Thêm `--skip-pre-change`** để bỏ bước chụp sao lưu dữ liệu trước khi cập nhật (chỉ khi bạn đã tự sao lưu).
@@ -180,7 +195,9 @@ flowchart TB
    - Có file `.zip`? Giải nén trên máy của bạn rồi chép thư mục bên trong. Chức năng **Import** trên trang quản trị chỉ dành
      cho cài mới và sẽ từ chối extension đã cài.
    - Dùng `git pull` hay Composer thì bước này đã xong khi lệnh chạy xong.
-3. **Đưa file tĩnh ra `public/`** — bằng **một** trong hai cách:
+3. **Đưa file tĩnh ra `public/`** — **từ gp247/core 3.14.3 bỏ qua được bước này**: bước 4 tự chép
+   `app/GP247/<Plugins|Templates>/<Key>/public/` ra `public/GP247/<Plugins|Templates>/<Key>/` trước khi cập nhật dữ liệu. Core
+   thấp hơn thì làm bằng **một** trong hai cách:
    - Có dòng lệnh:
 
      ```bash
@@ -209,8 +226,11 @@ flowchart TB
 5. **Kiểm tra.** Nhãn "Chờ cập nhật dữ liệu" đã biến mất; mở trang dùng extension và tải lại bằng **Ctrl+F5** (Mac:
    **Cmd+Shift+R**) để trình duyệt bỏ CSS/JS cũ đã lưu.
 
-> ⚠️ **Lưu ý:** bước 4 **không** chép file tĩnh. `Áp dụng cập nhật dữ liệu`, `gp247:ext-update --local` và `gp247:update` chỉ
-> chạy phần dữ liệu. Bỏ bước 3 thì site chạy mã nguồn mới với CSS/JS cũ.
+> ⚠️ **Lưu ý theo phiên bản core:**
+> - **Từ gp247/core 3.14.3:** `Áp dụng cập nhật dữ liệu`, `gp247:ext-update --local` và `gp247:update` chép file tĩnh trước rồi
+>   mới cập nhật dữ liệu. Không chép được vào `public/` (thiếu quyền ghi) thì GP247 **dừng, không cập nhật dữ liệu**, báo lỗi
+>   kèm đường dẫn; sửa quyền ghi rồi bấm lại.
+> - **Core thấp hơn:** ba cách trên **chỉ** chạy phần dữ liệu. Bỏ bước 3 thì site chạy mã nguồn mới với CSS/JS cũ.
 
 ## Đã chép bản mới nhưng giao diện vẫn cũ hoặc vỡ
 Mục này giúp bạn nhận ra và sửa ca hay gặp nhất của Cách 3: thư mục `app/` đã là bản mới, nhưng `public/` thiếu file mới hoặc
@@ -227,8 +247,9 @@ vẫn giữ file cũ.
 php artisan gp247:doctor
 ```
 
-Mục `extension_assets` liệt kê extension đã cài **thiếu** file trong `public/`. Mục này chỉ nhận ra file **thiếu**; file **có
-nhưng là bản cũ** thì không báo, nên đừng kết luận "đủ" chỉ vì mục này đạt.
+Mục `extension_assets` liệt kê extension đã cài có file tĩnh **thiếu hoặc cũ** trong `public/` — từ gp247/core 3.14.3 mục này
+so cả nội dung từng file với bản trong `app/`. Core thấp hơn chỉ nhận ra file **thiếu**; file **có nhưng là bản cũ** thì không
+báo, nên đừng kết luận "đủ" chỉ vì mục này đạt. Trang quản trị cũng hiện cùng cảnh báo này trong khối cảnh báo hệ thống.
 
 **Cách sửa** — chép lại toàn bộ file tĩnh từ bản đang có trong `app/`:
 
@@ -237,7 +258,8 @@ php artisan gp247:ext-publish --type=template --key=<Key>
 php artisan gp247:ext-publish --type=plugin --all
 ```
 
-Không có dòng lệnh thì làm thủ công như bước 3 của [Cách 3](#cách-3--tự-chép-bản-mới-lên-máy-chủ). Xong, tải lại trang bằng
+Không có dòng lệnh: từ core 3.14.3, extension còn nhãn **"Chờ cập nhật dữ liệu"** thì bấm **Áp dụng cập nhật dữ liệu** là file tĩnh
+được chép lại; ngoài ra làm thủ công như bước 3 của [Cách 3](#cách-3--tự-chép-bản-mới-lên-máy-chủ). Xong, tải lại trang bằng
 **Ctrl+F5**. Site dùng CDN hoặc bộ nhớ đệm trước web server thì xoá bộ nhớ đệm của CSS/JS đó.
 
 - **Lệnh và cách thủ công đều ghi đè và thêm file**, không xoá file mà bản mới đã bỏ. File thừa không ảnh hưởng gì.
@@ -249,8 +271,10 @@ Mục này giúp bạn đưa site về trạng thái chạy được và tìm ng
 
 **"Cập nhật thất bại, đã khôi phục file từ backup. Lỗi: …"** (Cách 1, 2)
 - File của extension đã trở về bản cũ; site chạy như trước. Đọc phần sau chữ **Lỗi** để biết nguyên nhân.
-- **Một plugin khác đang mở rộng plugin cần cập nhật** (ví dụ bản Pro dùng chung với bản miễn phí) đôi khi làm bước cập nhật
-  dữ liệu lỗi. Tạm **tắt** plugin mở rộng, cập nhật plugin chính, rồi **bật** lại.
+- **Một plugin khác đang mở rộng plugin cần cập nhật** (ví dụ bản Pro dùng chung với bản miễn phí) có thể khiến bước cập nhật
+  dữ liệu chạy mã của **bản cũ** và lỗi. Từ gp247/core 3.14.3, GP247 tự nhận ra trường hợp này và cập nhật dữ liệu ở bước thứ
+  hai bằng mã bản mới. Core thấp hơn: cập nhật plugin mở rộng trước (nếu nó có bản mới), hoặc tạm **tắt** plugin mở rộng, cập
+  nhật plugin chính, rồi **bật** lại.
 - Bước cập nhật dữ liệu có thể đã ghi một phần vào cơ sở dữ liệu trước khi lỗi. Nếu site hoạt động bất thường, khôi phục bản
   sao lưu dữ liệu chụp trước khi cập nhật.
 
@@ -265,6 +289,8 @@ Mục này giúp bạn đưa site về trạng thái chạy được và tìm ng
 **Đã chép file mới nhưng site vẫn chạy mã nguồn cũ**
 - Máy chủ có thể giữ mã PHP đã biên dịch trong bộ nhớ đệm (OPcache) và không đọc lại file. Khởi động lại PHP (PHP-FPM hoặc web
   server), hoặc dùng chức năng xoá bộ nhớ đệm PHP của hosting, rồi bấm **Áp dụng cập nhật dữ liệu** lại nếu nhãn vẫn còn.
+- Cập nhật từ thư viện (Cách 1, 2) trên gp247/core 3.14.3 trở lên tự xoá bộ nhớ đệm này cho các file vừa thay; trường hợp trên
+  chỉ còn gặp khi bạn tự chép file.
 
 **Tự trả lại bản cũ từ bản sao lưu của GP247**
 1. Mở `storage/backups/extensions/<Plugins|Templates>/<Key>/` và chọn thư mục `<phiên-bản>_<thời-điểm>` muốn quay về.
@@ -291,6 +317,8 @@ Các điều kiện dưới đây là lý do một lần cập nhật bị từ 
   chạy cập nhật dữ liệu theo chiều hạ cấp.
 - **Site cài trước 2026-09-29 chưa có phiên bản ghi nhớ**, nên lần đầu mọi extension hiện "chờ" (phiên bản cũ là `?`). Áp dụng
   một lần là hết.
+- **Từ gp247/core 3.14.3, máy chủ phải ghi được vào** `public/GP247/<Plugins|Templates>` — bước Áp dụng chép file tĩnh trước, và
+  không chép được thì không cập nhật dữ liệu, để site không chạy dữ liệu mới với giao diện cũ.
 
 ## Hỏi & Đáp (Q&A)
 **Câu 1: Tôi nên dùng cách nào?**
@@ -305,13 +333,16 @@ file. Phần bạn **sửa trực tiếp trong file** của extension (kể cả
 
 **Câu 3: Tôi bấm "Áp dụng cập nhật dữ liệu" rồi mà giao diện vẫn cũ?**
 
-→ Nút này không chép file tĩnh. Chạy `php artisan gp247:ext-publish --type=<plugin|template> --key=<Key>`, hoặc chép tay
-`app/GP247/<Plugins|Templates>/<Key>/public/` sang `public/GP247/<Plugins|Templates>/<Key>/`, rồi tải lại trang bằng Ctrl+F5.
+→ Từ gp247/core 3.14.3 nút này chép file tĩnh trước khi cập nhật dữ liệu; giao diện vẫn cũ thì thường do trình duyệt hoặc CDN
+còn giữ CSS/JS cũ — tải lại bằng Ctrl+F5, xoá bộ nhớ đệm CDN. Core thấp hơn: nút không chép file tĩnh; chạy
+`php artisan gp247:ext-publish --type=<plugin|template> --key=<Key>`, hoặc chép tay `app/GP247/<Plugins|Templates>/<Key>/public/`
+sang `public/GP247/<Plugins|Templates>/<Key>/`, rồi tải lại trang bằng Ctrl+F5.
 
 **Câu 4: `gp247:doctor` báo `extension_assets` đạt mà CSS vẫn là bản cũ?**
 
-→ Mục này chỉ phát hiện file **thiếu**, không phát hiện file **cũ**. Chạy `gp247:ext-publish` cho extension đó; lệnh ghi đè mọi
-file tĩnh bằng bản đang có trong `app/`.
+→ Từ gp247/core 3.14.3 mục này so cả nội dung file, nên "đạt" nghĩa là `public/` đã khớp bản trong `app/` — CSS cũ khi đó nằm ở
+bộ nhớ đệm của trình duyệt hoặc CDN. Core thấp hơn chỉ phát hiện file **thiếu**: chạy `gp247:ext-publish` cho extension đó; lệnh
+ghi đè mọi file tĩnh bằng bản đang có trong `app/`.
 
 **Câu 5: Tôi có file `.zip` bản mới, Import lại có được không?**
 
@@ -341,6 +372,13 @@ hoặc site chưa kết nối được thư viện (đăng ký giấy phép kế
 
 → Xem [Plugin an toàn khi cập nhật](./create-plugin-update-safety_vi.md): tăng `version`, lưu cấu hình trong cơ sở dữ liệu, viết hàm
 `update()` chạy lại nhiều lần vẫn đúng, và khai `minUpdateFrom` khi cần.
+
+## Lịch sử thay đổi
+<!-- Chỉ ghi khi có thay đổi về logic/hành vi. Dòng mới nhất ở trên cùng. Mỗi ngày một dòng: cùng ngày thì gộp vào dòng có sẵn, không tách dòng mới. -->
+
+| Ngày | Phiên bản GP247 | Thay đổi |
+| --- | --- | --- |
+| 2026-11-17 | gp247/core 3.14.3 | Áp dụng cập nhật dữ liệu (nút, `gp247:ext-update --local`, `gp247:update`) tự chép file tĩnh ra `public/` trước; cập nhật từ thư viện khi plugin khác đang dùng mã của extension thì cập nhật dữ liệu ở bước thứ hai bằng mã bản mới (CLI: tiến trình mới, mã `data_update_pending`); `extension_assets` báo cả file cũ |
 
 ---
 

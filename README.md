@@ -20,7 +20,7 @@ New to GP247? Read [About GP247](./about/gp247.md).
 ### Command line (CLI)
 | Document | Summary | Last updated |
 | --- | --- | --- |
-| [GP247 command line (CLI)](./cli/cli-introduction.md) | A 7-page set on the `php artisan gp247:*` commands: look up by job, safety level of each command; install & update, extensions, templates, `gp247:doctor`, maintenance (admin password, encryption key, backups), use in scripts/CI/Docker (`--json`, error codes) | 2026-11-08 |
+| [GP247 command line (CLI)](./cli/cli-introduction.md) | A 7-page set on the `php artisan gp247:*` commands: look up by job, safety level of each command; install & update, extensions, templates, `gp247:doctor`, maintenance (admin password, encryption key, backups), use in scripts/CI/Docker (`--json`, error codes) | 2026-11-17 |
 
 ### API
 | Document | Summary | Last updated |
@@ -52,7 +52,7 @@ New to GP247? Read [About GP247](./about/gp247.md).
 | [Creating a Plugin](./extension/create-plugin.md) | Starting point: pick the right guide for your kind of plugin, a 6-step roadmap with code (settings in the database, settings screen, install, release) | 2026-11-13 |
 | [Creating a payment plugin](./extension/create-payment-plugin.md) | Step by step with code: a bank transfer plugin that works right away + a skeleton for an online gateway (money recorded once, webhook) | 2026-11-03 |
 | [Creating a shipping plugin](./extension/create-shipping-plugin.md) | Step by step with code: a weight-based price plugin that works right away + a skeleton for a carrier with an API (shipments, webhook, COD) | 2026-11-03 |
-| [Update-safe plugins](./extension/create-plugin-update-safety.md) | How updates run, 6 rules, the `update()` hook, own data tables | 2026-11-03 |
+| [Update-safe plugins](./extension/create-plugin-update-safety.md) | How updates run, 7 rules, the `update()` hook, own data tables | 2026-11-17 |
 | [Advanced plugins](./extension/create-plugin-advanced.md) | Per-store settings, secret keys, storefront pages / blocks / hooks, coupons, menus | 2026-10-22 |
 | [Creating a Template (storefront theme)](./extension/create-template.md) | Build a new storefront template; the gp247/shop view fallback mechanism | 2026-11-13 |
 | [Installing Plugins & Templates](./extension/install-extension.md) | 4 methods: online (library), import (.zip), manual, CLI (`gp247:ext-*`) | 2026-11-17 |

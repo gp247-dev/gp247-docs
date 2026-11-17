@@ -58,7 +58,7 @@ doctor は設定とデータベースを読むだけで、ネットワーク経�
 ### 拡張機能と見た目
 | チェック | 確認内容 | 修正コマンド |
 | --- | --- | --- |
-| `extension_assets` | インストール済みの拡張機能の CSS／JS／画像が `public/GP247/...` にない | `gp247:ext-publish` |
+| `extension_assets` | インストール済みの拡張機能の CSS／JS／画像が `public/GP247/...` にない、または（core 3.14.3 以降）`app/` の版より古いファイルがある | `gp247:ext-publish` |
 | `extension_data_pending` | GP247 が記録したバージョンより新しいファイルを持つ拡張機能（`git pull` や上書きコピーの直後）で、データ更新が未実行 | `gp247:ext-update --local --all` |
 | `template_source` | パッケージと同一の、公開済みテンプレートファイルの数 — 修正を受け取れない | `gp247:template-prune` |
 | `file_bom` | UTF-8 の BOM で始まる `.php`／`.blade.php` ファイル | BOM なしの UTF-8 で保存し直す |
@@ -144,6 +144,13 @@ php artisan gp247:cache-rebuild
 
 → いいえ。doctor は設定を読むだけです。[セキュリティチェックリスト](../security/security-checklist_ja.md) で全体を確認してください。
 
+## 変更履歴
+<!-- ロジック/動作が変わった場合のみ記載。最新の行を一番上に。1 日 1 行：同じ日の変更は既存の行にまとめ、同じ日付の行を追加しない。 -->
+
+| 日付 | GP247 バージョン | 変更内容 |
+| --- | --- | --- |
+| 2026-11-17 | gp247/core 3.14.3 | `extension_assets` は不足しているファイルだけでなく、古い静的ファイル（`app/` の版と内容が異なる）も報告 |
+
 ---
 
-<sub>📅 **最終更新:** 2026-11-08 · ✍️ **作成者 (Author):** GP247</sub>
+<sub>📅 **最終更新:** 2026-11-17 · ✍️ **作成者 (Author):** GP247</sub>

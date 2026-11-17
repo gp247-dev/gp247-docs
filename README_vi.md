@@ -20,7 +20,7 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 ### Dòng lệnh (CLI)
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
-| [Dòng lệnh GP247 (CLI)](./cli/cli-introduction_vi.md) | Bộ 7 trang về lệnh `php artisan gp247:*`: tra theo việc cần làm, mức an toàn từng lệnh; cài đặt & cập nhật, extension, template, `gp247:doctor`, bảo trì (mật khẩu quản trị, khoá mã hoá, sao lưu), dùng trong script/CI/Docker (`--json`, mã lỗi) | 2026-11-08 |
+| [Dòng lệnh GP247 (CLI)](./cli/cli-introduction_vi.md) | Bộ 7 trang về lệnh `php artisan gp247:*`: tra theo việc cần làm, mức an toàn từng lệnh; cài đặt & cập nhật, extension, template, `gp247:doctor`, bảo trì (mật khẩu quản trị, khoá mã hoá, sao lưu), dùng trong script/CI/Docker (`--json`, mã lỗi) | 2026-11-17 |
 
 ### API
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
@@ -52,7 +52,7 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 | [Hướng dẫn tạo Plugin](./extension/create-plugin_vi.md) | Điểm bắt đầu: chọn đúng hướng dẫn theo loại plugin, lộ trình 6 bước có code (thiết lập lưu trong database, màn cấu hình, cài, phát hành) | 2026-11-13 |
 | [Tạo plugin thanh toán](./extension/create-payment-plugin_vi.md) | Từng bước có code: plugin chuyển khoản chạy được ngay + khung nối cổng thanh toán online (ghi tiền đúng một lần, webhook) | 2026-11-03 |
 | [Tạo plugin vận chuyển](./extension/create-shipping-plugin_vi.md) | Từng bước có code: plugin phí theo khối lượng chạy được ngay + khung nối hãng vận chuyển có API (vận đơn, webhook, thu hộ) | 2026-11-03 |
-| [Plugin an toàn khi cập nhật](./extension/create-plugin-update-safety_vi.md) | Cập nhật chạy thế nào, 6 quy tắc, hook `update()`, bảng dữ liệu riêng | 2026-11-03 |
+| [Plugin an toàn khi cập nhật](./extension/create-plugin-update-safety_vi.md) | Cập nhật chạy thế nào, 7 quy tắc, hook `update()`, bảng dữ liệu riêng | 2026-11-17 |
 | [Plugin nâng cao](./extension/create-plugin-advanced_vi.md) | Cấu hình theo cửa hàng, khoá bí mật, trang / khối / điểm cắm storefront, mã giảm giá, menu | 2026-10-22 |
 | [Hướng dẫn tạo Template (giao diện)](./extension/create-template_vi.md) | Tạo template storefront mới; cơ chế fallback view của gp247/shop | 2026-11-13 |
 | [Cài đặt Plugin & Template](./extension/install-extension_vi.md) | 4 cách cài: online (thư viện), import (.zip), thủ công, CLI (`gp247:ext-*`) | 2026-11-17 |

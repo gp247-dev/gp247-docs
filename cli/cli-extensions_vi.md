@@ -109,15 +109,18 @@ php artisan gp247:ext-search --keyword=payment --free
 | `gp247:ext-enable` | `--type`, `--key` | Bật extension **đã cài** |
 | `gp247:ext-disable` | `--type`, `--key` | Tắt extension đã cài; từ chối template đang được dùng |
 | `gp247:ext-update` | `--type`, `--key` hoặc `--all` | Tải bản mới từ thư viện, **sao lưu** bản cũ, cài đè; lỗi thì tự hoàn tác |
-| `gp247:ext-update --local` | `--type`, `--key` hoặc `--all`, `--dry-run` | **Không tải gì**: chạy phần cập nhật dữ liệu cho extension mà bạn đã tự thay file |
+| `gp247:ext-update --local` | `--type`, `--key` hoặc `--all`, `--dry-run` | **Không tải gì**: chép lại file tĩnh ra `public/` (từ core 3.14.3) rồi chạy phần cập nhật dữ liệu cho extension mà bạn đã tự thay file |
 
 Hai cách cập nhật dành cho hai tình huống:
 
 - **Cập nhật từ thư viện** (`ext-update --key=News`) — site cài extension từ thư viện online. GP247 tải bản mới, giữ bản
-  sao lưu ở `storage/backups/extensions/`, và tự trả lại bản cũ nếu cài lỗi.
+  sao lưu ở `storage/backups/extensions/`, và tự trả lại bản cũ nếu cài lỗi. Từ core 3.14.3, nếu mã của extension đã được nạp
+  trong lúc chạy lệnh (một plugin khác dùng nó), lệnh chạy phần cập nhật dữ liệu ở một tiến trình PHP mới để dùng mã bản mới;
+  hosting chặn tiến trình con thì lệnh báo `data_update_pending` kèm đúng lệnh `--local` cần chạy.
 - **Cập nhật tại chỗ** (`ext-update --local`) — bạn đã thay file bằng `git pull`, Composer hay chép tay. GP247 so phiên
-  bản trong `gp247.json` với phiên bản nó ghi nhớ lúc cài, rồi chạy phần cập nhật dữ liệu của extension. `gp247:update`
-  đã tự làm bước này cho mọi plugin và template.
+  bản trong `gp247.json` với phiên bản nó ghi nhớ lúc cài, rồi chạy phần cập nhật dữ liệu của extension. Từ core 3.14.3,
+  lệnh chép lại file tĩnh ra `public/` trước (không chép được thì không cập nhật dữ liệu). `gp247:update` đã tự làm bước này
+  cho mọi plugin và template.
 
 ```bash
 php artisan gp247:ext-update --local --all --dry-run
@@ -151,7 +154,8 @@ php artisan gp247:ext-uninstall --type=plugin --key=News --only-data
 ### Chép lại file tĩnh: `gp247:ext-publish`
 Trình duyệt chỉ đọc được thư mục `public/`, nên CSS/JS/ảnh của extension phải được chép từ
 `app/GP247/<Plugins|Templates>/<Key>/public/` ra `public/GP247/<Plugins|Templates>/<Key>/`. Cài đặt đã làm việc này; chạy
-lại khi `gp247:doctor` báo mục `extension_assets` (giao diện extension báo lỗi 404 CSS/JS).
+lại khi `gp247:doctor` báo mục `extension_assets` (giao diện extension báo lỗi 404 CSS/JS, hoặc — từ core 3.14.3 — file
+trong `public/` cũ hơn bản trong `app/`).
 
 ```bash
 php artisan gp247:ext-publish --type=template --key=MyTheme
@@ -244,6 +248,13 @@ plugin, và sao lưu trước khi gỡ.
 
 → Thiếu `--name`. Gõ lại kèm tên, ví dụ `php artisan gp247:make-plugin --name=MyBlog`.
 
+## Lịch sử thay đổi
+<!-- Chỉ ghi khi có thay đổi về logic/hành vi. Dòng mới nhất ở trên cùng. Mỗi ngày một dòng: cùng ngày thì gộp vào dòng có sẵn, không tách dòng mới. -->
+
+| Ngày | Phiên bản GP247 | Thay đổi |
+| --- | --- | --- |
+| 2026-11-17 | gp247/core 3.14.3 | `ext-update --local` (và `gp247:update`) chép lại file tĩnh trước khi cập nhật dữ liệu; `ext-update` cập nhật dữ liệu ở tiến trình mới khi mã extension đã nạp, mã lỗi mới `data_update_pending` |
+
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-08 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-17 · ✍️ **Tác giả (Author):** GP247</sub>

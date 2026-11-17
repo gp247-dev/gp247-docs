@@ -26,7 +26,9 @@ flowchart LR
 ```
 
 - Đường 1-click: trước khi ghi đè, hệ thống kiểm checksum, `configKey`, `version`, `minUpdateFrom`, `requireCore`; lỗi ở
-  bước ghi đè hoặc `update()` → plugin được **khôi phục** từ bản sao lưu.
+  bước ghi đè hoặc `update()` → plugin được **khôi phục** từ bản sao lưu. Từ gp247/core 3.14.3, nếu lớp của plugin đã được
+  nạp trong lần bấm đó (thường do một plugin khác đọc hằng số của nó lúc boot), `update()` chạy ở một request mới để chắc chắn
+  là mã của bản mới — xem [Quy tắc 7](#quy-tắc-7--không-nạp-lớp-của-plugin-khác-lúc-boot).
 - Đường thay file bằng tay (`git pull`, Composer, chép tay; rồi `gp247:update`, `gp247:ext-update --local` hoặc nút **Áp dụng cập nhật
   dữ liệu**): không có bước sao lưu file; lỗi ở `update()` chỉ giữ plugin ở trạng thái "chờ áp dụng" để chạy
   lại. Site cài trước khi GP247 ghi nhớ phiên bản sẽ gọi `update()` **một lần với `$fromVersion = null`**.
@@ -40,7 +42,7 @@ flowchart LR
 
 ---
 
-## 6 quy tắc
+## 7 quy tắc
 
 | # | Quy tắc | Vì sao |
 |---|---|---|
@@ -50,6 +52,7 @@ flowchart LR
 | 4 | Không lưu file người dùng tải lên trong thư mục plugin | Thư mục bị xoá và thay khi cập nhật |
 | 5 | Đặt đúng `requireCore` và `minUpdateFrom` | Chặn cài lên lõi chưa thử, chặn nhảy từ bản quá cũ |
 | 6 | Bảng dữ liệu riêng tạo được lại khi cài lại | Gỡ → cài lại phải dựng đủ bảng |
+| 7 | `Provider.php` không nạp lớp của plugin khác lúc boot | Lớp đã nạp thì PHP giữ bản cũ khi plugin kia được cập nhật |
 
 ### Quy tắc 1 — `version` tăng, `configKey` giữ nguyên
 
@@ -184,6 +187,32 @@ Gọi `(new ExtensionModel)->installExtension()` trong `install()` và `uninstal
 
 > Dữ liệu là **sổ sách của cửa hàng** (đơn hàng, tiền, kế toán) không phải dữ liệu của plugin — đừng xoá khi gỡ.
 
+### Quy tắc 7 — Không nạp lớp của plugin khác lúc boot
+
+Quy tắc này dành cho plugin **gắn vào một plugin khác** (bản Pro mở khoá bản miễn phí, plugin mở rộng, plugin lắng nghe sự kiện
+của plugin khác). PHP không nạp lại một lớp đã có trong bộ nhớ. Nếu `Provider.php` của bạn đọc **hằng số** hay gọi **hàm tĩnh** của
+lớp thuộc plugin kia (`\App\GP247\Plugins\Kia\AppConfig::SU_KIEN`), lớp đó được nạp ngay lúc boot — và khi chủ cửa hàng cập nhật
+plugin kia, `update()` của **bản cũ** có thể chạy sau khi file bản mới đã chép.
+
+- **Viết tên dùng chung dạng chuỗi** (tên sự kiện, khoá cấu hình) thay vì đọc hằng số của plugin kia; thêm một test so chuỗi đó
+  với hằng số gốc để hai bên không lệch.
+- **`::class` thì an toàn** — chỉ là chuỗi tên lớp, không nạp lớp.
+- **Gọi lớp của plugin kia bên trong closure** (listener, callback) — closure chỉ chạy khi sự kiện xảy ra, không chạy lúc boot.
+
+```php
+// Nên: chuỗi, không nạp lớp của plugin Kia
+\Illuminate\Support\Facades\Event::listen('kia.seed', function () {
+    \App\GP247\Plugins\MyPlugin\AppConfig::seedLanguage();
+});
+config(['Plugins/Kia.my_provider' => \App\GP247\Plugins\MyPlugin\MyAdapter::class]);
+
+// Tránh: đọc hằng số là nạp lớp của plugin Kia lúc boot
+\Illuminate\Support\Facades\Event::listen(\App\GP247\Plugins\Kia\AppConfig::SEED_EVENT, /* … */);
+```
+
+> ℹ️ **Có từ:** gp247/core 3.14.3 — core tự nhận ra lớp của plugin đã được nạp và chạy `update()` ở request mới. Quy tắc này vẫn
+> cần cho site đang chạy core thấp hơn, và giữ cho boot của plugin không phụ thuộc thứ tự nạp.
+
 ---
 
 ## Thử một bản cập nhật trước khi phát hành
@@ -207,6 +236,8 @@ Gọi `(new ExtensionModel)->installExtension()` trong `install()` và `uninstal
 - **Gỡ plugin đang phát triển luôn dùng `--only-data`** — gỡ thường xoá cả thư mục mã nguồn (`app/…` và `public/…`).
 - **`update()` lỗi trên đường thay file bằng tay không khôi phục file** — chỉ giữ trạng thái chờ để chạy lại; viết `update()`
   sao cho chạy lại luôn an toàn.
+- **Từ gp247/core 3.14.3, bước Áp dụng chép lại `public/` của plugin trước khi gọi `update()`** — `update()` có thể dùng file tĩnh
+  của bản mới; không chép được thì `update()` không chạy.
 
 ---
 
@@ -244,6 +275,13 @@ Gọi `(new ExtensionModel)->installExtension()` trong `install()` và `uninstal
 
 → Khi bản mới không di trú được từ một dòng cũ — người đang ở dòng đó phải cài lại thay vì cập nhật thẳng.
 
+## Lịch sử thay đổi
+<!-- Chỉ ghi khi có thay đổi về logic/hành vi. Dòng mới nhất ở trên cùng. Mỗi ngày một dòng: cùng ngày thì gộp vào dòng có sẵn, không tách dòng mới. -->
+
+| Ngày | Phiên bản GP247 | Thay đổi |
+| --- | --- | --- |
+| 2026-11-17 | gp247/core 3.14.3 | Thêm Quy tắc 7 (không nạp lớp của plugin khác lúc boot); `update()` chạy ở request mới khi lớp của plugin đã nạp; bước Áp dụng chép `public/` trước `update()` |
+
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-03 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-17 · ✍️ **Tác giả (Author):** GP247</sub>

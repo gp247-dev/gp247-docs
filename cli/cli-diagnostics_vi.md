@@ -58,7 +58,7 @@ tài liệu [Bảo mật](../security/security-introduction_vi.md).
 ### Extension và giao diện
 | Mục | Kiểm gì | Lệnh sửa |
 | --- | --- | --- |
-| `extension_assets` | Extension đã cài thiếu CSS/JS/ảnh trong `public/GP247/...` | `gp247:ext-publish` |
+| `extension_assets` | Extension đã cài thiếu CSS/JS/ảnh trong `public/GP247/...`, hoặc (từ core 3.14.3) có file cũ hơn bản trong `app/` | `gp247:ext-publish` |
 | `extension_data_pending` | Extension có file mới hơn phiên bản GP247 ghi nhớ (vừa `git pull`, chép đè) mà chưa chạy phần cập nhật dữ liệu | `gp247:ext-update --local --all` |
 | `template_source` | Số file template đã publish nhưng giống hệt package — sẽ không nhận bản vá | `gp247:template-prune` |
 | `file_bom` | File `.php` / `.blade.php` bắt đầu bằng BOM UTF-8 | Lưu lại file dạng UTF-8 không BOM |
@@ -142,6 +142,13 @@ php artisan gp247:cache-rebuild
 
 → Không. Doctor chỉ đọc cấu hình. Rà đủ theo [Danh sách kiểm tra bảo mật](../security/security-checklist_vi.md).
 
+## Lịch sử thay đổi
+<!-- Chỉ ghi khi có thay đổi về logic/hành vi. Dòng mới nhất ở trên cùng. Mỗi ngày một dòng: cùng ngày thì gộp vào dòng có sẵn, không tách dòng mới. -->
+
+| Ngày | Phiên bản GP247 | Thay đổi |
+| --- | --- | --- |
+| 2026-11-17 | gp247/core 3.14.3 | `extension_assets` báo cả file tĩnh cũ (khác nội dung bản trong `app/`), không chỉ file thiếu |
+
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-08 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-17 · ✍️ **Tác giả (Author):** GP247</sub>

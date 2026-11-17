@@ -60,7 +60,7 @@ handbook.
 ### Extensions and look
 | Check | What it checks | Fix command |
 | --- | --- | --- |
-| `extension_assets` | An installed extension is missing CSS/JS/images in `public/GP247/...` | `gp247:ext-publish` |
+| `extension_assets` | An installed extension is missing CSS/JS/images in `public/GP247/...`, or (from core 3.14.3) has files older than the copy in `app/` | `gp247:ext-publish` |
 | `extension_data_pending` | An extension has files newer than the version GP247 recorded (just `git pull`ed, copied over) without its data update | `gp247:ext-update --local --all` |
 | `template_source` | Number of published template files identical to the package — they will not receive fixes | `gp247:template-prune` |
 | `file_bom` | `.php` / `.blade.php` files starting with a UTF-8 BOM | Save the file again as UTF-8 without BOM |
@@ -145,6 +145,13 @@ an installed database are skipped.
 
 → No. Doctor only reads the configuration. Go through the full [Security checklist](../security/security-checklist.md).
 
+## Change history
+<!-- Only when logic/behavior changed. Newest row on top. One row per day: merge same-day changes into the existing row, never add a new row for the same date. -->
+
+| Date | GP247 version | Change |
+| --- | --- | --- |
+| 2026-11-17 | gp247/core 3.14.3 | `extension_assets` also reports outdated static files (content differs from the copy in `app/`), not only missing ones |
+
 ---
 
-<sub>📅 **Last updated:** 2026-11-08 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-17 · ✍️ **Author:** GP247</sub>

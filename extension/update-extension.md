@@ -29,8 +29,9 @@ flowchart TB
   puts the old version back when something fails.
 - **Copying files yourself means doing all three parts**: the source in `app/`, the static files in `public/`, and the
   **Apply data update** step. Skip one and the site is out of step on that part.
-- **The "Apply data update" button does not copy static files.** Copying over and forgetting `public/` is the most common
-  reason the look stays old or breaks after an update.
+- **From gp247/core 3.14.3, the "Apply data update" step copies the static files** to `public/` before updating the data. On an
+  older core this button does **not** copy static files — copying over and forgetting `public/` is the most common reason the
+  look stays old or breaks after an update.
 - **The `GP247Front` template that ships with S-Cart is not updated here** — it moves to a new version together with the
   `composer update` of the GP247 packages.
 
@@ -50,7 +51,7 @@ Every extension (plugin or template) has three parts that live in three differen
 | Part | Lives in | Update from the library (Methods 1, 2) | Copy the new version yourself (Method 3) |
 | --- | --- | --- | --- |
 | **Source** (PHP, views, language) | `app/GP247/<Plugins\|Templates>/<Key>/` | Replaced for you | You copy it |
-| **Static files** (CSS, JS, images) | `public/GP247/<Plugins\|Templates>/<Key>/` | Replaced for you | You copy them, or run `gp247:ext-publish` |
+| **Static files** (CSS, JS, images) | `public/GP247/<Plugins\|Templates>/<Key>/` | Replaced for you | The Apply step copies them (from core 3.14.3); older core: you copy them, or run `gp247:ext-publish` |
 | **Data** (new settings, new tables, moving old data) | Database | Run for you | Click **Apply data update** or run a command |
 
 - **`<Key>`** is the extension's folder name, equal to `configKey` in its `gp247.json` file.
@@ -92,6 +93,14 @@ a command line.
 6. Wait for the page to reload. On success it shows **"<Key> has been updated to version x.y.z"** and the "New version" badge
    disappears.
 
+> ℹ️ **Available since:** gp247/core 3.14.3
+>
+> Sometimes the page first shows **"<Key> files replaced with version x.y.z, applying the data update…"** and only then reports
+> success. That happens when another plugin is using the code of the extension being updated (for example a Pro edition running
+> with the free edition): GP247 replaces the files first, then the page sends one more step to update the data **with the new
+> version's code**. You do not need to do anything; just wait for the reload. If you closed the page halfway, the extension
+> shows the **"Data update pending"** badge in the **Plugin** (or **Template**) menu — click **Apply data update** to finish.
+
 GP247 does the following, in this order:
 
 ```mermaid
@@ -118,6 +127,8 @@ flowchart TB
   **"Update failed, files restored from backup. Error: …"**. See [When an update reports an error](#when-an-update-reports-an-error).
 - **The file backup lives in** `storage/backups/extensions/<Plugins|Templates>/<Key>/<old-version>_<time>/`; GP247 keeps the
   3 most recent backups per extension.
+- **A data update in a second step** (from core 3.14.3, the case in the note above) has the same safety net: if that step
+  fails, GP247 puts the old files back from the backup and keeps the old version.
 
 **Special badges instead of the Update button** on the **From library** tab:
 
@@ -157,6 +168,11 @@ The command says clearly when it could not update:
 | `<Key> is already up to date` | Already the latest version, or the library has nothing newer | `0` |
 | `check_failed` | The library could not be reached (network, SSL certificate, connection license); the message includes the library's error | non-`0` |
 | `not_installed` | There is no `app/GP247/<Plugins\|Templates>/<Key>/` folder on the server | non-`0` |
+| `data_update_pending` *(from core 3.14.3)* | The files are replaced, but the command could not run the data update in a new process (the hosting blocks child processes); the message names the command to run, usually `php artisan gp247:ext-update --local --type=plugin --key=<Key>` | non-`0` |
+
+From core 3.14.3, when the extension's code was already loaded while the command ran (another plugin uses it), the command
+replaces the files and then runs the data update in **a new PHP process** so that the new version's code runs; if that step
+fails, the old files are put back as in Method 1.
 
 - **Add `--json`** to get a machine-readable result for scripts and CI.
 - **Add `--skip-pre-change`** to skip the data backup taken before the update (only when you already backed up yourself).
@@ -187,7 +203,9 @@ flowchart TB
    - Got a `.zip` file? Extract it on your computer and copy the folder inside. The admin's **Import** is only for new
      installs and refuses an extension that is already installed.
    - With `git pull` or Composer, this step is done when the command finishes.
-3. **Put the static files in `public/`** — in **one** of two ways:
+3. **Put the static files in `public/`** — **from gp247/core 3.14.3 you can skip this step**: step 4 copies
+   `app/GP247/<Plugins|Templates>/<Key>/public/` to `public/GP247/<Plugins|Templates>/<Key>/` before updating the data. On an
+   older core, do it in **one** of two ways:
    - With a command line:
 
      ```bash
@@ -216,8 +234,11 @@ flowchart TB
 5. **Check.** The "Data update pending" badge is gone; open a page that uses the extension and reload it with **Ctrl+F5** (Mac:
    **Cmd+Shift+R**) so the browser drops its cached CSS/JS.
 
-> ⚠️ **Caution:** step 4 does **not** copy static files. `Apply data update`, `gp247:ext-update --local` and `gp247:update` only
-> run the data part. Skip step 3 and the site runs the new source with the old CSS/JS.
+> ⚠️ **Caution, by core version:**
+> - **From gp247/core 3.14.3:** `Apply data update`, `gp247:ext-update --local` and `gp247:update` copy the static files first,
+>   then update the data. If they cannot be copied to `public/` (no write permission), GP247 **stops without updating the data**
+>   and reports the path; fix the write permission and click again.
+> - **Older core:** these three ways **only** run the data part. Skip step 3 and the site runs the new source with the old CSS/JS.
 
 ## New version copied but the look is still old or broken
 This section helps you spot and fix the most common Method 3 problem: the `app/` folder is the new version, but `public/` is
@@ -234,8 +255,10 @@ missing new files or still holds old ones.
 php artisan gp247:doctor
 ```
 
-The `extension_assets` row lists installed extensions **missing** files in `public/`. It only detects **missing** files; a file
-that **exists but is an old version** is not reported, so do not conclude "complete" just because this row passes.
+The `extension_assets` row lists installed extensions whose static files in `public/` are **missing or outdated** — from
+gp247/core 3.14.3 it compares the content of each file with the copy in `app/`. An older core only detects **missing** files; a
+file that **exists but is an old version** is not reported, so do not conclude "complete" just because this row passes. The
+admin shows the same warning in its system alerts block.
 
 **How to fix** — copy all static files again from the version now in `app/`:
 
@@ -244,7 +267,8 @@ php artisan gp247:ext-publish --type=template --key=<Key>
 php artisan gp247:ext-publish --type=plugin --all
 ```
 
-Without a command line, do it by hand as in step 3 of [Method 3](#method-3--copy-the-new-version-to-the-server-yourself). Then reload
+Without a command line: from core 3.14.3, if the extension still shows **"Data update pending"**, clicking **Apply data update**
+copies the static files again; otherwise do it by hand as in step 3 of [Method 3](#method-3--copy-the-new-version-to-the-server-yourself). Then reload
 the page with **Ctrl+F5**. If the site uses a CDN or a cache in front of the web server, purge the cached CSS/JS.
 
 - **Both the command and the manual way overwrite and add files**; they do not delete files the new version dropped. Leftover
@@ -258,8 +282,9 @@ This section helps you get the site running again and find the cause.
 **"Update failed, files restored from backup. Error: …"** (Methods 1, 2)
 - The extension's files are back to the old version; the site runs as before. Read the part after **Error** for the cause.
 - **Another plugin that extends the one being updated** (for example a Pro edition used together with the free edition) can
-  sometimes make the data update step fail. **Disable** the extending plugin for a moment, update the main plugin, then
-  **enable** it again.
+  make the data update step run the **old version's** code and fail. From gp247/core 3.14.3, GP247 detects this case and updates
+  the data in a second step with the new version's code. On an older core: update the extending plugin first (if it has a new
+  version), or **disable** it for a moment, update the main plugin, then **enable** it again.
 - The data update step may have written part of its changes to the database before failing. If the site behaves oddly,
   restore the data backup taken before the update.
 
@@ -275,6 +300,8 @@ This section helps you get the site running again and find the cause.
 **New files copied but the site still runs the old source**
 - The server may keep compiled PHP code in a cache (OPcache) and not reread the files. Restart PHP (PHP-FPM or the web
   server), or use your hosting's PHP cache-clearing feature, then click **Apply data update** again if the badge is still there.
+- A library update (Methods 1, 2) on gp247/core 3.14.3 or later clears this cache for the files it replaced; the case above only
+  remains when you copy files yourself.
 
 **Put the old version back yourself from GP247's backup**
 1. Open `storage/backups/extensions/<Plugins|Templates>/<Key>/` and pick the `<version>_<time>` folder to go back to.
@@ -305,6 +332,8 @@ The conditions below are why an update is refused or does nothing.
   data updates in the downgrade direction.
 - **Sites installed before 2026-09-29 have no remembered version**, so the first time every extension shows as pending (old
   version `?`). Applying once clears it.
+- **From gp247/core 3.14.3, the server must be able to write to** `public/GP247/<Plugins|Templates>` — the Apply step copies the
+  static files first and, if it cannot, does not update the data, so the site never runs new data with an old look.
 
 ## Q&A
 **Q1: Which method should I use?**
@@ -319,13 +348,16 @@ only replaces files. Anything you **edited directly in the extension's files** (
 
 **Q3: I clicked "Apply data update" but the look is still old?**
 
-→ That button does not copy static files. Run `php artisan gp247:ext-publish --type=<plugin|template> --key=<Key>`, or copy
+→ From gp247/core 3.14.3 that button copies the static files before updating the data; if the look is still old, the browser or
+a CDN usually still holds the old CSS/JS — reload with Ctrl+F5 and purge the CDN cache. On an older core the button does not
+copy static files: run `php artisan gp247:ext-publish --type=<plugin|template> --key=<Key>`, or copy
 `app/GP247/<Plugins|Templates>/<Key>/public/` to `public/GP247/<Plugins|Templates>/<Key>/` by hand, then reload with Ctrl+F5.
 
 **Q4: `gp247:doctor` says `extension_assets` passes but the CSS is still the old version?**
 
-→ That row only detects **missing** files, not **old** ones. Run `gp247:ext-publish` for that extension; it overwrites every
-static file with the version now in `app/`.
+→ From gp247/core 3.14.3 that row compares file content, so "pass" means `public/` matches the copy in `app/` — the old CSS is
+then in the browser's or the CDN's cache. An older core only detects **missing** files: run `gp247:ext-publish` for that
+extension; it overwrites every static file with the version now in `app/`.
 
 **Q5: I have the new version as a `.zip` file. Can I just Import it again?**
 
@@ -357,6 +389,13 @@ automatically. See [Updating GP247 and S-Cart](../install-upgrade/update.md).
 
 → See [Update-safe plugins](./create-plugin-update-safety.md): raise `version`, keep settings in the database, write an
 `update()` that is correct when run again, and declare `minUpdateFrom` when needed.
+
+## Change history
+<!-- Only when logic/behavior changed. Newest row on top. One row per day: merge same-day changes into the existing row, never add a new row for the same date. -->
+
+| Date | GP247 version | Change |
+| --- | --- | --- |
+| 2026-11-17 | gp247/core 3.14.3 | Apply data update (button, `gp247:ext-update --local`, `gp247:update`) copies the static files to `public/` first; a library update while another plugin uses the extension's code updates the data in a second step with the new code (CLI: a new process, code `data_update_pending`); `extension_assets` also reports outdated files |
 
 ---
 

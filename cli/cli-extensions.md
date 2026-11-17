@@ -109,15 +109,18 @@ php artisan gp247:ext-search --keyword=payment --free
 | `gp247:ext-enable` | `--type`, `--key` | Enable an **installed** extension |
 | `gp247:ext-disable` | `--type`, `--key` | Disable an installed extension; refuses a template in use |
 | `gp247:ext-update` | `--type`, `--key` or `--all` | Download the new version from the library, **back up** the old one, install over it; rolls back on error |
-| `gp247:ext-update --local` | `--type`, `--key` or `--all`, `--dry-run` | **Downloads nothing**: runs the data update of extensions whose files you replaced yourself |
+| `gp247:ext-update --local` | `--type`, `--key` or `--all`, `--dry-run` | **Downloads nothing**: copies the static files to `public/` again (from core 3.14.3), then runs the data update of extensions whose files you replaced yourself |
 
 The two ways to update fit two situations:
 
 - **Update from the library** (`ext-update --key=News`) — the site installed the extension from the online library. GP247
   downloads the new version, keeps a backup in `storage/backups/extensions/`, and puts the old version back if the install
-  fails.
+  fails. From core 3.14.3, if the extension's code was already loaded while the command ran (another plugin uses it), the
+  command runs the data update in a new PHP process so the new version's code runs; when the hosting blocks child processes,
+  the command reports `data_update_pending` with the exact `--local` command to run.
 - **Update in place** (`ext-update --local`) — you replaced the files with `git pull`, Composer or a manual copy. GP247
-  compares the version in `gp247.json` with the version it recorded at install, then runs the extension's data update.
+  compares the version in `gp247.json` with the version it recorded at install, then runs the extension's data update. From
+  core 3.14.3 the command first copies the static files to `public/` again (if it cannot, it does not update the data).
   `gp247:update` already does this step for every plugin and template.
 
 ```bash
@@ -153,7 +156,8 @@ php artisan gp247:ext-uninstall --type=plugin --key=News --only-data
 ### Copy static files again: `gp247:ext-publish`
 Browsers can only read the `public/` folder, so an extension's CSS/JS/images must be copied from
 `app/GP247/<Plugins|Templates>/<Key>/public/` to `public/GP247/<Plugins|Templates>/<Key>/`. Installing already does this; run
-it again when `gp247:doctor` reports `extension_assets` (the extension's pages show 404 errors for CSS/JS).
+it again when `gp247:doctor` reports `extension_assets` (the extension's pages show 404 errors for CSS/JS, or — from core
+3.14.3 — files in `public/` are older than the copy in `app/`).
 
 ```bash
 php artisan gp247:ext-publish --type=template --key=MyTheme
@@ -248,6 +252,13 @@ installed in place.
 
 → `--name` is missing. Type it again with a name, for example `php artisan gp247:make-plugin --name=MyBlog`.
 
+## Change history
+<!-- Only when logic/behavior changed. Newest row on top. One row per day: merge same-day changes into the existing row, never add a new row for the same date. -->
+
+| Date | GP247 version | Change |
+| --- | --- | --- |
+| 2026-11-17 | gp247/core 3.14.3 | `ext-update --local` (and `gp247:update`) copies the static files again before the data update; `ext-update` runs the data update in a new process when the extension's code is already loaded, new error code `data_update_pending` |
+
 ---
 
-<sub>📅 **Last updated:** 2026-11-08 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-17 · ✍️ **Author:** GP247</sub>

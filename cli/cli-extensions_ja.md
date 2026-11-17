@@ -109,14 +109,18 @@ php artisan gp247:ext-search --keyword=payment --free
 | `gp247:ext-enable` | `--type`、`--key` | **インストール済み**の拡張機能を有効化 |
 | `gp247:ext-disable` | `--type`、`--key` | インストール済みの拡張機能を無効化。使用中のテンプレートは拒否 |
 | `gp247:ext-update` | `--type`、`--key` または `--all` | ライブラリから新しいバージョンをダウンロードし、古いバージョンを**バックアップ**して上書き。失敗時は自動で元に戻す |
-| `gp247:ext-update --local` | `--type`、`--key` または `--all`、`--dry-run` | **何もダウンロードしない**：自分でファイルを入れ替えた拡張機能のデータ更新を実行 |
+| `gp247:ext-update --local` | `--type`、`--key` または `--all`、`--dry-run` | **何もダウンロードしない**：静的ファイルを `public/` にコピーし直し（core 3.14.3 以降）、自分でファイルを入れ替えた拡張機能のデータ更新を実行 |
 
 2 つの更新方法は、2 つの場面に対応します。
 
 - **ライブラリから更新**（`ext-update --key=News`） — オンラインライブラリから拡張機能をインストールしたサイト。GP247 は
   新しいバージョンをダウンロードし、`storage/backups/extensions/` にバックアップを残し、インストールに失敗したら古いバージョンに戻します。
+  core 3.14.3 以降、コマンドの実行中に拡張機能のコードがすでに読み込まれていた場合（別のプラグインが使っている）、新しいバージョンの
+  コードで動くよう新しい PHP プロセスでデータ更新を実行します。ホスティングが子プロセスを禁止している場合は `data_update_pending`
+  と、実行すべき `--local` コマンドを表示します。
 - **その場で更新**（`ext-update --local`） — `git pull`、Composer、手動コピーでファイルを入れ替えた場合。GP247 は
-  `gp247.json` のバージョンとインストール時に記録したバージョンを比べ、拡張機能のデータ更新を実行します。`gp247:update` は、
+  `gp247.json` のバージョンとインストール時に記録したバージョンを比べ、拡張機能のデータ更新を実行します。core 3.14.3 以降は、
+  先に静的ファイルを `public/` にコピーし直します（できなければデータを更新しません）。`gp247:update` は、
   すべてのプラグインとテンプレートについてこの手順を自動で行います。
 
 ```bash
@@ -152,7 +156,7 @@ php artisan gp247:ext-uninstall --type=plugin --key=News --only-data
 ブラウザーが読めるのは `public/` フォルダーだけなので、拡張機能の CSS／JS／画像は
 `app/GP247/<Plugins|Templates>/<Key>/public/` から `public/GP247/<Plugins|Templates>/<Key>/` へコピーする必要があります。
 インストール時にすでに行われますが、`gp247:doctor` が `extension_assets` を報告したとき（拡張機能の画面で CSS／JS が 404
-になるとき）にもう一度実行します。
+になるとき、または core 3.14.3 以降で `public/` のファイルが `app/` の版より古いとき）にもう一度実行します。
 
 ```bash
 php artisan gp247:ext-publish --type=template --key=MyTheme
@@ -248,6 +252,13 @@ php artisan gp247:make-plugin --name=MyBlog
 
 → `--name` がありません。名前を付けて、例えば `php artisan gp247:make-plugin --name=MyBlog` と入力し直してください。
 
+## 変更履歴
+<!-- ロジック/動作が変わった場合のみ記載。最新の行を一番上に。1 日 1 行：同じ日の変更は既存の行にまとめ、同じ日付の行を追加しない。 -->
+
+| 日付 | GP247 バージョン | 変更内容 |
+| --- | --- | --- |
+| 2026-11-17 | gp247/core 3.14.3 | `ext-update --local`（と `gp247:update`）はデータ更新の前に静的ファイルをコピーし直す。拡張機能のコードがすでに読み込まれているとき `ext-update` は新しいプロセスでデータ更新を実行し、新しいエラーコード `data_update_pending` を返す |
+
 ---
 
-<sub>📅 **最終更新:** 2026-11-08 · ✍️ **作成者 (Author):** GP247</sub>
+<sub>📅 **最終更新:** 2026-11-17 · ✍️ **作成者 (Author):** GP247</sub>
