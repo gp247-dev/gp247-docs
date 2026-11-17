@@ -177,7 +177,9 @@ phần, ví dụ thêm shop vào một site đang chỉ có CMS.
   chối (báo "GP247 has been installed"); `--force=1` bỏ qua cả kiểm tra này lẫn câu hỏi. Nhận `--admin-password` như
   `gp247:install`. Chưa có `APP_KEY` thì lệnh tự tạo.
 - **`front-install`, `shop-install`** — **gỡ trước rồi cài lại**: xoá bảng cũ của package, tạo lại, nạp dữ liệu mặc định.
-  Đây cũng là cách "cài lại sạch" một package. `shop` cần `core` và `front` đã cài trước.
+  Đây cũng là cách "cài lại sạch" một package. `shop` cần `core` và `front` đã cài trước. Site **chưa có** bảng của package
+  thì cài luôn. Site **đã có** thì lệnh hỏi trước khi xoá (mặc định "không"); khi không hỏi được (script, CI, `--json`) thì
+  từ chối và không xoá gì — thêm `--force=1` nếu bạn thật sự muốn cài lại. `gp247:install` đã hỏi bạn một lần nên không hỏi lại.
 - **`mcp-install`** — chỉ tạo cấu hình, menu, quyền; MCP không có bảng riêng nên không xoá gì. Endpoint MCP **vẫn tắt**
   cho tới khi bạn bật ở trang quản trị — xem [MCP](../mcp/mcp-introduction_vi.md).
 

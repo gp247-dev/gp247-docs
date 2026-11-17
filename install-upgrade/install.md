@@ -284,7 +284,8 @@ with Laravel, so there are two extra declaration steps.
 5. Run `php artisan gp247:info`: the new package's line is there. Open the home page and the admin to check.
 
 > ⚠️ **Warning:** `gp247:front-install` and `gp247:shop-install` **recreate** that part's tables. Run them **once**, right after
-> adding the package; from then on use only `gp247:update`.
+> adding the package; from then on use only `gp247:update`. If that part already has tables, the command asks before deleting
+> them, or refuses when run from a script (reinstalling then needs `--force=1`).
 
 ## Other setups: Git, Docker, hosting without a command line
 These give the same site as the standard steps; each part below only lists what differs.

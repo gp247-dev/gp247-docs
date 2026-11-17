@@ -178,7 +178,10 @@ deliberately want exactly one part, for example adding the shop to a site that o
   installed site is refused ("GP247 has been installed"); `--force=1` skips both this check and the question. Accepts
   `--admin-password` like `gp247:install`. Creates `APP_KEY` if it is missing.
 - **`front-install`, `shop-install`** — **uninstall first, then install**: drop the package's old tables, recreate them, load
-  the default data. This is also how to "clean reinstall" a package. `shop` needs `core` and `front` installed first.
+  the default data. This is also how to "clean reinstall" a package. `shop` needs `core` and `front` installed first. A site
+  that **does not have** the package's tables yet is installed straight away. On a site that **already has** them, the
+  command asks before deleting anything (default "no"); when it cannot ask (script, CI, `--json`) it refuses and deletes
+  nothing — add `--force=1` if you really want to reinstall. `gp247:install` has already asked you once, so it does not ask again.
 - **`mcp-install`** — only creates settings, menu, permissions; MCP owns no table, so nothing is deleted. The MCP endpoint
   **stays off** until you turn it on in the admin — see [MCP](../mcp/mcp-introduction.md).
 

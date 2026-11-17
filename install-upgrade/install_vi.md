@@ -281,7 +281,8 @@ core, nên có thêm hai bước khai báo.
 5. Chạy `php artisan gp247:info`: dòng của gói vừa thêm đã xuất hiện. Mở trang chủ và trang quản trị để kiểm tra.
 
 > ⚠️ **Lưu ý:** `gp247:front-install` và `gp247:shop-install` **tạo lại bảng** của phần đó. Chỉ chạy **một lần** khi vừa thêm
-> gói; về sau chỉ dùng `gp247:update`.
+> gói; về sau chỉ dùng `gp247:update`. Nếu phần đó đã có bảng, lệnh hỏi trước khi xoá, hoặc từ chối khi chạy trong script
+> (cần `--force=1` mới cài lại).
 
 ## Cách khác: Git, Docker, hosting không có dòng lệnh
 Ba cách này cho ra cùng một site như cách chuẩn; mỗi mục dưới đây chỉ ghi chỗ khác.
