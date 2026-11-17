@@ -160,6 +160,8 @@ After copying, open the **Plugins** (or **Templates**) list again: the extension
 **"Data update pending: x → y"** badge in the Version column. Click its **Apply data update** button
 (database icon), or run `php artisan gp247:update`. Details:
 [Updating GP247 and S-Cart — section C](../install-upgrade/update.md).
+Every way to update (library, command line, copying over) and what to do when files are missing in `public/`:
+[Updating Plugins & Templates](./update-extension.md).
 
 ---
 
@@ -397,4 +399,4 @@ action. To actually remove it, take its name out of the corresponding `.env` var
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-08 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-17 · ✍️ **Author:** GP247</sub>

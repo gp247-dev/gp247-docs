@@ -156,6 +156,8 @@ Sau khi chép, mở lại danh sách **Plugin** (hoặc **Template**): extension
 liệu: x → y"** ở cột Phiên bản. Bấm nút **Áp dụng cập nhật dữ liệu** (biểu tượng cơ sở dữ liệu) bên cạnh
 nó, hoặc chạy `php artisan gp247:update`. Chi tiết:
 [Cập nhật GP247 và S-Cart — mục C](../install-upgrade/update_vi.md#c-plugintemplate-cập-nhật-bằng-git-pull-composer-hoặc-chép-tay).
+Mọi cách cập nhật (thư viện, dòng lệnh, chép đè) và cách xử lý khi thiếu file trong `public/`:
+[Cập nhật Plugin & Template](./update-extension_vi.md).
 
 ---
 
@@ -384,4 +386,4 @@ extension đó khỏi biến `.env` tương ứng rồi thử lại.
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-08 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-17 · ✍️ **Tác giả (Author):** GP247</sub>
