@@ -4,23 +4,23 @@
 
 ## Giới thiệu
 Trang này dành cho **chủ site và người vận hành** S-Cart (dòng 3.x): cho biết mỗi bản phát hành có gì mới, nên dùng phiên
-bản nào và cách cập nhật. Bản mới nhất: **S-Cart 3.8.0** (2026-11-15).
+bản nào và cách cập nhật. Bản mới nhất: **S-Cart 3.9.0** (2026-11-18).
 
 ## Phiên bản nên dùng
 Chạy `php artisan gp247:info` (hoặc `composer show "gp247/*"`) rồi so từng dòng với cột **Tối thiểu khuyến nghị**:
 
 | Package | Tối thiểu khuyến nghị | Mới nhất |
 | --- | --- | --- |
-| gp247/core | **3.12.1** | 3.14.0 |
-| gp247/front | **3.8.1** | 3.9.1 |
-| gp247/shop | **3.10.1** | 3.11.1 |
-| gp247/mcp | **2.0.1** | 2.0.3 |
+| gp247/core | **3.15.0** | 3.15.0 |
+| gp247/front | **3.11.0** | 3.11.0 |
+| gp247/shop | **3.12.0** | 3.12.0 |
+| gp247/mcp | **2.0.1** | 2.1.0 |
 
 - **Thấp hơn** cột "Tối thiểu khuyến nghị" → nên [cập nhật](#cập-nhật-thế-nào).
 - **Đã đạt** → site đã có đủ các cải tiến quan trọng, kể cả khi bạn chưa cài lại S-Cart.
 - **Thư viện bên thứ ba** → chạy thêm `composer audit` để kiểm, xem [Thư viện bên thứ ba](#thư-viện-bên-thứ-ba).
 
-> ⚠️ **Lưu ý:** cập nhật **cả bộ package cùng lúc**: `gp247/front` 3.9.1 và `gp247/shop` 3.11.1 cần `gp247/core` ≥ 3.14, `gp247/front` 3.8.1 và `gp247/shop` 3.10.1 cần `gp247/core` ≥ 3.12.1, `gp247/front` 3.7.0 và `gp247/shop` 3.9.0 cần `gp247/core` ≥ 3.11, `gp247/shop` 3.8.1 cần `gp247/core` ≥ 3.10.3, `gp247/mcp` 2.0.1 cần `gp247/core` ≥ 3.9, `gp247/shop` 3.6.0 cần `gp247/core` ≥ 3.7,
+> ⚠️ **Lưu ý:** cập nhật **cả bộ package cùng lúc**: `gp247/shop` 3.12.0 cần `gp247/front` ≥ 3.11, `gp247/front` 3.9.1 và `gp247/shop` 3.11.1 cần `gp247/core` ≥ 3.14, `gp247/front` 3.8.1 và `gp247/shop` 3.10.1 cần `gp247/core` ≥ 3.12.1, `gp247/front` 3.7.0 và `gp247/shop` 3.9.0 cần `gp247/core` ≥ 3.11, `gp247/shop` 3.8.1 cần `gp247/core` ≥ 3.10.3, `gp247/mcp` 2.0.1 cần `gp247/core` ≥ 3.9, `gp247/shop` 3.6.0 cần `gp247/core` ≥ 3.7,
 > `gp247/front` 3.2.3 cần `gp247/core` ≥ 3.2.3. Dòng nào còn được hỗ trợ: xem [Vòng đời hỗ trợ](#vòng-đời-hỗ-trợ).
 
 ## Vòng đời hỗ trợ
@@ -36,9 +36,10 @@ Chạy `php artisan gp247:info` (hoặc `composer show "gp247/*"`) rồi so từ
   `composer require … -W` và `php artisan gp247:update` — xem [Nâng cấp lên dòng 3.x](../install-upgrade/upgrade_vi.md).
 
 ## Điểm mới nổi bật
-- **Sắp xếp sản phẩm cho khách** — Nổi bật, Mới nhất, Bán chạy, Giá, Tên A–Z *(S-Cart 3.8)*
-- **Thanh lọc sản phẩm gọn hơn** — tìm kiếm, sắp xếp, khoảng giá, thương hiệu trên hai hàng *(S-Cart 3.8)*
-- **Thư viện extension trực tuyến hiện đủ** — ghi rõ extension nào cần core mới hơn *(S-Cart 3.8)*
+- **Tab SEO cho từng nội dung** — tiêu đề, mô tả trên Google, ảnh chia sẻ, noindex, canonical riêng *(S-Cart 3.9)*
+- **Tự tạo redirect 301 khi đổi đường dẫn** — link cũ vẫn đưa khách tới trang mới *(S-Cart 3.9)*
+- **Màn Kiểm tra SEO và Nhật ký 404** — biết ngay việc cần sửa, kèm link sửa *(S-Cart 3.9)*
+- **Xác minh Google/Bing, mẫu tiêu đề, IndexNow** — có hướng dẫn từng bước ngay trên màn *(S-Cart 3.9)*
 
 ## Cập nhật thế nào
 **Bước 1 —** Sao lưu cơ sở dữ liệu và thư mục site.
@@ -61,6 +62,34 @@ Chi tiết từng bước: [Cập nhật GP247 và S-Cart](../install-upgrade/up
 
 ## Các bản phát hành
 Mới nhất ở trên. Bản *x.**Y*** có tính năng mới; bản *x.y.**Z*** chỉ sửa lỗi.
+
+### S-Cart 3.9.0 — 2026-11-18
+**SEO có sẵn đầy đủ: tab SEO cho từng sản phẩm, tự 301 khi đổi đường dẫn, màn Kiểm tra SEO.**
+
+**✨ Mới**
+- **Tab SEO cho từng nội dung** — tiêu đề, mô tả trên Google, ảnh chia sẻ, noindex, canonical riêng cho sản phẩm, danh mục,
+  thương hiệu, trang ([tài liệu](../seo/seo-content_vi.md))
+- **Tự tạo redirect 301 khi đổi đường dẫn** — link cũ từ Google, Facebook, bookmark vẫn đưa khách tới trang mới
+- **Màn Kiểm tra SEO và Nhật ký 404** — liệt kê việc Cần sửa / Nên xem kèm link sửa, nhắc trên Cảnh báo hệ thống; AI agent
+  đọc được qua MCP ([tài liệu](../seo/seo-monitoring_vi.md))
+- **Xác minh Google/Bing, mẫu tiêu đề, IndexNow** ngay trên màn Meta & JSON-LD, có hướng dẫn từng bước
+  ([tài liệu](../seo/seo-settings_vi.md))
+- **Trang riêng tư và trang lọc tự giấu khỏi Google** — kèm hreflang tự động, JSON-LD sản phẩm đầy đủ hơn
+  ([tài liệu](../seo/seo-automatic_vi.md))
+- **Một mục Tuỳ chỉnh giao diện cho mọi template** — chọn template rồi mở trang cài đặt của nó
+- **Cho lập trình viên:** plugin/template cắm vào tab SEO, sitemap, JSON-LD, cảnh báo hệ thống; `gp247:doctor` in cả check của
+  package ([tài liệu](../seo/seo-for-developers_vi.md))
+
+**🔧 Cải thiện:** quản trị cửa hàng con chỉ lưu, xoá được trang, link, khối bố cục, thương hiệu, danh mục của cửa hàng mình
+*(site đa cửa hàng)*; khuyến mãi đã tắt không còn đặt giá bán; cửa hàng hiện 5 sản phẩm một hàng trên màn rộng
+
+**📋 Cần làm khi cập nhật**
+- Chạy `composer update` rồi `php artisan gp247:update` (tạo bảng và menu SEO mới)
+- Cấp quyền hai màn mới **Kiểm tra SEO**, **Nhật ký 404** cho người quản trị không phải quản trị gốc
+- *(Template tự viết hoặc ghi đè `meta-head`)* đồng bộ theo [hợp đồng SEO của template](../seo/seo-for-developers_vi.md#hợp-đồng-seo-của-template) để in thẻ robots, hreflang, mã xác minh
+- *(Site dùng plugin Tin tức)* cập nhật News ≥ 3.1.0 để có tab SEO cho tin
+
+<sub>Gồm core 3.15.0 · front 3.11.0 · shop 3.12.0 · mcp 2.1.0 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.9.0)</sub>
 
 ### S-Cart 3.8.0 — 2026-11-15
 **Khách sắp xếp sản phẩm theo ý mình; thư viện extension hiện đủ, ghi rõ bản cần core mới.**
@@ -166,31 +195,10 @@ hết bộ nhớ
 
 <sub>Gồm core 3.11.0 · front 3.7.0 · shop 3.9.0 · mcp 2.0.2 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.6.0)</sub>
 
-### S-Cart 3.5.2 — 2026-11-07
-Bản cải tiến nên cập nhật ngay, nhất là site chạy Docker hoặc đứng sau proxy / CDN.
-
-**✨ Mới**
-- **Cảnh báo `TRUSTED_PROXIES`** — trang Cảnh báo hệ thống và `gp247:doctor` nhắc khi cấu hình proxy tin mọi người truy cập
-  ([tài liệu](../security/security-production-config_vi.md))
-
-**🔧 Cải thiện:** link đặt lại mật khẩu và xác minh email luôn trỏ về tên miền đã cấu hình của cửa hàng; IP và tên miền chỉ
-lấy từ proxy đã khai báo; bộ Docker mặc định không tin proxy nào *(chạy bằng Docker)*
-
-**📋 Cần làm khi cập nhật**
-- Chạy `composer update` rồi `php artisan gp247:update`
-- Kiểm `APP_URL` trong `.env` đúng tên miền thật (`https://…`) — link trong email lấy theo giá trị này
-- *(Site sau proxy / CDN)* proxy phải giữ header `Host`; GP247 không còn đọc `X-Forwarded-Host` / `X-Forwarded-Prefix`
-- *(Chạy bằng Docker sau nginx / Caddy / Traefik trên cùng máy chủ)* `composer update` không sửa file của site: lấy
-  `docker-compose*.yml` và `docker/nginx/default.conf` mới, đặt `TRUSTED_PROXIES=172.16.0.0/12` và
-  `SC_DOCKER_APP_PORT=127.0.0.1:8000` trong `.env`, rồi chạy `docker compose up -d`
-- *(`TRUSTED_PROXIES` đang có `REMOTE_ADDR` hoặc `*`)* thay bằng dải IP của proxy thật hoặc để trống
-- *(Site dùng plugin CheckIP)* cập nhật CheckIP ≥ 2.1.7
-
-<sub>Gồm core 3.10.3 · front 3.5.2 · shop 3.8.1 · mcp 2.0.1 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.5.2)</sub>
-
 ### Các bản cũ hơn
 | Bản | Ngày | Tóm tắt |
 | --- | --- | --- |
+| [S-Cart 3.5.2](https://github.com/gp247net/s-cart/releases/tag/3.5.2) | 2026-11-07 | Cải tiến cho site chạy Docker hoặc đứng sau proxy / CDN |
 | [S-Cart 3.5.1](https://github.com/gp247net/s-cart/releases/tag/3.5.1) | 2026-11-05 | Trang quản trị tự báo cấu hình chưa an toàn; cài đặt qua web gọn hơn |
 | [S-Cart 3.5.0](https://github.com/gp247net/s-cart/releases/tag/3.5.0) | 2026-11-03 | MCP server có sẵn: hỏi và quản lý cửa hàng bằng AI agent |
 | [S-Cart 3.4.0](https://github.com/gp247net/s-cart/releases/tag/3.4.0) | 2026-11-02 | Bán hàng qua ứng dụng riêng và đồng bộ ERP qua REST API |
@@ -245,4 +253,4 @@ trước khi có bản vá.
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-15 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-18 · ✍️ **Tác giả (Author):** GP247</sub>

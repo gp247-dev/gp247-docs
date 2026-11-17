@@ -32,7 +32,7 @@ New to GP247? Read [About GP247](./about/gp247.md).
 ### MCP (AI agents)
 | Document | Summary | Last updated |
 | --- | --- | --- |
-| [Introduction to the MCP server](./mcp/mcp-introduction.md) | Entry page of the MCP documentation: let AI agents (Claude, Cursor, VS Code…) work with your shop — quick start, catalogue of 15 tools, security & permissions, administration & setup, troubleshooting | 2026-11-04 |
+| [Introduction to the MCP server](./mcp/mcp-introduction.md) | Entry page of the MCP documentation: let AI agents (Claude, Cursor, VS Code…) work with your shop — quick start, catalogue of 18 tools, security & permissions, administration & setup, troubleshooting | 2026-11-17 |
 
 ### Security
 | Document | Summary | Last updated |
@@ -67,7 +67,7 @@ New to GP247? Read [About GP247](./about/gp247.md).
 ### Releases
 | Document | Summary | Last updated |
 | --- | --- | --- |
-| [S-Cart releases and security](./release/release.md) | Recommended versions (minimum per package); highlights; how to update; S-Cart releases (each bundling core/front/shop): what is new, bug fixes, what to do when updating; security and reporting a vulnerability | 2026-11-15 |
+| [S-Cart releases and security](./release/release.md) | Recommended versions (minimum per package); highlights; how to update; S-Cart releases (each bundling core/front/shop): what is new, bug fixes, what to do when updating; security and reporting a vulnerability | 2026-11-18 |
 
 ### System
 | Document | Summary | Last updated |
@@ -112,4 +112,4 @@ New to GP247? Read [About GP247](./about/gp247.md).
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-17 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-18 · ✍️ **Author:** GP247</sub>

@@ -32,7 +32,7 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 ### MCP (AI agent)
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
-| [Giới thiệu MCP server](./mcp/mcp-introduction_vi.md) | Trang chính của bộ tài liệu MCP: cho AI agent (Claude, Cursor, VS Code…) làm việc với cửa hàng — bắt đầu nhanh, danh mục 15 công cụ, an toàn & phân quyền, quản trị & cài đặt, xử lý sự cố | 2026-11-04 |
+| [Giới thiệu MCP server](./mcp/mcp-introduction_vi.md) | Trang chính của bộ tài liệu MCP: cho AI agent (Claude, Cursor, VS Code…) làm việc với cửa hàng — bắt đầu nhanh, danh mục 18 công cụ, an toàn & phân quyền, quản trị & cài đặt, xử lý sự cố | 2026-11-17 |
 
 ### Bảo mật
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
@@ -67,7 +67,7 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 ### Phát hành
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
-| [Phát hành và bảo mật S-Cart](./release/release_vi.md) | Phiên bản nên dùng (tối thiểu từng package); điểm mới nổi bật; cách cập nhật; các bản S-Cart (mỗi bản gom core/front/shop): có gì mới, sửa lỗi, cần làm khi cập nhật; bảo mật và báo lỗ hổng | 2026-11-15 |
+| [Phát hành và bảo mật S-Cart](./release/release_vi.md) | Phiên bản nên dùng (tối thiểu từng package); điểm mới nổi bật; cách cập nhật; các bản S-Cart (mỗi bản gom core/front/shop): có gì mới, sửa lỗi, cần làm khi cập nhật; bảo mật và báo lỗ hổng | 2026-11-18 |
 
 ### Hệ thống
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
@@ -112,4 +112,4 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-17 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-18 · ✍️ **Tác giả (Author):** GP247</sub>

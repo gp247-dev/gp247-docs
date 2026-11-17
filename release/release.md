@@ -4,23 +4,23 @@
 
 ## Introduction
 This page is for S-Cart (3.x line) **site owners and operators**: it tells you what each release brings, which version to run
-and how to update. Latest release: **S-Cart 3.8.0** (2026-11-15).
+and how to update. Latest release: **S-Cart 3.9.0** (2026-11-18).
 
 ## Recommended versions
 Run `php artisan gp247:info` (or `composer show "gp247/*"`) and compare each line with the **Recommended minimum** column:
 
 | Package | Recommended minimum | Latest |
 | --- | --- | --- |
-| gp247/core | **3.12.1** | 3.14.0 |
-| gp247/front | **3.8.1** | 3.9.1 |
-| gp247/shop | **3.10.1** | 3.11.1 |
-| gp247/mcp | **2.0.1** | 2.0.3 |
+| gp247/core | **3.15.0** | 3.15.0 |
+| gp247/front | **3.11.0** | 3.11.0 |
+| gp247/shop | **3.12.0** | 3.12.0 |
+| gp247/mcp | **2.0.1** | 2.1.0 |
 
 - **Below** the "Recommended minimum" column → [update](#how-to-update) when you can.
 - **At or above it** → your site has all the important improvements, even if you have not reinstalled S-Cart.
 - **Third-party libraries** → also run `composer audit`; see [Third-party libraries](#third-party-libraries).
 
-> ⚠️ **Note:** update **all the packages together**: `gp247/front` 3.9.1 and `gp247/shop` 3.11.1 need `gp247/core` ≥ 3.14, `gp247/front` 3.8.1 and `gp247/shop` 3.10.1 need `gp247/core` ≥ 3.12.1, `gp247/front` 3.7.0 and `gp247/shop` 3.9.0 need `gp247/core` ≥ 3.11, `gp247/shop` 3.8.1 needs `gp247/core` ≥ 3.10.3, `gp247/mcp` 2.0.1 needs `gp247/core` ≥ 3.9, `gp247/shop` 3.6.0 needs `gp247/core` ≥ 3.7,
+> ⚠️ **Note:** update **all the packages together**: `gp247/shop` 3.12.0 needs `gp247/front` ≥ 3.11, `gp247/front` 3.9.1 and `gp247/shop` 3.11.1 need `gp247/core` ≥ 3.14, `gp247/front` 3.8.1 and `gp247/shop` 3.10.1 need `gp247/core` ≥ 3.12.1, `gp247/front` 3.7.0 and `gp247/shop` 3.9.0 need `gp247/core` ≥ 3.11, `gp247/shop` 3.8.1 needs `gp247/core` ≥ 3.10.3, `gp247/mcp` 2.0.1 needs `gp247/core` ≥ 3.9, `gp247/shop` 3.6.0 needs `gp247/core` ≥ 3.7,
 > `gp247/front` 3.2.3 needs `gp247/core` ≥ 3.2.3. Which lines are still supported: see [Support lifecycle](#support-lifecycle).
 
 ## Support lifecycle
@@ -36,9 +36,10 @@ Run `php artisan gp247:info` (or `composer show "gp247/*"`) and compare each lin
   `composer require … -W` and `php artisan gp247:update` — see [Upgrading to the 3.x line](../install-upgrade/upgrade.md).
 
 ## Highlights
-- **Product sorting for shoppers** — Featured, Newest, Best selling, Price, Name A–Z *(S-Cart 3.8)*
-- **Tidier product filter bar** — search, sort, price range and brands on two rows *(S-Cart 3.8)*
-- **Full online extension library** — says which extensions need a newer core *(S-Cart 3.8)*
+- **SEO tab for each piece of content** — your own Google title and description, share image, noindex, canonical *(S-Cart 3.9)*
+- **Automatic 301 redirect when an address changes** — old links still take visitors to the new page *(S-Cart 3.9)*
+- **SEO check and 404 log screens** — see right away what to fix, with a link to fix it *(S-Cart 3.9)*
+- **Google/Bing verification, title templates, IndexNow** — step-by-step help right on the screen *(S-Cart 3.9)*
 
 ## How to update
 **Step 1 —** Back up the database and the site folder.
@@ -61,6 +62,36 @@ Step-by-step details: [Updating GP247 and S-Cart](../install-upgrade/update.md).
 
 ## Releases
 Newest first. An *x.**Y*** release brings new features; an *x.y.**Z*** release only fixes bugs.
+
+### S-Cart 3.9.0 — 2026-11-18
+**Full SEO built in: an SEO tab for every product, automatic 301s when an address changes, an SEO check screen.**
+
+**✨ New**
+- **SEO tab for each piece of content** — your own Google title and description, share image, noindex and canonical for
+  products, categories, brands and pages ([docs](../seo/seo-content.md))
+- **Automatic 301 redirect when an address changes** — old links from Google, Facebook and bookmarks still take visitors to
+  the new page
+- **SEO check and 404 log screens** — list what is To fix / To review with a link to fix it, with a reminder in System alerts;
+  AI agents can read them through MCP ([docs](../seo/seo-monitoring.md))
+- **Google/Bing verification, title templates, IndexNow** right on the Meta & JSON-LD screen, with step-by-step help
+  ([docs](../seo/seo-settings.md))
+- **Private and filter pages hidden from Google automatically** — plus automatic hreflang and richer product JSON-LD
+  ([docs](../seo/seo-automatic.md))
+- **One Customize theme entry for every template** — pick a template, then open its settings page
+- **For developers:** plugins/templates plug into the SEO tab, sitemap, JSON-LD and system alerts; `gp247:doctor` also prints
+  package checks ([docs](../seo/seo-for-developers.md))
+
+**🔧 Improvements:** sub-store admins can only save and delete pages, links, layout blocks, brands and categories of their own
+store *(multi-store sites)*; a switched-off promotion no longer sets the selling price; the storefront shows 5 products per
+row on wide screens
+
+**📋 To do when updating**
+- Run `composer update`, then `php artisan gp247:update` (creates the new SEO tables and menu)
+- Grant the two new screens **SEO check** and **404 log** to admins who are not the main administrator
+- *(Your own template, or an overridden `meta-head`)* follow the [template SEO contract](../seo/seo-for-developers.md#the-template-seo-contract) so robots, hreflang and verification tags are printed
+- *(Sites using the News plugin)* update News to 3.1.0 or later to get the SEO tab for news
+
+<sub>Includes core 3.15.0 · front 3.11.0 · shop 3.12.0 · mcp 2.1.0 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.9.0)</sub>
 
 ### S-Cart 3.8.0 — 2026-11-15
 **Shoppers sort products their way; the extension library shows everything and which core each needs.**
@@ -169,31 +200,10 @@ admin sign-in details last; the Docker scheduler runs with `schedule:work`, with
 
 <sub>Includes core 3.11.0 · front 3.7.0 · shop 3.9.0 · mcp 2.0.2 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.6.0)</sub>
 
-### S-Cart 3.5.2 — 2026-11-07
-An improvement release worth installing now, especially for sites on Docker or behind a proxy / CDN.
-
-**✨ New**
-- **`TRUSTED_PROXIES` alert** — the System alerts page and `gp247:doctor` warn when the proxy setting trusts every visitor
-  ([docs](../security/security-production-config.md))
-
-**🔧 Improvements:** password-reset and e-mail verification links always point at the store's configured domain; the visitor
-IP and domain are only taken from a declared proxy; the Docker stack trusts no proxy by default *(Docker)*
-
-**📋 To do when updating**
-- Run `composer update`, then `php artisan gp247:update`
-- Check that `APP_URL` in `.env` is your real domain (`https://…`) — e-mail links use it
-- *(Behind a proxy / CDN)* the proxy must keep the `Host` header; GP247 no longer reads `X-Forwarded-Host` / `X-Forwarded-Prefix`
-- *(Docker behind nginx / Caddy / Traefik on the same server)* `composer update` does not change your site files: take the new
-  `docker-compose*.yml` and `docker/nginx/default.conf`, set `TRUSTED_PROXIES=172.16.0.0/12` and
-  `SC_DOCKER_APP_PORT=127.0.0.1:8000` in `.env`, then run `docker compose up -d`
-- *(`TRUSTED_PROXIES` contains `REMOTE_ADDR` or `*`)* replace it with your real proxy's IP ranges, or leave it empty
-- *(Sites using the CheckIP plugin)* update CheckIP to 2.1.7 or later
-
-<sub>Includes core 3.10.3 · front 3.5.2 · shop 3.8.1 · mcp 2.0.1 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.5.2)</sub>
-
 ### Older releases
 | Release | Date | Summary |
 | --- | --- | --- |
+| [S-Cart 3.5.2](https://github.com/gp247net/s-cart/releases/tag/3.5.2) | 2026-11-07 | Improvements for sites on Docker or behind a proxy / CDN |
 | [S-Cart 3.5.1](https://github.com/gp247net/s-cart/releases/tag/3.5.1) | 2026-11-05 | The admin flags unsafe settings; a simpler web installer |
 | [S-Cart 3.5.0](https://github.com/gp247net/s-cart/releases/tag/3.5.0) | 2026-11-03 | Built-in MCP server: ask and manage your shop with an AI agent |
 | [S-Cart 3.4.0](https://github.com/gp247net/s-cart/releases/tag/3.4.0) | 2026-11-02 | Sell through your own app and sync with your ERP over the REST API |
@@ -248,4 +258,4 @@ exposed before a fix is released.
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-15 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-18 · ✍️ **Author:** GP247</sub>
