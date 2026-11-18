@@ -4,7 +4,8 @@
 
 **GP247** là nền tảng thương mại điện tử mã nguồn mở dành cho doanh nghiệp, xây dựng trên Laravel. Ngoài các tính năng bán
 hàng, GP247 có sẵn **dòng lệnh** để vận hành tự động, **REST API v2** để kết nối ứng dụng và ERP, **MCP server** để làm việc
-với AI agent, cùng lớp **bảo mật quản lý tập trung** và **sao lưu & phục hồi** tích hợp sẵn. Tất cả miễn phí, giấy phép MIT.
+với AI agent, **SEO tích hợp sẵn** từ thẻ meta tới kiểm tra lỗi SEO, cùng lớp **bảo mật quản lý tập trung** và **sao lưu &
+phục hồi** tích hợp sẵn. Tất cả miễn phí, giấy phép MIT.
 
 ## GP247 trong một phút
 
@@ -16,22 +17,25 @@ với AI agent, cùng lớp **bảo mật quản lý tập trung** và **sao lư
 | **Thành phần** | `gp247/core` · `gp247/front` · `gp247/shop` · `gp247/mcp` |
 | **Bản trọn gói** | **S-Cart** = core + front + shop + mcp |
 | **Vận hành & tích hợp** | Dòng lệnh `php artisan gp247:*` · REST API v2 (đồng bộ ERP) · MCP server cho AI agent |
+| **SEO** | Thẻ meta, sitemap, JSON-LD, hreflang tự động · tab SEO cho từng nội dung · tự 301 khi đổi đường dẫn · màn Kiểm tra SEO |
 | **Bảo mật** | Phân quyền và nhật ký dùng chung cho trang quản trị, API, MCP · mã hoá bí mật · sao lưu & phục hồi mã hoá |
 | **Môi trường chạy** | Từ shared hosting không có cron tới VPS, Docker |
 | **Tài liệu** | Ba ngôn ngữ Việt · Anh · Nhật, kèm Agent Skills cho AI agent lập trình |
 
 ## Điểm nổi bật
 
-GP247 tập trung vào ba nhóm năng lực mà một cửa hàng đang vận hành thật cần đến:
+GP247 tập trung vào bốn nhóm năng lực mà một cửa hàng đang vận hành thật cần đến:
 
 ```mermaid
 flowchart TB
     G["GP247"] --> A["Vận hành<br/>& tích hợp"]
+    G --> D["SEO<br/>tích hợp sẵn"]
     G --> B["Bảo mật<br/>& sao lưu"]
     G --> C["Hỗ trợ người dùng<br/>& lập trình viên"]
 ```
 
 - **Vận hành & tích hợp** — dòng lệnh, REST API v2, MCP server cho AI agent.
+- **SEO tích hợp sẵn** — website lên Google đúng chuẩn ngay khi cài, chủ site chỉnh từng trang không cần plugin.
 - **Bảo mật & sao lưu** — một lớp bảo vệ chung cho mọi cửa vào, sao lưu & phục hồi có sẵn.
 - **Hỗ trợ** — tài liệu ba ngôn ngữ cập nhật liên tục, Agent Skills cho lập trình viên.
 
@@ -46,6 +50,21 @@ flowchart TB
 - **MCP server — làm việc với AI agent** — có sẵn trong S-Cart, tắt sẵn cho tới khi bạn bật. Chủ cửa hàng hỏi bằng lời thường
   trong Claude Code, Claude Desktop / claude.ai, Cursor hay VS Code để tra đơn, xem tồn kho, tóm tắt doanh thu. 18 công cụ (13 đọc,
   5 ghi mặc định tắt); thao tác ghi luôn có bản xem trước và mã xác nhận. Xem [Giới thiệu MCP server](../mcp/mcp-introduction_vi.md).
+
+### SEO tích hợp sẵn, không cần plugin
+
+- **Đúng chuẩn ngay khi cài** — mọi trang tự có tiêu đề, mô tả, thẻ chia sẻ mạng xã hội, canonical, JSON-LD (sản phẩm, đường dẫn
+  danh mục, bài viết), hreflang cho website nhiều ngôn ngữ; giỏ hàng, tài khoản và trang lọc tự giấu khỏi Google; trang không tồn
+  tại trả lỗi 404 thật. Sitemap.xml và robots.txt tự sinh theo từng cửa hàng, không cần cron.
+- **SEO cho từng nội dung** — tab SEO ở màn sửa sản phẩm, danh mục, thương hiệu, trang, bài viết: tiêu đề và mô tả hiện trên Google, ảnh chia
+  sẻ, ẩn khỏi Google, canonical riêng, kèm khung xem trước kết quả tìm kiếm.
+- **Đổi đường dẫn không mất khách** — đổi alias thì hệ thống tự tạo redirect 301 từ địa chỉ cũ; quản lý redirect và nhật ký trang
+  404 ngay trong trang quản trị.
+- **Biết ngay việc cần sửa** — màn Kiểm tra SEO liệt kê lỗi "Cần sửa" / "Nên xem" kèm link sửa, nhắc trên Cảnh báo hệ thống;
+  xác minh Google / Bing, mẫu tiêu đề và IndexNow có hướng dẫn từng bước. AI agent đọc và sửa SEO được qua MCP (có xác nhận).
+- **Plugin và template cắm vào được** — nội dung của plugin có cùng tab SEO, sitemap, JSON-LD qua các điểm cắm có sẵn.
+
+Xem [SEO trong GP247](../seo/seo-introduction_vi.md).
 
 ### Bảo mật nâng cao, quản lý tập trung
 
