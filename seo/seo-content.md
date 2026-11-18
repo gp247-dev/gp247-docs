@@ -27,7 +27,8 @@ The **SEO** tab is on the edit screen of:
 | Content | Screen |
 | --- | --- |
 | Products, Categories | **SEO** tab next to the General, Description… tabs |
-| Brands, Content pages | Collapsed **SEO** section in the form, click to open |
+| Content pages | **SEO** tab next to the Content tab |
+| Brands | Collapsed **SEO** section in the form, click to open |
 | Articles, news categories | News plugin (**SEO** tab) |
 | Content of other plugins | When that plugin registers with the SEO system |
 
@@ -140,4 +141,4 @@ If it worked, opening the old address in a browser takes you to the new address.
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-17 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-18 · ✍️ **Author:** GP247</sub>

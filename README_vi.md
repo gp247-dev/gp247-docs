@@ -42,7 +42,7 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 ### SEO
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
-| [SEO trong GP247](./seo/seo-introduction_vi.md) | Trang chính của bộ tài liệu SEO: những gì hệ thống tự làm, cài đặt toàn cửa hàng (xác minh Google/Bing, robots, sitemap, mẫu tiêu đề, IndexNow), tab SEO từng nội dung và tự 301, Kiểm tra SEO, nhật ký 404, AI agent, hook cho lập trình viên | 2026-11-17 |
+| [SEO trong GP247](./seo/seo-introduction_vi.md) | Trang chính của bộ tài liệu SEO: những gì hệ thống tự làm, cài đặt toàn cửa hàng (xác minh Google/Bing, robots, sitemap, mẫu tiêu đề, IndexNow), tab SEO từng nội dung và tự 301, Kiểm tra SEO, nhật ký 404, AI agent, hook cho lập trình viên | 2026-11-18 |
 
 ### Sao lưu & phục hồi
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |

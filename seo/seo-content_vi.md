@@ -27,7 +27,8 @@ Tab **SEO** có trên màn sửa của:
 | Nội dung | Màn |
 | --- | --- |
 | Sản phẩm, Danh mục | Tab **SEO** cạnh các tab Chung, Mô tả… |
-| Thương hiệu, Trang nội dung | Mục **SEO** thu gọn trong form, bấm để mở |
+| Trang nội dung | Tab **SEO** cạnh tab Nội dung |
+| Thương hiệu | Mục **SEO** thu gọn trong form, bấm để mở |
 | Bài viết, danh mục tin | Plugin Tin tức (tab **SEO**) |
 | Nội dung của plugin khác | Khi plugin đó đăng ký với hệ thống SEO |
 
@@ -140,4 +141,4 @@ Nếu thành công, mở địa chỉ cũ trên trình duyệt sẽ tự chuyể
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-17 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-18 · ✍️ **Tác giả (Author):** GP247</sub>

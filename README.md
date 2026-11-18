@@ -42,7 +42,7 @@ New to GP247? Read [About GP247](./about/gp247.md).
 ### SEO
 | Document | Summary | Last updated |
 | --- | --- | --- |
-| [SEO in GP247](./seo/seo-introduction.md) | Entry page of the SEO documentation: what the system does by itself, store-wide settings (Google/Bing verification, robots, sitemap, title templates, IndexNow), the per-content SEO tab and automatic 301, SEO check, 404 log, AI agent, hooks for developers | 2026-11-17 |
+| [SEO in GP247](./seo/seo-introduction.md) | Entry page of the SEO documentation: what the system does by itself, store-wide settings (Google/Bing verification, robots, sitemap, title templates, IndexNow), the per-content SEO tab and automatic 301, SEO check, 404 log, AI agent, hooks for developers | 2026-11-18 |
 
 ### Backup & restore
 | Document | Summary | Last updated |
