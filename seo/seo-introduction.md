@@ -29,6 +29,7 @@ Each sub-page answers one question; pick the page that matches what you need to 
 | [Store-wide SEO settings](./seo-settings.md) | How do I use the Meta & JSON-LD, Sitemap.xml and Website information screens? | Site owners |
 | [SEO for each piece of content](./seo-content.md) | How do I set a custom title and description for one product, or change an address without losing visitors? | Site owners, editors |
 | [Monitoring & fixing SEO problems](./seo-monitoring.md) | What SEO problems does my website have; which 404 pages do visitors hit; how can an AI agent help? | Site owners |
+| [Tracking code & cookie banner](./tracking-and-cookies.md) | How do I add GA4, GTM, Meta Pixel and other code, ask visitors for cookie consent and see revenue from ads? | Site owners |
 | [SEO hooks for developers](./seo-for-developers.md) | How does a plugin / template plug into the SEO tab, sitemap, JSON-LD and alerts? | Developers |
 
 ## The SEO menu in the admin
@@ -41,6 +42,7 @@ All SEO screens are in the **SEO** menu group of the admin; each screen has its 
 | **Redirect 301** | Send old links to new ones; switch to create them automatically when an address changes |
 | **404 log** | See which non-existent addresses visitors are opening (off by default) |
 | **SEO check** | Scan the store for SEO problems and list items "To fix" and "To review" |
+| **Tracking code & cookies** | GA4, GTM, Meta Pixel, custom code, cookie banner (Administrators only) |
 | **SEO** tab on content edit screens | Custom title, description, share image, noindex and canonical for each product, category, brand, page and article |
 
 The store name, description, keywords and **default** share image for the whole website are on the **Website information** screen (not in the SEO menu).
@@ -83,4 +85,4 @@ If everything worked, after a few days Search Console reports the sitemap as "Su
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-17 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-20 · ✍️ **Author:** GP247</sub>

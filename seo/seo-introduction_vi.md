@@ -29,6 +29,7 @@ Mỗi trang con trả lời một câu hỏi; chọn trang theo việc bạn c�
 | [Cài đặt SEO toàn cửa hàng](./seo-settings_vi.md) | Màn Meta & JSON-LD, Sitemap.xml, Thông tin website dùng thế nào? | Chủ site |
 | [SEO cho từng nội dung](./seo-content_vi.md) | Đặt tiêu đề, mô tả riêng cho một sản phẩm; đổi đường dẫn mà không mất khách? | Chủ site, biên tập viên |
 | [Theo dõi & sửa lỗi SEO](./seo-monitoring_vi.md) | Website đang có lỗi SEO gì; khách gặp trang 404 nào; AI agent giúp được gì? | Chủ site |
+| [Mã đo lường & banner cookie](./tracking-and-cookies_vi.md) | Gắn GA4, GTM, Meta Pixel, mã khác; hỏi khách đồng ý cookie; xem doanh thu từ quảng cáo? | Chủ site |
 | [Hook SEO cho lập trình viên](./seo-for-developers_vi.md) | Plugin / template cắm vào tab SEO, sitemap, JSON-LD, cảnh báo thế nào? | Lập trình viên |
 
 ## Menu SEO trong trang quản trị
@@ -41,6 +42,7 @@ Mọi màn SEO nằm trong nhóm menu **SEO** của trang quản trị; mỗi m�
 | **Redirect 301** | Chuyển hướng link cũ sang link mới; công tắc tự tạo khi đổi đường dẫn |
 | **Nhật ký 404** | Xem khách đang vào những đường dẫn không tồn tại (mặc định tắt) |
 | **Kiểm tra SEO** | Quét lỗi SEO của cửa hàng, liệt kê việc "Cần sửa" và "Nên xem" |
+| **Mã đo lường & cookie** | GA4, GTM, Meta Pixel, mã tự do, banner cookie (chỉ Quản trị viên) |
 | Tab **SEO** ở màn sửa nội dung | Tiêu đề, mô tả, ảnh chia sẻ, noindex, canonical riêng cho từng sản phẩm, danh mục, thương hiệu, trang, bài viết |
 
 Tên cửa hàng, mô tả, từ khoá và ảnh chia sẻ **mặc định** của cả website nằm ở màn **Thông tin website** (không trong menu SEO).
@@ -83,4 +85,4 @@ Nếu thành công, sau vài ngày Search Console báo sitemap "Thành công" v�
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-17 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-20 · ✍️ **Tác giả (Author):** GP247</sub>
