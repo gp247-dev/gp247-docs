@@ -30,7 +30,7 @@ flowchart LR
 - [Hiding private and filter pages](#hiding-private-and-filter-pages) — `seo_noindex_routes`, `seo_noindex_query_params`
 - [og:type, JSON-LD and review ratings](#ogtype-json-ld-and-review-ratings) — `seo_og_types`, `@push('jsonld')`, `seo_product_rating_resolvers`
 - [Not-found pages return 404](#not-found-pages-return-404) — `itemNotFound()`
-- [The template SEO contract](#the-template-seo-contract) — `<x-gp247-front::meta-head>`
+- [The template SEO contract](#the-template-seo-contract) — `<x-gp247-front::meta-head>`, tracking code & cookie banner, shop pages copied into a template
 - [Adding a check to System alerts](#adding-a-check-to-system-alerts) — `AdminAlertRegistry`
 
 ## Registry summary
@@ -308,6 +308,27 @@ A template (including templates customers write themselves) only needs to place 
 - **Do not write your own** title, description, canonical, Open Graph, Twitter or Organization JSON-LD tags in the layout — hand-written tags drift and miss new tags (verification codes, robots, hreflang).
 - **Avoid overriding** the `gp247_components/meta-head` and `common/jsonld_*` views — there is no design reason to copy them, and a copy stays frozen when gp247/front is updated.
 
+### Tracking code and the cookie banner
+`meta-head` also prints the tracking code the site owner enters on **SEO › Tracking code & cookies** (GA4, GTM, Meta Pixel, custom code), the cookie consent loader and the cookie banner. Calling `meta-head` in the layout is enough; a layout that does not call it has neither the code nor the banner, and **System alerts** reports it. How site owners use it: [Tracking code & cookie banner](./tracking-and-cookies.md).
+
+- **A "Cookie settings" link in the footer (recommended)** — an element with `data-gp247-consent-open` and the `hidden` attribute; the loader shows it while the banner is on and opens the settings panel when clicked. Without such an element the loader adds a small floating button in the corner. Wrap it in `class_exists` so the template still runs on an older gp247/front:
+
+```blade
+@if (class_exists(\GP247\Front\TemplateComponents\ConsentBanner::class))
+    <button type="button" data-gp247-consent-open hidden>{{ gp247_language_render('front.consent.settings') }}</button>
+@endif
+```
+
+- **Override `gp247_components/consent-banner` only when the design really has to change** — keep every `data-gp247-consent-*` attribute (banner, settings panel, the `analytics` / `marketing` boxes, save, close) and keep the three buttons **Accept all / Reject / Customise** the same size and style.
+- **Do not put tracking code in the `header` layout block** — code there runs outside the cookie banner; System alerts reports layout HTML blocks that hold a `<script>`.
+
+### When you copy shop pages into the template
+A shop page copied into the template no longer receives gp247/shop fixes on its own. Three pages carry rules of their own:
+
+- **`screen/shop_product_detail`** — keep the package's `@push('jsonld')` block as it is (SKU, brand, UPC/EAN/JAN, MPN, promotion end date, the product id used for ratings); restyle only around it. A template that must run on a gp247/shop older than 3.11.3 checks `method_exists($product, 'promotionValidUntil')`.
+- **`livewire/shop_product-filter`** — keep the Livewire bindings (`wire:model.live="sort"`, shown in the URL as `filter_sort`, `priceMin`, `priceMax`, `applyPrice`, `clearFilters`, `toggleBrand`) and offer only the sort values of `ShopProduct::storefrontSort()`: empty (Featured), `id_desc`, `sold_desc`, `price_asc`, `price_desc`, `name_asc`.
+- **Sales events** (view item, add to cart, begin checkout, purchase) are sent by the shop's controllers and Livewire; views need nothing for them — as long as adding to the cart goes through the shop's own button / action, not a hand-made form or `fetch`.
+
 ## Adding a check to System alerts
 A plugin can add a line to the **System alerts** block and the `gp247:doctor` command (the way gp247/front adds the `seo_audit` line):
 
@@ -380,6 +401,10 @@ if (class_exists(\GP247\Core\AdminShell\Support\AdminAlertRegistry::class)) {
 
 → Open a detail page and view its source: `<title>`, `<meta name="robots">` and `<link rel="canonical">` follow the values you entered; `/sitemap.xml` contains the plugin's URLs; after deleting a record, `SeoContentMeta::for()` returns `null`.
 
+**Q8: What must my template do for tracking code, the cookie banner and sales events to work?**
+
+→ Only call `<x-gp247-front::meta-head>` in the layout. Adding a "Cookie settings" link in the footer is recommended; for shop pages you copied, follow [When you copy shop pages into the template](#when-you-copy-shop-pages-into-the-template).
+
 ---
 
-<sub>📅 **Last updated:** 2026-11-17 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-20 · ✍️ **Author:** GP247</sub>

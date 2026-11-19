@@ -30,7 +30,7 @@ flowchart LR
 - [非公開ページと絞り込みページを隠す](#非公開ページと絞り込みページを隠す) — `seo_noindex_routes`、`seo_noindex_query_params`
 - [og:type、JSON-LD、評価点](#ogtypejson-ld評価点) — `seo_og_types`、`@push('jsonld')`、`seo_product_rating_resolvers`
 - [見つからないページは 404 を返す](#見つからないページは-404-を返す) — `itemNotFound()`
-- [テンプレートの SEO 契約](#テンプレートの-seo-契約) — `<x-gp247-front::meta-head>`
+- [テンプレートの SEO 契約](#テンプレートの-seo-契約) — `<x-gp247-front::meta-head>`、トラッキングコードと Cookie バナー、テンプレートにコピーしたショップのページ
 - [システムアラートにチェックを追加する](#システムアラートにチェックを追加する) — `AdminAlertRegistry`
 
 ## レジストリ一覧
@@ -308,6 +308,27 @@ public static function rating(string $productId, $storeId): ?array
 - title、description、canonical、Open Graph、Twitter、Organization の JSON-LD のタグを、レイアウトに**自分で書かないでください** — 手書きのタグはずれが生じ、新しいタグ（確認コード、robots、hreflang）が抜け落ちます。
 - ビュー `gp247_components/meta-head` と `common/jsonld_*` の**上書きは控えてください** — デザイン上コピーする理由がなく、コピーしたものは gp247/front が更新されても古いまま残ります。
 
+### トラッキングコードと Cookie バナー
+`meta-head` は、サイト運営者が **SEO › トラッキングコードとCookie** 画面で入力したトラッキングコード（GA4、GTM、Meta ピクセル、カスタムコード）、Cookie の同意ローダー、Cookie バナーも出力します。レイアウトで `meta-head` を呼び出せば十分です。呼び出さないレイアウトではコードもバナーも動かず、**システムアラート** が知らせます。サイト運営者向けの使い方：[トラッキングコードと Cookie バナー](./tracking-and-cookies_ja.md)。
+
+- **フッターの「Cookie 設定」リンク（推奨）** — `data-gp247-consent-open` と `hidden` 属性を持つ要素です。バナーが有効なときにローダーが表示し、クリックで設定パネルを開きます。この要素がない場合、ローダーが画面の隅に小さなボタンを追加します。古い gp247/front でもテンプレートが動くよう、`class_exists` で囲みます：
+
+```blade
+@if (class_exists(\GP247\Front\TemplateComponents\ConsentBanner::class))
+    <button type="button" data-gp247-consent-open hidden>{{ gp247_language_render('front.consent.settings') }}</button>
+@endif
+```
+
+- **`gp247_components/consent-banner` の上書きは、デザインを本当に変える必要があるときだけにしてください** — `data-gp247-consent-*` 属性（バナー、設定パネル、`analytics` / `marketing` のチェックボックス、保存、閉じる）をすべて残し、**すべて許可・拒否・カスタマイズ** の 3 つのボタンを同じ大きさ・同じスタイルに保ちます。
+- **トラッキングコードを `header` のレイアウトブロックに入れないでください** — そこのコードは Cookie バナーと無関係に動きます。`<script>` を含むレイアウト HTML ブロックはシステムアラートが知らせます。
+
+### ショップのページをテンプレートにコピーするとき
+テンプレートにコピーしたショップのページは、gp247/shop の修正を自動では受け取りません。次の 3 つのページには独自のルールがあります：
+
+- **`screen/shop_product_detail`** — パッケージの `@push('jsonld')` ブロック（SKU、ブランド、UPC/EAN/JAN、MPN、セールの終了日、評価に使う商品 ID）はそのまま残し、周りのデザインだけを変えます。gp247/shop 3.11.3 より古い版でも動かす必要があるテンプレートは、`method_exists($product, 'promotionValidUntil')` で確認します。
+- **`livewire/shop_product-filter`** — Livewire のバインディング（URL では `filter_sort` と表示される `wire:model.live="sort"`、`priceMin`、`priceMax`、`applyPrice`、`clearFilters`、`toggleBrand`）を残し、並び替えの値は `ShopProduct::storefrontSort()` のもの（空＝おすすめ、`id_desc`、`sold_desc`、`price_asc`、`price_desc`、`name_asc`）だけを使います。
+- **販売イベント**（商品の閲覧、カートへの追加、購入手続きの開始、購入）はショップのコントローラーと Livewire が送信するため、ビューでは何もする必要はありません。ただし、カートへの追加はショップの既存のボタンやアクションを使い、独自のフォームや `fetch` を書かないでください。
+
 ## システムアラートにチェックを追加する
 プラグインは、**システムアラート** ブロックと `gp247:doctor` コマンドに行を追加できます（gp247/front が `seo_audit` の行を追加しているのと同じ方法です）。
 
@@ -380,6 +401,10 @@ if (class_exists(\GP247\Core\AdminShell\Support\AdminAlertRegistry::class)) {
 
 → 詳細ページを開いてソースを確認します。`<title>`、`<meta name="robots">`、`<link rel="canonical">` が入力した値どおりか、`/sitemap.xml` にプラグインの URL があるか、レコードを削除すると `SeoContentMeta::for()` が `null` を返すかを確認します。
 
+**Q8: トラッキングコード、Cookie バナー、販売イベントを動かすために、テンプレートは何をすればよいですか？**
+
+→ レイアウトで `<x-gp247-front::meta-head>` を呼び出すだけです。フッターに「Cookie 設定」リンクを置くことをおすすめします。コピーしたショップのページは [ショップのページをテンプレートにコピーするとき](#ショップのページをテンプレートにコピーするとき) に従ってください。
+
 ---
 
-<sub>📅 **最終更新:** 2026-11-17 · ✍️ **作成者 (Author):** GP247</sub>
+<sub>📅 **最終更新:** 2026-11-20 · ✍️ **作成者 (Author):** GP247</sub>

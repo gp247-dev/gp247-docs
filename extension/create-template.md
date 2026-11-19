@@ -192,6 +192,16 @@ Route::group(['prefix' => GP247_ADMIN_PREFIX.'/theme', 'middleware' => GP247_ADM
 - **Print text with `{{ }}`**: since gp247/core 3.12 text is stored exactly as typed and encoded only on output. `{!! !!}` is
   for trusted HTML only — content written in the editor, GP247's render helpers such as `{!! gp247_render_block(...) !!}`. Any
   other raw print of a variable is reported by the `raw_output_scan` item of System alerts.
+- **`<head>` calls `<x-gp247-front::meta-head>`**: the SEO tags, the tracking code the site owner enters and the cookie
+  banner are all printed by this component — do not write those tags yourself. Details:
+  [The template SEO contract](../seo/seo-for-developers.md#the-template-seo-contract).
+- **The footer has a "Cookie settings" link** (recommended) so visitors can change their cookie choice:
+
+```blade
+@if (class_exists(\GP247\Front\TemplateComponents\ConsentBanner::class))
+    <button type="button" data-gp247-consent-open hidden>{{ gp247_language_render('front.consent.settings') }}</button>
+@endif
+```
 
 ### 5.3. Dynamic interface — use Livewire/Alpine, no jQuery
 
@@ -263,6 +273,8 @@ shop package.
 > (the `CheckoutTotalMethod` contract) generically. Removing them silently hides the coupon input for
 > **all** total-method plugins. Any fragment they render must use only UI classes your template's
 > precompiled CSS actually ships (a brand-new Tailwind class won't exist in the built CSS).
+
+> ⚠️ **Note:** a shop page copied into the template no longer receives gp247/shop fixes on its own. The product detail page must keep the `@push('jsonld')` block as it is, and the product filter offers only the sort values of `ShopProduct::storefrontSort()` — see [When you copy shop pages into the template](../seo/seo-for-developers.md#when-you-copy-shop-pages-into-the-template).
 
 ### 6.3. How to reference a full template (with shop): publish the `gp247/shop` views
 
@@ -368,6 +380,8 @@ For full details on the safe-update mechanism, see the
 - [ ] Every string is rendered through `gp247_language_render(...)` / `trans(...)`, not hardcoded; both `vi` and `en` present.
 - [ ] If you added new Tailwind classes: you recompiled the CSS and included the output in `public/`.
 - [ ] You have clearly decided which shop pages to override (copied into the template's `screen/`) and which to leave on the default fallback.
+- [ ] The layout calls `<x-gp247-front::meta-head>` inside `<head>`; the footer has a "Cookie settings" link (`data-gp247-consent-open`).
+- [ ] Copied shop pages: the product detail page keeps the `@push('jsonld')` block; the filter uses the sort values of `storefrontSort()`.
 - [ ] `config.php` contains only defaults; site-owner choices live in `admin_config` (safe on update).
 - [ ] With a settings screen: `clickApp()` returns a redirect to it; the template adds **no** admin menu entry of its own.
 - [ ] You ran `php artisan optimize:clear`, installed it (admin or `gp247:ext-install --type=template`) and activated it on **Website information** successfully; home page and shop pages display correctly.
@@ -434,6 +448,7 @@ most common issue, caused by Laravel still holding the old cache.
 
 | Date | GP247 version | Change |
 | --- | --- | --- |
+| 2026-11-20 | gp247/front 3.12 · gp247/shop 3.11.3 | Layout (5.2): `meta-head` also prints the tracking code and the cookie banner; add a "Cookie settings" link in the footer. Shop pages copied into a template (6.2): keep the product page's JSON-LD block, the filter follows `storefrontSort()`. Two checklist lines added |
 | 2026-11-17 | gp247/core 3.14.2 · gp247/front 3.10.1 | Settings route under the shared root `<admin>/theme/<key>` so **Customize theme** is highlighted. Added "The template's settings page" (5.1): a `clickApp()` redirect gives the ⚙ button on Template manager and the **Customize theme** entry; templates add no menu entry |
 | 2026-11-13 | gp247/core 3.12 | Added the rule for printing text (section 5.2): text is stored as typed, print it with `{{ }}`; `{!! !!}` only for trusted HTML, other raw prints are reported by the `raw_output_scan` item |
 | 2026-11-03 | gp247/core 3.9 | Key `requireUpdateFrom` renamed to `minUpdateFrom` (lowest installed version, ≥, allowed to update straight); the old name still works with a deprecation warning and is removed in core 4.0 |
@@ -441,4 +456,4 @@ most common issue, caused by Laravel still holding the old cache.
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-17 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-20 · ✍️ **Author:** GP247</sub>

@@ -189,6 +189,15 @@ Route::group(['prefix' => GP247_ADMIN_PREFIX.'/theme', 'middleware' => GP247_ADM
 - **In chữ bằng `{{ }}`**: từ gp247/core 3.12 chữ được lưu đúng như người dùng gõ và chỉ được mã hoá khi in. `{!! !!}` chỉ
   dành cho HTML tin cậy — nội dung soạn bằng trình soạn thảo, các hàm hiển thị của GP247 như `{!! gp247_render_block(...) !!}`.
   In thô một biến khác sẽ bị mục `raw_output_scan` của Cảnh báo hệ thống báo.
+- **`<head>` gọi `<x-gp247-front::meta-head>`**: thẻ SEO, mã đo lường chủ site nhập và banner cookie đều do component
+  này in — không tự viết các thẻ đó. Chi tiết: [Hợp đồng SEO của template](../seo/seo-for-developers_vi.md#hợp-đồng-seo-của-template).
+- **Chân trang có link "Cài đặt cookie"** (nên có) để khách đổi lựa chọn cookie:
+
+```blade
+@if (class_exists(\GP247\Front\TemplateComponents\ConsentBanner::class))
+    <button type="button" data-gp247-consent-open hidden>{{ gp247_language_render('front.consent.settings') }}</button>
+@endif
+```
 
 ### 5.3. Giao diện động — dùng Livewire/Alpine, không jQuery
 
@@ -247,6 +256,8 @@ theo phong cách của bạn...). Lúc đó bạn tạo view shop **ngay trong t
 
 Ngoài `screen/`, gói shop còn có các thư mục view khác có thể override tương tự (`account/`, `auth/`,
 `blocks/`, `common/`, `livewire/`) — đặt trong template theo đúng đường dẫn con giống trong gói shop.
+
+> ⚠️ **Lưu ý:** trang shop chép vào template không tự nhận bản sửa của gp247/shop. Trang chi tiết sản phẩm phải giữ nguyên khối `@push('jsonld')`, bộ lọc sản phẩm chỉ đưa ra giá trị sắp xếp của `ShopProduct::storefrontSort()` — xem [Khi chép trang shop vào template](../seo/seo-for-developers_vi.md#khi-chép-trang-shop-vào-template).
 
 ### 6.3. Cách tham khảo template đầy đủ (gồm shop): publish view của `gp247/shop`
 
@@ -363,6 +374,8 @@ Chi tiết đầy đủ về cơ chế update-an-toàn xem tài liệu
 - [ ] Mọi chữ render qua `gp247_language_render(...)` / `trans(...)`, không hardcode; có cả `vi` và `en`.
 - [ ] Nếu thêm class Tailwind mới: đã biên dịch lại CSS và kèm bản output trong `public/`.
 - [ ] Đã quyết định rõ trang shop nào override (chép vào `screen/` template), trang nào để fallback mặc định.
+- [ ] Layout gọi `<x-gp247-front::meta-head>` trong `<head>`; chân trang có link "Cài đặt cookie" (`data-gp247-consent-open`).
+- [ ] Trang shop đã chép: trang chi tiết sản phẩm giữ khối `@push('jsonld')`; bộ lọc dùng giá trị sắp xếp của `storefrontSort()`.
 - [ ] `config.php` chỉ chứa mặc định; lựa chọn chủ-site nằm trong `admin_config` (an toàn khi update).
 - [ ] Có màn cài đặt: `clickApp()` trả chuyển hướng tới màn đó; template **không** tự thêm mục menu admin.
 - [ ] Đã `php artisan optimize:clear`, cài (admin hoặc `gp247:ext-install --type=template`) và kích hoạt ở **Thông tin website** thử thành công; trang chủ và trang shop hiển thị đúng.
@@ -429,6 +442,7 @@ nhất do Laravel còn giữ cache cũ.
 
 | Ngày | Phiên bản GP247 | Thay đổi |
 | --- | --- | --- |
+| 2026-11-20 | gp247/front 3.12 · gp247/shop 3.11.3 | Layout (5.2): `meta-head` in cả mã đo lường và banner cookie; thêm link "Cài đặt cookie" ở chân trang. Trang shop chép vào template (6.2): giữ khối JSON-LD của trang sản phẩm, bộ lọc theo `storefrontSort()`. Thêm 2 dòng vào danh sách kiểm tra |
 | 2026-11-17 | gp247/core 3.14.2 · gp247/front 3.10.1 | Route màn cài đặt đặt dưới gốc chung `<admin>/theme/<key>` để mục **Tuỳ chỉnh giao diện** sáng đúng. Thêm mục "Trang tuỳ chỉnh của template" (5.1): `clickApp()` trả chuyển hướng là có nút ⚙ trên Quản lý giao diện và mục **Tuỳ chỉnh giao diện**; template không tự thêm mục menu |
 | 2026-11-13 | gp247/core 3.12 | Thêm quy tắc in chữ (mục 5.2): chữ lưu đúng như gõ, in bằng `{{ }}`; `{!! !!}` chỉ cho HTML tin cậy, chỗ in thô khác bị mục `raw_output_scan` báo |
 | 2026-11-03 | gp247/core 3.9 | Khoá `requireUpdateFrom` đổi tên thành `minUpdateFrom` (bản đang cài thấp nhất, ≥, được cập nhật thẳng); tên cũ vẫn chạy kèm cảnh báo deprecated và bị gỡ ở core 4.0 |
@@ -436,4 +450,4 @@ nhất do Laravel còn giữ cache cũ.
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-17 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-20 · ✍️ **Tác giả (Author):** GP247</sub>

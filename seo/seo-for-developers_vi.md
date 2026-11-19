@@ -30,7 +30,7 @@ flowchart LR
 - [Giấu trang riêng tư và trang lọc](#giấu-trang-riêng-tư-và-trang-lọc) — `seo_noindex_routes`, `seo_noindex_query_params`
 - [og:type, JSON-LD và điểm đánh giá](#ogtype-json-ld-và-điểm-đánh-giá) — `seo_og_types`, `@push('jsonld')`, `seo_product_rating_resolvers`
 - [Trang không tìm thấy trả 404](#trang-không-tìm-thấy-trả-404) — `itemNotFound()`
-- [Hợp đồng SEO của template](#hợp-đồng-seo-của-template) — `<x-gp247-front::meta-head>`
+- [Hợp đồng SEO của template](#hợp-đồng-seo-của-template) — `<x-gp247-front::meta-head>`, mã đo lường & banner cookie, trang shop chép vào template
 - [Thêm một kiểm tra vào Cảnh báo hệ thống](#thêm-một-kiểm-tra-vào-cảnh-báo-hệ-thống) — `AdminAlertRegistry`
 
 ## Bảng tổng hợp các registry
@@ -308,6 +308,27 @@ Template (kể cả template khách tự viết) chỉ cần đặt đúng các 
 - **Không tự viết** thẻ title, description, canonical, Open Graph, Twitter, JSON-LD Organization trong layout — viết tay sẽ lệch và thiếu các thẻ mới (mã xác minh, robots, hreflang).
 - **Hạn chế ghi đè** view `gp247_components/meta-head` và `common/jsonld_*` — không có lý do giao diện để chép chúng, và bản chép sẽ đứng yên khi gp247/front cập nhật.
 
+### Mã đo lường và banner cookie
+`meta-head` cũng in mã đo lường chủ site nhập ở màn **SEO › Mã đo lường & cookie** (GA4, GTM, Meta Pixel, mã tự do), bộ nạp đồng ý cookie và banner cookie. Layout gọi `meta-head` là đủ; layout không gọi thì cửa hàng không có mã lẫn banner, và **Cảnh báo hệ thống** báo điều đó. Cách chủ site dùng: [Mã đo lường & banner cookie](./tracking-and-cookies_vi.md).
+
+- **Link "Cài đặt cookie" ở chân trang (nên có)** — phần tử có `data-gp247-consent-open` và thuộc tính `hidden`; bộ nạp cho hiện khi banner bật và mở bảng tuỳ chỉnh khi khách bấm. Không có phần tử này thì bộ nạp tự thêm một nút nhỏ nổi ở góc. Bọc bằng `class_exists` để template vẫn chạy trên gp247/front cũ:
+
+```blade
+@if (class_exists(\GP247\Front\TemplateComponents\ConsentBanner::class))
+    <button type="button" data-gp247-consent-open hidden>{{ gp247_language_render('front.consent.settings') }}</button>
+@endif
+```
+
+- **Chỉ ghi đè `gp247_components/consent-banner` khi thật cần đổi giao diện** — giữ đủ mọi thuộc tính `data-gp247-consent-*` (banner, bảng tuỳ chỉnh, ô `analytics` / `marketing`, nút lưu, nút đóng) và giữ ba nút **Chấp nhận tất cả / Từ chối / Tuỳ chỉnh** cùng cỡ, cùng kiểu.
+- **Không đặt mã đo lường vào khối layout `header`** — mã ở đó chạy ngoài banner cookie; Cảnh báo hệ thống báo khối layout HTML có `<script>`.
+
+### Khi chép trang shop vào template
+Trang shop chép vào template không tự nhận bản sửa của gp247/shop. Ba trang có ràng buộc riêng:
+
+- **`screen/shop_product_detail`** — giữ nguyên khối `@push('jsonld')` của package (mã SKU, thương hiệu, UPC/EAN/JAN, MPN, hạn khuyến mãi, id sản phẩm cho điểm đánh giá); chỉ sửa giao diện xung quanh. Template cần chạy trên gp247/shop cũ hơn 3.11.3 thì kiểm `method_exists($product, 'promotionValidUntil')`.
+- **`livewire/shop_product-filter`** — giữ các liên kết Livewire (`wire:model.live="sort"` hiện trên URL là `filter_sort`, `priceMin`, `priceMax`, `applyPrice`, `clearFilters`, `toggleBrand`) và chỉ đưa ra giá trị sắp xếp của `ShopProduct::storefrontSort()`: trống (Nổi bật), `id_desc`, `sold_desc`, `price_asc`, `price_desc`, `name_asc`.
+- **Sự kiện bán hàng** (xem sản phẩm, thêm giỏ, bắt đầu thanh toán, mua hàng) do controller và Livewire của shop gửi, view không cần làm gì — miễn là thêm vào giỏ qua nút / action có sẵn của shop, không tự viết form hay `fetch`.
+
 ## Thêm một kiểm tra vào Cảnh báo hệ thống
 Plugin có thể thêm dòng vào khối **Cảnh báo hệ thống** và lệnh `gp247:doctor` (cách gp247/front thêm dòng `seo_audit`):
 
@@ -380,6 +401,10 @@ if (class_exists(\GP247\Core\AdminShell\Support\AdminAlertRegistry::class)) {
 
 → Mở trang chi tiết và xem mã nguồn: `<title>`, `<meta name="robots">`, `<link rel="canonical">` theo giá trị đã nhập; `/sitemap.xml` có URL của plugin; xoá bản ghi thì `SeoContentMeta::for()` trả `null`.
 
+**Câu 8: Template của tôi phải làm gì để mã đo lường, banner cookie và sự kiện bán hàng chạy?**
+
+→ Chỉ cần layout gọi `<x-gp247-front::meta-head>`. Nên thêm link "Cài đặt cookie" ở chân trang; trang shop đã chép thì theo [Khi chép trang shop vào template](#khi-chép-trang-shop-vào-template).
+
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-17 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-20 · ✍️ **Tác giả (Author):** GP247</sub>
