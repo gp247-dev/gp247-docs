@@ -9,8 +9,11 @@ including those on hosting without a command line. After reading it you can pick
 what GP247 does at each step, and fix the most common problem yourself: the new version is copied but the look is still old or
 broken because files are missing in `public/`.
 
-> 💡 **Working with an AI agent?** Use the **`gp247-extension-lifecycle`** skill in the [gp247-skills](https://github.com/gp247net/gp247-skills)
-> repo: it probes your site's version, uses only the commands and options the site really has, and reports the result of each update step.
+> 💡 **Working with an AI agent?** To update a plugin, use the **`gp247-plugin-update`** skill in the [gp247-skills](https://github.com/gp247net/gp247-skills)
+> repo: it probes your site's version, checks the newest version in the library, picks the right method (online free, online paid, or
+> applying new files you copied over the old ones) and reports the result of each step. To update a template, use the
+> **`gp247-template-update`** skill — it also finds the stores using the template and any direct edits an update would erase,
+> and sends `GP247Front` down the package update path.
 
 ## At a glance
 Pick the update method by where the new version comes from:
@@ -399,4 +402,4 @@ automatically. See [Updating GP247 and S-Cart](../install-upgrade/update.md).
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-17 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-19 · ✍️ **Author:** GP247</sub>

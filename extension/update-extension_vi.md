@@ -8,8 +8,10 @@ trang quản trị, chạy lệnh, hoặc tự chép file bản mới lên máy 
 hosting không có dòng lệnh. Đọc xong, bạn chọn đúng cách cho tình huống của mình, biết GP247 làm gì ở từng bước, và tự xử lý
 được ca hay gặp nhất: đã chép bản mới nhưng giao diện vẫn cũ hoặc vỡ vì thiếu file trong `public/`.
 
-> 💡 **Làm cùng AI agent?** Dùng skill **`gp247-extension-lifecycle`** trong repo [gp247-skills](https://github.com/gp247net/gp247-skills):
-> skill dò phiên bản site, chỉ dùng lệnh và tuỳ chọn site thật sự có, rồi báo kết quả từng bước cập nhật.
+> 💡 **Làm cùng AI agent?** Cập nhật plugin: dùng skill **`gp247-plugin-update`** trong repo [gp247-skills](https://github.com/gp247net/gp247-skills)
+> — skill dò phiên bản site, kiểm tra bản mới nhất trên thư viện, rồi chọn đúng cách (online miễn phí, online trả phí, hay áp dụng
+> bản mới đã chép đè) và báo kết quả từng bước. Cập nhật template: dùng skill **`gp247-template-update`** — skill còn tìm các
+> store đang dùng template, những chỉnh sửa trực tiếp sẽ bị xoá khi cập nhật, và đưa `GP247Front` sang đúng đường cập nhật package.
 
 ## Nhìn nhanh
 Chọn cách cập nhật theo nơi bạn lấy bản mới:
@@ -382,4 +384,4 @@ hoặc site chưa kết nối được thư viện (đăng ký giấy phép kế
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-17 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-19 · ✍️ **Tác giả (Author):** GP247</sub>
