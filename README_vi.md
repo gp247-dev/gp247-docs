@@ -67,7 +67,7 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 ### Phát hành
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
-| [Phát hành và bảo mật S-Cart](./release/release_vi.md) | Phiên bản nên dùng (tối thiểu từng package); điểm mới nổi bật; cách cập nhật; các bản S-Cart (mỗi bản gom core/front/shop): có gì mới, sửa lỗi, cần làm khi cập nhật; bảo mật và báo lỗ hổng | 2026-11-18 |
+| [Phát hành và bảo mật S-Cart](./release/release_vi.md) | Phiên bản nên dùng (tối thiểu từng package); điểm mới nổi bật; cách cập nhật; các bản S-Cart (mỗi bản gom core/front/shop): có gì mới, sửa lỗi, cần làm khi cập nhật; bảo mật và báo lỗ hổng | 2026-11-20 |
 
 ### Hệ thống
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |

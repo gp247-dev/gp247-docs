@@ -4,17 +4,17 @@
 
 ## Introduction
 This page is for S-Cart (3.x line) **site owners and operators**: it tells you what each release brings, which version to run
-and how to update. Latest release: **S-Cart 3.9.0** (2026-11-18).
+and how to update. Latest release: **S-Cart 3.10.0** (2026-11-20).
 
 ## Recommended versions
 Run `php artisan gp247:info` (or `composer show "gp247/*"`) and compare each line with the **Recommended minimum** column:
 
 | Package | Recommended minimum | Latest |
 | --- | --- | --- |
-| gp247/core | **3.15.0** | 3.15.0 |
-| gp247/front | **3.11.0** | 3.11.0 |
-| gp247/shop | **3.12.0** | 3.12.0 |
-| gp247/mcp | **2.0.1** | 2.1.0 |
+| gp247/core | **3.16.0** | 3.16.0 |
+| gp247/front | **3.11.0** | 3.12.0 |
+| gp247/shop | **3.12.0** | 3.13.0 |
+| gp247/mcp | **2.0.1** | 2.1.1 |
 
 - **Below** the "Recommended minimum" column → [update](#how-to-update) when you can.
 - **At or above it** → your site has all the important improvements, even if you have not reinstalled S-Cart.
@@ -36,10 +36,10 @@ Run `php artisan gp247:info` (or `composer show "gp247/*"`) and compare each lin
   `composer require … -W` and `php artisan gp247:update` — see [Upgrading to the 3.x line](../install-upgrade/upgrade.md).
 
 ## Highlights
-- **SEO tab for each piece of content** — your own Google title and description, share image, noindex, canonical *(S-Cart 3.9)*
-- **Automatic 301 redirect when an address changes** — old links still take visitors to the new page *(S-Cart 3.9)*
-- **SEO check and 404 log screens** — see right away what to fix, with a link to fix it *(S-Cart 3.9)*
-- **Google/Bing verification, title templates, IndexNow** — step-by-step help right on the screen *(S-Cart 3.9)*
+- **GA4, GTM and Meta Pixel tracking** — paste the ID; the code runs only for the cookie groups the visitor allows *(S-Cart 3.10)*
+- **Cookie banner** — ask first, notice only, or off *(S-Cart 3.10)*
+- **Ad revenue in GA4 and Meta** — sales events are sent automatically *(S-Cart 3.10)*
+- **Duplicate products and pages** — one button makes a copy; change only what differs *(S-Cart 3.10)*
 
 ## How to update
 **Step 1 —** Back up the database and the site folder.
@@ -62,6 +62,38 @@ Step-by-step details: [Updating GP247 and S-Cart](../install-upgrade/update.md).
 
 ## Releases
 Newest first. An *x.**Y*** release brings new features; an *x.y.**Z*** release only fixes bugs.
+
+### S-Cart 3.10.0 — 2026-11-20
+**Add GA4 and Meta Pixel by pasting an ID, with a cookie banner; duplicate a product in one click.**
+
+**✨ New**
+- **GA4, GTM and Meta Pixel tracking** — paste the ID; the code runs only for the cookie groups the visitor allows
+  ([docs](../seo/tracking-and-cookies.md))
+- **Cookie banner** — ask first, notice only, or off; visitors change their mind any time through "Cookie settings"
+- **Ad revenue in GA4 and Meta** — product view, add to cart, checkout and purchase events are sent automatically
+- **Security headers** — switch each header on or off and turn HSTS on step by step from the admin
+  ([docs](../security/security-production-config.md#security-headers))
+- **Duplicate products and pages** — one button makes a switched-off copy; change only what differs
+  ([docs](../s-cart/product/product-duplicate.md))
+- **Find products by name** in the admin product list; the category filter has a search box
+- **For developers:** templates change the banner colours with CSS variables; import plugins write 301s from another platform's
+  old addresses; plugins copy their own data when a product is duplicated ([docs](../seo/seo-for-developers.md))
+
+**🔧 Improvements:** saving products, customers and orders no longer reports duplicate keys on sites with a lot of data; 301
+redirects also work for addresses that match no page (e.g. taken from the 404 log); category pages open faster on large stores
+
+**📋 To do when updating**
+- Run `composer update`, then `php artisan gp247:update` (adds an index to the product–category table; on very large stores run
+  it from the command line outside peak hours)
+- After the update the site sends four security headers; if the site must be embedded (iframe) on another domain, switch
+  X-Frame-Options off on the **Security headers** screen
+- Tracking code and the cookie banner are **off** by default — to use them, go to **SEO › Tracking code & cookies**
+  (Administrators only)
+- *(Running with Docker)* take the new `docker/nginx/default.conf` from S-Cart so headers are not sent twice; if you edited that
+  file, merge the change
+- *(Custom templates)* keep `<x-gp247-front::meta-head>` in `<head>` to get the tracking code and the cookie banner
+
+<sub>Includes core 3.16.0 · front 3.12.0 · shop 3.13.0 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.10.0)</sub>
 
 ### S-Cart 3.9.0 — 2026-11-18
 **Full SEO built in: an SEO tab for every product, automatic 301s when an address changes, an SEO check screen.**
@@ -166,43 +198,10 @@ screens with file uploads no longer run out of memory
 
 <sub>Includes core 3.11.2 · front 3.7.1 · shop 3.9.1 · mcp 2.0.2 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.6.1)</sub>
 
-### S-Cart 3.6.0 — 2026-11-09
-**Backup and restore built into S-Cart, ready for shared hosting.**
-
-**✨ New**
-- **Encrypted backups built in** — back up one data group, several, or the whole site; each backup is checked right after it
-  is made and opens only with the backup password or recovery key ([docs](../backup/backup-and-restore.md))
-- **Restore just what you need** — one data group, deleted records, configuration or the whole database, with a preview and
-  undo ([docs](../backup/restore-guide.md))
-- **Automatic backups without cron** — run while an admin uses the admin area, or on cron when available; a quick snapshot
-  is taken before `gp247:update` and before an extension update
-- **Copy backups off the server** — S3-compatible or SFTP, with write-only credentials so an attacker cannot delete them
-  ([docs](../backup/backup-offsite.md))
-- **Password policy per account group** — set length and strength separately for admins and customers on one screen
-  ([docs](../security/security-accounts-and-access.md))
-- **Failed sign-ins screen** — see failed sign-in attempts and spot password guessing early
-  ([docs](../security/security-built-in.md))
-- **For developers:** `gp247:backup-*` commands (create, verify, restore, copy off-site); `gp247:admin-password` resets an
-  admin password from the command line; plugins declare their tables in backup data groups
-
-**🔧 Improvements:** list search boxes say which columns they search and ignore extra spaces; `gp247:install` shows the
-admin sign-in details last; the Docker scheduler runs with `schedule:work`, with no extra queue worker every minute
-*(running with Docker)*
-
-**📋 To do when updating**
-- Back up the database and the site folder, run `composer update`, then `php artisan gp247:update`
-- Backup is **off** by default: open **Backup & restore**, set a backup password, keep the recovery key away from the server
-- New installs use the command line only (`php artisan gp247:install`) — the web installer has been removed
-  ([install guide](../install-upgrade/install.md))
-- *(Sites installed before 3.6.0 that will copy backups to SFTP)* run `composer require league/flysystem-sftp-v3`
-- *(Running with Docker)* `composer update` does not change your site files: take the new `docker-compose*.yml`, then run
-  `docker compose up -d`
-
-<sub>Includes core 3.11.0 · front 3.7.0 · shop 3.9.0 · mcp 2.0.2 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.6.0)</sub>
-
 ### Older releases
 | Release | Date | Summary |
 | --- | --- | --- |
+| [S-Cart 3.6.0](https://github.com/gp247net/s-cart/releases/tag/3.6.0) | 2026-11-09 | Backup and restore built into S-Cart, ready for shared hosting |
 | [S-Cart 3.5.2](https://github.com/gp247net/s-cart/releases/tag/3.5.2) | 2026-11-07 | Improvements for sites on Docker or behind a proxy / CDN |
 | [S-Cart 3.5.1](https://github.com/gp247net/s-cart/releases/tag/3.5.1) | 2026-11-05 | The admin flags unsafe settings; a simpler web installer |
 | [S-Cart 3.5.0](https://github.com/gp247net/s-cart/releases/tag/3.5.0) | 2026-11-03 | Built-in MCP server: ask and manage your shop with an AI agent |
@@ -258,4 +257,4 @@ exposed before a fix is released.
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-18 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-20 · ✍️ **Author:** GP247</sub>

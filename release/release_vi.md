@@ -4,17 +4,17 @@
 
 ## Giới thiệu
 Trang này dành cho **chủ site và người vận hành** S-Cart (dòng 3.x): cho biết mỗi bản phát hành có gì mới, nên dùng phiên
-bản nào và cách cập nhật. Bản mới nhất: **S-Cart 3.9.0** (2026-11-18).
+bản nào và cách cập nhật. Bản mới nhất: **S-Cart 3.10.0** (2026-11-20).
 
 ## Phiên bản nên dùng
 Chạy `php artisan gp247:info` (hoặc `composer show "gp247/*"`) rồi so từng dòng với cột **Tối thiểu khuyến nghị**:
 
 | Package | Tối thiểu khuyến nghị | Mới nhất |
 | --- | --- | --- |
-| gp247/core | **3.15.0** | 3.15.0 |
-| gp247/front | **3.11.0** | 3.11.0 |
-| gp247/shop | **3.12.0** | 3.12.0 |
-| gp247/mcp | **2.0.1** | 2.1.0 |
+| gp247/core | **3.16.0** | 3.16.0 |
+| gp247/front | **3.11.0** | 3.12.0 |
+| gp247/shop | **3.12.0** | 3.13.0 |
+| gp247/mcp | **2.0.1** | 2.1.1 |
 
 - **Thấp hơn** cột "Tối thiểu khuyến nghị" → nên [cập nhật](#cập-nhật-thế-nào).
 - **Đã đạt** → site đã có đủ các cải tiến quan trọng, kể cả khi bạn chưa cài lại S-Cart.
@@ -36,10 +36,10 @@ Chạy `php artisan gp247:info` (hoặc `composer show "gp247/*"`) rồi so từ
   `composer require … -W` và `php artisan gp247:update` — xem [Nâng cấp lên dòng 3.x](../install-upgrade/upgrade_vi.md).
 
 ## Điểm mới nổi bật
-- **Tab SEO cho từng nội dung** — tiêu đề, mô tả trên Google, ảnh chia sẻ, noindex, canonical riêng *(S-Cart 3.9)*
-- **Tự tạo redirect 301 khi đổi đường dẫn** — link cũ vẫn đưa khách tới trang mới *(S-Cart 3.9)*
-- **Màn Kiểm tra SEO và Nhật ký 404** — biết ngay việc cần sửa, kèm link sửa *(S-Cart 3.9)*
-- **Xác minh Google/Bing, mẫu tiêu đề, IndexNow** — có hướng dẫn từng bước ngay trên màn *(S-Cart 3.9)*
+- **Mã đo lường GA4, GTM, Meta Pixel** — chỉ dán ID, mã chạy theo nhóm cookie khách cho phép *(S-Cart 3.10)*
+- **Banner cookie** — hỏi đồng ý trước, chỉ thông báo hoặc tắt *(S-Cart 3.10)*
+- **Doanh thu quảng cáo trong GA4 và Meta** — tự gửi sự kiện bán hàng *(S-Cart 3.10)*
+- **Nhân bản sản phẩm và trang** — một nút có bản sao, chỉ sửa chỗ khác *(S-Cart 3.10)*
 
 ## Cập nhật thế nào
 **Bước 1 —** Sao lưu cơ sở dữ liệu và thư mục site.
@@ -62,6 +62,37 @@ Chi tiết từng bước: [Cập nhật GP247 và S-Cart](../install-upgrade/up
 
 ## Các bản phát hành
 Mới nhất ở trên. Bản *x.**Y*** có tính năng mới; bản *x.y.**Z*** chỉ sửa lỗi.
+
+### S-Cart 3.10.0 — 2026-11-20
+**Gắn GA4, Meta Pixel chỉ bằng dán ID, có banner cookie; nhân bản sản phẩm một nút.**
+
+**✨ Mới**
+- **Mã đo lường GA4, GTM, Meta Pixel** — chỉ dán ID, mã chạy theo nhóm cookie khách cho phép
+  ([tài liệu](../seo/tracking-and-cookies_vi.md))
+- **Banner cookie** — hỏi đồng ý trước, chỉ thông báo hoặc tắt; khách đổi ý bất cứ lúc nào qua "Cài đặt cookie"
+- **Doanh thu quảng cáo trong GA4 và Meta** — tự gửi sự kiện xem sản phẩm, thêm giỏ, thanh toán, mua hàng
+- **Header bảo mật** — bật/tắt từng header, bật HSTS an toàn từng bước ngay trong trang quản trị
+  ([tài liệu](../security/security-production-config_vi.md#header-bảo-mật))
+- **Nhân bản sản phẩm và trang** — một nút có bản sao đang tắt, chỉ sửa chỗ khác
+  ([tài liệu](../s-cart/product/product-duplicate_vi.md))
+- **Tìm sản phẩm theo tên** trong danh sách quản trị; bộ lọc danh mục có ô tìm
+- **Cho lập trình viên:** template đổi màu banner bằng biến CSS; plugin nhập dữ liệu ghi 301 từ địa chỉ cũ của nền tảng khác;
+  plugin tự chép dữ liệu riêng khi nhân bản sản phẩm ([tài liệu](../seo/seo-for-developers_vi.md))
+
+**🔧 Cải thiện:** lưu sản phẩm, khách hàng, đơn hàng không còn báo trùng khoá trên site nhiều dữ liệu; chuyển hướng 301 chạy cả
+với đường dẫn không còn trang nào (vd lấy từ Nhật ký 404); trang danh mục mở nhanh hơn trên cửa hàng lớn
+
+**📋 Cần làm khi cập nhật**
+- Chạy `composer update` rồi `php artisan gp247:update` (thêm chỉ mục cho bảng sản phẩm–danh mục; cửa hàng rất lớn nên chạy
+  bằng dòng lệnh ngoài giờ cao điểm)
+- Site gửi sẵn 4 header bảo mật sau khi cập nhật; site cần được nhúng (iframe) ở tên miền khác thì tắt X-Frame-Options trên
+  màn **Header bảo mật**
+- Mã đo lường và banner cookie **tắt sẵn** — muốn dùng, vào **SEO › Mã đo lường & cookie** (chỉ Administrator)
+- *(Chạy bằng Docker)* lấy `docker/nginx/default.conf` mới của S-Cart để header không bị gửi hai lần; đã tự sửa file này thì
+  gộp thay đổi
+- *(Template tự viết)* giữ `<x-gp247-front::meta-head>` trong `<head>` để có mã đo lường và banner cookie
+
+<sub>Gồm core 3.16.0 · front 3.12.0 · shop 3.13.0 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.10.0)</sub>
 
 ### S-Cart 3.9.0 — 2026-11-18
 **SEO có sẵn đầy đủ: tab SEO cho từng sản phẩm, tự 301 khi đổi đường dẫn, màn Kiểm tra SEO.**
@@ -163,41 +194,10 @@ hết bộ nhớ
 
 <sub>Gồm core 3.11.2 · front 3.7.1 · shop 3.9.1 · mcp 2.0.2 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.6.1)</sub>
 
-### S-Cart 3.6.0 — 2026-11-09
-**Sao lưu và phục hồi có sẵn trong S-Cart, chạy được cả trên shared host.**
-
-**✨ Mới**
-- **Sao lưu mã hoá có sẵn** — chọn một nhóm dữ liệu, nhiều nhóm hoặc toàn site; bản được kiểm ngay sau khi tạo, chỉ mở
-  được bằng mật khẩu sao lưu hoặc recovery key ([tài liệu](../backup/backup-and-restore_vi.md))
-- **Phục hồi đúng thứ cần** — một nhóm dữ liệu, bản ghi đã xoá, cấu hình hay toàn cơ sở dữ liệu, có xem trước và hoàn tác
-  ([tài liệu](../backup/restore-guide_vi.md))
-- **Tự sao lưu không cần cron** — chạy khi admin mở trang quản trị, hoặc theo cron nếu có; tự chụp nhanh trước
-  `gp247:update` và trước khi cập nhật extension
-- **Chép bản ra ngoài máy chủ** — S3-compatible hoặc SFTP, dùng được khoá chỉ-ghi để kẻ tấn công không xoá được bản
-  ([tài liệu](../backup/backup-offsite_vi.md))
-- **Chính sách mật khẩu theo nhóm tài khoản** — đặt độ dài, độ mạnh riêng cho admin và khách trên một màn
-  ([tài liệu](../security/security-accounts-and-access_vi.md))
-- **Màn Đăng nhập sai** — xem các lần đăng nhập thất bại, sớm nhận ra dò mật khẩu
-  ([tài liệu](../security/security-built-in_vi.md))
-- **Cho lập trình viên:** lệnh `gp247:backup-*` (tạo, kiểm, phục hồi, chép ra ngoài); `gp247:admin-password` đặt lại mật
-  khẩu admin từ dòng lệnh; plugin khai báo bảng của mình vào nhóm sao lưu
-
-**🔧 Cải thiện:** ô tìm kiếm danh sách cho biết tìm theo cột nào, bỏ qua khoảng trắng thừa; `gp247:install` in thông tin
-đăng nhập admin ở cuối; bộ Docker chạy lịch bằng `schedule:work`, bỏ tiến trình hàng đợi thừa mỗi phút *(chạy bằng Docker)*
-
-**📋 Cần làm khi cập nhật**
-- Sao lưu cơ sở dữ liệu và thư mục site, chạy `composer update` rồi `php artisan gp247:update`
-- Sao lưu **tắt sẵn**: vào **Sao lưu & phục hồi**, đặt mật khẩu sao lưu, cất recovery key ở nơi khác máy chủ
-- Cài mới chỉ còn bằng dòng lệnh `php artisan gp247:install` — trình cài đặt trên web đã bỏ
-  ([hướng dẫn cài đặt](../install-upgrade/install_vi.md))
-- *(Site cài trước 3.6.0, muốn chép bản ra SFTP)* chạy `composer require league/flysystem-sftp-v3`
-- *(Chạy bằng Docker)* `composer update` không sửa file của site: lấy `docker-compose*.yml` mới rồi chạy `docker compose up -d`
-
-<sub>Gồm core 3.11.0 · front 3.7.0 · shop 3.9.0 · mcp 2.0.2 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.6.0)</sub>
-
 ### Các bản cũ hơn
 | Bản | Ngày | Tóm tắt |
 | --- | --- | --- |
+| [S-Cart 3.6.0](https://github.com/gp247net/s-cart/releases/tag/3.6.0) | 2026-11-09 | Sao lưu và phục hồi có sẵn trong S-Cart, chạy được cả trên shared host |
 | [S-Cart 3.5.2](https://github.com/gp247net/s-cart/releases/tag/3.5.2) | 2026-11-07 | Cải tiến cho site chạy Docker hoặc đứng sau proxy / CDN |
 | [S-Cart 3.5.1](https://github.com/gp247net/s-cart/releases/tag/3.5.1) | 2026-11-05 | Trang quản trị tự báo cấu hình chưa an toàn; cài đặt qua web gọn hơn |
 | [S-Cart 3.5.0](https://github.com/gp247net/s-cart/releases/tag/3.5.0) | 2026-11-03 | MCP server có sẵn: hỏi và quản lý cửa hàng bằng AI agent |
@@ -253,4 +253,4 @@ trước khi có bản vá.
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-18 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-20 · ✍️ **Tác giả (Author):** GP247</sub>
