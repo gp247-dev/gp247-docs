@@ -140,9 +140,10 @@ Lớp này giảm thiệt hại khi cấu hình lỡ sai.
 | **Docker production** | `docker-compose.prod.yml` ghim `APP_ENV=production`, `APP_DEBUG=false` cho mọi dịch vụ; từ chối khởi động khi còn mật khẩu mẫu của `.env.example`; tắt các tính năng PHP không dùng; nginx chặn file ẩn và thư mục nội bộ | Bật HTTPS ở proxy phía trước; cập nhật image định kỳ |
 | **Cảnh báo hệ thống** | Block **Cảnh báo hệ thống** ở đầu dashboard quản trị tóm tắt trong một dòng mức nặng nhất và số mục cần xử lý; biểu tượng khiên trên header đếm số mục nghiêm trọng. Trang **Cảnh báo hệ thống** (menu **Cấu hình hệ thống** → **Bảo mật**, hoặc bấm khiên / nút ở block) liệt kê từng mục: debug đang bật, site chưa chạy HTTPS hoặc cookie đăng nhập chưa bật `Secure`, tài khoản `admin` còn mật khẩu mặc định, mật khẩu tối thiểu dưới 12 ký tự, chưa đặt khoá mã hoá riêng, có bí mật không giải mã được, chưa bật MFA, API đang bật, dòng phiên bản sắp hết hoặc đã hết hỗ trợ, extension chưa cập nhật dữ liệu hoặc thiếu file tĩnh, template/plugin của site in biến bằng `{!! !!}`, trang quản trị đi qua proxy chưa khai báo trong `TRUSTED_PROXIES`. Mỗi mục có chi tiết kỹ thuật và link hướng dẫn; sửa xong thì cảnh báo tự hết (hoặc bấm **Kiểm tra lại** trên trang). `gp247:doctor` báo cùng các mục này | Chỉ vai trò **Administrator** thấy block, trang và mục menu. Chỉ kiểm khi có người mở trang quản trị, không gửi email. Không kiểm thay bạn từ trình duyệt (file `.env` có tải được không, `http://` có tự chuyển sang `https://` không) |
 | **IP và giao thức sau proxy** | Chỉ nhận IP / `https` từ header chuyển tiếp khi request đến từ proxy trong `TRUSTED_PROXIES`; không bao giờ lấy tên miền từ `X-Forwarded-Host`; bộ Docker mặc định không tin proxy nào và nginx của bộ không chuyển `X-Forwarded-Host` của khách; mục `trusted_proxies` của Cảnh báo hệ thống nhắc khi cấu hình tin mọi khách | Khai đúng dải IP của proxy phía trước; proxy phải giữ header `Host` — xem [Cấu hình chạy thật](./security-production-config_vi.md) |
+| **Header bảo mật** | Gửi X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy cho trang và API; HSTS tuỳ chọn, chỉ trên HTTPS; không ghi đè header đã có; bật / tắt trên màn **Header bảo mật** (chỉ Administrator), tắt khẩn cấp bằng `GP247_SECURITY_HEADERS=0`; mục `security_headers` của Cảnh báo hệ thống, `gp247:doctor --probe-headers` đọc header thật sự tới trình duyệt | Không thấy header do web server / CDN thêm sau — chọn một nơi gửi; tăng HSTS từ từ — xem [Header bảo mật](./security-production-config_vi.md#header-bảo-mật) |
 | **Link trong email** | Link đặt lại mật khẩu (quản trị viên, khách) và link xác minh email luôn trỏ về tên miền đã cấu hình (`APP_URL`, hoặc tên miền riêng của cửa hàng), không theo tên miền của request | `APP_URL` và tên miền cửa hàng phải đúng |
 
-> ℹ️ **Có từ:** gp247/core 3.10.0 (block và trang Cảnh báo hệ thống, các mục bảo mật của `gp247:doctor`); gp247/core 3.10.3 + gp247/shop 3.8.1 (IP và giao thức sau proxy, link trong email, mục `trusted_proxies`); gp247/core 3.11.3 (cảnh báo proxy chưa khai báo); gp247/core 3.12.0 + gp247/front 3.8.0 + gp247/shop 3.10.0 (lưu chữ đúng như gõ, mục `raw_output_scan`)
+> ℹ️ **Có từ:** gp247/core 3.10.0 (block và trang Cảnh báo hệ thống, các mục bảo mật của `gp247:doctor`); gp247/core 3.10.3 + gp247/shop 3.8.1 (IP và giao thức sau proxy, link trong email, mục `trusted_proxies`); gp247/core 3.11.3 (cảnh báo proxy chưa khai báo); gp247/core 3.12.0 + gp247/front 3.8.0 + gp247/shop 3.10.0 (lưu chữ đúng như gõ, mục `raw_output_scan`); gp247/core 3.16.0 (header bảo mật, mục `security_headers`)
 
 ## Cài đặt & cập nhật
 
@@ -158,7 +159,7 @@ Lớp này chống cài đè làm mất dữ liệu và chống gói cập nhậ
 
 Các việc dưới đây **không có** trong GP247 — nếu bạn không làm thì không ai làm:
 
-- **Không bật HTTPS, không gửi header HSTS / CSP** — cấu hình ở web server hoặc proxy.
+- **Không bật HTTPS, không gửi header CSP** — cấu hình ở web server hoặc proxy. HSTS bật được trên màn **Header bảo mật** khi site đã chạy HTTPS.
 - **Không sao lưu cơ sở dữ liệu, `.env`, ảnh tải lên** — xem [Khoá mã hoá & sao lưu](./security-keys-and-backup_vi.md).
 - **Không buộc đổi tài khoản quản trị mặc định** — xem [Tài khoản & phân quyền](./security-accounts-and-access_vi.md).
 - **Không gửi cảnh báo khi không ai vào trang quản trị** — block và trang Cảnh báo hệ thống chỉ kiểm khi có người mở trang quản trị; hãy vào trang quản trị định kỳ.
@@ -208,4 +209,4 @@ Các việc dưới đây **không có** trong GP247 — nếu bạn không làm
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-13 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-20 · ✍️ **Tác giả (Author):** GP247</sub>

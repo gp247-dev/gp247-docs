@@ -32,6 +32,7 @@ flowchart LR
 - [Environment variables for production](#environment-variables-for-production) — correct values and what happens when they are wrong
 - [Why debug must never be on for a live site](#why-debug-must-never-be-on-for-a-live-site)
 - [HTTPS and cookies](#https-and-cookies)
+- [Security headers](#security-headers) — switch each header on or off, HSTS, emergency switch
 - [Site behind a proxy or CDN](#site-behind-a-proxy-or-cdn) — `TRUSTED_PROXIES` for each way of running the site
 - [Web root and folder permissions](#web-root-and-folder-permissions)
 - [Installing the code for production](#installing-the-code-for-production)
@@ -56,6 +57,7 @@ This table lists the security-related variables, the value to set for a live sit
 | `TRUSTED_PROXIES` | Empty, or the IP ranges of **every** proxy in front, in one value | (empty) | `REMOTE_ADDR` or `*` lets anyone fake their IP; missing while a proxy is in front makes every visitor the same IP — see [Site behind a proxy or CDN](#site-behind-a-proxy-or-cdn) |
 | `DB_PASSWORD` | A strong password, unique to this site | `password` | A sample password everyone knows |
 | `GP247_API_MODE` | `0` if you use neither the REST API nor MCP | `1` | Not an error — but turning off unused parts closes one more door |
+| `GP247_SECURITY_HEADERS` | `1` (set `0` only during an incident) | `1` | `0` means the site sends no security header — see [Security headers](#security-headers) |
 
 > 💡 **Tip:** generate a random key value with `php artisan key:generate --show` — the command only prints the key on screen and changes nothing.
 
@@ -89,9 +91,49 @@ GP247 does not turn on HTTPS by itself — you must turn it on in your hosting o
    php artisan config:clear
    ```
 
-5. (Recommended) Turn on the **HSTS** header in the web server so browsers always use HTTPS. GP247 does not send this header by itself.
+5. (Recommended) Once HTTPS works on every page, turn on **HSTS** on the **Security headers** screen so browsers always use HTTPS — see [Security headers](#security-headers).
 
 If it worked, opening the site with `http://` redirects to `https://` and the browser shows a padlock icon.
+
+## Security headers
+
+Security headers are instructions the site sends with every page so the browser blocks common attacks. GP247 sends four of them,
+switched on or off on the **Security headers** screen (menu **System config** → **Security**, visible to Administrators only). The setting applies to the whole site.
+
+![Security headers screen: the four headers switched on, the HSTS block switched off with the note that APP_URL must start with https://](./images/security-headers_en.png)
+
+| Header | What it does | When to turn it off |
+| --- | --- | --- |
+| **X-Frame-Options** | Other sites cannot show your pages inside a frame to trick visitors into clicks | When your site must be embedded on another domain |
+| **X-Content-Type-Options** | Browsers treat each file only as the type the site declares — an uploaded file cannot run as a script | Almost never |
+| **Referrer-Policy** | Other sites only see your domain, not the full page address; analytics still sees where visits come from | When a partner service needs the full address |
+| **Permissions-Policy** | No script on your pages can ask for the camera, microphone or location — except what an installed extension needs | When you embed a tool that needs these yourself |
+
+**HSTS (HTTPS only)** — off by default. A browser that visited once will only open the site over HTTPS for the period you choose,
+and turning HSTS off later **does not reach** those browsers. Turn it on safely:
+
+1. Check that HTTPS works on every page, including subdomains if you plan to tick "Also every subdomain".
+2. On the **Security headers** screen, turn **HSTS** on with **5 minutes** and save — the screen asks for confirmation first.
+3. After a few days without trouble, raise it step by step: 1 day → 1 week → 1 month → 6 months → 1 year.
+4. Tick **preload** only when every subdomain will run HTTPS for good — preload needs "Also every subdomain" and a period of at least 1 year.
+
+GP247 refuses to turn HSTS on when `APP_URL` does not start with `https://`, and only sends HSTS on HTTPS requests.
+
+**Emergency switch** — a setting broke the admin and you cannot reach the screen to fix it: set `GP247_SECURITY_HEADERS=0` in `.env`
+and run `php artisan config:clear`. The site stops sending every security header (HSTS included); remove the variable once the screen is fixed.
+
+**The web server or CDN already sends headers** — GP247 never overwrites a header the application or a plugin set, but it cannot see the ones the
+web server or CDN adds after it. When both send one, browsers receive **two copies**, and switching it off on the screen has no effect. Pick one place:
+turn it off in the web server, or turn that header off on the screen. Check what really reaches the browser with:
+
+```
+php artisan gp247:doctor --probe-headers
+```
+
+The `security_headers_live` row reports a missing header, a header sent twice, or a header switched off that still arrives. The command opens the
+home page exactly once; when the hosting blocks a site from calling itself, the row says "could not check" — not an error.
+
+> ℹ️ **Available since:** gp247/core 3.16.0
 
 ## Site behind a proxy or CDN
 
@@ -152,6 +194,7 @@ The S-Cart Docker setup has a few built-in protections for production:
 - **`docker-compose.prod.yml` pins** `APP_ENV=production` and `APP_DEBUG=false` for every PHP service, no matter what `.env` on the machine says.
 - **Refuses to start** while the sample passwords from `.env.example` remain (`DB_PASSWORD=password`, `SC_DOCKER_DB_ROOT_PASSWORD=change_me_root` when using the bundled MySQL).
 - **nginx blocks hidden files** (`.env`, `.git`) and internal folders; PHP turns off unused features.
+- **Page security headers come from GP247** — the bundled nginx only adds `X-Content-Type-Options` to static files, so switching headers on the [Security headers](#security-headers) screen really takes effect. If you edited `default.conf` yourself, merge this change when you update.
 
 Your part: put **HTTPS at the proxy in front of** the containers (the bundled nginx only listens on port 80), change every sample password, and update images following
 the "Security updates" section of [DOCKER.md](https://github.com/gp247net/s-cart/blob/master/DOCKER.md). Never run
@@ -177,8 +220,9 @@ Do these in order; each step has a correct result to compare against.
 > items as the System alerts block: debug turned on (`app_debug`), `APP_URL` not starting with `https://` or `SESSION_SECURE_COOKIE` not turned on
 > (`https`), the default `admin` password, MFA, the support end date of the version line. The command **reads the configuration and does not open
 > the site over the network**, so it cannot tell whether `http://` redirects to `https://` or whether `.env` can be downloaded — steps 2–3 above do that.
+> The only exception: with `--probe-headers` it opens the home page once to read the security headers that really reach the browser (row `security_headers_live`).
 >
-> ℹ️ **Available since:** gp247/core 3.10.0 (the System alerts block and page, the security checks of `gp247:doctor`)
+> ℹ️ **Available since:** gp247/core 3.10.0 (the System alerts block and page, the security checks of `gp247:doctor`); gp247/core 3.16.0 (`--probe-headers`)
 
 ## Conditions & Rules (know before you act)
 
@@ -224,4 +268,4 @@ Do these in order; each step has a correct result to compare against.
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-12 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-20 · ✍️ **Author:** GP247</sub>

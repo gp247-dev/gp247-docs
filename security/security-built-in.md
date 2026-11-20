@@ -140,9 +140,10 @@ This layer reduces the damage when configuration is set wrong by mistake.
 | **Docker production** | `docker-compose.prod.yml` pins `APP_ENV=production`, `APP_DEBUG=false` for every service; refuses to start while the sample passwords from `.env.example` remain; turns off unused PHP features; nginx blocks hidden files and internal folders | Turn on HTTPS at the proxy in front; update images regularly |
 | **System alerts** | A **System alerts** block at the top of the admin dashboard sums up, in one line, the most severe level and how many items need work; a shield icon in the header counts the critical items. The **System alerts** page (menu **System config** → **Security**, or click the shield / the button on the block) lists each item: debug turned on, the site not on HTTPS or the sign-in cookie not marked `Secure`, the `admin` account still on the default password, a minimum password length under 12 characters, no dedicated encryption key, secrets that cannot be decrypted, MFA not turned on, the API turned on, the version line close to or past the end of support, extensions whose data update has not run or whose static files are missing, site templates/plugins that print a variable with `{!! !!}`, admin pages reached through a proxy missing from `TRUSTED_PROXIES`. Each item shows technical detail and links to a guide; once fixed, the alert clears by itself (or click **Check again** on the page). `gp247:doctor` reports the same items | Only the **Administrator** role sees the block, the page and the menu item. It checks only when someone opens the admin, and sends no email. It does not check the site from the outside for you (whether `.env` can be downloaded, whether `http://` redirects to `https://`) |
 | **IP and scheme behind a proxy** | Takes the IP / `https` from forwarded headers only when the request comes from a proxy in `TRUSTED_PROXIES`; never takes the domain from `X-Forwarded-Host`; the Docker stack trusts no proxy by default and its nginx does not pass a visitor's `X-Forwarded-Host`; the `trusted_proxies` item of System alerts warns when the setting trusts every visitor | List the IP ranges of the proxy in front; the proxy must keep the `Host` header — see [Production configuration](./security-production-config.md) |
+| **Security headers** | Sends X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy on pages and API answers; optional HSTS, HTTPS only; never overwrites a header already set; switched on the **Security headers** screen (Administrators only), emergency switch `GP247_SECURITY_HEADERS=0`; `security_headers` entry of System alerts, `gp247:doctor --probe-headers` reads the headers that really reach the browser | Cannot see headers the web server / CDN adds afterwards — keep one place; raise HSTS slowly — see [Security headers](./security-production-config.md#security-headers) |
 | **Links in e-mails** | Password-reset links (administrators, customers) and e-mail verification links always point at the configured domain (`APP_URL`, or the store's own domain), never at the domain of the request | `APP_URL` and store domains must be correct |
 
-> ℹ️ **Available since:** gp247/core 3.10.0 (the System alerts block and page, the security checks of `gp247:doctor`); gp247/core 3.10.3 + gp247/shop 3.8.1 (IP and scheme behind a proxy, links in e-mails, the `trusted_proxies` item); gp247/core 3.11.3 (the undeclared proxy warning); gp247/core 3.12.0 + gp247/front 3.8.0 + gp247/shop 3.10.0 (text stored as typed, the `raw_output_scan` item)
+> ℹ️ **Available since:** gp247/core 3.10.0 (the System alerts block and page, the security checks of `gp247:doctor`); gp247/core 3.10.3 + gp247/shop 3.8.1 (IP and scheme behind a proxy, links in e-mails, the `trusted_proxies` item); gp247/core 3.11.3 (the undeclared proxy warning); gp247/core 3.12.0 + gp247/front 3.8.0 + gp247/shop 3.10.0 (text stored as typed, the `raw_output_scan` item); gp247/core 3.16.0 (security headers, the `security_headers` item)
 
 ## Install & update
 
@@ -158,7 +159,7 @@ This layer stops reinstalls from wiping data and stops update packages from bein
 
 The tasks below are **not** in GP247 — if you do not do them, no one will:
 
-- **Does not turn on HTTPS, does not send HSTS / CSP headers** — configure these in the web server or proxy.
+- **Does not turn on HTTPS, does not send a CSP header** — configure these in the web server or proxy. HSTS can be turned on on the **Security headers** screen once the site runs HTTPS.
 - **Does not back up the database, `.env` or uploaded images** — see [Encryption keys & backup](./security-keys-and-backup.md).
 - **Does not force you to replace the default admin account** — see [Accounts & permissions](./security-accounts-and-access.md).
 - **Does not send alerts when nobody opens the admin** — the System alerts block and page only check when someone opens the admin; visit the admin regularly.
@@ -208,4 +209,4 @@ The tasks below are **not** in GP247 — if you do not do them, no one will:
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-13 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-20 · ✍️ **Author:** GP247</sub>

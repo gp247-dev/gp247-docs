@@ -32,6 +32,7 @@ flowchart LR
 - [Bảng biến môi trường cho production](#bảng-biến-môi-trường-cho-production) — giá trị đúng và hậu quả khi sai
 - [Vì sao không được bật debug trên site thật](#vì-sao-không-được-bật-debug-trên-site-thật)
 - [HTTPS và cookie](#https-và-cookie)
+- [Header bảo mật](#header-bảo-mật) — bật / tắt từng header, HSTS, tắt khẩn cấp
 - [Site chạy sau proxy hoặc CDN](#site-chạy-sau-proxy-hoặc-cdn) — `TRUSTED_PROXIES` theo cách chạy site
 - [Thư mục gốc của web và quyền thư mục](#thư-mục-gốc-của-web-và-quyền-thư-mục)
 - [Cài mã nguồn cho production](#cài-mã-nguồn-cho-production)
@@ -56,6 +57,7 @@ Bảng này liệt kê các biến liên quan bảo mật, giá trị nên đặ
 | `TRUSTED_PROXIES` | Trống, hoặc dải IP của **mọi** proxy phía trước, gộp trong một dòng | (trống) | `REMOTE_ADDR` hay `*` thì ai cũng giả được IP; thiếu khi có proxy thì mọi khách cùng một IP — xem [Site chạy sau proxy hoặc CDN](#site-chạy-sau-proxy-hoặc-cdn) |
 | `DB_PASSWORD` | Mật khẩu mạnh, riêng cho site này | `password` | Mật khẩu mẫu ai cũng biết |
 | `GP247_API_MODE` | `0` nếu không dùng REST API lẫn MCP | `1` | Không phải lỗi — nhưng tắt hẳn phần không dùng là bớt một cửa |
+| `GP247_SECURITY_HEADERS` | `1` (chỉ đặt `0` khi sự cố) | `1` | `0` thì site không gửi header bảo mật nào — xem [Header bảo mật](#header-bảo-mật) |
 
 > 💡 **Mẹo:** sinh giá trị ngẫu nhiên cho khoá bằng `php artisan key:generate --show` — lệnh chỉ in khoá ra màn hình, không sửa gì.
 
@@ -89,9 +91,49 @@ GP247 không tự bật HTTPS — phải bật ở hosting hoặc web server.
    php artisan config:clear
    ```
 
-5. (Khuyến nghị) Bật header **HSTS** ở web server để trình duyệt luôn dùng HTTPS. GP247 không tự gửi header này.
+5. (Khuyến nghị) Khi HTTPS đã chạy ổn trên mọi trang, bật **HSTS** trên màn **Header bảo mật** để trình duyệt luôn dùng HTTPS — xem [Header bảo mật](#header-bảo-mật).
 
 Nếu thành công, mở site bằng `http://` sẽ tự chuyển sang `https://` và trình duyệt hiện biểu tượng ổ khoá.
+
+## Header bảo mật
+
+Header bảo mật là những chỉ dẫn site gửi kèm mỗi trang để trình duyệt chặn các kiểu tấn công phổ biến. GP247 gửi sẵn bốn header,
+bật / tắt trên màn **Header bảo mật** (menu **Cấu hình hệ thống** → **Bảo mật**, chỉ Administrator thấy). Cấu hình áp cho toàn hệ thống.
+
+![Màn Header bảo mật: bốn header đang bật, khối HSTS đang tắt kèm lời nhắc APP_URL phải bắt đầu bằng https://](./images/security-headers_vi.png)
+
+| Header | Tác dụng | Khi nào nên tắt |
+| --- | --- | --- |
+| **X-Frame-Options** | Site khác không nhúng được trang của bạn vào khung để lừa khách bấm | Khi site cần được nhúng ở một tên miền khác |
+| **X-Content-Type-Options** | Trình duyệt chỉ xử lý file đúng kiểu site khai báo — file tải lên không chạy được như mã lệnh | Gần như không bao giờ |
+| **Referrer-Policy** | Site khác chỉ thấy tên miền của bạn, không thấy đủ đường dẫn trang; công cụ đo lường vẫn biết khách đến từ đâu | Khi một dịch vụ đối tác cần đủ đường dẫn |
+| **Permissions-Policy** | Không đoạn mã nào trên trang xin được camera, micro, định vị — trừ quyền mà extension đã cài cần dùng | Khi chính bạn nhúng một công cụ cần các quyền này |
+
+**HSTS (chỉ dùng HTTPS)** — mặc định tắt. Trình duyệt đã ghé site một lần sẽ chỉ mở site bằng HTTPS trong khoảng thời gian bạn chọn,
+và **không gỡ được** ở những trình duyệt đó nếu sau này bạn tắt. Bật an toàn theo các bước:
+
+1. Kiểm HTTPS chạy trên mọi trang, kể cả tên miền con nếu định chọn "Áp cả mọi tên miền con".
+2. Trên màn **Header bảo mật**, bật **HSTS** với thời gian **5 phút**, lưu — màn hỏi xác nhận trước khi lưu.
+3. Dùng site vài ngày không lỗi thì tăng dần: 1 ngày → 1 tuần → 1 tháng → 6 tháng → 1 năm.
+4. Chỉ chọn **preload** khi chắc chắn mọi tên miền con đều chạy HTTPS lâu dài — preload cần bật "Áp cả mọi tên miền con" và thời gian từ 1 năm.
+
+GP247 không cho bật HSTS khi `APP_URL` không bắt đầu bằng `https://`, và chỉ gửi HSTS cho request HTTPS.
+
+**Tắt khẩn cấp** — một thiết lập làm hỏng trang quản trị và bạn không vào được màn để sửa: đặt `GP247_SECURITY_HEADERS=0` trong `.env`,
+chạy `php artisan config:clear`. Site ngừng gửi mọi header bảo mật (kể cả HSTS); vào màn sửa xong thì xoá biến này.
+
+**Web server hoặc CDN đã gửi header** — GP247 không ghi đè header mà ứng dụng hoặc plugin đã đặt, nhưng không thấy header do web server
+hay CDN thêm sau nó. Hai nơi cùng gửi thì trình duyệt nhận **hai bản**, và tắt trên màn sẽ không có tác dụng. Chọn một nơi: tắt ở web server,
+hoặc tắt header đó trên màn. Kiểm header thật sự tới trình duyệt bằng:
+
+```
+php artisan gp247:doctor --probe-headers
+```
+
+Dòng `security_headers_live` báo header thiếu, header gửi hai lần, hoặc header đã tắt mà vẫn tới. Lệnh mở trang chủ site đúng một lần;
+hosting chặn site tự gọi chính nó thì dòng này báo "could not check" — không phải lỗi.
+
+> ℹ️ **Có từ:** gp247/core 3.16.0
 
 ## Site chạy sau proxy hoặc CDN
 
@@ -152,6 +194,7 @@ Bộ Docker của S-Cart có sẵn vài lớp bảo vệ cho production:
 - **`docker-compose.prod.yml` ghim** `APP_ENV=production` và `APP_DEBUG=false` cho mọi dịch vụ PHP, không phụ thuộc `.env` trên máy.
 - **Từ chối khởi động** khi còn mật khẩu mẫu của `.env.example` (`DB_PASSWORD=password`, `SC_DOCKER_DB_ROOT_PASSWORD=change_me_root` khi dùng MySQL đóng gói).
 - **nginx chặn file ẩn** (`.env`, `.git`) và thư mục nội bộ; PHP tắt các tính năng không dùng.
+- **Header bảo mật của trang do GP247 gửi** — nginx của bộ chỉ thêm `X-Content-Type-Options` cho file tĩnh, nên bật / tắt trên màn [Header bảo mật](#header-bảo-mật) có tác dụng thật. Đã tự sửa `default.conf` thì gộp thay đổi này khi cập nhật.
 
 Phần bạn làm: đặt **HTTPS ở proxy phía trước** container (nginx trong bộ chỉ nghe cổng 80), đổi mọi mật khẩu mẫu, cập nhật image theo
 mục "Cập nhật bản vá bảo mật" của [DOCKER_vi.md](https://github.com/gp247net/s-cart/blob/master/DOCKER_vi.md). Không chạy
@@ -177,8 +220,9 @@ Làm lần lượt; mỗi bước có kết quả đúng để đối chiếu.
 > Cảnh báo hệ thống: debug bật (`app_debug`), `APP_URL` không bắt đầu bằng `https://` hoặc `SESSION_SECURE_COOKIE` chưa bật (`https`),
 > mật khẩu mặc định của `admin`, MFA, hạn hỗ trợ của dòng phiên bản. Lệnh **đọc cấu hình, không mở site qua mạng**, nên không biết
 > `http://` có tự chuyển sang `https://` hay `.env` có tải được — các bước 2–3 ở trên làm việc đó.
+> Ngoại lệ duy nhất: thêm `--probe-headers` thì lệnh mở trang chủ một lần để đọc header bảo mật thật sự tới trình duyệt (dòng `security_headers_live`).
 >
-> ℹ️ **Có từ:** gp247/core 3.10.0 (block và trang Cảnh báo hệ thống, các mục bảo mật của `gp247:doctor`)
+> ℹ️ **Có từ:** gp247/core 3.10.0 (block và trang Cảnh báo hệ thống, các mục bảo mật của `gp247:doctor`); gp247/core 3.16.0 (`--probe-headers`)
 
 ## Điều kiện & ràng buộc (hiểu trước khi thao tác)
 
@@ -224,4 +268,4 @@ Làm lần lượt; mỗi bước có kết quả đúng để đối chiếu.
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-12 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-20 · ✍️ **Tác giả (Author):** GP247</sub>
