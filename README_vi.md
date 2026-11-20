@@ -96,6 +96,7 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 | [Quản lý tồn kho sản phẩm](./s-cart/product/product-stock-management_vi.md) | Tồn kho tăng/giảm khi nào; cấu hình vượt tồn; **hủy đơn hoàn kho, xóa đơn thì không** (đổi từ v3.0) | 2026-10-22 |
 | [Thuộc tính sản phẩm (Color/Size)](./s-cart/product/product-attribute_vi.md) | Nhóm & giá trị thuộc tính + phụ phí; khai báo ở admin; luồng giá/giỏ/đơn; an toàn giá | 2026-10-22 |
 | [Thẻ từ khóa sản phẩm (Product Tag)](./s-cart/product/product-tag_vi.md) | Tạo/gán thẻ từ khóa cho sản phẩm; phân biệt với Loại giao hàng; tắt vs xóa (từ shop 2.1.6) | 2026-10-22 |
+| [Nhân bản sản phẩm và trang](./s-cart/product/product-duplicate_vi.md) | Một nút tạo bản sao (đang tắt) của sản phẩm / trang nội dung; chép gì, không chép gì (tồn kho, mã vạch, đánh giá); việc cần làm trước khi bật bán (từ shop 3.13.0, front 3.12.0) | 2026-11-20 |
 
 ### Nhiều cửa hàng & Sàn bán hàng
 > Hai mô hình **loại trừ lẫn nhau** — chọn một: nhiều cửa hàng của chính bạn (Multi-Store), hay một sàn cho nhiều người bán (Multi-Vendor).

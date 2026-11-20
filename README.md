@@ -96,6 +96,7 @@ New to GP247? Read [About GP247](./about/gp247.md).
 | [Product stock management](./s-cart/product/product-stock-management.md) | When stock decreases/returns; over-stock config; **cancelling returns stock, deleting no longer does** (changed in v3.0) | 2026-10-22 |
 | [Product Attributes (Color/Size)](./s-cart/product/product-attribute.md) | Attribute groups & values + surcharge; admin setup; price/cart/order flow; price safety | 2026-10-22 |
 | [Product keyword tags (Product Tag)](./s-cart/product/product-tag.md) | Create/assign keyword tags to products; vs Delivery type; disable vs delete (from shop 2.1.6) | 2026-10-22 |
+| [Duplicating products and pages](./s-cart/product/product-duplicate.md) | One button makes a switched-off copy of a product / content page; what is copied and what is not (stock, barcodes, reviews); what to do before putting it on sale (from shop 3.13.0, front 3.12.0) | 2026-11-20 |
 
 ### Multi-store & Marketplace
 > The two models are **mutually exclusive** — pick one: several stores of your own (Multi-Store), or one marketplace for many sellers (Multi-Vendor).
