@@ -319,6 +319,16 @@ Template (kể cả template khách tự viết) chỉ cần đặt đúng các 
 @endif
 ```
 
+- **Chỉ đổi màu thì không cần ghi đè view** — banner dùng bảy biến CSS: `--gp247-consent-bg` (nền), `--gp247-consent-fg` (chữ chính), `--gp247-consent-muted` (chữ phụ), `--gp247-consent-border` (viền), `--gp247-consent-btn-bg` / `--gp247-consent-btn-fg` (nền / chữ của ba nút), `--gp247-consent-focus` (viền khi chọn bằng bàn phím). Đặt lại trong CSS của template bằng bộ chọn mạnh hơn `.gp247-consent` — style của banner nằm sau CSS của template trong trang — và giữ chữ đủ tương phản với nền:
+
+```css
+body .gp247-consent {
+    --gp247-consent-btn-bg: #ea580c;
+    --gp247-consent-btn-fg: #fff;
+    --gp247-consent-focus: #ea580c;
+}
+```
+
 - **Chỉ ghi đè `gp247_components/consent-banner` khi thật cần đổi giao diện** — giữ đủ mọi thuộc tính `data-gp247-consent-*` (banner, bảng tuỳ chỉnh, ô `analytics` / `marketing`, nút lưu, nút đóng) và giữ ba nút **Chấp nhận tất cả / Từ chối / Tuỳ chỉnh** cùng cỡ, cùng kiểu.
 - **Không đặt mã đo lường vào khối layout `header`** — mã ở đó chạy ngoài banner cookie; Cảnh báo hệ thống báo khối layout HTML có `<script>`.
 

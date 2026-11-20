@@ -21,6 +21,8 @@ flowchart LR
 - **Sự kiện bán hàng gửi tự động**: xem sản phẩm, thêm giỏ, bắt đầu thanh toán, mua hàng.
 - **Một công tắc tắt toàn bộ mã** khi có sự cố; mã đã nhập vẫn được giữ.
 
+> ℹ️ **Có từ:** gp247/front 3.12.0 (mã đo lường, banner cookie); sự kiện bán hàng cần thêm gp247/shop 3.13.0
+
 ## Trong trang này
 - [Mở màn Mã đo lường & cookie](#mở-màn-mã-đo-lường--cookie) — ai mở được, cửa hàng nào
 - [Gắn GA4, GTM, Meta Pixel](#gắn-ga4-gtm-meta-pixel) — lấy ID ở đâu, dán vào đâu

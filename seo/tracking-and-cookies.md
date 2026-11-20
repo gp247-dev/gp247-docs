@@ -21,6 +21,8 @@ flowchart LR
 - **Sales events are sent automatically**: product view, add to cart, start of checkout, purchase.
 - **One switch turns all code off** when something goes wrong; the code you entered is kept.
 
+> ℹ️ **Available since:** gp247/front 3.12.0 (tracking code, cookie banner); sales events also need gp247/shop 3.13.0
+
 ## On this page
 - [Open the Tracking code & cookies screen](#open-the-tracking-code--cookies-screen) — who can open it, which store
 - [Add GA4, GTM and Meta Pixel](#add-ga4-gtm-and-meta-pixel) — where to find the ID, where to paste it

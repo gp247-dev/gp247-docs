@@ -319,6 +319,16 @@ public static function rating(string $productId, $storeId): ?array
 @endif
 ```
 
+- **色を変えるだけならビューの上書きは不要です** — バナーは 7 つの CSS 変数を使います：`--gp247-consent-bg`（背景）、`--gp247-consent-fg`（本文の文字）、`--gp247-consent-muted`（補足の文字）、`--gp247-consent-border`（枠線）、`--gp247-consent-btn-bg` / `--gp247-consent-btn-fg`（3 つのボタンの背景 / 文字）、`--gp247-consent-focus`（キーボードで選んだときの枠）。バナーのスタイルはページ内でテンプレートの CSS より後に置かれるため、`.gp247-consent` より強いセレクターでテンプレートの CSS に設定し、文字と背景のコントラストを十分に保ってください：
+
+```css
+body .gp247-consent {
+    --gp247-consent-btn-bg: #ea580c;
+    --gp247-consent-btn-fg: #fff;
+    --gp247-consent-focus: #ea580c;
+}
+```
+
 - **`gp247_components/consent-banner` の上書きは、デザインを本当に変える必要があるときだけにしてください** — `data-gp247-consent-*` 属性（バナー、設定パネル、`analytics` / `marketing` のチェックボックス、保存、閉じる）をすべて残し、**すべて許可・拒否・カスタマイズ** の 3 つのボタンを同じ大きさ・同じスタイルに保ちます。
 - **トラッキングコードを `header` のレイアウトブロックに入れないでください** — そこのコードは Cookie バナーと無関係に動きます。`<script>` を含むレイアウト HTML ブロックはシステムアラートが知らせます。
 

@@ -319,6 +319,16 @@ A template (including templates customers write themselves) only needs to place 
 @endif
 ```
 
+- **Changing colours does not need an override** — the banner uses seven CSS variables: `--gp247-consent-bg` (background), `--gp247-consent-fg` (main text), `--gp247-consent-muted` (secondary text), `--gp247-consent-border` (borders), `--gp247-consent-btn-bg` / `--gp247-consent-btn-fg` (background / text of the three buttons), `--gp247-consent-focus` (outline when chosen with the keyboard). Set them in the template's CSS with a selector stronger than `.gp247-consent` — the banner's styles come after the template's CSS in the page — and keep enough contrast between text and background:
+
+```css
+body .gp247-consent {
+    --gp247-consent-btn-bg: #ea580c;
+    --gp247-consent-btn-fg: #fff;
+    --gp247-consent-focus: #ea580c;
+}
+```
+
 - **Override `gp247_components/consent-banner` only when the design really has to change** — keep every `data-gp247-consent-*` attribute (banner, settings panel, the `analytics` / `marketing` boxes, save, close) and keep the three buttons **Accept all / Reject / Customise** the same size and style.
 - **Do not put tracking code in the `header` layout block** — code there runs outside the cookie banner; System alerts reports layout HTML blocks that hold a `<script>`.
 
