@@ -55,7 +55,7 @@ Trimmed response:
 ```json
 {
   "data": [
-    { "id": "PRD-AbC12", "sku": "TSHIRT-01", "name": "T-shirt" }
+    { "id": "PRD-01JDXH5K3QZ8V7N2M4R6T9WBCE", "sku": "TSHIRT-01", "name": "T-shirt" }
   ],
   "meta": { "per_page": 100, "next_after": "MjAyNi0xMC0z…", "has_more": true, "sync_until": "2026-10-31T08:15:42+07:00" },
   "links": { "next": "https://shop.example.com/api/v2/core/product/list?updated_since=…&page[size]=100&page[after]=MjAyNi0xMC0z…" }
@@ -141,7 +141,7 @@ Trimmed response:
     {
       "id": 1521,
       "type": "stock.changed",
-      "subject_id": "AbC12",
+      "subject_id": "PRD-01JDXH5K3QZ8V7N2M4R6T9WBCE",
       "store_id": "1",
       "source": "admin",
       "actor": { "type": "admin", "id": "1" },

@@ -264,7 +264,7 @@ Example page of a v1 product list (shortened):
 {
   "current_page": 1,
   "data": [
-    { "id": "PRD-AbC12", "sku": "TSHIRT-01", "price": 250000,
+    { "id": "PRD-01JDXH5K3QZ8V7N2M4R6T9WBCE", "sku": "TSHIRT-01", "price": 250000,
       "descriptions": [ { "lang": "vi", "name": "Áo thun" }, { "lang": "en", "name": "T-shirt" } ] }
   ],
   "per_page": 20,

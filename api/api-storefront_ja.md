@@ -101,7 +101,7 @@ curl -X GET "https://shop.example.com/api/v2/front/product/list?filter[brand_id]
 ```json
 {
   "data": [
-    { "id": "PRD-AbC12", "sku": "TSHIRT-01", "name": "Tシャツ", "price": 250000, "price_final": 199000 }
+    { "id": "PRD-01JDXH5K3QZ8V7N2M4R6T9WBCE", "sku": "TSHIRT-01", "name": "Tシャツ", "price": 250000, "price_final": 199000 }
   ],
   "meta": { "current_page": 1, "per_page": 20, "total": 1, "last_page": 1 },
   "links": { "first": "…", "last": "…", "prev": null, "next": null }
@@ -351,7 +351,7 @@ v2 の商品（`product/list`、`product/detail/{id}`）には、アプリがバ
 ```json
 {
   "data": {
-    "id": "PRD-AbC12",
+    "id": "PRD-01JDXH5K3QZ8V7N2M4R6T9WBCE",
     "price_final": 199000,
     "stock_status": "in_stock",
     "image_sizes": { "original": "https://shop.example.com/data/product/tshirt.jpg", "thumb": "https://shop.example.com/data/product/thumb/tshirt.jpg" },
