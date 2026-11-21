@@ -142,7 +142,7 @@ On the **SEO › [SeoPro] Google Shopping data** screen you enter your store's s
 SEO Pro is a paid plugin and needs a valid license for the website's domain (buy and renew on the [product page](https://gp247.net/en/product/plugin-seo-pro.html)).
 
 **Requirements:**
-- `gp247/core` 3.16 or later and `gp247/front` 3.13 or later — otherwise the plugin does not turn on and says an update is needed.
+- `gp247/core` 3.16 or later and `gp247/front` 3.12.1 or later — otherwise the plugin does not turn on and says an update is needed.
 - `gp247/shop` for products and Google Shopping (without the shop it works with content pages only).
 - PHP with the `openssl` extension (to connect to Search Console).
 

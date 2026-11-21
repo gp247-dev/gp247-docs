@@ -142,7 +142,7 @@ Màn **SEO › [SeoPro] Dữ liệu cho Google Shopping** khai một lần chín
 SEO Pro là plugin trả phí, cần license hợp lệ cho tên miền của website (mua và gia hạn ở [trang sản phẩm](https://gp247.net/vi/product/plugin-seo-pro.html)).
 
 **Yêu cầu:**
-- `gp247/core` 3.16 trở lên và `gp247/front` 3.13 trở lên — thiếu thì plugin không bật và báo cần cập nhật.
+- `gp247/core` 3.16 trở lên và `gp247/front` 3.12.1 trở lên — thiếu thì plugin không bật và báo cần cập nhật.
 - `gp247/shop` cho phần sản phẩm và Google Shopping (không có shop thì chỉ làm việc với trang nội dung).
 - PHP có extension `openssl` (để kết nối Search Console).
 
