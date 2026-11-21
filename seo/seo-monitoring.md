@@ -41,7 +41,7 @@ The table below lists every item and how to fix it.
 | To fix | robots.txt blocks the whole website | Meta & JSON-LD › robots.txt: delete the `Disallow: /` line |
 | To fix | Content set to "noindex" (check it is intended) | The content's SEO tab: untick it if it was not intended |
 | To fix | Redirect loops | Redirect 301: edit or delete one redirect in the loop |
-| To fix | Redirects to missing pages (seen in the 404 log) | Redirect 301: change "To" to a page that exists (only checked when the 404 log is on) |
+| To fix | Redirects to pages that returned 404 in the last 7 days | Redirect 301: change "To" to a page that exists; each row shows the last 404. Once the target page works, the item clears within 7 days (only checked when the 404 log is on) |
 | To fix | Canonical URL points to another domain | SEO tab: delete or correct the Canonical URL |
 | To review | Missing description | SEO tab or the content's description |
 | To review | Duplicate titles | Rename, or set a custom SEO title |
@@ -131,4 +131,4 @@ How to connect and set permissions for the agent: see [MCP tool catalogue](../mc
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-17 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-21 · ✍️ **Author:** GP247</sub>

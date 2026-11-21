@@ -41,7 +41,7 @@ Bảng dưới liệt kê mọi mục và cách sửa.
 | Cần sửa | robots.txt đang chặn toàn bộ website | Meta & JSON-LD › robots.txt: xoá dòng `Disallow: /` |
 | Cần sửa | Nội dung đang bị đặt "không index" | Tab SEO của nội dung: bỏ tick nếu không chủ ý |
 | Cần sửa | Chuyển hướng vòng lặp | Redirect 301: sửa hoặc xoá một redirect trong vòng |
-| Cần sửa | Chuyển hướng tới trang không tồn tại | Redirect 301: đổi "Đến" sang trang còn tồn tại (chỉ kiểm khi Nhật ký 404 bật) |
+| Cần sửa | Chuyển hướng tới trang còn lỗi 404 trong 7 ngày qua | Redirect 301: đổi "Đến" sang trang còn tồn tại; mỗi dòng ghi lần 404 cuối. Trang đích đã sửa thì tự hết sau tối đa 7 ngày (chỉ kiểm khi Nhật ký 404 bật) |
 | Cần sửa | URL canonical trỏ sang domain khác | Tab SEO: xoá hoặc sửa URL canonical |
 | Nên xem | Thiếu mô tả | Tab SEO hoặc phần mô tả của nội dung |
 | Nên xem | Tiêu đề trùng nhau | Đổi tên hoặc đặt tiêu đề SEO riêng |
@@ -131,4 +131,4 @@ Cách kết nối và phân quyền agent: xem [Danh mục công cụ MCP](../mc
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-17 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-21 · ✍️ **Tác giả (Author):** GP247</sub>
