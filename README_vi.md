@@ -43,6 +43,7 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
 | [SEO trong GP247](./seo/seo-introduction_vi.md) | Trang chính của bộ tài liệu SEO: những gì hệ thống tự làm, cài đặt toàn cửa hàng (xác minh Google/Bing, robots, sitemap, mẫu tiêu đề, IndexNow), tab SEO từng nội dung và tự 301, Kiểm tra SEO, nhật ký 404, AI agent, mã đo lường (GA4, GTM, Meta Pixel) và banner cookie, hook cho lập trình viên | 2026-11-20 |
+| [SEO Pro (plugin trả phí)](./seo/seo-pro_vi.md) | Sửa SEO hàng loạt, số liệu Google Search Console trong admin, gợi ý 301 cho trang 404, tìm link hỏng, dữ liệu Google Shopping; so sánh với SEO có sẵn, cách kết nối và giới hạn | 2026-11-21 |
 
 ### Sao lưu & phục hồi
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
@@ -113,4 +114,4 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-18 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-21 · ✍️ **Tác giả (Author):** GP247</sub>

@@ -43,6 +43,7 @@ New to GP247? Read [About GP247](./about/gp247.md).
 | Document | Summary | Last updated |
 | --- | --- | --- |
 | [SEO in GP247](./seo/seo-introduction.md) | Entry page of the SEO documentation: what the system does by itself, store-wide settings (Google/Bing verification, robots, sitemap, title templates, IndexNow), the per-content SEO tab and automatic 301, SEO check, 404 log, AI agent, tracking code (GA4, GTM, Meta Pixel) and cookie banner, hooks for developers | 2026-11-20 |
+| [SEO Pro (paid plugin)](./seo/seo-pro.md) | Bulk SEO editing, Google Search Console figures in the admin, 301 suggestions for 404 pages, broken-link finder, Google Shopping data; comparison with the built-in SEO, how to connect and limits | 2026-11-21 |
 
 ### Backup & restore
 | Document | Summary | Last updated |
@@ -113,4 +114,4 @@ New to GP247? Read [About GP247](./about/gp247.md).
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-18 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-21 · ✍️ **Author:** GP247</sub>
