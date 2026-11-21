@@ -62,10 +62,12 @@ The **SEO › [SeoPro] Bulk SEO editor** screen puts products, categories, brand
 ## Google Search Console figures
 The **SEO › [SeoPro] Search Console** screen shows the impressions, clicks, click-through rate and average position of each page over **28 days**, already linked to the matching product, category or page.
 
-![Search Console screen: pages shown often but rarely clicked, and figures per page](../assets/SeoPro/seo-pro-search-console_en.png)
+![Search Console screen: list of pages on the left, the chosen page with its searches on the right](../assets/SeoPro/seo-pro-search-console_en.png)
 
 - **Shown often but rarely clicked** — the pages most worth fixing first, each with a button that opens its SEO editor. A page enters the list when it has been shown often enough, ranks in the top 20 results, but its click-through rate is below half the site average.
-- **Search queries of each page** — click a page to see what people searched for when they saw it.
+- **All pages** — every page Google returns, 50 at a time, with a filter by address to find a page quickly.
+- **Details in the right-hand column** — click a page in either list: the right-hand column shows its 4 figures, an **Edit SEO** button and the searches that bring visitors (with the click rate and position of each). The column stays in view while you scroll the list.
+- **What the figures mean** — hover the ⓘ icon next to a column name. **Average position** is the average rank of the page whenever it was shown: lower is better, 1–10 is usually the first page.
 - **Figures refresh by themselves** when you open the screen and the saved copy is older than 12 hours; click **Refresh** to get them now.
 
 > 💡 **Tip:** rewriting the title and description of "rarely clicked" pages is the fastest way to more visits — the page already ranks well, it only needs a more inviting snippet.
@@ -93,9 +95,9 @@ You need a Google account that is an **Owner** of the website's property in Sear
 4. Open [Search Console](https://search.google.com/search-console), choose the website's property › **Settings › Users and permissions › Add user**, paste the email from step 3 and choose the **Restricted** permission.
 5. In the admin, open **SEO › [SeoPro] Search Console**, open the `.json` file in Notepad, copy **all** of it, paste it into **Service account key (JSON)** and click **Connect**.
 
-If it works, the screen shows the service account email and the property, and the last 28 days of figures load at once.
+If it works, the screen shows a **Connected** label, the service account email, the property and "Key: saved, encrypted · updated …", and the last 28 days of figures load at once. To change the key later, click **Replace key…**.
 
-![Search Console screen after connecting: service account email, property and the replace-key box](../assets/SeoPro/seo-pro-gsc-connect_en.png)
+![Search Console screen after connecting: Connected label, service account email, property, when the key was saved and the Replace key button](../assets/SeoPro/seo-pro-gsc-connect_en.png)
 
 > ⚠️ **Caution:** treat the key file like a password — do not send it by chat or email or put it in Git. SEO Pro stores the key **encrypted** and never shows it again; once pasted, you can delete the file from your computer.
 
@@ -111,12 +113,24 @@ flowchart LR
 
 From then on, visitors opening the old address go straight to the target page, and Google gradually moves the old address's ranking to the new page.
 
-![404 suggestions screen: broken addresses with suggested target pages and a redirect button](../assets/SeoPro/seo-pro-not-found_en.png)
+![404 suggestions screen: broken addresses, likely targets with a level label, kind and target address, and a redirect button](../assets/SeoPro/seo-pro-not-found_en.png)
 
 1. Turn on the 404 log if it is off (see [404 log](./seo-monitoring.md#404-log)).
 2. Open the screen and read the list — addresses with the most visits come first.
-3. Click **Redirect here** next to the right target page, or select several rows and click **Accept the first target of selected rows**.
-4. For addresses not worth redirecting (bots probing, junk links), click **Ignore**.
+3. Read the suggestion: page name, kind, **target address** (click to open it in a new tab and check it is the right page) and the **level label** (table below).
+4. Click **Redirect here**. To do many rows at once: click **Select the very alike rows**, then **Redirect N selected rows to their best suggestion**.
+5. For addresses not worth redirecting (bots probing, junk links), click **Ignore**; for rows without a suggestion, click **Choose a target yourself** to create a redirect by hand on the 404 log screen.
+
+**What the % means**: how alike the **words** of the end of the broken address and the name / address of the content are — **not** how sure it is that this is
+the page the visitor wanted. One shared word (e.g. a brand name) can already give 60 %+.
+
+| Label | % | What to do |
+| --- | --- | --- |
+| **Very alike** | 85 and up | Usually right; can be redirected in bulk |
+| **Alike** | 70–84 | Open the target to check, then click |
+| **Weakly alike, check** | 60–69 | Check carefully; if wrong, **Ignore** or **Choose a target yourself** |
+
+Each row shows its best suggestion; click **+N other suggestions** to see up to 3.
 
 The redirects created are ordinary **301** redirects, shown on the **Redirect 301** screen with source "SEO Pro" — edit or delete them like any other.
 
@@ -192,9 +206,9 @@ The limits below are deliberate, so that one wrong action cannot hurt the rankin
 
 → No. The connection only **reads** Search Console figures. There is no middle server; your website talks to Google directly.
 
-**Q4: Connecting says "The service account cannot read a Search Console property of this website"?**
+**Q4: Connecting says "The service account cannot read a Search Console property of the domain …"?**
 
-→ You have not added the service account email to the right property, or the website runs on a different domain from the property. Add it again in Search Console, wait 1–2 minutes and click Connect.
+→ The message names the domain SEO Pro is checking. Either the service account email is not a user of that domain's property, or the website runs on a different domain from the property — for example a local test copy (`*.local`): the real site's key cannot connect there, connect on the real domain instead. Add it again in Search Console, wait 1–2 minutes and click Connect.
 
 **Q5: Why does the Search Console screen say "Google has no figures for this period yet"?**
 

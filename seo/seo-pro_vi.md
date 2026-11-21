@@ -62,10 +62,12 @@ Màn **SEO › [SeoPro] Sửa SEO hàng loạt** đưa sản phẩm, danh mục,
 ## Xem số liệu Google Search Console
 Màn **SEO › [SeoPro] Search Console** cho thấy lượt hiển thị, lượt nhấp, tỷ lệ nhấp và vị trí trung bình của từng trang trong **28 ngày**, gắn sẵn với sản phẩm, danh mục hay trang tương ứng.
 
-![Màn Search Console: các trang hiển thị nhiều nhưng ít người nhấp và số liệu từng trang](../assets/SeoPro/seo-pro-search-console_vi.png)
+![Màn Search Console: danh sách trang bên trái, chi tiết trang đang chọn và từ khoá bên phải](../assets/SeoPro/seo-pro-search-console_vi.png)
 
 - **Hiển thị nhiều nhưng ít người nhấp** — danh sách trang đáng sửa trước nhất, kèm nút mở thẳng màn sửa SEO. Một trang vào danh sách khi đã được hiển thị đủ nhiều, đứng trong top 20 kết quả nhưng tỷ lệ nhấp chưa bằng nửa mức trung bình của website.
-- **Từ khoá của từng trang** — bấm một trang để xem khách đã tìm gì mà thấy nó.
+- **Tất cả các trang** — mọi trang Google trả về, 50 trang mỗi lần xem, có ô lọc theo địa chỉ để tìm nhanh một trang.
+- **Chi tiết ở cột bên phải** — bấm một trang ở danh sách nào cũng được: cột phải hiện 4 chỉ số, nút **Sửa SEO** và từ khoá đưa khách tới (kèm tỷ lệ nhấp, vị trí của từng từ khoá). Cột này luôn nằm trong tầm nhìn khi bạn cuộn danh sách.
+- **Giải thích chỉ số** — rê chuột vào biểu tượng ⓘ cạnh tên cột. **Vị trí trung bình** là trung bình thứ hạng của trang trong các lần được hiển thị: càng nhỏ càng tốt, 1–10 thường là trang đầu.
 - **Số liệu tự làm mới** khi bạn mở màn và bản đã lưu cũ hơn 12 giờ; bấm **Làm mới** để lấy ngay.
 
 > 💡 **Mẹo:** sửa tiêu đề và mô tả của các trang "ít người nhấp" là cách tăng lượt vào nhanh nhất — trang đã có vị trí tốt, chỉ cần lời mời hấp dẫn hơn.
@@ -93,9 +95,9 @@ Bạn cần tài khoản Google là **chủ sở hữu** (Owner) property của 
 4. Mở [Search Console](https://search.google.com/search-console), chọn property của website › **Cài đặt › Người dùng và quyền › Thêm người dùng**, dán email ở bước 3, chọn quyền **Hạn chế**.
 5. Trong admin, mở **SEO › [SeoPro] Search Console**, mở tệp `.json` bằng Notepad, chép **toàn bộ** nội dung, dán vào ô **Khoá service account (JSON)** và bấm **Kết nối**.
 
-Nếu thành công, màn hiện email service account và property, số liệu 28 ngày được tải ngay.
+Nếu thành công, màn hiện nhãn **Đã kết nối**, email service account, property và dòng "Khoá: đã lưu, mã hoá · cập nhật lúc …"; số liệu 28 ngày được tải ngay. Muốn đổi khoá sau này: bấm **Thay khoá…**.
 
-![Màn Search Console sau khi kết nối: email service account, property và ô thay khoá](../assets/SeoPro/seo-pro-gsc-connect_vi.png)
+![Màn Search Console sau khi kết nối: nhãn Đã kết nối, email service account, property, thời điểm lưu khoá và nút Thay khoá](../assets/SeoPro/seo-pro-gsc-connect_vi.png)
 
 > ⚠️ **Lưu ý:** giữ tệp khoá như mật khẩu — không gửi qua chat, email hay đưa lên Git. SEO Pro lưu khoá **mã hoá** và không bao giờ hiện lại; dán xong bạn có thể xoá tệp trên máy.
 
@@ -111,12 +113,24 @@ flowchart LR
 
 Từ đó, khách mở địa chỉ cũ được đưa thẳng tới trang đích, và Google chuyển dần thứ hạng của địa chỉ cũ sang trang mới.
 
-![Màn Gợi ý cho 404: địa chỉ lỗi kèm trang đích gợi ý và nút chuyển hướng](../assets/SeoPro/seo-pro-not-found_vi.png)
+![Màn Gợi ý cho 404: địa chỉ lỗi, trang đích gợi ý kèm nhãn mức độ, loại và đường dẫn đích, nút chuyển hướng](../assets/SeoPro/seo-pro-not-found_vi.png)
 
 1. Bật nhật ký 404 nếu chưa bật (xem [Nhật ký 404](./seo-monitoring_vi.md#nhật-ký-404)).
 2. Mở màn, xem danh sách — địa chỉ nhiều lượt truy cập nhất đứng đầu.
-3. Bấm **Chuyển hướng tới đây** cạnh trang đích phù hợp, hoặc chọn nhiều dòng rồi bấm **Nhận trang đích đầu tiên của các dòng đã chọn**.
-4. Địa chỉ không đáng chuyển (bot dò lỗi, link rác) thì bấm **Bỏ qua**.
+3. Đọc gợi ý: tên trang, loại, **đường dẫn đích** (bấm để mở ở tab mới, xem trước đúng trang) và **nhãn mức độ** (bảng dưới).
+4. Bấm **Chuyển hướng tới đây**. Muốn làm nhiều dòng một lúc: bấm **Chọn các dòng Rất giống** rồi **Chuyển hướng N dòng đã chọn tới gợi ý tốt nhất**.
+5. Địa chỉ không đáng chuyển (bot dò lỗi, link rác) thì bấm **Bỏ qua**; dòng không có gợi ý thì bấm **Tự chọn trang đích** để tạo redirect bằng tay ở màn Nhật ký 404.
+
+**% nghĩa là gì**: độ giống **chữ** giữa phần cuối địa chỉ lỗi và tên / đường dẫn của nội dung — **không** phải độ chắc chắn đúng trang khách cần. Một từ trùng
+(vd tên thương hiệu) đã có thể cho 60 %+.
+
+| Nhãn | % | Nên làm |
+| --- | --- | --- |
+| **Rất giống** | từ 85 | Thường đúng; có thể chuyển hướng hàng loạt |
+| **Gần giống** | 70–84 | Mở trang đích xem trước rồi mới bấm |
+| **Ít giống, kiểm kỹ** | 60–69 | Kiểm kỹ; sai thì **Bỏ qua** hoặc **Tự chọn trang đích** |
+
+Mỗi dòng hiện gợi ý tốt nhất; bấm **+N gợi ý khác** để xem tối đa 3 gợi ý.
 
 Chuyển hướng tạo ra là **301** thông thường, hiện ở màn **Redirect 301** với nguồn "SEO Pro" — sửa hay xoá như mọi chuyển hướng khác.
 
@@ -192,9 +206,9 @@ Các giới hạn dưới đây có chủ đích, để một thao tác nhầm k
 
 → Không. Kết nối chỉ **đọc** số liệu Search Console. Không có máy chủ trung gian nào; website của bạn nói chuyện thẳng với Google.
 
-**Câu 4: Kết nối báo "Service account chưa đọc được property Search Console nào của website này"?**
+**Câu 4: Kết nối báo "Service account chưa đọc được property Search Console nào của tên miền …"?**
 
-→ Bạn chưa thêm email service account vào đúng property, hoặc website đang chạy tên miền khác với property. Thêm lại ở Search Console, đợi 1–2 phút rồi bấm Kết nối.
+→ Câu lỗi nêu đúng tên miền SEO Pro đang so. Hoặc bạn chưa thêm email service account vào property của tên miền đó, hoặc website đang chạy tên miền khác với property — ví dụ chạy thử ở máy local (`*.local`): khoá của site thật không kết nối được ở đó, hãy kết nối trên chính tên miền thật. Thêm lại ở Search Console, đợi 1–2 phút rồi bấm Kết nối.
 
 **Câu 5: Vì sao màn Search Console báo "Google chưa có số liệu cho khoảng thời gian này"?**
 
