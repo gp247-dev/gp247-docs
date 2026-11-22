@@ -44,7 +44,7 @@ flowchart TB
 - **コマンドライン `gp247:*` — 完全な自動化を目指して** — インストール、更新、サイトの健康チェック（`gp247:doctor`）、
   バックアップ、プラグインとテンプレートの管理を、管理画面を開かずに行える 40 以上のコマンドがあります。すべてのコマンドに
   スクリプト・CI・Docker 向けの `--json` があり、データを削除しうるコマンドは必ず確認を求めます。詳しくは
-  [GP247 のコマンドライン（CLI）](https://gp247.net/ja/docs/gp247-system-command-line/gp247-command-line.html)をご覧ください。
+  [GP247 のコマンドライン（CLI）](https://gp247.net/ja/docs/command-line/overview-command-line.html)をご覧ください。
 - **REST API v2 — アプリや ERP とつなぐ** — ストアフロント／顧客向けと管理向けの 2 つの API グループ、トークンによるログイン、
   OpenAPI 3.1 の仕様書を備えています。ERP、在庫管理ソフト、CRM は `updated_since`、イベントログ、署名付き Webhook でデータを
   同期できます。詳しくは [API 入門](https://gp247.net/ja/docs/api/about-api-gp247.html)と [ERP とのデータ同期](https://gp247.net/ja/docs/api/api-sync.html)をご覧ください。
@@ -103,7 +103,7 @@ flowchart TB
   バックアップし、システムの更新、拡張機能の更新、テンプレートの変更の前にはスナップショットを取ります。S3 互換ストレージや
   SFTP / NAS へのコピーにも対応し、状況に応じた復元手順を用意しています。
 
-詳しくは [GP247 システムのセキュリティ](https://gp247.net/ja/docs/security/security-introduction.html)と[バックアップと復元](https://gp247.net/ja/docs/backup-and-restore/backup-and-restore.html)
+詳しくは [GP247 システムのセキュリティ](https://gp247.net/ja/docs/security/security-introduction.html)と[バックアップと復元](https://gp247.net/ja/docs/backup-and-restore/overview-backup-restore.html)
 をご覧ください。
 
 ### 利用者と開発者のサポート

@@ -43,7 +43,7 @@ flowchart TB
 
 - **Dòng lệnh `gp247:*` — hướng tới tự động hoá hoàn toàn** — hơn 40 lệnh để cài đặt, cập nhật, kiểm tra sức khoẻ site
   (`gp247:doctor`), sao lưu, quản lý plugin và template mà không cần mở trang quản trị. Mọi lệnh có `--json` cho script, CI và
-  Docker; lệnh có thể xoá dữ liệu luôn hỏi xác nhận. Xem [Dòng lệnh GP247 (CLI)](https://gp247.net/vi/docs/gp247-system-command-line/gp247-command-line.html).
+  Docker; lệnh có thể xoá dữ liệu luôn hỏi xác nhận. Xem [Dòng lệnh GP247 (CLI)](https://gp247.net/vi/docs/command-line/overview-command-line.html).
 - **REST API v2 — kết nối ứng dụng và ERP** — hai nhóm API cho cửa hàng/khách hàng và cho quản trị, đăng nhập bằng token, đặc tả
   OpenAPI 3.1. ERP, phần mềm kho hay CRM đồng bộ dữ liệu bằng `updated_since`, nhật ký sự kiện và webhook có chữ ký. Xem
   [Giới thiệu API](https://gp247.net/vi/docs/api/about-api-gp247.html) và [Đồng bộ dữ liệu với ERP](https://gp247.net/vi/docs/api/api-sync.html).
@@ -98,7 +98,7 @@ flowchart TB
   cron; tự chụp một bản trước khi cập nhật hệ thống, cập nhật extension hay đổi template; chép được ra lưu trữ S3-compatible hoặc
   SFTP / NAS; phục hồi theo từng tình huống.
 
-Xem [Bảo mật hệ thống GP247](https://gp247.net/vi/docs/security/security-introduction.html) và [Sao lưu & phục hồi](https://gp247.net/vi/docs/backup-and-restore/backup-and-restore.html).
+Xem [Bảo mật hệ thống GP247](https://gp247.net/vi/docs/security/security-introduction.html) và [Sao lưu & phục hồi](https://gp247.net/vi/docs/backup-and-restore/overview-backup-restore.html).
 
 ### Hỗ trợ người dùng và lập trình viên
 
