@@ -93,6 +93,10 @@ The **SEO › Redirect 301** screen lists all redirects, both those created auto
 
 If it worked, opening the old address in a browser takes you to the new address. Automatic redirects can also be edited, switched off and deleted like manual ones (editing one by hand turns it into a manual redirect).
 
+Redirects work for **any old address**, including one that matches no page of the site (e.g. `/products/a` from a former platform,
+or a path taken from the 404 log), and match with or without a trailing `/`. Redirects created by a data-import plugin carry the
+**Imported** label in the list. *(Since gp247/front 3.11.1.)*
+
 ## Conditions & Rules (know before you act)
 
 **When filling in the SEO tab**
@@ -141,4 +145,4 @@ If it worked, opening the old address in a browser takes you to the new address.
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-18 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

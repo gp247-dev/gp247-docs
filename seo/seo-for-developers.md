@@ -44,6 +44,12 @@ Everything lives under `config('gp247-config.front.*')`; gp247/front and gp247/s
 | `seo_noindex_query_params` | query parameter name (`'filter_color'`) | URLs with this parameter get `noindex, follow`, canonical to the base page |
 | `seo_og_types` | `'<route or prefix*>' => '<og type>'` | `og:type` of the route (default `website`) |
 | `seo_product_rating_resolvers` | callable `(string $productId, $storeId): ?array` | `aggregateRating` in the Product JSON-LD |
+| `seo_jsonld_extenders` | `Product`, `Offer`, `Organization` => list of callables `(array $context): array` | Adds schema.org fields to the existing JSON-LD block without overwriting fields already there — since front 3.12.1 |
+| `seo_redirect_sources` | `'<source>' => ['label' => '<language key>']` (source `[a-z0-9_-]{1,10}`, not `manual`, `auto`, `import`) | A plugin writes 301 redirects under its own source name, its label shown on the Redirect 301 screen — since front 3.12.1 |
+
+Since front 3.12.1, a `seo_content_types` entry also takes an optional **`source`** key — where the content lives, so the **SEO check**
+and SEO plugins can cover a plugin's content type: `table`, `class` (model), `name` (label column), `desc` + `fk` (per-language table),
+`text` (long text columns), `edit_route` (edit route taking `id`). Example: the `page` type in gp247/front's `config.php`.
 
 ## Registering from Provider.php
 Every registry uses the same pattern: read the current array, add the plugin's part, write it back. A shortened example from the News plugin:
@@ -206,6 +212,25 @@ protected static function boot()
 - **The route may only take `alias` (and `lang` when the website uses language-based addresses)** — the system builds the old/new URLs with exactly those two parameters. If the route needs more parameters (e.g. `{category}/{alias}` like News articles), do **not** declare `route`.
 - The model needs `alias` and `store_id` columns; if it has a `status` column, inactive content is not sent to IndexNow.
 
+### A plugin writing its own 301 redirects (since front 3.12.1)
+A plugin that has to send an old address to content of the site (a new URL structure, merged pages…) declares a source and calls
+`SeoUrlLifecycle` — it never writes the redirect table itself:
+
+```php
+// Provider.php
+config(['gp247-config.front.seo_redirect_sources.myplugin' => ['label' => 'Plugins/MyPlugin::lang.redirect_source']]);
+
+// Check first (preview), then write
+$reason = \GP247\Front\Library\SeoUrlLifecycle::checkContentRedirect($storeId, '/old-name', 'product', $alias); // 'ok' or the reason it is skipped
+$id = \GP247\Front\Library\SeoUrlLifecycle::redirectToContent($storeId, '/old-name', 'product', $alias, 'myplugin');
+```
+
+- `$from` is a path on the site (`/old-name`), never a full URL; the content type needs a `route`.
+- The automatic-redirect rules apply: live content and fixed pages are never taken over, an existing redirect is never overwritten,
+  chains are flattened. `redirectToContent()` returns `null` when it skips; `checkContentRedirect()` gives the reason (`LEGACY_*` constants).
+- A plugin that brings data from another platform uses `checkLegacyPath()` / `redirectLegacyPath()` (source `import`, label **Imported**)
+  and `removeImportedRedirect()` to take back the redirects of an import that was undone *(since front 3.11.1)*.
+
 ## Adding URLs to the sitemap
 The callback receives `$storeId` and returns an array of URLs **for that store only, active content only**:
 
@@ -277,6 +302,25 @@ public static function rating(string $productId, $storeId): ?array
 ```
 
 `aggregateRating` is only printed when `reviewCount` > 0; a resolver that throws an error is skipped and the page still renders.
+
+**Adding fields to an existing JSON-LD block** *(since front 3.12.1)* — to add schema.org fields to Product, Offer or Organization
+(e.g. `gtin13`, `sameAs`), register an extender; do **not** print a second block of the same type (search engines read it as a
+conflicting entity):
+
+```php
+$extenders = (array) config('gp247-config.front.seo_jsonld_extenders.Product', []);
+$extenders[] = [\App\GP247\Plugins\MyPlugin\Seo::class, 'productFields'];
+config(['gp247-config.front.seo_jsonld_extenders.Product' => $extenders]);
+
+// $context: product_id, store_id, price, currency, url (Organization: store_id, url)
+public static function productFields(array $context): array
+{
+    return ['gtin13' => '8930000000001'];
+}
+```
+
+Fields already present are never overwritten (the first registered extender wins); values must be numbers, strings or arrays of them; an
+extender that throws is skipped.
 
 ## Not-found pages return 404
 The plugin's storefront controller extends `GP247\Front\Controllers\RootFrontController`. Every "not found" branch (record missing, inactive, belonging to another store) **returns `$this->itemNotFound()`** — the template's notfound page with **HTTP code 404**. Don't `return view(...)` yourself: returning 200 for an empty page makes Google treat it as a real page (soft 404).

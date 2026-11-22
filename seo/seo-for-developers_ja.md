@@ -44,6 +44,12 @@ flowchart LR
 | `seo_noindex_query_params` | クエリパラメーター名（`'filter_color'`） | このパラメーターを含む URL に `noindex, follow`、カノニカルは元のページへ |
 | `seo_og_types` | `'<ルートまたはプレフィックス*>' => '<og type>'` | ルートの `og:type`（デフォルトは `website`） |
 | `seo_product_rating_resolvers` | callable `(string $productId, $storeId): ?array` | Product の JSON-LD の `aggregateRating` |
+| `seo_jsonld_extenders` | `Product`、`Offer`、`Organization` => callable `(array $context): array` のリスト | 既存の JSON-LD ブロックに schema.org のフィールドを追加（既存のフィールドは上書きしない）— front 3.12.1 から |
+| `seo_redirect_sources` | `'<ソース>' => ['label' => '<言語キー>']`（ソースは `[a-z0-9_-]{1,10}`、`manual`、`auto`、`import` 以外） | プラグインが独自のソース名で 301 リダイレクトを作成し、そのラベルが 301リダイレクト画面に表示される — front 3.12.1 から |
+
+front 3.12.1 から、`seo_content_types` の要素は任意のキー **`source`** も受け取ります。コンテンツの保存場所を示し、**SEOチェック** や
+SEO プラグインがプラグインのコンテンツ種別も確認できるようにします：`table`、`class`（モデル）、`name`（名前の列）、`desc` + `fk`
+（言語ごとのテーブル）、`text`（長いテキストの列）、`edit_route`（`id` を受け取る編集ルート）。例：gp247/front の `config.php` の `page` 種別。
 
 ## Provider.php からの登録方法
 どのレジストリも同じ型を使います。既存の配列を読み、プラグインの分を追加して、書き戻します。News プラグインから抜粋した例です。
@@ -206,6 +212,25 @@ protected static function boot()
 - **ルートが受け取れるのは `alias`（サイトが言語別 URL を使う場合は `lang` も）だけ** — システムはこの 2 つのパラメーターだけで旧 URL / 新 URL を組み立てます。他のパラメーターが必要なルート（例：News の記事のような `{category}/{alias}`）では、`route` を宣言**しない**でください。
 - モデルには `alias` と `store_id` の列が必要です。`status` 列があれば、無効なコンテンツは IndexNow に送られません。
 
+### プラグインが自分で 301 リダイレクトを作成する（front 3.12.1 から）
+旧アドレスをサイトのコンテンツへ転送する必要があるプラグイン（URL 構造の変更、ページの統合など）は、ソースを登録してから
+`SeoUrlLifecycle` を呼び出します。リダイレクトのテーブルに直接書き込んではいけません。
+
+```php
+// Provider.php
+config(['gp247-config.front.seo_redirect_sources.myplugin' => ['label' => 'Plugins/MyPlugin::lang.redirect_source']]);
+
+// 先に確認（プレビュー）し、それから書き込む
+$reason = \GP247\Front\Library\SeoUrlLifecycle::checkContentRedirect($storeId, '/old-name', 'product', $alias); // 'ok' またはスキップの理由
+$id = \GP247\Front\Library\SeoUrlLifecycle::redirectToContent($storeId, '/old-name', 'product', $alias, 'myplugin');
+```
+
+- `$from` はサイト内のパス（`/old-name`）で、完全な URL ではありません。コンテンツ種別には `route` が必要です。
+- 自動リダイレクトと同じルールが適用されます：稼働中のコンテンツや固定ページのアドレスは奪わず、既存のリダイレクトは上書きせず、
+  転送の連鎖は平坦化されます。スキップした場合 `redirectToContent()` は `null` を返し、理由は `checkContentRedirect()` で分かります（`LEGACY_*` 定数）。
+- 他のプラットフォームからデータを移すプラグインは `checkLegacyPath()` / `redirectLegacyPath()`（ソース `import`、ラベル **インポート**）と、
+  取り消したインポートのリダイレクトを外す `removeImportedRedirect()` を使います *（front 3.11.1 から）*。
+
 ## サイトマップに URL を追加する
 コールバックは `$storeId` を受け取り、**そのストアの、有効なコンテンツだけ**の URL の配列を返します。
 
@@ -277,6 +302,24 @@ public static function rating(string $productId, $storeId): ?array
 ```
 
 `aggregateRating` は `reviewCount` > 0 のときだけ出力されます。リゾルバーが例外を投げた場合は無視され、ページはそのまま表示されます。
+
+**既存の JSON-LD ブロックにフィールドを追加する** *（front 3.12.1 から）* — Product、Offer、Organization に schema.org のフィールド
+（例：`gtin13`、`sameAs`）を追加したい場合は extender を登録します。同じ種類のブロックをもう 1 つ出力しては**いけません**
+（検索エンジンは矛盾する 2 つのエンティティとして読みます）。
+
+```php
+$extenders = (array) config('gp247-config.front.seo_jsonld_extenders.Product', []);
+$extenders[] = [\App\GP247\Plugins\MyPlugin\Seo::class, 'productFields'];
+config(['gp247-config.front.seo_jsonld_extenders.Product' => $extenders]);
+
+// $context: product_id, store_id, price, currency, url（Organization: store_id, url）
+public static function productFields(array $context): array
+{
+    return ['gtin13' => '8930000000001'];
+}
+```
+
+既存のフィールドは上書きされません（先に登録した extender が優先）。値は数値、文字列、またはそれらの配列である必要があります。例外を投げた extender はスキップされます。
 
 ## 見つからないページは 404 を返す
 プラグインのストアフロント用コントローラーは `GP247\Front\Controllers\RootFrontController` を継承します。「見つからない」すべての分岐（レコードがない、無効、別のストアのもの）では、**`$this->itemNotFound()` を返してください**。テンプレートの notfound ページを **HTTP 404 コード**で返します。自分で `return view(...)` しないでください。空のページに 200 を返すと、Google はそれを実在のページとみなします（soft 404）。

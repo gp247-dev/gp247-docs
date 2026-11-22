@@ -44,6 +44,12 @@ Tất cả nằm dưới `config('gp247-config.front.*')`; gp247/front và gp247
 | `seo_noindex_query_params` | tên tham số query (`'filter_color'`) | URL có tham số này có `noindex, follow`, canonical về trang gốc |
 | `seo_og_types` | `'<route hoặc tiền tố*>' => '<og type>'` | `og:type` của route (mặc định `website`) |
 | `seo_product_rating_resolvers` | callable `(string $productId, $storeId): ?array` | `aggregateRating` trong JSON-LD Product |
+| `seo_jsonld_extenders` | `Product`, `Offer`, `Organization` => danh sách callable `(array $context): array` | Thêm trường schema.org vào khối JSON-LD có sẵn, không ghi đè trường đã có — từ front 3.12.1 |
+| `seo_redirect_sources` | `'<nguồn>' => ['label' => '<khoá ngôn ngữ>']` (nguồn `[a-z0-9_-]{1,10}`, khác `manual`, `auto`, `import`) | Plugin tạo redirect 301 dưới tên nguồn của mình, nhãn hiện trên màn Redirect 301 — từ front 3.12.1 |
+
+Từ front 3.12.1, phần tử `seo_content_types` nhận thêm khoá tuỳ chọn **`source`** — nơi nội dung nằm, để **Kiểm tra SEO** và plugin SEO
+rà được loại nội dung của plugin: `table`, `class` (model), `name` (cột tên), `desc` + `fk` (bảng theo ngôn ngữ), `text` (các cột chữ
+dài), `edit_route` (route sửa nhận `id`). Mẫu: loại `page` trong `config.php` của gp247/front.
 
 ## Cách đăng ký từ Provider.php
 Mọi registry dùng cùng một khuôn: đọc mảng hiện có, thêm phần của plugin, ghi lại. Ví dụ rút gọn từ plugin News:
@@ -206,6 +212,25 @@ protected static function boot()
 - **Route chỉ được nhận `alias` (và `lang` khi website dùng đường dẫn theo ngôn ngữ)** — hệ thống dựng URL cũ/mới bằng đúng hai tham số đó. Route cần thêm tham số (vd `{category}/{alias}` như bài viết của News) thì **không** khai `route`.
 - Model cần cột `alias` và `store_id`; có cột `status` thì nội dung tắt không được gửi IndexNow.
 
+### Plugin tự tạo redirect 301 (từ front 3.12.1)
+Plugin cần chuyển một địa chỉ cũ về nội dung của site (đổi cấu trúc URL, gộp trang…) thì khai nguồn rồi gọi `SeoUrlLifecycle` —
+không tự ghi bảng redirect:
+
+```php
+// Provider.php
+config(['gp247-config.front.seo_redirect_sources.myplugin' => ['label' => 'Plugins/MyPlugin::lang.redirect_source']]);
+
+// Kiểm trước (xem trước), rồi ghi
+$reason = \GP247\Front\Library\SeoUrlLifecycle::checkContentRedirect($storeId, '/ten-cu', 'product', $alias); // 'ok' hoặc lý do bỏ qua
+$id = \GP247\Front\Library\SeoUrlLifecycle::redirectToContent($storeId, '/ten-cu', 'product', $alias, 'myplugin');
+```
+
+- `$from` là đường dẫn trong site (`/ten-cu`), không phải URL đầy đủ; loại nội dung phải có `route`.
+- Cùng quy tắc với redirect tự động: không chiếm địa chỉ của nội dung đang có hay trang cố định, không ghi đè redirect có sẵn, chuỗi
+  chuyển hướng được làm phẳng. `redirectToContent()` trả `null` khi bỏ qua; lý do lấy từ `checkContentRedirect()` (hằng `LEGACY_*`).
+- Plugin chuyển dữ liệu từ nền tảng khác dùng `checkLegacyPath()` / `redirectLegacyPath()` (nguồn `import`, nhãn **Nhập**) và
+  `removeImportedRedirect()` để gỡ redirect của một lần nhập bị hoàn tác *(từ front 3.11.1)*.
+
 ## Thêm URL vào sitemap
 Callback nhận `$storeId` và trả mảng URL **chỉ của cửa hàng đó, chỉ nội dung đang bật**:
 
@@ -277,6 +302,23 @@ public static function rating(string $productId, $storeId): ?array
 ```
 
 `aggregateRating` chỉ in khi `reviewCount` > 0; resolver ném lỗi thì bị bỏ qua, trang vẫn hiển thị.
+
+**Thêm trường vào khối JSON-LD có sẵn** *(từ front 3.12.1)* — muốn bổ sung trường schema.org cho Product, Offer hay Organization
+(vd `gtin13`, `sameAs`) thì đăng ký extender, **không** in thêm một khối cùng loại (máy tìm kiếm coi là hai thực thể mâu thuẫn):
+
+```php
+$extenders = (array) config('gp247-config.front.seo_jsonld_extenders.Product', []);
+$extenders[] = [\App\GP247\Plugins\MyPlugin\Seo::class, 'productFields'];
+config(['gp247-config.front.seo_jsonld_extenders.Product' => $extenders]);
+
+// $context: product_id, store_id, price, currency, url (Organization: store_id, url)
+public static function productFields(array $context): array
+{
+    return ['gtin13' => '8930000000001'];
+}
+```
+
+Trường đã có không bị ghi đè (extender đăng ký trước thắng); giá trị phải là số, chuỗi hoặc mảng của chúng; extender ném lỗi bị bỏ qua.
 
 ## Trang không tìm thấy trả 404
 Controller storefront của plugin kế thừa `GP247\Front\Controllers\RootFrontController`. Mọi nhánh "không tìm thấy" (bản ghi không có, đã tắt, thuộc cửa hàng khác) **trả về `$this->itemNotFound()`** — trang notfound của template với **mã HTTP 404**. Đừng tự `return view(...)`: trả 200 cho trang rỗng làm Google coi đó là trang thật (soft 404).

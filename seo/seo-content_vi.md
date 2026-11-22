@@ -93,6 +93,10 @@ Màn **SEO › Redirect 301** liệt kê mọi redirect, cả redirect tự tạ
 
 Nếu thành công, mở địa chỉ cũ trên trình duyệt sẽ tự chuyển sang địa chỉ mới. Redirect tự động cũng sửa, tắt, xoá được như redirect tay (sửa tay thì nó thành redirect tay).
 
+Redirect chạy được với **mọi địa chỉ cũ**, kể cả địa chỉ không khớp trang nào của site (vd `/products/a` của nền tảng cũ, hay đường
+dẫn lấy từ nhật ký 404), và khớp cả khi có hoặc không có dấu `/` cuối. Redirect do plugin nhập dữ liệu tạo mang nhãn **Nhập** trong
+danh sách. *(Từ gp247/front 3.11.1.)*
+
 ## Điều kiện & ràng buộc (hiểu trước khi thao tác)
 
 **Khi nhập tab SEO**
@@ -141,4 +145,4 @@ Nếu thành công, mở địa chỉ cũ trên trình duyệt sẽ tự chuyể
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-18 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>
