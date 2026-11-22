@@ -73,9 +73,9 @@ Division of work: **InOut manages goods coming in and going back** (stock up/dow
 ## Installation
 InOut is a **paid plugin**, downloaded from the GP247 library after purchase on the [product page](https://gp247.net/en/product/plugin-inout-purchase-return.html). It installs like any other plugin — pick **one** of the methods in [Installing Plugins & Templates](../extension/install-extension.md):
 
-1. **From the GP247 library (recommended):** Admin → **Extensions → Plugins** → **Library** tab → find **InOut** → **Install**.
-2. **Import a zip file:** **Import file** tab → choose the downloaded zip.
-3. **Manual copy:** copy the source into `app/GP247/Plugins/InOut/` and the plugin's `public` folder into `public/GP247/Plugins/InOut/`, then install from the **Stored locally** tab.
+1. **From the GP247 library (recommended):** Admin → **Extensions → Plugins** → **From library** tab → find **InOut** → **Install**.
+2. **Import a zip file:** **Import** tab → choose the downloaded zip.
+3. **Manual copy:** copy the source into `app/GP247/Plugins/InOut/` and the plugin's `public` folder into `public/GP247/Plugins/InOut/`, then install from the **Save local** tab.
 4. **Command line** (server where you can run `php artisan`):
 
    ```bash
@@ -87,10 +87,11 @@ InOut is a **paid plugin**, downloaded from the GP247 library after purchase on 
    ```
 
    ```bash
-   php artisan gp247:ext-install --type=plugin --key=InOut
+   php artisan gp247:ext-install --type=plugin --key=InOut --paid --license=<your-license>
    ```
 
-   The first command is only needed when the site lacks the PDF package. The second is done **once per website** to connect to the library; check that `APP_URL` in `.env` is the real domain before running it. To upgrade later: `php artisan gp247:ext-update --type=plugin --key=InOut`.
+   The first command is only needed when the site lacks the PDF package. The second is done **once per website** to connect to the library; check that `APP_URL` in `.env` is the real domain before running it. The third needs `--paid` and the InOut license you get after purchase (bound to your domain); without them the
+   command refuses. To upgrade later: `php artisan gp247:ext-update --type=plugin --key=InOut`.
 
 If it worked, the **Orders** menu in the admin sidebar now shows three items prefixed **[IO]**: **Purchase Orders**, **Return Orders**, **Cash Flow**.
 
@@ -140,4 +141,4 @@ The **Create collect / pay-out request** button on the debt screens additionally
 
 ---
 
-<sub>📅 **Last updated:** 2026-10-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

@@ -73,7 +73,7 @@ Nguyên tắc phân công: **InOut quản lý chiều nhập vào và trả ra**
 ## Cài đặt
 InOut là **plugin trả phí**, lấy từ thư viện GP247 sau khi mua tại [trang sản phẩm](https://gp247.net/vi/product/plugin-inout-purchase-return.html). Cài như mọi plugin khác — chọn **một** trong các cách ở [Cài đặt Plugin & Template](../extension/install-extension_vi.md):
 
-1. **Từ thư viện GP247 (khuyến nghị):** Quản trị → **Phần mở rộng → Tiện ích** → tab **Thư viện** → tìm **InOut** → **Cài đặt**.
+1. **Từ thư viện GP247 (khuyến nghị):** Quản trị → **Phần mở rộng → Tiện ích** → tab **Tải từ thư viện** → tìm **InOut** → **Cài đặt**.
 2. **Nhập file zip:** tab **Nhập file** → chọn file zip đã tải về.
 3. **Chép tay:** chép mã nguồn vào `app/GP247/Plugins/InOut/` và thư mục `public` của plugin vào `public/GP247/Plugins/InOut/`, rồi cài ở tab **Đã lưu trên máy**.
 4. **Dòng lệnh** (máy chủ có quyền chạy `php artisan`):
@@ -87,10 +87,11 @@ InOut là **plugin trả phí**, lấy từ thư viện GP247 sau khi mua tại 
    ```
 
    ```bash
-   php artisan gp247:ext-install --type=plugin --key=InOut
+   php artisan gp247:ext-install --type=plugin --key=InOut --paid --license=<license-của-bạn>
    ```
 
-   Lệnh đầu chỉ cần khi website chưa có gói xuất PDF. Lệnh thứ hai làm **một lần cho mỗi website** để kết nối thư viện; kiểm tra `APP_URL` trong `.env` là tên miền thật trước khi chạy. Lên bản mới sau này: `php artisan gp247:ext-update --type=plugin --key=InOut`.
+   Lệnh đầu chỉ cần khi website chưa có gói xuất PDF. Lệnh thứ hai làm **một lần cho mỗi website** để kết nối thư viện; kiểm tra `APP_URL` trong `.env` là tên miền thật trước khi chạy. Lệnh thứ ba cần `--paid` và license InOut bạn nhận sau khi mua (gắn với tên miền); thiếu thì lệnh từ chối.
+   Lên bản mới sau này: `php artisan gp247:ext-update --type=plugin --key=InOut`.
 
 Nếu thành công, bạn thấy trong menu **Đơn hàng** ở thanh bên admin xuất hiện ba mục có tiền tố **[IO]**: **Đơn Nhập Hàng**, **Đơn Trả Hàng**, **Quản Lý Thu Chi**.
 
@@ -140,4 +141,4 @@ Riêng nút **Tạo yêu cầu thu nợ / trả nợ** ở màn công nợ cần
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-10-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

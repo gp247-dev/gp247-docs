@@ -62,7 +62,7 @@ Chọn **một** trong ba cách.
 
 **Cách 1 — Từ thư viện GP247 (khuyến nghị)**
 1. Đăng nhập khu admin → **Phần mở rộng** → **Tiện ích (Plugins)**.
-2. Mở tab **Thư viện**, tìm **MultiVendor**, bấm **Cài đặt**.
+2. Mở tab **Tải từ thư viện**, tìm **MultiVendor**, bấm **Cài đặt**.
 
 **Cách 2 — Nhập file zip**
 1. Vào **Phần mở rộng** → **Tiện ích** → tab **Nhập file**.

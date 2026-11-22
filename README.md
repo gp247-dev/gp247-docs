@@ -114,7 +114,7 @@ New to GP247? Read [About GP247](./about/gp247.md).
 ### Purchasing, returns & cash flow (InOut)
 | Document | Summary | Last updated |
 | --- | --- | --- |
-| [InOut — purchases, returns, cash flow & debts](./in-out/in-out.md) | Paid plugin that adds the buying side to S-Cart: purchase orders, return orders, cash book, two-way debts, collecting/paying debts through payment requests, period closing, Excel/PDF export; index of the 5 process guides | 2026-10-22 |
+| [InOut — purchases, returns, cash flow & debts](./in-out/in-out.md) | Paid plugin that adds the buying side to S-Cart: purchase orders, return orders, cash book, two-way debts, collecting/paying debts through payment requests, period closing, Excel/PDF export; index of the 5 process guides | 2026-11-22 |
 
 ---
 

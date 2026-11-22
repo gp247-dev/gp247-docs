@@ -114,7 +114,7 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 ### Nhập hàng, trả hàng & thu chi (InOut)
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
-| [InOut — nhập hàng, trả hàng, thu chi & công nợ](./in-out/in-out_vi.md) | Plugin trả phí đưa chiều mua vào S-Cart: đơn nhập, đơn trả, sổ thu chi, công nợ hai chiều, thu/trả nợ qua yêu cầu thanh toán, khóa sổ, xuất Excel/PDF; mục lục dẫn tới 5 phần nghiệp vụ | 2026-10-22 |
+| [InOut — nhập hàng, trả hàng, thu chi & công nợ](./in-out/in-out_vi.md) | Plugin trả phí đưa chiều mua vào S-Cart: đơn nhập, đơn trả, sổ thu chi, công nợ hai chiều, thu/trả nợ qua yêu cầu thanh toán, khóa sổ, xuất Excel/PDF; mục lục dẫn tới 5 phần nghiệp vụ | 2026-11-22 |
 
 ---
 

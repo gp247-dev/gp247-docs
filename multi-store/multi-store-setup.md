@@ -18,16 +18,16 @@ Pick **one** of three methods.
 
 **Method 1 — From the GP247 library (recommended)**
 1. Log into the admin → **Extensions** → **Plugins**.
-2. Open the **Library** tab, find **MultiStore**, click **Install**.
+2. Open the **From library** tab, find **MultiStore**, click **Install**.
 
 **Method 2 — Import a zip file**
-1. Go to **Extensions** → **Plugins** → **Import file** tab.
+1. Go to **Extensions** → **Plugins** → **Import** tab.
 2. Choose the plugin zip file and upload it.
 
 **Method 3 — Copy manually (when the first two fail)**
 1. Unzip and copy the source folder to `app/GP247/Plugins/MultiStore/`.
 2. Copy the plugin's `public` folder to `public/GP247/Plugins/MultiStore/`.
-3. Go to **Extensions** → **Plugins** → **Stored locally** tab, find **MultiStore**, click **Install**.
+3. Go to **Extensions** → **Plugins** → **Save local** tab, find **MultiStore**, click **Install**.
 
 If a multi-vendor plugin is present, the installer **stops immediately and writes nothing** — that is deliberate, see Conditions & Rules.
 
