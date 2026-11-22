@@ -36,7 +36,7 @@ New to GP247? Read [About GP247](./about/gp247.md).
 ### MCP (AI agents)
 | Document | Summary | Last updated |
 | --- | --- | --- |
-| [Introduction to the MCP server](./mcp/mcp-introduction.md) | Entry page of the MCP documentation: let AI agents (Claude, Cursor, VS Code…) work with your shop — quick start, catalogue of 18 tools, security & permissions, administration & setup, troubleshooting | 2026-11-18 |
+| [Introduction to the MCP server](./mcp/mcp-introduction.md) | Entry page of the MCP documentation: let AI agents (Claude, Cursor, VS Code…) work with your shop — quick start, catalogue of 18 tools, security & permissions, administration & setup, troubleshooting | 2026-11-22 |
 
 ### Security
 | Document | Summary | Last updated |

@@ -216,7 +216,7 @@ The five write tools let the agent act for you, so they have the strongest safeg
 | `update_shipping_status` | Change an order's shipping status | `order_id`, `shipping_status`, `note` (≤ 500 characters) | Yes |
 | `adjust_stock` | Receive (positive) / issue (negative) stock outside a sale | `product_id`, `delta` (≠ 0, up to 4 decimals), `reason` (≤ 255) | Yes |
 | `add_order_note` | Add an internal note to the order history (labelled [MCP]) | `order_id`, `note` (≤ 1000 characters, plain text) | No |
-| `update_seo` | Edit the SEO of **one** content item in one language | `type`, `id`, `lang` and one or more of `title`, `description`, `canonical`, `og_image`, `noindex`, `nofollow` | When changing `noindex`, `nofollow`, `canonical` |
+| `update_seo` | Edit the SEO of **one** content item in one language | `type`, `id`, `lang` and one or more of `title`, `description`, `canonical`, `noindex`, `nofollow` | When changing `noindex`, `nofollow`, `canonical` |
 
 For the three tools that always confirm (and `update_seo` when it needs confirmation), the agent calls **twice**. For example you say *"Move order OR-1024 to Processing"*:
 
@@ -242,7 +242,8 @@ sequenceDiagram
 - **A well-behaved agent asks you between the two calls** — only give write tokens to agents you trust.
 - **`add_order_note` writes in a single call** because it only *adds* one history line, without touching money, stock or status.
 - **`update_seo` only needs confirmation when it changes `noindex`, `nofollow` or `canonical`** — the things that decide whether a page appears
-  on Google; changing only the title, description or share image writes in a single call.
+  on Google; changing only the title or description writes in a single call. The share image cannot be changed over MCP — `get_seo`
+  only reads it.
 
 ## Conditions & Rules (know before you act)
 
@@ -304,4 +305,4 @@ the matching admin screen (e.g. the Customers screen for `search_customers`).
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-18 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

@@ -93,7 +93,7 @@ If you have connected an AI agent (Claude, Cursor…) to your store through the 
 | --- | --- | --- |
 | `seo_audit` | Reads the latest SEO check result; can ask for a new check (at most once every 2 minutes) | On |
 | `get_seo` | Reads the SEO values of a product, category, brand or page | On |
-| `update_seo` | Edits the title, description, share image, noindex and canonical of **one** piece of content | **Off** — turn it on in the MCP Server screen |
+| `update_seo` | Edits the title, description, canonical, noindex and nofollow of **one** piece of content (not the share image) | **Off** — turn it on in the MCP Server screen |
 
 - **Same permissions as in the admin** — the agent's token needs permission for the SEO check screen and for the screen of the content type (e.g. the Products screen); editing needs write permission.
 - **Anything that takes a page off Google always needs your confirmation** — when the agent changes noindex, nofollow or canonical, it must give you a confirmation code and the change only applies once you agree.
@@ -131,4 +131,4 @@ How to connect and set permissions for the agent: see [MCP tool catalogue](../mc
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-21 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

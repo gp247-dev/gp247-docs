@@ -93,7 +93,7 @@ Nếu bạn đã kết nối AI agent (Claude, Cursor…) với cửa hàng qua 
 | --- | --- | --- |
 | `seo_audit` | Đọc kết quả Kiểm tra SEO gần nhất; có thể yêu cầu kiểm tra lại (tối đa mỗi 2 phút một lần) | Bật |
 | `get_seo` | Đọc giá trị SEO của một sản phẩm, danh mục, thương hiệu hoặc trang | Bật |
-| `update_seo` | Sửa tiêu đề, mô tả, ảnh chia sẻ, noindex, canonical của **một** nội dung | **Tắt** — bật ở màn MCP Server |
+| `update_seo` | Sửa tiêu đề, mô tả, canonical, noindex, nofollow của **một** nội dung (không sửa ảnh chia sẻ) | **Tắt** — bật ở màn MCP Server |
 
 - **Quyền như trên trang quản trị** — token của agent cần quyền màn Kiểm tra SEO và quyền màn của loại nội dung (vd màn Sản phẩm); sửa cần quyền ghi.
 - **Việc làm trang rời khỏi Google luôn cần bạn xác nhận** — khi agent đổi noindex, nofollow hay canonical, nó phải đưa bạn một mã xác nhận và chỉ áp dụng khi bạn đồng ý.
@@ -131,4 +131,4 @@ Cách kết nối và phân quyền agent: xem [Danh mục công cụ MCP](../mc
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-21 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

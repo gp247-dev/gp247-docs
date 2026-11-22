@@ -215,7 +215,7 @@ SEOチェック画面の権限 **と**、コンテンツの画面（商品 / カ
 | `update_shipping_status` | 注文の配送ステータスを変更 | `order_id`、`shipping_status`、`note`（500 文字以内） | あり |
 | `adjust_stock` | 販売以外で入庫（正の数）/ 出庫（負の数） | `product_id`、`delta`（0 以外、小数 4 桁まで）、`reason`（255 文字以内） | あり |
 | `add_order_note` | 注文履歴に社内メモを追加（[MCP] ラベル付き） | `order_id`、`note`（1000 文字以内、プレーンテキスト） | なし |
-| `update_seo` | **1 つ**のコンテンツの SEO を 1 言語分修正 | `type`、`id`、`lang` と、`title`、`description`、`canonical`、`og_image`、`noindex`、`nofollow` のうち 1 つ以上 | `noindex`、`nofollow`、`canonical` の変更時 |
+| `update_seo` | **1 つ**のコンテンツの SEO を 1 言語分修正 | `type`、`id`、`lang` と、`title`、`description`、`canonical`、`noindex`、`nofollow` のうち 1 つ以上 | `noindex`、`nofollow`、`canonical` の変更時 |
 
 常に確定ありの 3 つのツール（と、確定が必要なときの `update_seo`）では、エージェントは **2 回**呼び出します。たとえば *「注文 OR-1024 を処理中にして」* と頼んだ場合：
 
@@ -241,7 +241,7 @@ sequenceDiagram
 - **正しく動くエージェントは 2 回の呼び出しの間にあなたに確認します** — 書き込み用トークンは信頼できるエージェントにだけ渡してください。
 - **`add_order_note` は 1 回の呼び出しで書き込みます** — 履歴を 1 行*追加*するだけで、金額、在庫、ステータスを変えないためです。
 - **`update_seo` で確定が必要なのは `noindex`、`nofollow`、`canonical` を変えるときだけです** — ページが Google に表示されるかどうかを決める項目だからです。
-  タイトル、説明、シェア画像だけを変える場合は 1 回の呼び出しで書き込みます。
+  タイトルや説明だけを変える場合は 1 回の呼び出しで書き込みます。シェア画像は MCP からは変更できません（`get_seo` は読み取るだけです）。
 
 ## 条件と制約（操作の前に確認）
 
@@ -303,4 +303,4 @@ sequenceDiagram
 
 ---
 
-<sub>📅 **最終更新:** 2026-11-18 · ✍️ **作成者 (Author):** GP247</sub>
+<sub>📅 **最終更新:** 2026-11-22 · ✍️ **作成者 (Author):** GP247</sub>

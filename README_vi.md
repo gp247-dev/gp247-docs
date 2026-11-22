@@ -36,7 +36,7 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 ### MCP (AI agent)
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
-| [Giới thiệu MCP server](./mcp/mcp-introduction_vi.md) | Trang chính của bộ tài liệu MCP: cho AI agent (Claude, Cursor, VS Code…) làm việc với cửa hàng — bắt đầu nhanh, danh mục 18 công cụ, an toàn & phân quyền, quản trị & cài đặt, xử lý sự cố | 2026-11-18 |
+| [Giới thiệu MCP server](./mcp/mcp-introduction_vi.md) | Trang chính của bộ tài liệu MCP: cho AI agent (Claude, Cursor, VS Code…) làm việc với cửa hàng — bắt đầu nhanh, danh mục 18 công cụ, an toàn & phân quyền, quản trị & cài đặt, xử lý sự cố | 2026-11-22 |
 
 ### Bảo mật
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |

@@ -215,7 +215,7 @@ Năm công cụ ghi giúp agent làm việc thay bạn, nên được rào chắ
 | `update_shipping_status` | Đổi trạng thái giao hàng | `order_id`, `shipping_status`, `note` (≤ 500 ký tự) | Có |
 | `adjust_stock` | Nhập (số dương) / xuất (số âm) kho ngoài bán hàng | `product_id`, `delta` (≠ 0, tối đa 4 chữ số thập phân), `reason` (≤ 255) | Có |
 | `add_order_note` | Thêm ghi chú nội bộ vào lịch sử đơn (gắn nhãn [MCP]) | `order_id`, `note` (≤ 1000 ký tự, chữ thường) | Không |
-| `update_seo` | Sửa SEO của **một** nội dung theo một ngôn ngữ | `type`, `id`, `lang` và một hoặc nhiều trường `title`, `description`, `canonical`, `og_image`, `noindex`, `nofollow` | Khi đổi `noindex`, `nofollow`, `canonical` |
+| `update_seo` | Sửa SEO của **một** nội dung theo một ngôn ngữ | `type`, `id`, `lang` và một hoặc nhiều trường `title`, `description`, `canonical`, `noindex`, `nofollow` | Khi đổi `noindex`, `nofollow`, `canonical` |
 
 Với ba công cụ luôn có xác nhận (và `update_seo` khi cần xác nhận), agent gọi **hai lần**. Ví dụ bạn bảo *"Chuyển đơn OR-1024 sang Đang xử lý"*:
 
@@ -241,7 +241,7 @@ sequenceDiagram
 - **Agent đúng chuẩn sẽ hỏi bạn giữa hai lần gọi** — chỉ cấp token ghi cho agent bạn tin cậy.
 - **`add_order_note` ghi ngay một lần gọi** vì chỉ *thêm* một dòng lịch sử, không đổi tiền, kho hay trạng thái.
 - **`update_seo` chỉ cần xác nhận khi đổi `noindex`, `nofollow` hoặc `canonical`** — những thứ quyết định trang có hiện trên Google hay không;
-  chỉ đổi tiêu đề, mô tả hoặc ảnh chia sẻ thì ghi ngay một lần gọi.
+  chỉ đổi tiêu đề hoặc mô tả thì ghi ngay một lần gọi. Ảnh chia sẻ không sửa được qua MCP — `get_seo` chỉ đọc nó.
 
 ## Điều kiện & ràng buộc (hiểu trước khi thao tác)
 
@@ -303,4 +303,4 @@ có quyền ở màn quản trị tương ứng không (ví dụ màn Khách hà
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-18 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>
