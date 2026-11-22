@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This document guides developers through writing a **payment plugin** for GP247 / S-Cart. Part 1 builds a **bank transfer**
+This document guides developers through writing a **payment plugin** for GP247. Part 1 builds a **bank transfer**
 plugin that works right away, with no outside account — so you learn how a plugin plugs into checkout. Part 2 connects an
 **online payment gateway** with an API (the gateway's payment page, the return page, webhooks), with skeleton code already
 wired to `gp247/shop`'s money seams. After reading, you have a working plugin and know exactly where to use the built-in
@@ -26,7 +26,7 @@ functions so money is never recorded wrongly or twice.
 
   The `core` line (e.g. `3.1`) is what you write in `requireCore` in Step 2.
 - Know how to build a basic plugin: [Creating a plugin](./create-plugin.md). This document only covers what is specific to payments.
-- Understand how payments run on the store side: [Payments in GP247](../s-cart/payment/payment.md).
+- Understand how payments run on the store side: [Payments in S-Cart](../s-cart/payment/payment.md).
 
 **Who does what** — most of it already exists in `gp247/shop`; the plugin only does its part:
 

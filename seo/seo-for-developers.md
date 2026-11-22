@@ -3,7 +3,7 @@
 # SEO hooks for plugin and template developers
 
 ## Introduction
-This page is for **developers** writing plugins or templates for GP247 / S-Cart. It lists every SEO extension point (hook) that gp247/front provides — registering content types with an SEO tab, sitemap, noindex, `og:type`, JSON-LD, review ratings, automatic 301s, system alerts — with copy-ready code samples. After reading it, your plugin's content gets the same SEO as products and categories without editing core or the template.
+This page is for **developers** writing plugins or templates for GP247. It lists every SEO extension point (hook) that gp247/front provides — registering content types with an SEO tab, sitemap, noindex, `og:type`, JSON-LD, review ratings, automatic 301s, system alerts — with copy-ready code samples. After reading it, your plugin's content gets the same SEO as products and categories without editing core or the template.
 
 ## At a glance
 Every hook follows one pattern: the plugin **appends** to a registry in `Provider.php` while the plugin is active; gp247/front reads the registry when needed and **never** knows the plugin's name.

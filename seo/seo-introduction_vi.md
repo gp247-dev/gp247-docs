@@ -1,9 +1,9 @@
 > 🌐 **Ngôn ngữ:** 🇻🇳 Tiếng Việt (hiện tại) · [🇬🇧 English](./seo-introduction.md) · [🇯🇵 日本語](./seo-introduction_ja.md)
 
-# SEO trong GP247
+# SEO trong S-Cart
 
 ## Giới thiệu
-Đây là trang chính của bộ tài liệu SEO (tối ưu cho công cụ tìm kiếm) của GP247 / S-Cart. Tài liệu dành cho **chủ cửa hàng** muốn sản phẩm, danh mục, bài viết lên Google tốt hơn, và cho **lập trình viên** viết plugin, template muốn nội dung của mình được hưởng các chức năng SEO có sẵn. Đọc trang này, bạn biết GP247 tự lo những gì, bạn cần làm gì, và nên mở trang con nào tiếp theo.
+Đây là trang chính của bộ tài liệu SEO (tối ưu cho công cụ tìm kiếm) của S-Cart. Tài liệu dành cho **chủ cửa hàng** muốn sản phẩm, danh mục, bài viết lên Google tốt hơn, và cho **lập trình viên** viết plugin, template muốn nội dung của mình được hưởng các chức năng SEO có sẵn. Đọc trang này, bạn biết GP247 tự lo những gì, bạn cần làm gì, và nên mở trang con nào tiếp theo.
 
 ## Nhìn nhanh
 SEO trong GP247 chia làm ba phần: hệ thống **tự làm** cho mọi trang, bạn **chỉnh** ở menu **SEO** và trên từng nội dung, rồi **theo dõi** để sửa lỗi.

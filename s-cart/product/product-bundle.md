@@ -1,18 +1,18 @@
 > 🌐 **Language:** [🇻🇳 Tiếng Việt](./product-bundle_vi.md) · 🇬🇧 English (current) · [🇯🇵 日本語](./product-bundle_ja.md)
 
-# Product Bundle (Combo) in GP247
+# Product Bundle (Combo) in S-Cart
 
 ## Introduction
-This document explains the **product bundle (combo)** feature in GP247 (from version 2) and guides store
+This document explains the **product bundle (combo)** feature in S-Cart and guides store
 owners in creating a combo product made of several child products. It is written for **non-technical
 readers**: after reading, you will understand how a bundle differs from a normal product, how to enable
 the feature, how to create a combo, and how its price / stock behave.
 
 ---
 
-## 1. What is a bundle? The three product kinds in GP247
+## 1. What is a bundle? The three product kinds in S-Cart
 
-In GP247, every product is one of **three kinds**:
+In S-Cart, every product is one of **three kinds**:
 
 | Kind | Meaning | Sellable? | Price | Stock |
 | --- | --- | --- | --- | --- |
@@ -25,7 +25,7 @@ In GP247, every product is one of **three kinds**:
 > 1 box of cookies, 2 bottles of water, 1 paper bag.
 
 **The most important things to remember:**
-- The bundle's price is **the price you set for the bundle**; GP247 does **not** auto-sum the child prices.
+- The bundle's price is **the price you set for the bundle**; S-Cart does **not** auto-sum the child prices.
   You decide the combo price yourself (usually cheaper than buying separately, to attract customers).
 - When 1 bundle is sold, the stock of **each child product is deducted** by the quantity declared in the bundle.
 
@@ -76,7 +76,7 @@ is off, **every product is Single** and you will **not see** the option to creat
 ## 4. Bundle price and stock
 
 - **Price:** it is **the price you enter for the bundle** (you can set a promotion price like a normal
-  product). GP247 does **not** auto-sum the children — you fully control the combo price.
+  product). S-Cart does **not** auto-sum the children — you fully control the combo price.
 - **Stock when selling:** when a customer buys **N bundles**, the system deducts:
   - The **bundle's** stock by N, and
   - Each **child product's** stock by `N × (child quantity in the bundle)`.
@@ -154,7 +154,7 @@ defaults to Single and the kind selector is hidden.
 
 **Q2: Is the bundle price auto-summed from the child prices?**
 
-→ No. You **set the price** for the bundle yourself. GP247 does not auto-sum — you fully control the combo price.
+→ No. You **set the price** for the bundle yourself. S-Cart does not auto-sum — you fully control the combo price.
 
 **Q3: When a customer buys 1 bundle, how is stock deducted?**
 

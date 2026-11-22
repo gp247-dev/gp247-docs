@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This document guides developers through writing a **shipping plugin** for GP247 / S-Cart on `gp247/shop`'s standard shipping
+This document guides developers through writing a **shipping plugin** for GP247 on `gp247/shop`'s standard shipping
 contract. Part 1 builds a **weight-based price** plugin with two services (Standard, Express) that works right away, with no
 outside account. Part 2 connects a **carrier with an API**: quotes, booking and cancelling shipments, tracking, webhooks. After
 reading, you have a working plugin and know which parts `gp247/shop` already does and which the plugin must write.
@@ -22,7 +22,7 @@ reading, you have a working plugin and know which parts `gp247/shop` already doe
 
 - A GP247 3.x website with `gp247/shop` installed. Check the core version with `php artisan gp247:info` (the `core` line).
 - Know how to build a basic plugin: [Creating a plugin](./create-plugin.md).
-- Understand how shipping runs on the store side: [Shipping in GP247](../s-cart/shipping/shipping.md).
+- Understand how shipping runs on the store side: [Shipping in S-Cart](../s-cart/shipping/shipping.md).
 
 **Who does what:**
 
@@ -730,7 +730,7 @@ class StatusMapper
 }
 ```
 
-The standard status decides the order's shipping status (table in [Shipping in GP247](../s-cart/shipping/shipping.md), section A5).
+The standard status decides the order's shipping status (table in [Shipping in S-Cart](../s-cart/shipping/shipping.md), section A5).
 
 ### 3.4. Cash on delivery (COD) and labels
 

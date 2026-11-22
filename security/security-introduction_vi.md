@@ -4,7 +4,7 @@
 
 ## Giới thiệu
 
-Đây là trang chính của bộ tài liệu **Bảo mật** cho site chạy GP247 / S-Cart. Bộ tài liệu dành cho **chủ cửa hàng**,
+Đây là trang chính của bộ tài liệu **Bảo mật** cho site chạy S-Cart. Bộ tài liệu dành cho **chủ cửa hàng**,
 **quản trị viên** và **người phụ trách kỹ thuật** (người cài đặt, quản lý hosting hoặc máy chủ). Trang này cho biết những việc
 GP247 đã tự làm sẵn, những việc **chỉ bạn làm được**, và nên đọc trang nào tiếp theo. Không cần biết lập trình để đọc.
 

@@ -1,9 +1,9 @@
 > 🌐 **Language:** [🇻🇳 Tiếng Việt](./order-lifecycle_vi.md) · 🇬🇧 English (current) · [🇯🇵 日本語](./order-lifecycle_ja.md)
 
-# GP247 order lifecycle — stock, money and history at every stage
+# S-Cart order lifecycle — stock, money and history at every stage
 
 ## Introduction
-This document walks through the **whole life of an order** in GP247: placed, processed, paid, cancelled,
+This document walks through the **whole life of an order** in S-Cart: placed, processed, paid, cancelled,
 re-opened, refunded, and finally deleted. For **each stage** it spells out the three things that always travel
 together: what happens to **stock**, how **money** is recorded, and what the **order history** captures. Written
 for shop owners, accountants and operations staff — by the end you will understand why the system behaves as it
@@ -25,7 +25,7 @@ This is the most common source of confusion. An order does not have "a status" �
 
 > 🚚 **Orders with a shipment:** the shipping status **changes by itself** with what the carrier reports — Awaiting
 > pick-up / Cancelled → *Not sent*; every on-the-way state (picked up, in transit, out for delivery, delivery failed,
-> returning, exception) → *Sending*; Delivered → *Shipping done*; Returned → *Refunded*. Orders without a shipment are still set by hand. See [Shipping in GP247](../shipping/shipping.md), section A5.
+> returning, exception) → *Sending*; Delivered → *Shipping done*; Returned → *Refunded*. Orders without a shipment are still set by hand. See [Shipping in S-Cart](../shipping/shipping.md), section A5.
 >
 > ℹ️ **Available since:** gp247/shop 3.1.4
 

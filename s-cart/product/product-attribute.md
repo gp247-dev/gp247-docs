@@ -1,9 +1,9 @@
 > 🌐 **Language:** [🇻🇳 Tiếng Việt](./product-attribute_vi.md) · 🇬🇧 English (current) · [🇯🇵 日本語](./product-attribute_ja.md)
 
-# Product Attributes in GP247
+# Product Attributes in S-Cart
 
 ## Introduction
-This document explains **product attributes** in GP247/S-Cart — for example choosing a **Color** or **Size**
+This document explains **product attributes** in S-Cart — for example choosing a **Color** or **Size**
 with an extra surcharge — for **non-technical store owners**. After reading it you will understand the two-tier
 structure of attributes, know how to declare them in the admin panel, understand how the surcharge is added to
 the price, and know about the recently hardened price-safety behavior.
@@ -12,7 +12,7 @@ the price, and know about the recently hardened price-safety behavior.
 
 ## 1. What is an attribute? The two-tier model
 
-Attributes in GP247 have **two tiers**:
+Attributes in S-Cart have **two tiers**:
 
 - **Attribute Group** — declared **once and shared** across all products. Example: `Color`, `Size`.
 - **Attribute value** — attached to **each specific product**, holding a value name + an **extra surcharge** (`add_price`). Example for the `Color` group: "Red" (+0), "Metallic Gold" (+20,000).

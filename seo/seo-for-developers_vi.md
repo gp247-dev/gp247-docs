@@ -3,7 +3,7 @@
 # Hook SEO cho lập trình viên plugin và template
 
 ## Giới thiệu
-Trang này dành cho **lập trình viên** viết plugin hoặc template cho GP247 / S-Cart. Nó liệt kê mọi điểm cắm (hook) SEO mà gp247/front mở sẵn — đăng ký loại nội dung có tab SEO, sitemap, noindex, `og:type`, JSON-LD, điểm đánh giá, tự 301, cảnh báo hệ thống — kèm đoạn code mẫu copy được. Đọc xong, nội dung của plugin bạn có SEO ngang sản phẩm, danh mục mà không phải sửa core hay template.
+Trang này dành cho **lập trình viên** viết plugin hoặc template cho GP247. Nó liệt kê mọi điểm cắm (hook) SEO mà gp247/front mở sẵn — đăng ký loại nội dung có tab SEO, sitemap, noindex, `og:type`, JSON-LD, điểm đánh giá, tự 301, cảnh báo hệ thống — kèm đoạn code mẫu copy được. Đọc xong, nội dung của plugin bạn có SEO ngang sản phẩm, danh mục mà không phải sửa core hay template.
 
 ## Nhìn nhanh
 Mọi hook đều theo một khuôn: plugin **thêm (append)** vào một registry trong `Provider.php` khi plugin đang bật; gp247/front đọc registry khi cần, **không bao giờ** biết tên plugin.

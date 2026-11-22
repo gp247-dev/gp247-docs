@@ -4,7 +4,7 @@
 
 ## Giới thiệu
 
-Tài liệu này hướng dẫn lập trình viên tự viết một **plugin vận chuyển** cho GP247 / S-Cart theo hợp đồng vận chuyển chuẩn
+Tài liệu này hướng dẫn lập trình viên tự viết một **plugin vận chuyển** cho GP247 theo hợp đồng vận chuyển chuẩn
 của `gp247/shop`. Phần 1 dựng plugin **tính phí theo khối lượng** có hai dịch vụ (Tiêu chuẩn, Giao nhanh), chạy được ngay
 không cần tài khoản bên ngoài. Phần 2 nối một **hãng vận chuyển có API**: báo giá, tạo và huỷ vận đơn, tra cứu, webhook.
 Đọc xong, bạn có một plugin chạy được và biết phần nào `gp247/shop` đã làm sẵn, phần nào plugin phải viết.
@@ -21,7 +21,7 @@ không cần tài khoản bên ngoài. Phần 2 nối một **hãng vận chuy�
 
 - Website GP247 3.x có cài `gp247/shop`. Xem phiên bản lõi bằng `php artisan gp247:info` (dòng `core`).
 - Biết cách tạo plugin cơ bản: [Hướng dẫn tạo plugin](./create-plugin_vi.md).
-- Hiểu vận chuyển chạy thế nào ở phía cửa hàng: [Vận chuyển trong GP247](../s-cart/shipping/shipping_vi.md).
+- Hiểu vận chuyển chạy thế nào ở phía cửa hàng: [Vận chuyển trong S-Cart](../s-cart/shipping/shipping_vi.md).
 
 **Ai làm gì:**
 
@@ -727,7 +727,7 @@ class StatusMapper
 }
 ```
 
-Trạng thái chuẩn quyết định trạng thái giao hàng của đơn (bảng ở [Vận chuyển trong GP247](../s-cart/shipping/shipping_vi.md), mục A5).
+Trạng thái chuẩn quyết định trạng thái giao hàng của đơn (bảng ở [Vận chuyển trong S-Cart](../s-cart/shipping/shipping_vi.md), mục A5).
 
 ### 3.4. Thu hộ (COD) và in nhãn
 

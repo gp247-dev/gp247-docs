@@ -1,9 +1,9 @@
 > 🌐 **Language:** [🇻🇳 Tiếng Việt](./product-stock-management_vi.md) · 🇬🇧 English (current) · [🇯🇵 日本語](./product-stock-management_ja.md)
 
-# Product stock management in GP247
+# Product stock management in S-Cart
 
 ## Introduction
-This document explains the **stock management business logic** of GP247/S-Cart for **non-technical shop owners**: when stock goes up or down, the two key settings that decide whether over-stock selling is allowed, and why an order created in the admin panel decrements stock **exactly like** an order a customer places on the storefront. After reading it you will be confident configuring stock and understanding how the numbers move.
+This document explains the **stock management business logic** of S-Cart for **non-technical shop owners**: when stock goes up or down, the two key settings that decide whether over-stock selling is allowed, and why an order created in the admin panel decrements stock **exactly like** an order a customer places on the storefront. After reading it you will be confident configuring stock and understanding how the numbers move.
 
 ---
 

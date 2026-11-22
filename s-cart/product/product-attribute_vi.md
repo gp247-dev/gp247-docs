@@ -1,9 +1,9 @@
 > 🌐 **Ngôn ngữ:** 🇻🇳 Tiếng Việt (hiện tại) · [🇬🇧 English](./product-attribute.md) · [🇯🇵 日本語](./product-attribute_ja.md)
 
-# Thuộc tính sản phẩm (Product Attribute) trong GP247
+# Thuộc tính sản phẩm (Product Attribute) trong S-Cart
 
 ## Giới thiệu
-Tài liệu này giải thích **thuộc tính sản phẩm** (Product Attribute) trong GP247/S-Cart — ví dụ chọn **Màu**,
+Tài liệu này giải thích **thuộc tính sản phẩm** (Product Attribute) trong S-Cart — ví dụ chọn **Màu**,
 **Size** kèm phụ phí cộng thêm — dành cho **chủ cửa hàng không rành kỹ thuật**. Đọc xong bạn sẽ hiểu cấu trúc
 2 tầng của thuộc tính, biết cách khai báo trong trang quản trị, hiểu phụ phí được cộng vào giá thế nào, và
 nắm điểm an toàn giá vừa được củng cố.
@@ -12,7 +12,7 @@ nắm điểm an toàn giá vừa được củng cố.
 
 ## 1. Thuộc tính là gì? Mô hình 2 tầng
 
-Thuộc tính trong GP247 gồm **2 tầng**:
+Thuộc tính trong S-Cart gồm **2 tầng**:
 
 - **Nhóm thuộc tính (Attribute Group)** — khai báo **một lần, dùng chung** cho mọi sản phẩm. Ví dụ: `Color`, `Size`.
 - **Giá trị thuộc tính (Attribute value)** — gắn vào **từng sản phẩm cụ thể**, gồm tên giá trị + **phụ phí cộng thêm** (`add_price`). Ví dụ với nhóm `Color`: "Đỏ" (+0đ), "Vàng nhũ" (+20.000đ).
@@ -104,7 +104,7 @@ Vài điểm nên biết:
 
 ## 5. An toàn giá (đã củng cố)
 
-Từ bản cập nhật gần đây, GP247 củng cố 2 điểm để đảm bảo an toàn và toàn vẹn dữ liệu:
+Từ bản cập nhật gần đây, S-Cart củng cố 2 điểm để đảm bảo an toàn và toàn vẹn dữ liệu:
 
 1. **Phụ phí do máy chủ quyết định (chống gian lận giá).** Trước đây phụ phí `add_price` được gửi lên từ trình
    duyệt của khách, về lý thuyết có thể bị sửa để mua rẻ hơn. Nay khi thêm vào giỏ, hệ thống **luôn lấy lại phụ

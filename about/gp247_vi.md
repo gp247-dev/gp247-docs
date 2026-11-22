@@ -2,8 +2,8 @@
 
 # Giới thiệu về GP247
 
-**GP247** là nền tảng thương mại điện tử mã nguồn mở dành cho doanh nghiệp, xây dựng trên Laravel. Ngoài các tính năng bán
-hàng, GP247 có sẵn **dòng lệnh** để vận hành tự động, **REST API v2** để kết nối ứng dụng và ERP, **MCP server** để làm việc
+**GP247** là hệ sinh thái mã nguồn mở trên Laravel để xây dựng ứng dụng web cho doanh nghiệp. **S-Cart** — phần mềm bán hàng
+trực tuyến — là sản phẩm xây dựng trên GP247. Nền tảng có sẵn **dòng lệnh** để vận hành tự động, **REST API v2** để kết nối ứng dụng và ERP, **MCP server** để làm việc
 với AI agent, **SEO tích hợp sẵn** từ thẻ meta tới kiểm tra lỗi SEO, cùng lớp **bảo mật quản lý tập trung** và **sao lưu &
 phục hồi** tích hợp sẵn. Tất cả miễn phí, giấy phép MIT.
 
@@ -11,7 +11,7 @@ phục hồi** tích hợp sẵn. Tất cả miễn phí, giấy phép MIT.
 
 | Mục | Thông tin |
 | --- | --- |
-| **Là gì** | Nền tảng thương mại điện tử mã nguồn mở cho doanh nghiệp, xây dựng trên Laravel |
+| **Là gì** | Hệ sinh thái mã nguồn mở trên Laravel để xây dựng ứng dụng web cho doanh nghiệp |
 | **Giấy phép** | MIT — miễn phí, tự do tùy chỉnh và tích hợp vào hệ thống Laravel của bạn |
 | **Công nghệ (GP247 3.x)** | PHP 8.3+ · Laravel 13 · Livewire 4 · Tailwind CSS 3 (biên dịch sẵn, không cần Node) · MySQL / MariaDB |
 | **Thành phần** | `gp247/core` · `gp247/front` · `gp247/shop` · `gp247/mcp` |
@@ -64,7 +64,7 @@ flowchart TB
   xác minh Google / Bing, mẫu tiêu đề và IndexNow có hướng dẫn từng bước. AI agent đọc và sửa SEO được qua MCP (có xác nhận).
 - **Plugin và template cắm vào được** — nội dung của plugin có cùng tab SEO, sitemap, JSON-LD qua các điểm cắm có sẵn.
 
-Xem [SEO trong GP247](../seo/seo-introduction_vi.md).
+Xem [SEO trong S-Cart](../seo/seo-introduction_vi.md).
 
 ### Bảo mật nâng cao, quản lý tập trung
 

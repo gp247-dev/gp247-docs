@@ -1,9 +1,9 @@
 > 🌐 **Ngôn ngữ:** 🇻🇳 Tiếng Việt (hiện tại) · [🇬🇧 English](./order-lifecycle.md) · [🇯🇵 日本語](./order-lifecycle_ja.md)
 
-# Vòng đời đơn hàng GP247 — tồn kho, tiền và lịch sử ở từng chặng
+# Vòng đời đơn hàng S-Cart — tồn kho, tiền và lịch sử ở từng chặng
 
 ## Giới thiệu
-Tài liệu này mô tả **toàn bộ vòng đời một đơn hàng** trong GP247: từ lúc đặt, qua xử lý, thu tiền, hủy, mở lại,
+Tài liệu này mô tả **toàn bộ vòng đời một đơn hàng** trong S-Cart: từ lúc đặt, qua xử lý, thu tiền, hủy, mở lại,
 hoàn tiền, cho tới khi xóa. Với **mỗi chặng**, bạn sẽ thấy rõ ba thứ luôn đi kèm: **tồn kho** biến động thế nào,
 **tiền** được ghi nhận ra sao, và **lịch sử đơn** ghi lại được gì. Dành cho chủ cửa hàng, kế toán và nhân viên
 vận hành — đọc xong bạn hiểu vì sao hệ thống hành xử như vậy, và biết thao tác nào an toàn, thao tác nào không
@@ -26,7 +26,7 @@ kéo theo nhau**:
 > 🚚 **Đơn có vận đơn:** trạng thái giao hàng **tự đổi** theo trạng thái hãng vận chuyển báo về — Chờ lấy hàng / Đã huỷ →
 > *Chưa gửi*; mọi trạng thái đang trên đường (đã lấy, đang vận chuyển, đang giao, giao thất bại, đang hoàn, ngoại lệ) →
 > *Đang gửi*; Đã giao → *Đã gửi xong*; Đã hoàn hàng → *Đã hoàn*. Đơn
-> không có vận đơn thì bạn vẫn chọn tay. Xem [Vận chuyển trong GP247](../shipping/shipping_vi.md), mục A5.
+> không có vận đơn thì bạn vẫn chọn tay. Xem [Vận chuyển trong S-Cart](../shipping/shipping_vi.md), mục A5.
 >
 > ℹ️ **Có từ:** gp247/shop 3.1.4
 
@@ -252,7 +252,7 @@ suy ra từ dòng đổi trạng thái, chưa có dòng riêng.
 ## Lịch sử thay đổi
 <!-- Chỉ ghi khi có thay đổi về logic/hành vi. Dòng mới nhất ở trên cùng. Mỗi ngày một dòng. -->
 
-| Ngày | Phiên bản GP247 | Thay đổi |
+| Ngày | Phiên bản S-Cart | Thay đổi |
 | --- | --- | --- |
 | 2026-10-18 | gp247/shop 3.1.4 | Trạng thái giao hàng **tự đổi theo vận đơn** khi đơn có vận đơn với hãng vận chuyển; đơn không có vận đơn vẫn chọn tay |
 | 2026-08-29 | v3.0 | Tài liệu mới. Phản ánh vòng đời sau v3.0: **hủy đơn hoàn kho**; **xóa đơn cũng hoàn kho** (chỉ khi hàng chưa về) nhưng **bị chặn nếu đã gửi hàng**; **mở lại đơn hủy** có kiểm tra tồn và bị từ chối toàn bộ nếu thiếu; tiền của đơn là **sổ thanh toán** từng lần thu/hoàn; đơn đã phát sinh tiền **không xóa được** |

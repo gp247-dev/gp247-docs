@@ -4,7 +4,7 @@
 
 ## Giới thiệu
 
-Trang này đưa bạn từ một site S-Cart / GP247 vừa cài tới **ba lần gọi API thành công**: xem sản phẩm, đăng nhập khách xem đơn,
+Trang này đưa bạn từ một site S-Cart vừa cài tới **ba lần gọi API thành công**: xem sản phẩm, đăng nhập khách xem đơn,
 đăng nhập quản trị viên xem đơn của cửa hàng. Không cần biết Laravel hay cấu trúc bên trong GP247 — chỉ cần copy từng lệnh. Đọc xong,
 bạn biết cách gửi yêu cầu, gắn token và đọc kết quả, rồi nạp toàn bộ API vào Postman để thử tiếp.
 
@@ -26,7 +26,7 @@ flowchart LR
 
 ## Chuẩn bị
 
-1. **Một site S-Cart / GP247 đang chạy**, gp247/core từ 3.3.0 trở lên (bản có API v2). Trong tài liệu, tên miền mẫu là
+1. **Một site S-Cart đang chạy**, gp247/core từ 3.3.0 trở lên (bản có API v2). Trong tài liệu, tên miền mẫu là
    `shop.example.com` — hãy thay bằng tên miền của bạn.
 2. **Một tài khoản quản trị** (để bật API và gọi API quản trị) và **một tài khoản khách** đã đăng ký trên cửa hàng.
 3. **Lệnh `curl`** để gửi yêu cầu. macOS và Linux có sẵn; Windows 10/11 cũng có sẵn — hãy chạy các lệnh dưới đây trong **Git Bash**

@@ -5,7 +5,7 @@
 > 🚀 **Link plugin SEO Pro (trả phí):** [https://gp247.net/vi/product/plugin-seo-pro.html](https://gp247.net/vi/product/plugin-seo-pro.html)
 
 ## Giới thiệu
-SEO Pro là plugin trả phí cho S-Cart / GP247, dành cho cửa hàng có nhiều sản phẩm muốn làm SEO nhanh hơn và biết Google đang hiển thị trang nào. S-Cart đã làm đúng SEO kỹ thuật ngay từ khi cài; SEO Pro thêm phần làm **ở quy mô lớn** và **số liệu của Google**. Trang này dành cho chủ site và người phụ trách SEO: đọc xong, bạn biết SEO Pro làm được gì so với bản có sẵn, kết nối Search Console ra sao và cần lưu ý gì trước khi dùng.
+SEO Pro là plugin trả phí cho S-Cart, dành cho cửa hàng có nhiều sản phẩm muốn làm SEO nhanh hơn và biết Google đang hiển thị trang nào. S-Cart đã làm đúng SEO kỹ thuật ngay từ khi cài; SEO Pro thêm phần làm **ở quy mô lớn** và **số liệu của Google**. Trang này dành cho chủ site và người phụ trách SEO: đọc xong, bạn biết SEO Pro làm được gì so với bản có sẵn, kết nối Search Console ra sao và cần lưu ý gì trước khi dùng.
 
 ## Nhìn nhanh
 SEO Pro gom việc SEO thường ngày thành một vòng: tìm chỗ yếu, sửa hàng loạt, rồi xem Google phản hồi thế nào.
@@ -44,7 +44,7 @@ SEO có sẵn trong S-Cart đủ cho cửa hàng nhỏ: mọi trang đã có ti�
 | Link hỏng trong mô tả | Không có | Quét và chỉ ra link, kèm trang đích gợi ý |
 | Google Shopping | Dữ liệu sản phẩm cơ bản | Thêm chính sách đổi trả và giao hàng |
 
-> ℹ️ **Thông tin:** SEO Pro không thay phần SEO có sẵn — mọi tính năng trong [SEO trong GP247](./seo-introduction_vi.md) vẫn chạy như cũ, kể cả khi gỡ SEO Pro.
+> ℹ️ **Thông tin:** SEO Pro không thay phần SEO có sẵn — mọi tính năng trong [SEO trong S-Cart](./seo-introduction_vi.md) vẫn chạy như cũ, kể cả khi gỡ SEO Pro.
 
 ## Sửa SEO hàng loạt
 Màn **SEO › [SeoPro] Sửa SEO hàng loạt** đưa sản phẩm, danh mục, thương hiệu và trang lên một bảng để sửa tiêu đề SEO, mô tả SEO và ảnh chia sẻ cùng lúc.

@@ -1,9 +1,9 @@
 > 🌐 **Language:** [🇻🇳 Tiếng Việt](./seo-introduction_vi.md) · 🇬🇧 English (current) · [🇯🇵 日本語](./seo-introduction_ja.md)
 
-# SEO in GP247
+# SEO in S-Cart
 
 ## Introduction
-This is the main page of the GP247 / S-Cart SEO (search engine optimization) guide. It is for **store owners** who want their products, categories and articles to do better on Google, and for **developers** writing plugins or templates who want their content to benefit from the built-in SEO features. After reading this page, you will know what GP247 takes care of on its own, what you need to do, and which page to open next.
+This is the main page of the S-Cart SEO (search engine optimization) guide. It is for **store owners** who want their products, categories and articles to do better on Google, and for **developers** writing plugins or templates who want their content to benefit from the built-in SEO features. After reading this page, you will know what GP247 takes care of on its own, what you need to do, and which page to open next.
 
 ## At a glance
 SEO in GP247 has three parts: the system **does things automatically** for every page, you **adjust** settings in the **SEO** menu and on each piece of content, and then you **monitor** and fix problems.

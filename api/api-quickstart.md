@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This page takes you from a freshly installed S-Cart / GP247 site to **three successful API calls**: list products, sign in as a customer to see
+This page takes you from a freshly installed S-Cart site to **three successful API calls**: list products, sign in as a customer to see
 their orders, sign in as an administrator to see the store's orders. No need to know Laravel or how GP247 works inside — just copy each command.
 After reading, you know how to send a request, attach a token and read the result, then load the whole API into Postman to keep exploring.
 
@@ -26,7 +26,7 @@ flowchart LR
 
 ## Before you start
 
-1. **A running S-Cart / GP247 site**, gp247/core 3.3.0 or later (the release with API v2). In this guide the sample domain is
+1. **A running S-Cart site**, gp247/core 3.3.0 or later (the release with API v2). In this guide the sample domain is
    `shop.example.com` — replace it with your own domain.
 2. **An administrator account** (to turn on the API and call the admin API) and **a customer account** already registered on the store.
 3. **The `curl` command** to send requests. macOS and Linux have it built in; Windows 10/11 also has it — run the commands below in **Git Bash**

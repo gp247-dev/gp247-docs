@@ -1,10 +1,10 @@
 > 🌐 **Language:** [🇻🇳 Tiếng Việt](./payment_vi.md) · 🇬🇧 English (current) · [🇯🇵 日本語](./payment_ja.md)
 
-# Payments in GP247 — store setup and day-to-day use
+# Payments in S-Cart — store setup and day-to-day use
 
 ## Introduction
 
-This document explains how GP247 takes the customer's money: from the moment the customer picks a method at checkout,
+This document explains how S-Cart takes the customer's money: from the moment the customer picks a method at checkout,
 through the payment gateway, until the money is recorded on the order. **Part A** is for store managers: installation,
 gateway settings, watching and recording money on orders, with a diagram of the whole flow. After reading, you can
 switch online payments on safely and know when each order's money is recorded. Developers who want to write or change
@@ -100,7 +100,7 @@ Open **Admin → Orders → order detail**, the totals area:
 When the customer picks **pay on delivery** (by default the `CashPayment` plugin) and you book a shipment with a carrier
 that collects cash, the COD amount is taken as the order's **outstanding balance**. When the carrier reports the cash
 reconciled, the money can be recorded in the order's ledger automatically — depending on the Shipping tab setting. See
-[Shipping in GP247](../shipping/shipping.md), section A6.
+[Shipping in S-Cart](../shipping/shipping.md), section A6.
 
 ---
 

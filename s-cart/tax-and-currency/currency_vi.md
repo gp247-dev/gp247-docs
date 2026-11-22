@@ -1,9 +1,9 @@
 > 🌐 **Ngôn ngữ:** 🇻🇳 Tiếng Việt (hiện tại) · [🇬🇧 English](./currency.md) · [🇯🇵 日本語](./currency_ja.md)
 
-# Tiền tệ (Currency) trong GP247
+# Tiền tệ (Currency) trong S-Cart
 
 ## Giới thiệu
-Tài liệu này giải thích cách tính năng **tiền tệ (currency)** hoạt động trong GP247/S-Cart và hướng dẫn
+Tài liệu này giải thích cách tính năng **tiền tệ (currency)** hoạt động trong S-Cart và hướng dẫn
 chủ cửa hàng tự cấu hình các đồng tiền cho shop của mình. Dành cho người **không rành kỹ thuật**: đọc xong
 bạn sẽ biết một đồng tiền gồm những gì, **đồng tiền gốc** (nơi lưu giá sản phẩm) khác gì đồng tiền hiển thị,
 tỉ giá quy đổi hoạt động ra sao, khách xem giá bằng đồng tiền nào, tạo/sửa đồng tiền ở đâu, cách **đổi đồng
@@ -16,14 +16,14 @@ tiền gốc** mà không làm sai giá, và vì sao có lúc không xóa/không
 
 ---
 
-## 1. Tiền tệ trong GP247 hoạt động thế nào?
+## 1. Tiền tệ trong S-Cart hoạt động thế nào?
 
 Có 6 điều quan trọng cần nắm:
 
 1. **Shop có thể dùng nhiều đồng tiền.** Bạn khai báo một danh sách đồng tiền (ví dụ USD, VND). Mỗi đồng
    tiền có thể **bật** (khách dùng được) hoặc **tắt** (ẩn đi).
 2. **Giá sản phẩm được lưu theo MỘT "đồng tiền gốc".** Bạn chỉ nhập giá sản phẩm một lần, theo **đồng tiền
-   gốc** (base currency — GP247 gọi vui là đơn vị "gốc"/"bit" của cửa hàng). Khi hiển thị sang đồng tiền
+   gốc** (base currency — S-Cart gọi vui là đơn vị "gốc"/"bit" của cửa hàng). Khi hiển thị sang đồng tiền
    khác, hệ thống **tự quy đổi** bằng **tỉ giá (exchange rate)** của đồng tiền đó.
 3. **Đồng tiền gốc là tường minh (v2.1).** Có đúng **một** đồng tiền được đánh dấu là **Gốc** (huy hiệu
    "Gốc" màu xanh trong danh sách). Đồng tiền gốc **luôn có tỉ giá `1`**, **luôn bật**, và **bị khóa
@@ -101,7 +101,7 @@ Có 6 điều quan trọng cần nắm:
 
 **Đồng tiền gốc** là đơn vị mà **toàn bộ giá sản phẩm, giá vốn (cost), phụ phí thuộc tính và giá khuyến mãi**
 được lưu trong cơ sở dữ liệu. Nói cách khác, mọi con số tiền bạn nhập cho sản phẩm đều được hiểu là "bằng
-đồng tiền gốc". Vì nó là "chuẩn đo" của cả kho hàng nên GP247 2.1 bảo vệ nó chặt:
+đồng tiền gốc". Vì nó là "chuẩn đo" của cả kho hàng nên S-Cart bảo vệ nó chặt:
 
 - **Luôn có đúng một đồng gốc**, đánh dấu bằng huy hiệu **"Gốc"** trong danh sách.
 - **Tỉ giá của đồng gốc luôn = `1`** (không sửa được) — vì mọi tỉ giá khác đo *so với* nó.

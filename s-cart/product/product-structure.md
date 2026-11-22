@@ -1,9 +1,9 @@
 > 🌐 **Language:** [🇻🇳 Tiếng Việt](./product-structure_vi.md) · 🇬🇧 English (current) · [🇯🇵 日本語](./product-structure_ja.md)
 
-# Product Structure in GP247: Single · Bundle · Group
+# Product Structure in S-Cart: Single · Bundle · Group
 
 ## Introduction
-This document explains the **3 ways to structure products** in GP247 (from version 2): **Single**,
+This document explains the **3 ways to structure products** in S-Cart: **Single**,
 **Bundle/Combo (Build)**, and **Group**. It is written for **non-technical** store owners: after reading,
 you will tell the three apart, know which is sellable and which is display-only, and pick the right kind
 for each need.
@@ -14,7 +14,7 @@ for each need.
 
 ```mermaid
 flowchart TD
-    P["📦 Product in GP247"]
+    P["📦 Product in S-Cart"]
     P --> S["Single"]
     P --> B["Bundle / Combo<br/>(Build)"]
     P --> G["Group"]
@@ -60,7 +60,7 @@ A normal, standalone product — e.g. "White T-shirt". This is the most common k
 ### 3.2. Bundle / Combo (Build)
 One product sold as **a package** containing several **child products** with quantities — e.g. "Tet Gift
 Set" = 1 box of cookies + 2 bottles of water. Key points:
-- **You set the price for the bundle** (GP247 does not auto-sum the child prices).
+- **You set the price for the bundle** (S-Cart does not auto-sum the child prices).
 - When a customer buys 1 bundle, the system **deducts each child product's stock** by the declared quantity.
 
 > To create and configure this kind in detail, see the dedicated doc: **[Product Bundle (Combo)](./product-bundle.md)**.
@@ -103,7 +103,7 @@ display** — no price, no stock, cannot be added to cart.
 
 **Q4: Is the bundle price auto-summed from the child products?**
 
-→ No. You set the price for the bundle yourself; GP247 does not auto-sum.
+→ No. You set the price for the bundle yourself; S-Cart does not auto-sum.
 
 **Q5: Which kind supports variants (size, color)?**
 

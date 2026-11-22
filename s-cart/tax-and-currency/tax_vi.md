@@ -1,15 +1,15 @@
 > 🌐 **Ngôn ngữ:** 🇻🇳 Tiếng Việt (hiện tại) · [🇬🇧 English](./tax.md) · [🇯🇵 日本語](./tax_ja.md)
 
-# Thuế (Tax) trong GP247
+# Thuế (Tax) trong S-Cart
 
 ## Giới thiệu
-Tài liệu này giải thích cách tính năng **thuế** hoạt động trong GP247 (từ phiên bản 2) và hướng dẫn chủ
+Tài liệu này giải thích cách tính năng **thuế** hoạt động trong S-Cart và hướng dẫn chủ
 cửa hàng tự cấu hình thuế cho shop của mình. Dành cho người **không rành kỹ thuật**: đọc xong bạn sẽ biết
 thuế được tính thế nào, tạo mức thuế ở đâu, gán thuế cho sản phẩm ra sao và thuế hiển thị ở những trang nào.
 
 ---
 
-## 1. Thuế trong GP247 hoạt động thế nào?
+## 1. Thuế trong S-Cart hoạt động thế nào?
 
 Có 4 điều quan trọng cần nắm:
 
@@ -19,7 +19,7 @@ Có 4 điều quan trọng cần nắm:
    không nằm sẵn trong giá bán. Ví dụ: sản phẩm giá 100.000đ, thuế 8% → khách trả 108.000đ.
 3. **Bật/tắt được cho toàn shop.** Bạn có thể tắt thuế hoàn toàn, hoặc đặt một mức thuế **mặc định** áp
    dụng chung.
-4. **Mỗi sản phẩm chỉ dùng một mức thuế** (không cộng dồn nhiều loại thuế). GP247 (v2) tính thuế theo sản
+4. **Mỗi sản phẩm chỉ dùng một mức thuế** (không cộng dồn nhiều loại thuế). S-Cart tính thuế theo sản
    phẩm, **không** tính theo quốc gia/vùng/địa chỉ giao hàng.
 
 > **Thuật ngữ:** *Mức thuế* là một dòng gồm **Tên** (ví dụ "VAT 8%") và **Giá trị** (con số phần trăm, ví
@@ -170,7 +170,7 @@ phẩm để Auto tự đổi theo.
 
 **Câu 3: Giá tôi nhập cho sản phẩm đã bao gồm thuế chưa?**
 
-→ Chưa. GP247 tính thuế kiểu **cộng thêm** (exclusive): giá bạn nhập là giá **chưa thuế**, thuế được cộng
+→ Chưa. S-Cart tính thuế kiểu **cộng thêm** (exclusive): giá bạn nhập là giá **chưa thuế**, thuế được cộng
 vào khi tính tiền.
 
 **Câu 4: Thuế của tôi là 8,5% (có số lẻ) thì nhập được không?**
@@ -181,7 +181,7 @@ vào khi tính tiền.
 
 → Không. Mỗi sản phẩm chỉ dùng **một** mức thuế.
 
-**Câu 6: GP247 có tính thuế khác nhau theo quốc gia/vùng của khách không?**
+**Câu 6: S-Cart có tính thuế khác nhau theo quốc gia/vùng của khách không?**
 
 → Không. Ở v2, thuế tính **theo sản phẩm**, không theo địa chỉ giao hàng hay quốc gia.
 

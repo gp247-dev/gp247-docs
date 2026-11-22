@@ -4,7 +4,7 @@
 
 ## Giới thiệu
 
-Tài liệu này hướng dẫn lập trình viên tự viết một **plugin thanh toán** cho GP247 / S-Cart. Phần 1 dựng một plugin
+Tài liệu này hướng dẫn lập trình viên tự viết một **plugin thanh toán** cho GP247. Phần 1 dựng một plugin
 **chuyển khoản ngân hàng** chạy được ngay, không cần tài khoản bên ngoài — để bạn nắm cách plugin cắm vào trang thanh
 toán. Phần 2 nối một **cổng thanh toán online** có API (trang thanh toán của cổng, trang quay về, webhook), với code
 khung đã đặt đúng các điểm nối tiền của `gp247/shop`. Đọc xong, bạn có một plugin chạy được và biết chính xác chỗ nào
@@ -26,7 +26,7 @@ phải dùng hàm có sẵn để tiền không bị ghi sai hay ghi hai lần.
 
   Dòng `core` (ví dụ `3.1`) là giá trị bạn ghi vào `requireCore` ở Bước 2.
 - Biết cách tạo plugin cơ bản: [Hướng dẫn tạo plugin](./create-plugin_vi.md). Tài liệu này chỉ đi vào phần riêng của thanh toán.
-- Hiểu thanh toán chạy thế nào ở phía cửa hàng: [Thanh toán trong GP247](../s-cart/payment/payment_vi.md).
+- Hiểu thanh toán chạy thế nào ở phía cửa hàng: [Thanh toán trong S-Cart](../s-cart/payment/payment_vi.md).
 
 **Ai làm gì** — phần lớn đã có sẵn trong `gp247/shop`, plugin chỉ làm phần của nó:
 

@@ -5,7 +5,7 @@
 > 🚀 **SEO Pro plugin (paid):** [https://gp247.net/en/product/plugin-seo-pro.html](https://gp247.net/en/product/plugin-seo-pro.html)
 
 ## Introduction
-SEO Pro is a paid plugin for S-Cart / GP247, for stores with many products that want to do SEO faster and know which pages Google is showing. S-Cart already gets technical SEO right from installation; SEO Pro adds work **at scale** and **Google's own figures**. This page is for site owners and whoever handles SEO: after reading it, you know what SEO Pro does compared with the built-in features, how to connect Search Console, and what to keep in mind before using it.
+SEO Pro is a paid plugin for S-Cart, for stores with many products that want to do SEO faster and know which pages Google is showing. S-Cart already gets technical SEO right from installation; SEO Pro adds work **at scale** and **Google's own figures**. This page is for site owners and whoever handles SEO: after reading it, you know what SEO Pro does compared with the built-in features, how to connect Search Console, and what to keep in mind before using it.
 
 ## At a glance
 SEO Pro turns everyday SEO work into one loop: find weak spots, fix them in bulk, then see how Google responds.
@@ -44,7 +44,7 @@ The SEO built into S-Cart is enough for a small store: every page already has a 
 | Broken links in descriptions | Not available | Scan and list the links, with a suggested target |
 | Google Shopping | Basic product data | Adds return policy and shipping |
 
-> ℹ️ **Info:** SEO Pro does not replace the built-in SEO — everything in [SEO in GP247](./seo-introduction.md) keeps working as before, even after SEO Pro is uninstalled.
+> ℹ️ **Info:** SEO Pro does not replace the built-in SEO — everything in [SEO in S-Cart](./seo-introduction.md) keeps working as before, even after SEO Pro is uninstalled.
 
 ## Bulk SEO editing
 The **SEO › [SeoPro] Bulk SEO editor** screen puts products, categories, brands and pages on one table so you can edit SEO titles, SEO descriptions and share images together.

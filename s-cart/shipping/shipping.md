@@ -1,10 +1,10 @@
 > 🌐 **Language:** [🇻🇳 Tiếng Việt](./shipping_vi.md) · 🇬🇧 English (current) · [🇯🇵 日本語](./shipping_ja.md)
 
-# Shipping in GP247 — store setup and day-to-day use
+# Shipping in S-Cart — store setup and day-to-day use
 
 ## Introduction
 
-This document explains how GP247 prices delivery, books shipments with carriers and tracks parcels to the
+This document explains how S-Cart prices delivery, books shipments with carriers and tracks parcels to the
 customer. **Part A** is for store managers: installation, every setting, day-to-day shipment handling, with
 diagrams of the whole flow. After reading, you can switch shipping on correctly and handle shipments day to day.
 Developers who want to integrate a new carrier: see **Part B** — it points to the technical guide in the
@@ -123,7 +123,7 @@ The shipment status maps to the order's **shipping status** by itself:
 ```mermaid
 sequenceDiagram
     participant K as Customer
-    participant S as Store (GP247)
+    participant S as Store (S-Cart)
     participant H as Carrier
     K->>S: Places the order, picks pay on delivery
     S->>S: Creates the shipment: COD = the order's outstanding balance

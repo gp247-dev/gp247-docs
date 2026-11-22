@@ -1,9 +1,9 @@
 > 🌐 **Ngôn ngữ:** 🇻🇳 Tiếng Việt (hiện tại) · [🇬🇧 English](./product-structure.md) · [🇯🇵 日本語](./product-structure_ja.md)
 
-# Tổ chức sản phẩm trong GP247: Đơn lẻ · Gói · Nhóm
+# Tổ chức sản phẩm trong S-Cart: Đơn lẻ · Gói · Nhóm
 
 ## Giới thiệu
-Tài liệu này giải thích **3 cách tổ chức sản phẩm** trong GP247 (từ phiên bản 2): **Đơn lẻ (Single)**,
+Tài liệu này giải thích **3 cách tổ chức sản phẩm** trong S-Cart: **Đơn lẻ (Single)**,
 **Gói/Combo (Bundle)** và **Nhóm (Group)**. Dành cho chủ cửa hàng **không rành kỹ thuật**: đọc xong bạn sẽ
 phân biệt được 3 loại, biết loại nào bán được / loại nào chỉ để trưng bày, và chọn đúng loại cho từng nhu cầu.
 
@@ -13,7 +13,7 @@ phân biệt được 3 loại, biết loại nào bán được / loại nào c
 
 ```mermaid
 flowchart TD
-    P["📦 Sản phẩm trong GP247"]
+    P["📦 Sản phẩm trong S-Cart"]
     P --> S["Đơn lẻ<br/>(Single)"]
     P --> B["Gói / Combo<br/>(Bundle · Build)"]
     P --> G["Nhóm<br/>(Group)"]
@@ -58,7 +58,7 @@ dùng được **biến thể** (size, màu…). Có giá và kho riêng.
 ### 3.2. Gói / Combo (Bundle)
 Một sản phẩm bán như **một gói**, bên trong gồm nhiều **sản phẩm con** kèm số lượng — ví dụ "Bộ quà Tết" =
 1 hộp bánh + 2 chai nước. Điểm quan trọng:
-- **Giá là do bạn tự đặt cho gói** (GP247 không tự cộng giá các sản phẩm con).
+- **Giá là do bạn tự đặt cho gói** (S-Cart không tự cộng giá các sản phẩm con).
 - Khi khách mua 1 gói, hệ thống **trừ kho từng sản phẩm con** theo số lượng khai báo.
 
 > Muốn tạo và cấu hình chi tiết loại này, xem tài liệu riêng: **[Sản phẩm gói (Bundle/Combo)](./product-bundle_vi.md)**.
@@ -100,7 +100,7 @@ không giá, không kho, không thêm vào giỏ.
 
 **Câu 4: Giá của gói có tự cộng từ các sản phẩm con không?**
 
-→ Không. Bạn tự đặt giá cho gói; GP247 không tự tính tổng.
+→ Không. Bạn tự đặt giá cho gói; S-Cart không tự tính tổng.
 
 **Câu 5: Loại nào dùng được biến thể (size, màu)?**
 

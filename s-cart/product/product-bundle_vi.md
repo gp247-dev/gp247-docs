@@ -1,18 +1,18 @@
 > 🌐 **Ngôn ngữ:** 🇻🇳 Tiếng Việt (hiện tại) · [🇬🇧 English](./product-bundle.md) · [🇯🇵 日本語](./product-bundle_ja.md)
 
-# Sản phẩm gói (Bundle / Combo) trong GP247
+# Sản phẩm gói (Bundle / Combo) trong S-Cart
 
 ## Giới thiệu
-Tài liệu này giải thích tính năng **sản phẩm gói (bundle/combo)** trong GP247 (từ phiên bản 2) và hướng
+Tài liệu này giải thích tính năng **sản phẩm gói (bundle/combo)** trong S-Cart và hướng
 dẫn chủ cửa hàng tự tạo một sản phẩm combo gồm nhiều sản phẩm con. Dành cho người **không rành kỹ thuật**:
 đọc xong bạn sẽ hiểu bundle khác gì sản phẩm thường, cách bật tính năng, cách tạo combo, và cách nó tính
 giá / trừ kho.
 
 ---
 
-## 1. Bundle là gì? Ba loại sản phẩm trong GP247
+## 1. Bundle là gì? Ba loại sản phẩm trong S-Cart
 
-Trong GP247, mỗi sản phẩm thuộc **một trong ba loại (kind)**:
+Trong S-Cart, mỗi sản phẩm thuộc **một trong ba loại (kind)**:
 
 | Loại | Ý nghĩa | Bán được? | Giá | Tồn kho |
 | --- | --- | --- | --- | --- |
@@ -24,7 +24,7 @@ Trong GP247, mỗi sản phẩm thuộc **một trong ba loại (kind)**:
 > 1 túi giấy. Khách mua **1 gói**, hệ thống tự trừ kho: 1 hộp bánh, 2 chai nước, 1 túi giấy.
 
 **Điểm quan trọng nhất cần nhớ:**
-- Giá của gói là **giá bạn tự đặt cho gói**, GP247 **không** tự cộng giá các sản phẩm con lại. Bạn tự
+- Giá của gói là **giá bạn tự đặt cho gói**, S-Cart **không** tự cộng giá các sản phẩm con lại. Bạn tự
   quyết định giá combo (thường rẻ hơn mua lẻ để hấp dẫn khách).
 - Khi bán 1 gói, kho của **từng sản phẩm con bị trừ** theo số lượng khai báo trong gói.
 
@@ -74,7 +74,7 @@ công tắc tắt, **mọi sản phẩm đều là Đơn lẻ** và bạn sẽ *
 
 ## 4. Giá và tồn kho của sản phẩm gói
 
-- **Giá:** là **giá bạn nhập cho gói** (có thể đặt giá khuyến mãi như sản phẩm thường). GP247 **không** tự
+- **Giá:** là **giá bạn nhập cho gói** (có thể đặt giá khuyến mãi như sản phẩm thường). S-Cart **không** tự
   tính tổng giá các con — bạn toàn quyền định giá combo.
 - **Tồn kho khi bán:** khi khách mua **N gói**, hệ thống trừ:
   - Kho của **gói** đi N, và
@@ -150,7 +150,7 @@ Lưu ở cột `shop_product.kind`.
 
 **Câu 2: Giá gói có tự cộng từ giá các sản phẩm con không?**
 
-→ Không. Bạn **tự đặt giá** cho gói. GP247 không tự tính tổng — bạn toàn quyền định giá combo.
+→ Không. Bạn **tự đặt giá** cho gói. S-Cart không tự tính tổng — bạn toàn quyền định giá combo.
 
 **Câu 3: Khách mua 1 gói thì kho trừ thế nào?**
 

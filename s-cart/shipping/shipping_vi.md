@@ -1,10 +1,10 @@
 > 🌐 **Ngôn ngữ:** 🇻🇳 Tiếng Việt (hiện tại) · [🇬🇧 English](./shipping.md) · [🇯🇵 日本語](./shipping_ja.md)
 
-# Vận chuyển trong GP247 — thiết lập và vận hành cho cửa hàng
+# Vận chuyển trong S-Cart — thiết lập và vận hành cho cửa hàng
 
 ## Giới thiệu
 
-Tài liệu này giải thích cách GP247 tính phí giao hàng, tạo vận đơn với hãng vận chuyển và theo dõi đơn tới
+Tài liệu này giải thích cách S-Cart tính phí giao hàng, tạo vận đơn với hãng vận chuyển và theo dõi đơn tới
 tay khách. **Phần A** dành cho người quản lý cửa hàng: cài đặt, thiết lập từng ô, xử lý vận đơn hằng ngày,
 có sơ đồ để hình dung toàn bộ luồng. Đọc xong, bạn tự bật được vận chuyển cho đúng và xử lý được vận đơn hằng
 ngày. Lập trình viên muốn tích hợp một hãng mới: xem **Phần B** — trỏ sang tài liệu kỹ thuật ở mục
@@ -121,7 +121,7 @@ Trạng thái vận đơn tự quy ra **trạng thái giao hàng** của đơn:
 ```mermaid
 sequenceDiagram
     participant K as Khách
-    participant S as Cửa hàng (GP247)
+    participant S as Cửa hàng (S-Cart)
     participant H as Hãng vận chuyển
     K->>S: Đặt đơn, chọn thanh toán khi nhận hàng
     S->>S: Tạo vận đơn: tiền thu hộ = số còn phải trả của đơn

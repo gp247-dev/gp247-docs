@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This is the main page of the **Security** doc set for sites running GP247 / S-Cart. The doc set is for **shop owners**,
+This is the main page of the **Security** doc set for sites running S-Cart. The doc set is for **shop owners**,
 **administrators** and **technical staff** (the people who install the site or manage the hosting or server). This page shows what
 GP247 already does for you, what **only you can do**, and which page to read next. You do not need to know programming to read it.
 

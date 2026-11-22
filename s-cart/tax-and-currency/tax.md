@@ -1,16 +1,16 @@
 > 🌐 **Language:** [🇻🇳 Tiếng Việt](./tax_vi.md) · 🇬🇧 English (current) · [🇯🇵 日本語](./tax_ja.md)
 
-# Tax in GP247
+# Tax in S-Cart
 
 ## Introduction
-This document explains how the **tax** feature works in GP247 (from version 2) and guides store owners in
+This document explains how the **tax** feature works in S-Cart and guides store owners in
 configuring tax for their own shop. It is written for **non-technical readers**: after reading, you will
 know how tax is calculated, where to create tax rates, how to assign tax to products, and on which pages
 tax appears.
 
 ---
 
-## 1. How does tax work in GP247?
+## 1. How does tax work in S-Cart?
 
 Four key points to keep in mind:
 
@@ -20,7 +20,7 @@ Four key points to keep in mind:
    not baked into the sale price. Example: a product priced 100,000 with 8% tax → the customer pays 108,000.
 3. **It can be turned on/off for the whole shop.** You can disable tax entirely, or set a **default** tax
    rate applied across the board.
-4. **Each product uses only one tax rate** (no stacking of multiple taxes). GP247 (v2) calculates tax per
+4. **Each product uses only one tax rate** (no stacking of multiple taxes). S-Cart calculates tax per
    product — **not** by country/region/shipping address.
 
 > **Term:** A *tax rate* is a row with a **Name** (e.g. "VAT 8%") and a **Value** (a percentage number,
@@ -171,7 +171,7 @@ and every Auto product follows automatically.
 
 **Q3: Does the price I enter for a product already include tax?**
 
-→ No. GP247 uses **add-on** (exclusive) tax: the price you enter is the **pre-tax** price, and tax is added
+→ No. S-Cart uses **add-on** (exclusive) tax: the price you enter is the **pre-tax** price, and tax is added
 at checkout.
 
 **Q4: My tax is 8.5% (a fractional rate) — can I enter that?**
@@ -182,7 +182,7 @@ at checkout.
 
 → No. Each product uses **one** tax rate only.
 
-**Q6: Does GP247 charge different tax by the customer's country/region?**
+**Q6: Does S-Cart charge different tax by the customer's country/region?**
 
 → No. In v2, tax is calculated **per product**, not by shipping address or country.
 

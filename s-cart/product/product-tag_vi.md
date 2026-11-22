@@ -1,9 +1,9 @@
 > 🌐 **Ngôn ngữ:** 🇻🇳 Tiếng Việt (hiện tại) · [🇬🇧 English](./product-tag.md) · [🇯🇵 日本語](./product-tag_ja.md)
 
-# Thẻ từ khóa sản phẩm (Product Tag) trong GP247
+# Thẻ từ khóa sản phẩm (Product Tag) trong S-Cart
 
 ## Giới thiệu
-Tài liệu này giải thích **thẻ từ khóa sản phẩm** (Product Tag) trong GP247/S-Cart — cách gắn các từ khóa
+Tài liệu này giải thích **thẻ từ khóa sản phẩm** (Product Tag) trong S-Cart — cách gắn các từ khóa
 như `Mới về`, `Bán chạy`, `Sale` cho sản phẩm để khách lọc/tìm theo thẻ — dành cho **chủ cửa hàng không
 rành kỹ thuật**. Đọc xong bạn sẽ biết cách bật tính năng, tạo và quản lý thẻ, gán thẻ cho sản phẩm, và
 hiểu rõ **tắt (disable) khác xóa (delete) thế nào**.

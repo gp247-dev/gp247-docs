@@ -1,9 +1,9 @@
 > 🌐 **Language:** [🇻🇳 Tiếng Việt](./currency_vi.md) · 🇬🇧 English (current) · [🇯🇵 日本語](./currency_ja.md)
 
-# Currency in GP247
+# Currency in S-Cart
 
 ## Introduction
-This document explains how the **currency** feature works in GP247/S-Cart and guides store owners in
+This document explains how the **currency** feature works in S-Cart and guides store owners in
 configuring the currencies for their own shop. Written for **non-technical** readers: after reading you will
 know what a currency is made of, how the **base currency** (where product prices are stored) differs from the
 display currency, how the exchange rate works, which currency customers see, where to create/edit currencies,
@@ -17,14 +17,14 @@ deleted or edited.
 
 ---
 
-## 1. How does currency work in GP247?
+## 1. How does currency work in S-Cart?
 
 Six important things to grasp:
 
 1. **A shop can use multiple currencies.** You declare a list of currencies (e.g. USD, VND). Each currency
    can be **enabled** (usable by customers) or **disabled** (hidden).
 2. **Product prices are stored in ONE "base currency".** You enter product prices once, in the **base
-   currency** (GP247 informally calls it the store's "base"/"bit" unit). When displaying in another currency,
+   currency** (S-Cart informally calls it the store's "base"/"bit" unit). When displaying in another currency,
    the system **converts automatically** using that currency's **exchange rate**.
 3. **The base currency is explicit (v2.1).** Exactly **one** currency is flagged as the **Base** (a blue
    "Base" badge in the list). The base currency **always has exchange rate `1`**, is **always enabled**, and
@@ -106,7 +106,7 @@ Six important things to grasp:
 
 The **base currency** is the unit in which **all product prices, cost, attribute surcharges and promotion
 prices** are stored in the database. In other words, every money figure you enter for a product is understood
-as "in the base currency". Because it is the "measuring stick" for the whole catalog, GP247 2.1 protects it
+as "in the base currency". Because it is the "measuring stick" for the whole catalog, S-Cart protects it
 tightly:
 
 - **There is always exactly one base**, marked with the **"Base"** badge in the list.

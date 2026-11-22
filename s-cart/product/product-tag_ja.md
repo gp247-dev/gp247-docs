@@ -1,9 +1,9 @@
 > 🌐 **言語:** [🇻🇳 Tiếng Việt](./product-tag_vi.md) · [🇬🇧 English](./product-tag.md) · 🇯🇵 日本語（現在）
 
-# GP247 の商品キーワードタグ（Product Tag）
+# S-Cart の商品キーワードタグ（Product Tag）
 
 ## はじめに
-このドキュメントでは、GP247/S-Cart の **商品キーワードタグ**（Product Tag）を説明します。`New arrival`、`Best seller`、
+このドキュメントでは、S-Cart の **商品キーワードタグ**（Product Tag）を説明します。`New arrival`、`Best seller`、
 `Sale` のようなキーワードを商品に付けて、お客様がタグで絞り込み・検索できるようにする機能です。**技術に詳しくない
 ストアオーナー** の方向けです。読み終えると、機能の有効化、タグの作成と管理、商品へのタグの割り当てができるようになり、
 **無効化（disable）と削除（delete）の違い** がはっきりわかります。

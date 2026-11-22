@@ -1,9 +1,9 @@
 > 🌐 **Language:** [🇻🇳 Tiếng Việt](./product-tag_vi.md) · 🇬🇧 English (current) · [🇯🇵 日本語](./product-tag_ja.md)
 
-# Product keyword tags (Product Tag) in GP247
+# Product keyword tags (Product Tag) in S-Cart
 
 ## Introduction
-This document explains **product keyword tags** (Product Tag) in GP247/S-Cart — how to attach keywords
+This document explains **product keyword tags** (Product Tag) in S-Cart — how to attach keywords
 such as `New arrival`, `Best seller`, `Sale` to products so shoppers can filter/browse by tag — written
 for **non-technical store owners**. After reading it you will know how to enable the feature, create and
 manage tags, assign tags to products, and understand how **disabling differs from deleting**.

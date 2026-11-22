@@ -1,10 +1,10 @@
 > 🌐 **Ngôn ngữ:** 🇻🇳 Tiếng Việt (hiện tại) · [🇬🇧 English](./payment.md) · [🇯🇵 日本語](./payment_ja.md)
 
-# Thanh toán trong GP247 — thiết lập và vận hành cho cửa hàng
+# Thanh toán trong S-Cart — thiết lập và vận hành cho cửa hàng
 
 ## Giới thiệu
 
-Tài liệu này giải thích cách GP247 nhận tiền của khách: từ lúc khách chọn phương thức ở trang thanh toán, qua cổng
+Tài liệu này giải thích cách S-Cart nhận tiền của khách: từ lúc khách chọn phương thức ở trang thanh toán, qua cổng
 thanh toán, tới khi tiền được ghi vào đơn. **Phần A** dành cho người quản lý cửa hàng: cài đặt, thiết lập cổng thanh
 toán, theo dõi và ghi nhận tiền trên đơn, có sơ đồ để hình dung toàn bộ luồng. Đọc xong, bạn tự bật được thanh toán
 online an toàn và biết tiền của mỗi đơn được ghi lúc nào. Lập trình viên muốn viết hay sửa plugin thanh toán: xem
@@ -95,7 +95,7 @@ Mở **Admin → Đơn hàng → chi tiết đơn**, phần tổng tiền:
 
 Khi khách chọn **thanh toán khi nhận hàng** (mặc định là plugin `CashPayment`) và bạn tạo vận đơn với một hãng có
 thu hộ, số tiền thu hộ tự lấy bằng **số còn phải trả** của đơn. Khi hãng báo đã đối soát, tiền có thể được ghi tự
-động vào sổ của đơn — tuỳ thiết lập ở tab Vận chuyển. Xem [Vận chuyển trong GP247](../shipping/shipping_vi.md), mục A6.
+động vào sổ của đơn — tuỳ thiết lập ở tab Vận chuyển. Xem [Vận chuyển trong S-Cart](../shipping/shipping_vi.md), mục A6.
 
 ---
 
@@ -191,7 +191,7 @@ thử cả trường hợp đóng trình duyệt giữa chừng.
 ## Lịch sử thay đổi
 <!-- Chỉ ghi khi có thay đổi về logic/hành vi. Dòng mới nhất ở trên cùng. Mỗi ngày một dòng: cùng ngày thì gộp vào dòng có sẵn, không tách dòng mới. -->
 
-| Ngày | Phiên bản GP247 | Thay đổi |
+| Ngày | Phiên bản S-Cart | Thay đổi |
 | --- | --- | --- |
 | 2026-10-18 | gp247/shop 3.1.4 | Thanh toán không qua cổng: lời nhắn `note` của plugin (vd `CashPayment`) hiện dưới phương thức khách chọn và ở bước xác nhận; hướng dẫn cần số tiền/mã đơn vẫn dùng trang riêng của plugin; thêm liên kết hướng dẫn tạo plugin thanh toán |
 

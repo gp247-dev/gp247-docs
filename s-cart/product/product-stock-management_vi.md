@@ -1,9 +1,9 @@
 > 🌐 **Ngôn ngữ:** 🇻🇳 Tiếng Việt (hiện tại) · [🇬🇧 English](./product-stock-management.md) · [🇯🇵 日本語](./product-stock-management_ja.md)
 
-# Quản lý tồn kho sản phẩm trong GP247
+# Quản lý tồn kho sản phẩm trong S-Cart
 
 ## Giới thiệu
-Tài liệu này giải thích **nghiệp vụ quản lý tồn kho (stock)** của GP247/S-Cart cho **chủ cửa hàng không rành kỹ thuật**: tồn kho tăng/giảm khi nào, hai cấu hình quan trọng quyết định có cho bán vượt tồn hay không, và vì sao đơn tạo trong trang quản trị (admin) cũng trừ kho **giống hệt** đơn khách đặt ngoài storefront. Đọc xong bạn sẽ tự tin cấu hình và hiểu con số kho biến động thế nào.
+Tài liệu này giải thích **nghiệp vụ quản lý tồn kho (stock)** của S-Cart cho **chủ cửa hàng không rành kỹ thuật**: tồn kho tăng/giảm khi nào, hai cấu hình quan trọng quyết định có cho bán vượt tồn hay không, và vì sao đơn tạo trong trang quản trị (admin) cũng trừ kho **giống hệt** đơn khách đặt ngoài storefront. Đọc xong bạn sẽ tự tin cấu hình và hiểu con số kho biến động thế nào.
 
 ---
 
@@ -185,7 +185,7 @@ Khi bật **Quản lý tồn kho** (`product_stock`) và **tắt** "Cho phép mu
 ## Lịch sử thay đổi
 <!-- Chỉ ghi khi có thay đổi về logic/hành vi. Dòng mới nhất ở trên cùng. Mỗi ngày một dòng. -->
 
-| Ngày | Phiên bản GP247 | Thay đổi |
+| Ngày | Phiên bản S-Cart | Thay đổi |
 | --- | --- | --- |
 | 2026-08-29 | v3.0 | **Hủy đơn** nay hoàn kho (trước đây không); **xóa đơn** vẫn hoàn kho nhưng chỉ khi hàng chưa về, và **bị chặn nếu đơn đã gửi hàng**; **mở lại đơn đã hủy** trừ kho lại và bị **từ chối** nếu không đủ tồn + tắt "cho phép mua khi hết hàng"; hủy/mở lại/xóa nhiều lần chỉ chuyển hàng đúng một lượt mỗi chiều |
 
