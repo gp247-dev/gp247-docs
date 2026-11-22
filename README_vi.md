@@ -24,7 +24,7 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 ### Dòng lệnh (CLI)
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
-| [Dòng lệnh GP247 (CLI)](./cli/cli-introduction_vi.md) | Bộ 7 trang về lệnh `php artisan gp247:*`: tra theo việc cần làm, mức an toàn từng lệnh; cài đặt & cập nhật, extension, template, `gp247:doctor`, bảo trì (mật khẩu quản trị, khoá mã hoá, sao lưu), dùng trong script/CI/Docker (`--json`, mã lỗi) | 2026-11-18 |
+| [Dòng lệnh GP247 (CLI)](./cli/cli-introduction_vi.md) | Bộ 7 trang về lệnh `php artisan gp247:*`: tra theo việc cần làm, mức an toàn từng lệnh; cài đặt & cập nhật, extension, template, `gp247:doctor`, bảo trì (mật khẩu quản trị, khoá mã hoá, sao lưu), dùng trong script/CI/Docker (`--json`, mã lỗi) | 2026-11-22 |
 
 ### API
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |

@@ -32,7 +32,8 @@ flowchart LR
 2. Đọc bảng kết quả: mỗi dòng có tên mục, trạng thái và ghi chú (đường dẫn, số lượng, lệnh gợi ý sửa).
 3. Sửa mọi dòng **FAIL** trước, rồi tới **WARN**. Chạy lại tới khi không còn FAIL.
 
-Doctor đọc cấu hình và database, **không** mở site qua mạng. Việc `http://` có tự chuyển sang `https://` hay `.env` có bị tải
+Doctor đọc cấu hình và database, **không** mở site qua mạng (trừ khi thêm `--probe-headers` — xem
+[Kiểm header bảo mật thật sự tới trình duyệt](#kiểm-header-bảo-mật-thật-sự-tới-trình-duyệt)). Việc `http://` có tự chuyển sang `https://` hay `.env` có bị tải
 được từ ngoài không vẫn phải tự kiểm — xem [Cấu hình production an toàn](../security/security-production-config_vi.md) trong bộ
 tài liệu [Bảo mật](../security/security-introduction_vi.md).
 
@@ -62,6 +63,7 @@ tài liệu [Bảo mật](../security/security-introduction_vi.md).
 | `extension_data_pending` | Extension có file mới hơn phiên bản GP247 ghi nhớ (vừa `git pull`, chép đè) mà chưa chạy phần cập nhật dữ liệu | `gp247:ext-update --local --all` |
 | `template_source` | Số file template đã publish nhưng giống hệt package — sẽ không nhận bản vá | `gp247:template-prune` |
 | `file_bom` | File `.php` / `.blade.php` bắt đầu bằng BOM UTF-8 | Lưu lại file dạng UTF-8 không BOM |
+| `raw_output_scan` | (WARN, từ core 3.12.0) Template / plugin của site (`app/GP247/Templates`, `app/GP247/Plugins`) in biến bằng `{!! … !!}` ngoài các dạng an toàn, nên chữ người dùng gõ được in nguyên dạng HTML; `--json` liệt kê từng `file:dòng` | Đổi sang `{{ }}` |
 
 ### REST API
 | Mục | Kiểm gì |
@@ -83,6 +85,32 @@ Các mục này chỉ **PASS** hoặc **WARN** — kể cả khi trang quản tr
 | `mfa_enabled` | Plugin xác thực hai lớp MFA chưa cài hoặc chưa bật |
 | `api_exposure` | (Chỉ để biết, PASS) REST API / MCP đang bật |
 | `support_line` | Dòng phiên bản đang dùng còn dưới 6 tháng hỗ trợ bảo mật, hoặc đã hết |
+| `security_headers` | (Từ core 3.16.0) Công tắc khẩn cấp `GP247_SECURITY_HEADERS=0` đang tắt mọi header bảo mật, HSTS bật trên site chưa chạy HTTPS, hoặc có header bị tắt |
+| `login_failures` | (Từ core 3.11.0) Có dấu hiệu dò mật khẩu quản trị trong 24 giờ qua, hoặc đăng nhập sai của quản trị viên không được ghi lại |
+| `backup_vault_exposed` | (Từ core 3.11.0) Thư mục chứa bản sao lưu tải được qua web |
+
+### Mục của gp247/front (khi site có front)
+Package và plugin đăng ký thêm mục vào cùng danh sách **Cảnh báo hệ thống**; doctor in luôn các mục đó, cũng chỉ **PASS** hoặc
+**WARN**.
+
+| Mục | WARN khi |
+| --- | --- |
+| `seo_audit` | (Từ front 3.11.0) Lần [Kiểm tra SEO](../seo/seo-monitoring_vi.md#kiểm-tra-seo) gần nhất của cửa hàng còn lỗi cần sửa — doctor chỉ đọc kết quả đã lưu, không quét lại |
+| `tracking_consent` | (Từ front 3.12.0) Mã đo lường đang chạy khi banner cookie tắt, hoặc template của cửa hàng không gọi `meta-head` nên mã đo lường không chạy |
+
+### Kiểm header bảo mật thật sự tới trình duyệt
+Thêm `--probe-headers` thì doctor mở trang chủ (`APP_URL`) **đúng một lần** và so header bảo mật trình duyệt thật sự nhận
+với cài đặt trên màn **Header bảo mật**:
+
+```bash
+php artisan gp247:doctor --probe-headers
+```
+
+Dòng `security_headers_live` báo **WARN** khi có header thiếu, header bị gửi hai lần (web server và GP247 cùng gửi), hoặc header
+đã tắt mà vẫn tới. Không mở được trang (chưa có tên miền, mạng chặn) thì dòng này **PASS** kèm ghi chú `could not check`. Chi
+tiết: [Header bảo mật](../security/security-production-config_vi.md#header-bảo-mật).
+
+> ℹ️ **Có từ:** gp247/core 3.16.0
 
 ### Vì sao `file_bom` đáng kiểm
 BOM là **3 byte vô hình** mà nhiều trình soạn thảo trên Windows tự thêm vào đầu file khi lưu "UTF-8". PHP in chúng ra
@@ -147,8 +175,9 @@ php artisan gp247:cache-rebuild
 
 | Ngày | Phiên bản GP247 | Thay đổi |
 | --- | --- | --- |
+| 2026-11-22 | gp247/core 3.11.0–3.16.0, gp247/front 3.11.0–3.12.0 | Liệt kê thêm các mục doctor in từ Cảnh báo hệ thống: `security_headers`, `login_failures`, `backup_vault_exposed`, `raw_output_scan`, `seo_audit`, `tracking_consent`; thêm `--probe-headers` (dòng `security_headers_live`) |
 | 2026-11-17 | gp247/core 3.14.3 | `extension_assets` báo cả file tĩnh cũ (khác nội dung bản trong `app/`), không chỉ file thiếu |
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-17 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

@@ -33,7 +33,8 @@ flowchart LR
 2. Read the result table: each line has the check name, the status and a note (path, count, suggested fix command).
 3. Fix every **FAIL** line first, then the **WARN** lines. Run it again until no FAIL is left.
 
-Doctor reads the configuration and the database; it does **not** open the site over the network. Whether `http://` redirects
+Doctor reads the configuration and the database; it does **not** open the site over the network (unless you add
+`--probe-headers` — see [Check the security headers that really reach the browser](#check-the-security-headers-that-really-reach-the-browser)). Whether `http://` redirects
 to `https://`, or whether `.env` can be downloaded from outside, still has to be checked yourself — see
 [Safe production configuration](../security/security-production-config.md) in the [Security](../security/security-introduction.md)
 handbook.
@@ -64,6 +65,7 @@ handbook.
 | `extension_data_pending` | An extension has files newer than the version GP247 recorded (just `git pull`ed, copied over) without its data update | `gp247:ext-update --local --all` |
 | `template_source` | Number of published template files identical to the package — they will not receive fixes | `gp247:template-prune` |
 | `file_bom` | `.php` / `.blade.php` files starting with a UTF-8 BOM | Save the file again as UTF-8 without BOM |
+| `raw_output_scan` | (WARN, since core 3.12.0) Site templates / plugins (`app/GP247/Templates`, `app/GP247/Plugins`) that print a variable with `{!! … !!}` outside the known safe forms, so text people type is printed as raw HTML; `--json` lists every `file:line` | Switch to `{{ }}` |
 
 ### REST API
 | Check | What it checks |
@@ -85,6 +87,32 @@ These checks are only **PASS** or **WARN** — even when the admin rates them cr
 | `mfa_enabled` | The MFA two-factor plugin is not installed or not enabled |
 | `api_exposure` | (Information only, PASS) the REST API / MCP is on |
 | `support_line` | The version line in use has under 6 months of security support left, or none |
+| `security_headers` | (Since core 3.16.0) The emergency switch `GP247_SECURITY_HEADERS=0` silences every security header, HSTS is on while the site does not run on HTTPS, or a header is switched off |
+| `login_failures` | (Since core 3.11.0) Signs of administrator password guessing in the last 24 hours, or failed administrator sign-ins are not being recorded |
+| `backup_vault_exposed` | (Since core 3.11.0) The folder holding the backups can be downloaded over the web |
+
+### Checks from gp247/front (sites with front)
+Packages and plugins add checks to the same **System alerts** list; doctor prints them too, again only **PASS** or
+**WARN**.
+
+| Check | WARN when |
+| --- | --- |
+| `seo_audit` | (Since front 3.11.0) The store's last [SEO check](../seo/seo-monitoring.md#seo-check) still has problems to fix — doctor only reads the stored result, it does not scan again |
+| `tracking_consent` | (Since front 3.12.0) Tracking code runs while the cookie banner is off, or the store's template does not call `meta-head`, so its tracking code never runs |
+
+### Check the security headers that really reach the browser
+With `--probe-headers`, doctor opens the home page (`APP_URL`) **exactly once** and compares the security headers the browser
+really receives with the settings on the **Security headers** screen:
+
+```bash
+php artisan gp247:doctor --probe-headers
+```
+
+The `security_headers_live` line reports **WARN** when a header is missing, sent twice (by both the web server and GP247), or
+still arrives although it is switched off. If the page cannot be opened (no domain yet, network blocked), the line is **PASS**
+with the note `could not check`. Details: [Security headers](../security/security-production-config.md#security-headers).
+
+> ℹ️ **Available since:** gp247/core 3.16.0
 
 ### Why `file_bom` is worth checking
 A BOM is **3 invisible bytes** that many Windows editors add at the start of a file saved as "UTF-8". PHP prints them **before
@@ -150,8 +178,9 @@ an installed database are skipped.
 
 | Date | GP247 version | Change |
 | --- | --- | --- |
+| 2026-11-22 | gp247/core 3.11.0–3.16.0, gp247/front 3.11.0–3.12.0 | Lists the other doctor rows that come from System alerts: `security_headers`, `login_failures`, `backup_vault_exposed`, `raw_output_scan`, `seo_audit`, `tracking_consent`; adds `--probe-headers` (the `security_headers_live` line) |
 | 2026-11-17 | gp247/core 3.14.3 | `extension_assets` also reports outdated static files (content differs from the copy in `app/`), not only missing ones |
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-17 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

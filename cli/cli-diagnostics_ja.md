@@ -32,7 +32,8 @@ flowchart LR
 2. 結果の表を読みます。各行にはチェック名、状態、メモ（パス、件数、修正用のコマンド）があります。
 3. まず **FAIL** の行をすべて直し、次に **WARN** の行を直します。FAIL がなくなるまで再実行します。
 
-doctor は設定とデータベースを読むだけで、ネットワーク経由でサイトを開くことは**ありません**。`http://` が `https://` に
+doctor は設定とデータベースを読むだけで、ネットワーク経由でサイトを開くことは**ありません**（`--probe-headers` を付けた場合を除く —
+[ブラウザに実際に届くセキュリティヘッダーを確認する](#ブラウザに実際に届くセキュリティヘッダーを確認する)を参照）。`http://` が `https://` に
 転送されるか、`.env` が外部からダウンロードできないかは、自分で確認する必要があります — [セキュリティ](../security/security-introduction_ja.md)
 の [安全な本番環境の設定](../security/security-production-config_ja.md) を参照してください。
 
@@ -62,6 +63,7 @@ doctor は設定とデータベースを読むだけで、ネットワーク経�
 | `extension_data_pending` | GP247 が記録したバージョンより新しいファイルを持つ拡張機能（`git pull` や上書きコピーの直後）で、データ更新が未実行 | `gp247:ext-update --local --all` |
 | `template_source` | パッケージと同一の、公開済みテンプレートファイルの数 — 修正を受け取れない | `gp247:template-prune` |
 | `file_bom` | UTF-8 の BOM で始まる `.php`／`.blade.php` ファイル | BOM なしの UTF-8 で保存し直す |
+| `raw_output_scan` | （WARN、core 3.12.0 から）サイトのテンプレート／プラグイン（`app/GP247/Templates`、`app/GP247/Plugins`）が、安全な形以外で `{!! … !!}` を使って変数を出力しており、入力された文字が HTML のまま表示される。`--json` には `ファイル:行` の一覧が入る | `{{ }}` に置き換える |
 
 ### REST API
 | チェック | 確認内容 |
@@ -83,6 +85,32 @@ doctor は設定とデータベースを読むだけで、ネットワーク経�
 | `mfa_enabled` | 二要素認証プラグイン MFA が未インストールまたは無効 |
 | `api_exposure` | （情報のみ、PASS）REST API／MCP が有効 |
 | `support_line` | 使用中のバージョン系列のセキュリティサポートが残り 6 か月未満、または終了 |
+| `security_headers` | （core 3.16.0 から）緊急スイッチ `GP247_SECURITY_HEADERS=0` ですべてのセキュリティヘッダーが止まっている、HTTPS でないサイトで HSTS が有効、またはヘッダーが無効になっている |
+| `login_failures` | （core 3.11.0 から）過去 24 時間に管理者パスワードを推測しようとした形跡がある、または管理者のログイン失敗が記録されていない |
+| `backup_vault_exposed` | （core 3.11.0 から）バックアップを保存するフォルダが Web からダウンロードできる |
+
+### gp247/front のチェック（front があるサイト）
+パッケージやプラグインは同じ**システムアラート**の一覧にチェックを追加します。doctor はそれらも表示し、こちらも **PASS** か
+**WARN** だけです。
+
+| チェック | WARN になる条件 |
+| --- | --- |
+| `seo_audit` | （front 3.11.0 から）ストアの直近の [SEOチェック](../seo/seo-monitoring_ja.md#seoチェック)に、まだ修正が必要な問題がある — doctor は保存済みの結果を読むだけで、再スキャンはしない |
+| `tracking_consent` | （front 3.12.0 から）Cookie バナーが無効なのにトラッキングコードが動いている、またはストアのテンプレートが `meta-head` を呼んでおらずトラッキングコードが動かない |
+
+### ブラウザに実際に届くセキュリティヘッダーを確認する
+`--probe-headers` を付けると、doctor はトップページ（`APP_URL`）を**1 回だけ**開き、ブラウザが実際に受け取るセキュリティ
+ヘッダーを **セキュリティヘッダー** 画面の設定と比べます。
+
+```bash
+php artisan gp247:doctor --probe-headers
+```
+
+`security_headers_live` の行は、ヘッダーが足りない、2 回送られている（Web サーバーと GP247 の両方が送っている）、または無効に
+したのに届いている場合に **WARN** になります。ページを開けない場合（ドメインがまだない、ネットワークで遮断）は、注記
+`could not check` 付きで **PASS** になります。詳しくは [セキュリティヘッダー](../security/security-production-config_ja.md#セキュリティヘッダー)。
+
+> ℹ️ **対応バージョン:** gp247/core 3.16.0
 
 ### `file_bom` を確認する理由
 BOM とは、Windows の多くのエディターが「UTF-8」で保存するときにファイルの先頭へ付け加える**目に見えない 3 バイト**です。
@@ -149,8 +177,9 @@ php artisan gp247:cache-rebuild
 
 | 日付 | GP247 バージョン | 変更内容 |
 | --- | --- | --- |
+| 2026-11-22 | gp247/core 3.11.0–3.16.0、gp247/front 3.11.0–3.12.0 | システムアラートから doctor が表示するその他の行を追加しました：`security_headers`、`login_failures`、`backup_vault_exposed`、`raw_output_scan`、`seo_audit`、`tracking_consent`。`--probe-headers`（`security_headers_live` の行）を追加しました |
 | 2026-11-17 | gp247/core 3.14.3 | `extension_assets` は不足しているファイルだけでなく、古い静的ファイル（`app/` の版と内容が異なる）も報告 |
 
 ---
 
-<sub>📅 **最終更新:** 2026-11-17 · ✍️ **作成者 (Author):** GP247</sub>
+<sub>📅 **最終更新:** 2026-11-22 · ✍️ **作成者 (Author):** GP247</sub>

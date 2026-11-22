@@ -24,7 +24,7 @@ New to GP247? Read [About GP247](./about/gp247.md).
 ### Command line (CLI)
 | Document | Summary | Last updated |
 | --- | --- | --- |
-| [GP247 command line (CLI)](./cli/cli-introduction.md) | A 7-page set on the `php artisan gp247:*` commands: look up by job, safety level of each command; install & update, extensions, templates, `gp247:doctor`, maintenance (admin password, encryption key, backups), use in scripts/CI/Docker (`--json`, error codes) | 2026-11-18 |
+| [GP247 command line (CLI)](./cli/cli-introduction.md) | A 7-page set on the `php artisan gp247:*` commands: look up by job, safety level of each command; install & update, extensions, templates, `gp247:doctor`, maintenance (admin password, encryption key, backups), use in scripts/CI/Docker (`--json`, error codes) | 2026-11-22 |
 
 ### API
 | Document | Summary | Last updated |
