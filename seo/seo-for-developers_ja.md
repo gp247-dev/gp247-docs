@@ -299,7 +299,8 @@ public static function rating(string $productId, $storeId): ?array
 
 | `meta-head` の prop | 使う場面 |
 | --- | --- |
-| `title`、`description`、`keyword`、`og_image` | ページの値。空ならストアの値を使う |
+| `title`、`og_image` | ページの値。空ならストアの値を使う |
+| `description`、`keyword` | ページの値。空ならタグを出力しない（全ページが同じ説明にならないよう、ストアの値は使わない） |
 | `canonical` | 別のカノニカルを強制する（まれ） |
 | `hreflang` | 翻訳版の一覧。空ならルートから自動で計算 |
 | `robots` | 特別なページで robots タグを強制する |
@@ -417,4 +418,4 @@ if (class_exists(\GP247\Core\AdminShell\Support\AdminAlertRegistry::class)) {
 
 ---
 
-<sub>📅 **最終更新:** 2026-11-20 · ✍️ **作成者 (Author):** GP247</sub>
+<sub>📅 **最終更新:** 2026-11-22 · ✍️ **作成者 (Author):** GP247</sub>

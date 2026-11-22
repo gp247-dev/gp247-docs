@@ -299,7 +299,8 @@ Template (kể cả template khách tự viết) chỉ cần đặt đúng các 
 
 | Prop của `meta-head` | Dùng khi |
 | --- | --- |
-| `title`, `description`, `keyword`, `og_image` | Giá trị của trang; trống thì dùng giá trị cửa hàng |
+| `title`, `og_image` | Giá trị của trang; trống thì dùng giá trị cửa hàng |
+| `description`, `keyword` | Giá trị của trang; trống thì không in thẻ (không lấy giá trị cửa hàng, để mọi trang không cùng một mô tả) |
 | `canonical` | Ép canonical khác (hiếm) |
 | `hreflang` | Danh sách bản dịch; trống thì tự tính theo route |
 | `robots` | Ép thẻ robots cho một trang đặc biệt |
@@ -417,4 +418,4 @@ if (class_exists(\GP247\Core\AdminShell\Support\AdminAlertRegistry::class)) {
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-20 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

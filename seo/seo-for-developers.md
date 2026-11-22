@@ -299,7 +299,8 @@ A template (including templates customers write themselves) only needs to place 
 
 | `meta-head` prop | Use when |
 | --- | --- |
-| `title`, `description`, `keyword`, `og_image` | The page's values; when empty, the store's values are used |
+| `title`, `og_image` | The page's values; when empty, the store's values are used |
+| `description`, `keyword` | The page's values; when empty, no tag is printed (the store's values are not used, so pages do not share one description) |
 | `canonical` | Forcing a different canonical (rare) |
 | `hreflang` | List of translations; when empty, computed from the route |
 | `robots` | Forcing the robots tag for a special page |
@@ -417,4 +418,4 @@ if (class_exists(\GP247\Core\AdminShell\Support\AdminAlertRegistry::class)) {
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-20 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>
