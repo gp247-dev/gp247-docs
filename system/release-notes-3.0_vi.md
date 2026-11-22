@@ -296,4 +296,4 @@ dòng thu với số tiền và ngày đúng, và ô "Còn lại" bằng 0.
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-10-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-07 · ✍️ **Tác giả (Author):** GP247</sub>

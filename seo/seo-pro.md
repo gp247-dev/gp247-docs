@@ -236,4 +236,4 @@ The limits below are deliberate, so that one wrong action cannot hurt the rankin
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-21 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

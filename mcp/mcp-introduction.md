@@ -173,4 +173,4 @@ store's domain and only sees that store's data. Without that support, only the t
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-17 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-18 · ✍️ **Author:** GP247</sub>

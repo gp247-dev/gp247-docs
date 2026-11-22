@@ -236,4 +236,4 @@ php artisan gp247:ext-install --type=plugin --key=SeoPro --paid --license=<ラ�
 
 ---
 
-<sub>📅 **最終更新:** 2026-11-21 · ✍️ **作成者 (Author):** GP247</sub>
+<sub>📅 **最終更新:** 2026-11-22 · ✍️ **作成者 (Author):** GP247</sub>

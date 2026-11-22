@@ -147,4 +147,4 @@ Both read the site's configuration and do not open the site from the outside: wh
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-08 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

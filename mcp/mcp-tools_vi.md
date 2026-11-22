@@ -303,4 +303,4 @@ có quyền ở màn quản trị tương ứng không (ví dụ màn Khách hà
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-17 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-18 · ✍️ **Tác giả (Author):** GP247</sub>

@@ -164,4 +164,4 @@ A recent update hardened two points for safety and data integrity:
 
 ---
 
-<sub>📅 **Last updated:** 2026-10-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

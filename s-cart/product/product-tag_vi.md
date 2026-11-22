@@ -201,4 +201,4 @@ Tính năng có một công tắc bật/tắt riêng. Mặc định là **bật*
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-10-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

@@ -3,8 +3,12 @@
 # Tài liệu GP247 (gp247-docs)
 
 ## Giới thiệu
-Đây là repo tài liệu chung của GP247. Trang này là **mục lục** liệt kê toàn bộ tài liệu trong repo và
-link tới từng tài liệu. Tài liệu được nhóm theo chủ đề (API, mở rộng/plugin, phát hành, hệ thống, S-Cart).
+Đây là repo tài liệu chung của GP247 và S-Cart. **GP247** là hệ sinh thái mã nguồn mở trên Laravel để xây dựng ứng dụng web
+cho doanh nghiệp. **S-Cart** là phần mềm bán hàng trực tuyến mã nguồn mở, miễn phí, xây dựng trên GP247 và Laravel.
+
+Trang này là **mục lục** liệt kê toàn bộ tài liệu trong repo và link tới từng tài liệu, nhóm theo chủ đề: cài đặt & cập nhật,
+dòng lệnh, API, MCP, bảo mật, SEO, sao lưu & phục hồi, mở rộng, phát hành, hệ thống, S-Cart, nhiều cửa hàng & sàn bán hàng,
+nhập hàng & thu chi (InOut).
 
 Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 
@@ -20,30 +24,30 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 ### Dòng lệnh (CLI)
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
-| [Dòng lệnh GP247 (CLI)](./cli/cli-introduction_vi.md) | Bộ 7 trang về lệnh `php artisan gp247:*`: tra theo việc cần làm, mức an toàn từng lệnh; cài đặt & cập nhật, extension, template, `gp247:doctor`, bảo trì (mật khẩu quản trị, khoá mã hoá, sao lưu), dùng trong script/CI/Docker (`--json`, mã lỗi) | 2026-11-17 |
+| [Dòng lệnh GP247 (CLI)](./cli/cli-introduction_vi.md) | Bộ 7 trang về lệnh `php artisan gp247:*`: tra theo việc cần làm, mức an toàn từng lệnh; cài đặt & cập nhật, extension, template, `gp247:doctor`, bảo trì (mật khẩu quản trị, khoá mã hoá, sao lưu), dùng trong script/CI/Docker (`--json`, mã lỗi) | 2026-11-18 |
 
 ### API
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
-| [Giới thiệu API GP247](./api/api-introduction_vi.md) | Trang chính của bộ tài liệu API v2: bắt đầu nhanh, khái niệm, đăng nhập, quản trị, cửa hàng, đồng bộ, xử lý sự cố, tham chiếu từng endpoint | 2026-11-13 |
-| [API v1 (đã ngưng phát triển)](./api/api-v1_vi.md) | API cũ cho ứng dụng viết trước v2: danh sách endpoint, cách bật, cách chuyển sang v2 | 2026-11-04 |
+| [Giới thiệu API GP247](./api/api-introduction_vi.md) | Trang chính của bộ tài liệu API v2: bắt đầu nhanh, khái niệm, đăng nhập, quản trị, cửa hàng, đồng bộ, xử lý sự cố, tham chiếu từng endpoint | 2026-11-22 |
+| [API v1 (đã ngưng phát triển)](./api/api-v1_vi.md) | API cũ cho ứng dụng viết trước v2: danh sách endpoint, cách bật, cách chuyển sang v2 | 2026-11-20 |
 | [Hướng dẫn tạo API đúng chuẩn](./api/create-api_vi.md) | Cách tự viết endpoint API mới theo chuẩn GP247 | 2026-11-02 |
 
 ### MCP (AI agent)
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
-| [Giới thiệu MCP server](./mcp/mcp-introduction_vi.md) | Trang chính của bộ tài liệu MCP: cho AI agent (Claude, Cursor, VS Code…) làm việc với cửa hàng — bắt đầu nhanh, danh mục 18 công cụ, an toàn & phân quyền, quản trị & cài đặt, xử lý sự cố | 2026-11-17 |
+| [Giới thiệu MCP server](./mcp/mcp-introduction_vi.md) | Trang chính của bộ tài liệu MCP: cho AI agent (Claude, Cursor, VS Code…) làm việc với cửa hàng — bắt đầu nhanh, danh mục 18 công cụ, an toàn & phân quyền, quản trị & cài đặt, xử lý sự cố | 2026-11-18 |
 
 ### Bảo mật
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
-| [Bảo mật hệ thống GP247](./security/security-introduction_vi.md) | Trang chính của bộ tài liệu Bảo mật: GP247 tự lo gì, bạn phải làm gì — cấu hình production, khoá mã hoá & sao lưu, tài khoản & phân quyền, cập nhật & xử lý sự cố, checklist và những lỗi hay gặp | 2026-11-13 |
+| [Bảo mật hệ thống GP247](./security/security-introduction_vi.md) | Trang chính của bộ tài liệu Bảo mật: GP247 tự lo gì, bạn phải làm gì — cấu hình production, khoá mã hoá & sao lưu, tài khoản & phân quyền, cập nhật & xử lý sự cố, checklist và những lỗi hay gặp | 2026-11-22 |
 
 ### SEO
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
-| [SEO trong S-Cart](./seo/seo-introduction_vi.md) | Trang chính của bộ tài liệu SEO: những gì hệ thống tự làm, cài đặt toàn cửa hàng (xác minh Google/Bing, robots, sitemap, mẫu tiêu đề, IndexNow), tab SEO từng nội dung và tự 301, Kiểm tra SEO, nhật ký 404, AI agent, mã đo lường (GA4, GTM, Meta Pixel) và banner cookie, hook cho lập trình viên | 2026-11-20 |
-| [SEO Pro (plugin trả phí)](./seo/seo-pro_vi.md) | Sửa SEO hàng loạt, số liệu Google Search Console trong admin, gợi ý 301 cho trang 404, tìm link hỏng, dữ liệu Google Shopping; so sánh với SEO có sẵn, cách kết nối và giới hạn | 2026-11-21 |
+| [SEO trong S-Cart](./seo/seo-introduction_vi.md) | Trang chính của bộ tài liệu SEO: những gì hệ thống tự làm, cài đặt toàn cửa hàng (xác minh Google/Bing, robots, sitemap, mẫu tiêu đề, IndexNow), tab SEO từng nội dung và tự 301, Kiểm tra SEO, nhật ký 404, AI agent, mã đo lường (GA4, GTM, Meta Pixel) và banner cookie, hook cho lập trình viên | 2026-11-22 |
+| [SEO Pro (plugin trả phí)](./seo/seo-pro_vi.md) | Sửa SEO hàng loạt, số liệu Google Search Console trong admin, gợi ý 301 cho trang 404, tìm link hỏng, dữ liệu Google Shopping; so sánh với SEO có sẵn, cách kết nối và giới hạn | 2026-11-22 |
 
 ### Sao lưu & phục hồi
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
@@ -56,28 +60,28 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
 | [Hướng dẫn tạo Plugin](./extension/create-plugin_vi.md) | Điểm bắt đầu: chọn đúng hướng dẫn theo loại plugin, lộ trình 6 bước có code (thiết lập lưu trong database, màn cấu hình, cài, phát hành) | 2026-11-13 |
-| [Tạo plugin thanh toán](./extension/create-payment-plugin_vi.md) | Từng bước có code: plugin chuyển khoản chạy được ngay + khung nối cổng thanh toán online (ghi tiền đúng một lần, webhook) | 2026-11-03 |
-| [Tạo plugin vận chuyển](./extension/create-shipping-plugin_vi.md) | Từng bước có code: plugin phí theo khối lượng chạy được ngay + khung nối hãng vận chuyển có API (vận đơn, webhook, thu hộ) | 2026-11-03 |
+| [Tạo plugin thanh toán](./extension/create-payment-plugin_vi.md) | Từng bước có code: plugin chuyển khoản chạy được ngay + khung nối cổng thanh toán online (ghi tiền đúng một lần, webhook) | 2026-11-22 |
+| [Tạo plugin vận chuyển](./extension/create-shipping-plugin_vi.md) | Từng bước có code: plugin phí theo khối lượng chạy được ngay + khung nối hãng vận chuyển có API (vận đơn, webhook, thu hộ) | 2026-11-22 |
 | [Plugin an toàn khi cập nhật](./extension/create-plugin-update-safety_vi.md) | Cập nhật chạy thế nào, 7 quy tắc, hook `update()`, bảng dữ liệu riêng | 2026-11-17 |
 | [Plugin nâng cao](./extension/create-plugin-advanced_vi.md) | Cấu hình theo cửa hàng, khoá bí mật, trang / khối / điểm cắm storefront, mã giảm giá, menu | 2026-11-17 |
 | [Hướng dẫn tạo Template (giao diện)](./extension/create-template_vi.md) | Tạo template storefront mới; cơ chế fallback view của gp247/shop | 2026-11-20 |
 | [Cài đặt Plugin & Template](./extension/install-extension_vi.md) | 4 cách cài: online (thư viện), import (.zip), thủ công, CLI (`gp247:ext-*`) | 2026-11-17 |
-| [Cập nhật Plugin & Template](./extension/update-extension_vi.md) | Cập nhật từ thư viện (trang quản trị, dòng lệnh), chép đè bản mới (git pull, FTP, `.zip`), xử lý khi thiếu hoặc cũ file trong `public/`, khôi phục khi lỗi | 2026-11-17 |
+| [Cập nhật Plugin & Template](./extension/update-extension_vi.md) | Cập nhật từ thư viện (trang quản trị, dòng lệnh), chép đè bản mới (git pull, FTP, `.zip`), xử lý khi thiếu hoặc cũ file trong `public/`, khôi phục khi lỗi | 2026-11-19 |
 | [Chuyển đổi Plugin v1 lên v2](./extension/convert-plugin-v1-to-v2_vi.md) | Nâng cấp plugin từ Core 1.x lên Core 2.0 | 2026-11-03 |
 
 ### Phát hành
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
-| [Phát hành và bảo mật S-Cart](./release/release_vi.md) | Phiên bản nên dùng (tối thiểu từng package); điểm mới nổi bật; cách cập nhật; các bản S-Cart (mỗi bản gom core/front/shop): có gì mới, sửa lỗi, cần làm khi cập nhật; bảo mật và báo lỗ hổng | 2026-11-20 |
+| [Phát hành và bảo mật S-Cart](./release/release_vi.md) | Phiên bản nên dùng (tối thiểu từng package); điểm mới nổi bật; cách cập nhật; các bản S-Cart (mỗi bản gom core/front/shop/mcp): có gì mới, sửa lỗi, cần làm khi cập nhật; bảo mật và báo lỗ hổng | 2026-11-20 |
 
 ### Hệ thống
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
-| [Ghi chú phát hành v3.0 — tiền của đơn hàng](./system/release-notes-3.0_vi.md) | Nâng cấp từ v2.1/v3.0: sổ thanh toán từng đơn, dòng tiền tính theo ngày thu, sửa trạng thái thanh toán lệch một bậc, **giảm giá trừ trước thuế**; ghi chú cho lập trình viên plugin | 2026-10-22 |
+| [Ghi chú phát hành v3.0 — tiền của đơn hàng](./system/release-notes-3.0_vi.md) | Nâng cấp từ v2.1/v3.0: sổ thanh toán từng đơn, dòng tiền tính theo ngày thu, sửa trạng thái thanh toán lệch một bậc, **giảm giá trừ trước thuế**; ghi chú cho lập trình viên plugin | 2026-11-07 |
 | [Hệ thống đa ngôn ngữ](./system/language-system_vi.md) | Cách dùng ngôn ngữ / i18n trong GP247 | 2026-11-10 |
 | [Hệ thống gửi mail](./system/mail-system_vi.md) | Luồng gửi mail (kèm sơ đồ), cấu hình SMTP, chọn kênh gửi | 2026-10-22 |
 | [Mã hoá dữ liệu nhạy cảm](./system/data-encryption_vi.md) | Mã hoá at-rest bí mật (SMTP/OAuth/license); khoá riêng `GP247_ENCRYPTION_KEY`; **các bước đổi khoá an toàn** bằng `gp247:encryption-key-rotate`; mã hoá cột bảng khác | 2026-11-04 |
-| [Lịch chạy & Hàng đợi](./system/schedule-and-queue_vi.md) | schedule:run vs queue:work; cài cron gửi mail theo môi trường | 2026-10-22 |
+| [Lịch chạy & Hàng đợi](./system/schedule-and-queue_vi.md) | schedule:run vs queue:work; cài cron gửi mail theo môi trường | 2026-11-07 |
 | [Xử lý Cache](./system/cache-system_vi.md) | Màn Config Cache Manager; cache gì/không cache gì; version-bump; hàm helper | 2026-10-22 |
 | [Trường tùy chỉnh (Custom Field)](./system/custom-fields_vi.md) | Cơ chế 4 hook; độ phủ chỉ customer/product; hướng dẫn dev bật cho bảng khác | 2026-10-22 |
 | [Khối bố cục (Layout Block)](./system/layout-block-system_vi.md) | Cơ chế hiển thị khối: thứ tự ưu tiên giao diện → plugin, 3 cách tùy chỉnh không mất khi cập nhật, cách plugin đăng ký khối | 2026-10-22 |
@@ -86,17 +90,17 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 ### S-Cart (bán hàng)
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
-| [Vòng đời đơn hàng](./s-cart/order-processing/order-lifecycle_vi.md) | Từng chặng của đơn — đặt, sửa, thu tiền, hoàn tiền, hủy, mở lại, xóa — kèm tồn kho/tiền/lịch sử ở mỗi chặng và sơ đồ luồng | 2026-10-22 |
+| [Vòng đời đơn hàng](./s-cart/order-processing/order-lifecycle_vi.md) | Từng chặng của đơn — đặt, sửa, thu tiền, hoàn tiền, hủy, mở lại, xóa — kèm tồn kho/tiền/lịch sử ở mỗi chặng và sơ đồ luồng | 2026-11-22 |
 | [Yêu cầu thanh toán (Payment Request)](./s-cart/order-processing/payment-request_vi.md) | Thu/chi tiền ngoài giỏ hàng: link thanh toán online, ghi nhận tay, hoàn tiền; 4 luồng tiền, mục đích đơn hàng/InOut/MultiVendor, phân quyền chi tiền, sơ đồ luồng | 2026-10-22 |
-| [Thanh toán trong S-Cart](./s-cart/payment/payment_vi.md) | Thiết lập và vận hành: cài cổng thanh toán (thử → thật, webhook), sổ thanh toán của đơn, COD, hướng dẫn khách thấy khi thanh toán; developer xem [Tạo plugin thanh toán](./extension/create-payment-plugin_vi.md) | 2026-11-03 |
-| [Vận chuyển trong S-Cart](./s-cart/shipping/shipping_vi.md) | Thiết lập và vận hành: tab Vận chuyển, kho lấy hàng, vận đơn, theo dõi, thu hộ (từ shop 3.1.4); developer xem [Tạo plugin vận chuyển](./extension/create-shipping-plugin_vi.md) | 2026-11-03 |
-| [Tiền tệ (Currency)](./s-cart/tax-and-currency/currency_vi.md) | Đồng tiền gốc tường minh, đổi gốc bảo toàn giá trị, ghi chú ô nhập tiền (từ shop 2.1) | 2026-10-22 |
-| [Thuế trong S-Cart](./s-cart/tax-and-currency/tax_vi.md) | Cách thuế theo sản phẩm hoạt động và cách cấu hình | 2026-10-22 |
-| [Sản phẩm gói (Bundle/Combo)](./s-cart/product/product-bundle_vi.md) | Tạo sản phẩm combo gồm nhiều sản phẩm con; giá & trừ kho | 2026-10-22 |
-| [Tổ chức sản phẩm (Single/Bundle/Group)](./s-cart/product/product-structure_vi.md) | So sánh 3 loại sản phẩm kèm sơ đồ; chọn loại nào | 2026-10-22 |
-| [Quản lý tồn kho sản phẩm](./s-cart/product/product-stock-management_vi.md) | Tồn kho tăng/giảm khi nào; cấu hình vượt tồn; **hủy đơn hoàn kho, xóa đơn thì không** (đổi từ v3.0) | 2026-10-22 |
-| [Thuộc tính sản phẩm (Color/Size)](./s-cart/product/product-attribute_vi.md) | Nhóm & giá trị thuộc tính + phụ phí; khai báo ở admin; luồng giá/giỏ/đơn; an toàn giá | 2026-10-22 |
-| [Thẻ từ khóa sản phẩm (Product Tag)](./s-cart/product/product-tag_vi.md) | Tạo/gán thẻ từ khóa cho sản phẩm; phân biệt với Loại giao hàng; tắt vs xóa (từ shop 2.1.6) | 2026-10-22 |
+| [Thanh toán trong S-Cart](./s-cart/payment/payment_vi.md) | Thiết lập và vận hành: cài cổng thanh toán (thử → thật, webhook), sổ thanh toán của đơn, COD, hướng dẫn khách thấy khi thanh toán; developer xem [Tạo plugin thanh toán](./extension/create-payment-plugin_vi.md) | 2026-11-22 |
+| [Vận chuyển trong S-Cart](./s-cart/shipping/shipping_vi.md) | Thiết lập và vận hành: tab Vận chuyển, kho lấy hàng, vận đơn, theo dõi, thu hộ (từ shop 3.1.4); developer xem [Tạo plugin vận chuyển](./extension/create-shipping-plugin_vi.md) | 2026-11-22 |
+| [Tiền tệ (Currency)](./s-cart/tax-and-currency/currency_vi.md) | Đồng tiền gốc tường minh, đổi gốc bảo toàn giá trị, ghi chú ô nhập tiền (từ shop 2.1) | 2026-11-22 |
+| [Thuế trong S-Cart](./s-cart/tax-and-currency/tax_vi.md) | Cách thuế theo sản phẩm hoạt động và cách cấu hình | 2026-11-22 |
+| [Sản phẩm gói (Bundle/Combo)](./s-cart/product/product-bundle_vi.md) | Tạo sản phẩm combo gồm nhiều sản phẩm con; giá & trừ kho | 2026-11-22 |
+| [Tổ chức sản phẩm (Single/Bundle/Group)](./s-cart/product/product-structure_vi.md) | So sánh 3 loại sản phẩm kèm sơ đồ; chọn loại nào | 2026-11-22 |
+| [Quản lý tồn kho sản phẩm](./s-cart/product/product-stock-management_vi.md) | Tồn kho tăng/giảm khi nào; cấu hình vượt tồn; **hủy đơn hoàn kho, xóa đơn thì không** (đổi từ v3.0) | 2026-11-22 |
+| [Thuộc tính sản phẩm (Color/Size)](./s-cart/product/product-attribute_vi.md) | Nhóm & giá trị thuộc tính + phụ phí; khai báo ở admin; luồng giá/giỏ/đơn; an toàn giá | 2026-11-22 |
+| [Thẻ từ khóa sản phẩm (Product Tag)](./s-cart/product/product-tag_vi.md) | Tạo/gán thẻ từ khóa cho sản phẩm; phân biệt với Loại giao hàng; tắt vs xóa (từ shop 2.1.6) | 2026-11-22 |
 | [Nhân bản sản phẩm và trang](./s-cart/product/product-duplicate_vi.md) | Một nút tạo bản sao (đang tắt) của sản phẩm / trang nội dung; chép gì, không chép gì (tồn kho, mã vạch, đánh giá); việc cần làm trước khi bật bán (từ shop 3.13.0, front 3.12.0) | 2026-11-20 |
 
 ### Nhiều cửa hàng & Sàn bán hàng
@@ -104,8 +108,8 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
-| [Multi-Store — nhiều website, một admin](./multi-store/multi-store_vi.md) | Nhiều cửa hàng của cùng một doanh nghiệp, mỗi cửa hàng một tên miền/giao diện/ngôn ngữ/tiền tệ: mô hình, tính năng, so sánh Free/Pro; mục lục dẫn tới cài đặt, vận hành và tùy chỉnh; ảnh chụp màn hình bản Free và Pro | 2026-11-21 |
-| [Multi-Vendor — sàn nhiều người bán](./multi-vendor/multi-vendor_vi.md) | Biến S-Cart thành sàn trên một tên miền: mô hình, tính năng, so sánh Free/Pro, so sánh Multi-Store; mục lục dẫn tới cài đặt, vận hành và tùy chỉnh; ảnh chụp màn hình bản Free và Pro | 2026-11-21 |
+| [Multi-Store — nhiều website, một admin](./multi-store/multi-store_vi.md) | Nhiều cửa hàng của cùng một doanh nghiệp, mỗi cửa hàng một tên miền/giao diện/ngôn ngữ/tiền tệ: mô hình, tính năng, so sánh Free/Pro; mục lục dẫn tới cài đặt, vận hành và tùy chỉnh; ảnh chụp màn hình bản Free và Pro | 2026-11-22 |
+| [Multi-Vendor — sàn nhiều người bán](./multi-vendor/multi-vendor_vi.md) | Biến S-Cart thành sàn trên một tên miền: mô hình, tính năng, so sánh Free/Pro, so sánh Multi-Store; mục lục dẫn tới cài đặt, vận hành và tùy chỉnh; ảnh chụp màn hình bản Free và Pro | 2026-11-22 |
 
 ### Nhập hàng, trả hàng & thu chi (InOut)
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |

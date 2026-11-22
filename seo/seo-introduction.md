@@ -85,4 +85,4 @@ If everything worked, after a few days Search Console reports the sitemap as "Su
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-20 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

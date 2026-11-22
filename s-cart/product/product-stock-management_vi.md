@@ -191,4 +191,4 @@ Khi bật **Quản lý tồn kho** (`product_stock`) và **tắt** "Cho phép mu
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-10-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

@@ -231,4 +231,4 @@ cho từng cửa hàng; ô nào để trống thì dùng giá trị chung.
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-10-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

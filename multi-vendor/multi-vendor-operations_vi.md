@@ -370,4 +370,4 @@ Màn **Tạo đơn hàng** trong khu người bán: chọn khách, thêm sản p
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-21 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

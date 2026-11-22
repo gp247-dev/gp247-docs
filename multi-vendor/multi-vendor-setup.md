@@ -264,4 +264,4 @@ To change on-screen text, email content, shop page design or staff permissions, 
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-21 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

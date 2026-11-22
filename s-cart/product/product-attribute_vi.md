@@ -162,4 +162,4 @@ Từ bản cập nhật gần đây, S-Cart củng cố 2 điểm để đảm b
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-10-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

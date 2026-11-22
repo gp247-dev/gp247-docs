@@ -381,4 +381,4 @@ table and checklist are in section 7.
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-04 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-20 · ✍️ **Author:** GP247</sub>

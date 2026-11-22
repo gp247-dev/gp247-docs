@@ -370,4 +370,4 @@ The **Create order** screen in the seller area: pick a customer, add products fr
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-21 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

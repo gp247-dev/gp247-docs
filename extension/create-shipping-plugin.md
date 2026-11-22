@@ -955,4 +955,4 @@ product and returns the item with extra `meta`. Never a closure — it makes `ph
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-03 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

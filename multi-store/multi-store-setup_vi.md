@@ -180,4 +180,4 @@ Không phải cài lại gì và không phải chuyển dữ liệu: cửa hàng
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-21 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

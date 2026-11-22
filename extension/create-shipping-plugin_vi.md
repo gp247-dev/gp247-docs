@@ -950,4 +950,4 @@ phẩm, trả về món hàng đã thêm `meta`. Không dùng closure — sẽ l
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-03 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

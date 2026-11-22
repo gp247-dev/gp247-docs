@@ -177,4 +177,4 @@ Khách đăng ký trên cửa hàng cũng cần được bảo vệ:
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-08 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-09 · ✍️ **Tác giả (Author):** GP247</sub>

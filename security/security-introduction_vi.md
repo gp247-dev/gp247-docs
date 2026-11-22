@@ -147,4 +147,4 @@ Cả hai đọc cấu hình của site, không mở site từ bên ngoài: việ
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-08 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

@@ -236,4 +236,4 @@ Các giới hạn dưới đây có chủ đích, để một thao tác nhầm k
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-21 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

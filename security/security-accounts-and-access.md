@@ -179,4 +179,4 @@ Customers who register on the shop also need protection:
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-08 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-09 · ✍️ **Author:** GP247</sub>

@@ -146,4 +146,4 @@ In short: **Multi-Store is many stores of your own; Multi-Vendor is a marketplac
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-21 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

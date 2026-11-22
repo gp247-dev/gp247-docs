@@ -180,4 +180,4 @@ Nothing is reinstalled and no data is migrated: stores, products, orders and set
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-21 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

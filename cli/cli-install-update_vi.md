@@ -271,4 +271,4 @@ database hoặc dữ liệu trùng), rồi chạy lại `gp247:update`.
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-08 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-18 · ✍️ **Tác giả (Author):** GP247</sub>

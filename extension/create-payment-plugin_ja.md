@@ -1048,4 +1048,4 @@ class MyGatewayWebhookTest extends TestCase
 
 ---
 
-<sub>📅 **最終更新:** 2026-11-03 · ✍️ **作成者 (Author):** GP247</sub>
+<sub>📅 **最終更新:** 2026-11-22 · ✍️ **作成者 (Author):** GP247</sub>

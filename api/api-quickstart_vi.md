@@ -170,4 +170,4 @@ Thay vì gõ lệnh, bạn có thể nạp đặc tả `openapi.json` để th�
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-03 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

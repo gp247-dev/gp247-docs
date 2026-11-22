@@ -268,4 +268,4 @@ is cancelled or re-opened** is currently only implied by the status-change line,
 
 ---
 
-<sub>📅 **Last updated:** 2026-10-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

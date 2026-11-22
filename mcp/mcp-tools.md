@@ -304,4 +304,4 @@ the matching admin screen (e.g. the Customers screen for `search_customers`).
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-17 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-18 · ✍️ **Author:** GP247</sub>

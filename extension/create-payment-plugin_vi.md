@@ -1048,4 +1048,4 @@ hàng của **đơn** (`$order->store_id`).
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-03 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

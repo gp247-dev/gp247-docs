@@ -308,4 +308,4 @@ with the right amount and date, and the "Balance" must be 0.
 
 ---
 
-<sub>📅 **Last updated:** 2026-10-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-07 · ✍️ **Author:** GP247</sub>

@@ -179,4 +179,4 @@ In short: **Multi-Vendor is a marketplace for many sellers; Multi-Store is many 
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-21 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

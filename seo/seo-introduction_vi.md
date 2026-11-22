@@ -85,4 +85,4 @@ Nếu thành công, sau vài ngày Search Console báo sitemap "Thành công" v�
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-20 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

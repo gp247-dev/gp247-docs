@@ -191,4 +191,4 @@ When **Stock management** (`product_stock`) is on and **Allow buy out of stock**
 
 ---
 
-<sub>📅 **Last updated:** 2026-10-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

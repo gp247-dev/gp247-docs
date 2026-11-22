@@ -401,4 +401,4 @@ v2 の商品（`product/list`、`product/detail/{id}`）には、アプリがバ
 
 ---
 
-<sub>📅 **最終更新:** 2026-11-04 · ✍️ **作成者 (Author):** GP247</sub>
+<sub>📅 **最終更新:** 2026-11-20 · ✍️ **作成者 (Author):** GP247</sub>
