@@ -58,6 +58,8 @@ Open **Multi-store → Store list**: you will see the existing root store, a quo
 
 If you have used up your quota (free edition: 3 stores, **including the root store**), adding is blocked with a clear message — that is the boundary between the editions, not a bug.
 
+![Add new store form: contact details, domain, store code, language, currency and template on the left, per-language texts on the right](../assets/MultiStore/ms-create-store_en.png)
+
 ## Step 4: Point the domain at the system
 A new store only opens once its domain **actually points at this website**. Two things, done outside S-Cart:
 
@@ -69,6 +71,8 @@ A new store only opens once its domain **actually points at this website**. Two 
 
 ## Step 5: Turn on strict domain checking (recommended)
 On **Store list**, switch on **Strict domain checking (STRICT)**.
+
+![Store list in the free edition: stores used 3 / 3, the STRICT switch and the locked Pro menu items](../assets/MultiStore/ms-free-stores_en.png)
 
 With it on, the website **only serves** the domains declared on your stores, plus the root domain in `.env` (`APP_URL`). Any unknown domain pointed at your server gets an **access denied** page instead of your website. This stops other people pointing their domains at your site.
 
@@ -105,6 +109,8 @@ Only do this if you bought the Pro edition. Pro installs **on top of** the free 
 Nothing is reinstalled and no data is migrated: stores, products, orders and settings stay as they are.
 
 **If you disable or uninstall Pro**: Pro screens revert to explanation pages, the quota returns to 3 stores and the Lock column is disabled again. **No data is deleted** — stores beyond the quota remain and keep running, cross-store product links and store-administrator assignments are kept; reinstall Pro and you carry on.
+
+![Store list with Pro: unlimited stores, maintenance status and the Lock button of each store](../assets/MultiStore/ms-pro-stores_en.png)
 
 ## Conditions & Rules (know before you act)
 
@@ -174,4 +180,4 @@ Nothing is reinstalled and no data is migrated: stores, products, orders and set
 
 ---
 
-<sub>📅 **Last updated:** 2026-10-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-21 · ✍️ **Author:** GP247</sub>

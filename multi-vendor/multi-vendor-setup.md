@@ -124,6 +124,8 @@ prints the command to run afterwards. To leave other plugins alone entirely:
 php artisan gp247:vendor-sample --skip-rating
 ```
 
+![Vendor stores list: open/close switch, the commission rate in force and the config button of each shop](../assets/MultiVendor/mv-free-stores_en.png)
+
 ## Step 5: Check that the marketplace works
 1. Open `https://your-domain/shop/vendor01` — the shop page shows that seller's categories and products (empty if nothing is listed yet).
 2. Sign in at `/vendor_admin` and create a product; if auto-approval is off, approve it in the S-Cart admin.
@@ -134,6 +136,8 @@ php artisan gp247:vendor-sample --skip-rating
    php artisan gp247:info
    php artisan gp247:doctor
    ```
+
+![Shop directory on the storefront: every shop with its rating, product count and join date](../assets/MultiVendor/mv-shop-directory_en.png)
 
 ## Step 6 (optional): Add the Pro edition
 Only do this if you bought the Pro edition. Pro installs **on top of** the free edition; it does not replace it.
@@ -260,4 +264,4 @@ To change on-screen text, email content, shop page design or staff permissions, 
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-08 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-21 · ✍️ **Author:** GP247</sub>

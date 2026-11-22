@@ -104,8 +104,8 @@ New to GP247? Read [About GP247](./about/gp247.md).
 
 | Document | Summary | Last updated |
 | --- | --- | --- |
-| [Multi-Store — many websites, one admin](./multi-store/multi-store.md) | Several stores of one business, each with its own domain/theme/language/currency: the model, features, Free/Pro comparison; index of setup, operations and customization | 2026-10-22 |
-| [Multi-Vendor — multi-seller marketplace](./multi-vendor/multi-vendor.md) | Turn S-Cart into a marketplace on one domain: the model, features, Free/Pro comparison, Multi-Store comparison; index of setup, operations and customization | 2026-10-22 |
+| [Multi-Store — many websites, one admin](./multi-store/multi-store.md) | Several stores of one business, each with its own domain/theme/language/currency: the model, features, Free/Pro comparison; index of setup, operations and customization; screenshots of the Free and Pro screens | 2026-11-21 |
+| [Multi-Vendor — multi-seller marketplace](./multi-vendor/multi-vendor.md) | Turn S-Cart into a marketplace on one domain: the model, features, Free/Pro comparison, Multi-Store comparison; index of setup, operations and customization; screenshots of the Free and Pro screens | 2026-11-21 |
 
 ### Purchasing, returns & cash flow (InOut)
 | Document | Summary | Last updated |

@@ -39,6 +39,8 @@ flowchart TD
 
 Khi một khách truy cập, hệ thống nhận ra **tên miền** họ đang mở và phục vụ đúng cửa hàng tương ứng: đúng giao diện, đúng ngôn ngữ, đúng tiền tệ, đúng danh mục sản phẩm của cửa hàng đó.
 
+![Ba cửa hàng của cùng một hệ thống, mỗi cửa hàng một tên miền, giao diện, ngôn ngữ và tiền tệ riêng](../assets/MultiStore/ms-storefronts.png)
+
 ## Plugin làm được gì
 
 **Bản miễn phí** đủ để vận hành thật với tối đa 3 cửa hàng:
@@ -73,6 +75,10 @@ Khi một khách truy cập, hệ thống nhận ra **tên miền** họ đang m
 | **Báo cáo doanh thu sản phẩm** toàn hệ thống (kèm bản sao ở từng cửa hàng) | — | ✅ |
 | **Khóa / mở khóa cửa hàng** | — | ✅ |
 | Hỗ trợ | cộng đồng | kênh trả phí của GP247 |
+
+![Danh sách cửa hàng ở bản Free: đã dùng 3 / 3, công tắc STRICT và các mục menu Pro bị khoá](../assets/MultiStore/ms-free-stores_vi.png)
+
+![Mục menu Pro mở ở bản Free: trang giải thích kèm nút Nâng cấp Pro](../assets/MultiStore/ms-free-pro-locked_vi.png)
 
 - **Chọn Free khi:** bạn mới bắt đầu, cần tối đa 3 cửa hàng và tự mình quản lý tất cả.
 - **Nâng lên Pro khi:** bạn cần nhiều hơn 3 cửa hàng, muốn giao mỗi cửa hàng cho một người quản trị riêng, hoặc cần báo cáo tổng hợp toàn hệ thống.
@@ -140,4 +146,4 @@ Nói ngắn gọn: **Multi-Store = nhiều cửa hàng của chính bạn; Multi
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-10-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-21 · ✍️ **Tác giả (Author):** GP247</sub>

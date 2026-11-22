@@ -123,6 +123,8 @@ giấy phép, lệnh **vẫn seed xong dữ liệu mẫu** và chỉ in ra câu 
 php artisan gp247:vendor-sample --skip-rating
 ```
 
+![Danh sách gian hàng: công tắc mở/đóng, tỷ lệ hoa hồng đang áp dụng và nút cấu hình của từng gian hàng](../assets/MultiVendor/mv-free-stores_vi.png)
+
 ## Bước 5: Kiểm tra sàn chạy đúng
 1. Mở `https://ten-mien-cua-ban/shop/vendor01` — trang gian hàng hiện danh mục và sản phẩm của người bán (trống nếu chưa đăng sản phẩm).
 2. Đăng nhập `/vendor_admin`, tạo một sản phẩm; nếu sàn tắt tự duyệt, vào admin S-Cart để duyệt.
@@ -133,6 +135,8 @@ php artisan gp247:vendor-sample --skip-rating
    php artisan gp247:info
    php artisan gp247:doctor
    ```
+
+![Danh bạ gian hàng ngoài storefront: mỗi gian hàng kèm điểm đánh giá, số sản phẩm và ngày tham gia](../assets/MultiVendor/mv-shop-directory_vi.png)
 
 ## Bước 6 (tùy chọn): Cài thêm bản Pro
 Chỉ làm bước này nếu bạn đã mua bản Pro. Bản Pro **cài thêm** lên bản miễn phí, không thay thế nó.
@@ -259,4 +263,4 @@ Muốn đổi chữ hiển thị, nội dung email, giao diện trang gian hàng
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-08 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-21 · ✍️ **Tác giả (Author):** GP247</sub>

@@ -123,6 +123,8 @@ php artisan gp247:vendor-sample
 php artisan gp247:vendor-sample --skip-rating
 ```
 
+![ベンダーストア一覧：開店／閉店スイッチ、適用中の手数料率、各ショップの設定ボタン](../assets/MultiVendor/mv-free-stores_ja.png)
+
 ## ステップ 5：マーケットプレイスが正しく動くか確認
 1. `https://your-domain/shop/vendor01` を開きます。ストアページに、そのベンダーのカテゴリと商品が表示されます（商品をまだ出品していなければ空です）。
 2. `/vendor_admin` にログインし、商品を 1 つ作成します。マーケットプレイスで自動承認をオフにしている場合は、S-Cart の管理画面で承認します。
@@ -133,6 +135,8 @@ php artisan gp247:vendor-sample --skip-rating
    php artisan gp247:info
    php artisan gp247:doctor
    ```
+
+![ストアフロントのショップ一覧：各ショップの評価、商品数、参加日](../assets/MultiVendor/mv-shop-directory_ja.png)
 
 ## ステップ 6（任意）：Pro 版を追加でインストール
 Pro 版を購入した場合のみ、このステップを行います。Pro 版は無料版の **上に追加で** インストールするもので、無料版を置き換えるものではありません。
@@ -259,4 +263,4 @@ PREFIX_CATEGORY_VENDOR=category-vendor
 
 ---
 
-<sub>📅 **最終更新:** 2026-11-08 · ✍️ **作成者 (Author):** GP247</sub>
+<sub>📅 **最終更新:** 2026-11-21 · ✍️ **作成者 (Author):** GP247</sub>

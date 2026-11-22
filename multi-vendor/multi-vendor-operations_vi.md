@@ -17,6 +17,10 @@ Tính năng ghi **(Pro)** cần cài thêm bản Pro bên cạnh bản miễn ph
 | Khu quản trị người bán | `/vendor_admin` |
 | Quản trị sàn | Khu admin S-Cart, menu **Chợ bán hàng**: Gian hàng người bán · Tài khoản người bán · Cấu hình nhanh · Thanh toán, cùng các màn (Pro) Báo cáo · Báo cáo hoa hồng · Hàng chờ duyệt · Khiếu nại · Gói gian hàng |
 
+![Trang gian hàng ngoài storefront: ảnh bìa, logo, nhãn đã xác minh, chỉ số uy tín và các tab Sản phẩm · Đánh giá · Thông tin](../assets/MultiVendor/mv-shop-page_vi.png)
+
+![Khu quản trị người bán /vendor_admin: dashboard với biểu đồ đơn hàng và doanh thu của riêng gian hàng đó](../assets/MultiVendor/mv-free-vendor-dashboard_vi.png)
+
 ## Bốn luồng chính
 Bốn luồng dưới đây mang tiền và niềm tin của sàn.
 
@@ -115,6 +119,8 @@ sequenceDiagram
 ## Cấu hình sàn
 Vào khu admin → **Chợ bán hàng** → **Cấu hình nhanh**. Đây là **toàn bộ** cấu hình cấp sàn.
 
+![Cấu hình nhanh ở bản Free: thiết lập Free sửa được, thiết lập Pro có nhãn khoá Pro](../assets/MultiVendor/mv-free-config_vi.png)
+
 Cột **Khoá** là tên hàng trong bảng `admin_config` — cần khi bạn phải xem hoặc sửa giá trị ngoài giao diện admin (truy vấn cơ sở dữ liệu, script nâng cấp, hoặc khi trao đổi với bộ phận hỗ trợ). Nhãn hiển thị đổi theo ngôn ngữ, khoá thì không.
 
 | Cấu hình | Khoá (`admin_config`) | Ý nghĩa | Mặc định | Bản |
@@ -144,6 +150,8 @@ Trên bản miễn phí, các công tắc chỉ-Pro hiện ở trạng thái **k
 
 ## Cấu hình theo từng gian hàng
 Không phải cấu hình nào cũng đặt ở cấp sàn. Bảng dưới là những thứ đặt **riêng cho một gian hàng**, và ai là người đặt.
+
+![Danh sách gian hàng: công tắc mở/đóng, tỷ lệ hoa hồng đang áp dụng và nút cấu hình của từng gian hàng](../assets/MultiVendor/mv-free-stores_vi.png)
 
 | Cấu hình | Đặt ở đâu | Ai đặt |
 | --- | --- | --- |
@@ -177,6 +185,8 @@ Cái nào có trước thì thắng. Nhờ vậy một đại lý chiến lượ
 
 > Ví dụ: hoa hồng 10%, gian hàng A có 3 đơn hoàn thành tổng 5.000.000 VND trong kỳ → sổ ghi: 3 đơn, tổng 5.000.000, tỷ lệ nhận 90%, phải trả **4.500.000 VND**.
 
+![Màn Thanh toán: tổng doanh số, đã chi, còn lại, ngày xử lý, chi trả theo lô và sổ chi trả theo từng gian hàng](../assets/MultiVendor/mv-pro-payout_vi.png)
+
 ### Chi trả theo lô (Pro)
 Một lô = (ngày xử lý, loại tiền). Màn xem trước cho biết số gian hàng, tổng tiền và **danh sách bị loại kèm lý do** (chưa xác minh · chưa khai tài khoản nhận tiền · số tiền không dương · đã trả). Bạn tải **file lệnh chi ngân hàng** (CSV/Excel), chuyển khoản ở ngân hàng, rồi **ghi nhận cả lô đã trả bằng một mã tham chiếu**. Hai bên đối soát bằng **bảng kê Excel** theo khoảng ngày.
 
@@ -186,6 +196,8 @@ File lệnh chi chứa số tài khoản thật nên **chỉ tài khoản quản
 
 ### Gói gian hàng (Pro)
 Tạo ở menu **Gói gian hàng**. Mỗi gói gồm: trần số sản phẩm (để trống = không giới hạn), hoa hồng riêng của gói (để trống = theo sàn), **phí theo kỳ** (tháng hoặc năm) và loại tiền, cùng cờ *gói mặc định* và cờ *cho người bán tự chọn*.
+
+![Màn Gói gian hàng: giới hạn sản phẩm, hoa hồng của gói và phí định kỳ của từng gói](../assets/MultiVendor/mv-pro-plans_vi.png)
 
 - Sàn **gán gói** ở màn cấu hình gian hàng; kỳ bắt đầu ngay.
 - **Phí gói không thu riêng**: hệ thống ghi một **dòng âm** vào sổ chi trả của gian hàng và **bù trừ vào kỳ chi trả kế tiếp**. Không lập hóa đơn, không đòi nợ.
@@ -204,11 +216,15 @@ Tạo ở menu **Gói gian hàng**. Mỗi gói gồm: trần số sản phẩm (
 ### Kiểm duyệt người bán và sản phẩm
 Bản miễn phí kiểm duyệt qua danh sách gian hàng và danh sách sản phẩm. Bản Pro thêm **Hàng chờ duyệt** — một màn gom ba thứ: gian hàng mới chờ duyệt, sản phẩm chờ duyệt, hồ sơ xác minh chờ duyệt. Duyệt hoặc từ chối kèm **lý do bắt buộc**; quyết định được **ghi nhật ký** và gửi email cho người bán; cột "lần từ chối gần nhất" hiện khi một mục quay lại hàng chờ.
 
+![Hàng chờ duyệt: tab gian hàng, sản phẩm và hồ sơ xác minh đang chờ, kèm nút Duyệt và Từ chối](../assets/MultiVendor/mv-pro-review_vi.png)
+
 ### Khiếu nại hai cấp (Pro)
 - Khách **đăng nhập** mở khiếu nại ngay dưới trang đơn của mình: chọn loại vấn đề, mô tả ≥ 10 ký tự, số tiền yêu cầu (tùy chọn). Chỉ với đơn chưa hủy/chưa hoàn, đã thanh toán hoặc đã hoàn tất, và **trong cửa sổ N ngày** sau khi đơn hoàn tất (mặc định 14). Mỗi đơn chỉ một khiếu nại đang xử lý; khách rút được khi người bán chưa phản hồi.
 - **Người bán trả lời trước** trong N ngày (mặc định 3): *Chấp nhận & hoàn tiền* (toàn bộ hoặc một phần, không vượt số có thể hoàn) hoặc *Từ chối* có lý do ⇒ đẩy lên sàn. Quá hạn không trả lời ⇒ **tự đẩy lên sàn** (kiểm khi mở màn, không cần cron).
 - **Sàn quyết cuối** ở menu **Khiếu nại**: hoàn toàn bộ / hoàn một phần / từ chối, bắt buộc ghi chú.
 - Quyết định hoàn tiền **ghi thẳng vào sổ đơn** (hoàn đủ ⇒ đơn chuyển *Đã hoàn tiền*) và **phần của người bán tự bị thu hồi** ở kỳ kế tiếp. Tiền trả lại khách do sàn thực hiện qua phương thức thanh toán ban đầu — ngoài hệ thống, như khi chi trả cho người bán.
+
+![Màn Khiếu nại: lọc theo trạng thái, vấn đề của khách, phản hồi của người bán và quyết định của sàn](../assets/MultiVendor/mv-pro-disputes_vi.png)
 
 ### Xác minh danh tính — KYC (Pro)
 - Người bán nộp **hồ sơ dạng văn bản** (cá nhân hoặc doanh nghiệp: tên pháp lý, mã số thuế hoặc số giấy tờ — **lưu mã hóa**, người đại diện, địa chỉ, ghi chú) ở menu **Xác minh danh tính**. Không cần tải ảnh giấy tờ.
@@ -216,10 +232,14 @@ Bản miễn phí kiểm duyệt qua danh sách gian hàng và danh sách sản 
 - Khi cờ **Bắt buộc xác minh** đang bật, gian hàng chưa được duyệt sẽ: **không đưa được sản phẩm lên sàn** (kể cả khi sàn bật tự duyệt sản phẩm) và **dòng chi trả bị giữ ở trạng thái chờ** (tiền vẫn ghi sổ, chưa trả).
 - Gian hàng đã duyệt mang **huy hiệu "Đã xác minh"** trên trang gian hàng, danh bạ và danh sách của sàn. Tắt cờ thì không chặn gì, huy hiệu vẫn hiện.
 
+![Xác minh danh tính trong khu người bán: trạng thái, các trường định danh được mã hoá và nút gửi lại](../assets/MultiVendor/mv-pro-vendor-kyc_vi.png)
+
 ## Bán sỉ cho đại lý (Pro)
 
 ### Đặt hàng nhanh
 Trang `/shop/{mã}/quick-order` của từng gian hàng, bật bằng công tắc **Đặt hàng nhanh**:
+
+![Trang đặt hàng nhanh của gian hàng: bảng SKU kèm số lượng và ô dán danh sách "SKU, số lượng"](../assets/MultiVendor/mv-pro-quick-order_vi.png)
 
 - tìm theo SKU/tên hoặc theo danh mục của gian hàng, nhập số lượng nhiều sản phẩm một lần;
 - **dán danh sách "SKU, số lượng"** từ file của khách;
@@ -235,6 +255,8 @@ Hệ thống kiểm từng dòng trước khi thêm vào giỏ và **chỉ thêm
 - **Không cộng dồn với khuyến mãi** — khách trả mức **thấp hơn** giữa hai giá.
 - Giá được tính ở tầng cửa hàng, nên trang sản phẩm, lưới sản phẩm, đặt hàng nhanh, giỏ, thanh toán và báo giá **luôn khớp nhau**.
 
+![Nhóm giá trong khu người bán: nhóm kèm chiết khấu và các khách hàng thuộc nhóm](../assets/MultiVendor/mv-pro-vendor-price-groups_vi.png)
+
 ### Người bán tạo đơn hộ khách
 Màn **Tạo đơn hàng** trong khu người bán: chọn khách, thêm sản phẩm của gian hàng mình, giá **điền sẵn theo nhóm của khách đó**. Dành cho đơn đặt qua điện thoại hoặc gặp trực tiếp.
 
@@ -246,6 +268,8 @@ Màn **Tạo đơn hàng** trong khu người bán: chọn khách, thêm sản p
 ## Báo cáo (Pro)
 - **Báo cáo**: lọc theo ngày / gian hàng / trạng thái, biểu đồ gian hàng theo số đơn, xuất Excel.
 - **Báo cáo hoa hồng**: chọn kỳ (tháng này / tháng trước / quý / năm / tùy chọn) và **cơ sở tính** — *đơn hoàn tất* (khớp sổ chi trả) hoặc *đơn đã đặt* (doanh thu). Mỗi gian hàng × loại tiền có: số đơn, doanh số, tỷ lệ hoa hồng đang áp, phần sàn giữ, phải trả người bán, **đã trả** (theo sổ) và **còn lại**. Chọn một gian hàng để xem theo tháng; xuất Excel.
+
+![Báo cáo hoa hồng: lọc kỳ và cơ sở tính, các tổng, và theo từng gian hàng: hoa hồng, phải trả, đã trả, còn nợ](../assets/MultiVendor/mv-pro-commission_vi.png)
 
 ## Điều kiện & ràng buộc (hiểu trước khi thao tác)
 
@@ -346,4 +370,4 @@ Màn **Tạo đơn hàng** trong khu người bán: chọn khách, thêm sản p
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-10-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-21 · ✍️ **Tác giả (Author):** GP247</sub>

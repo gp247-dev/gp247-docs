@@ -39,6 +39,8 @@ flowchart TD
 
 When a visitor arrives, the system recognises the **domain** they opened and serves the matching store: the right theme, the right language, the right currency and that store's own catalogue.
 
+![Three stores of one system, each on its own domain with its own template, language and currency](../assets/MultiStore/ms-storefronts.png)
+
 ## What the plugin does
 
 **The free edition** is enough to run for real with up to 3 stores:
@@ -73,6 +75,10 @@ When a visitor arrives, the system recognises the **domain** they opened and ser
 | **System-wide product revenue report** (including every store copy) | — | ✅ |
 | **Lock / unlock a store** | — | ✅ |
 | Support | community | GP247 paid channel |
+
+![Store list in the free edition: stores used 3 / 3, the STRICT switch and the locked Pro menu items](../assets/MultiStore/ms-free-stores_en.png)
+
+![A Pro menu item opened in the free edition: an explanation page with an Upgrade to Pro button](../assets/MultiStore/ms-free-pro-locked_en.png)
 
 - **Choose Free when:** you are starting out, need at most 3 stores and manage everything yourself.
 - **Move to Pro when:** you need more than 3 stores, want to hand each store to its own administrator, or need system-wide reporting.
@@ -140,4 +146,4 @@ In short: **Multi-Store is many stores of your own; Multi-Vendor is a marketplac
 
 ---
 
-<sub>📅 **Last updated:** 2026-10-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-21 · ✍️ **Author:** GP247</sub>

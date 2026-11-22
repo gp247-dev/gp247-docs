@@ -17,6 +17,10 @@ Features marked **(Pro)** require the Pro edition installed alongside the free o
 | Seller admin area | `/vendor_admin` |
 | Marketplace admin | S-Cart admin, **Marketplace** menu: Vendor stores · Vendor users · Quick config · Payments, plus the (Pro) screens Reports · Commission report · Review queue · Disputes · Shop plans |
 
+![Shop page on the storefront: cover, logo, verified badge, trust signals and the Products · Reviews · Info tabs](../assets/MultiVendor/mv-shop-page_en.png)
+
+![Seller admin area /vendor_admin: dashboard with order and revenue charts of the seller's own shop](../assets/MultiVendor/mv-free-vendor-dashboard_en.png)
+
 ## The four main flows
 These four flows carry the marketplace's money and its trust.
 
@@ -115,6 +119,8 @@ sequenceDiagram
 ## Marketplace settings
 Go to the admin → **Marketplace** → **Quick config**. This is the **complete** set of marketplace-level settings.
 
+![Quick configuration in the free edition: Free settings are editable, Pro settings carry a locked Pro label](../assets/MultiVendor/mv-free-config_en.png)
+
 The **Key** column is the row name in the `admin_config` table — what you need when a value has to be read or changed outside the admin screens (a database query, an upgrade script, or a support conversation). Screen labels change with the language; keys do not.
 
 | Setting | Key (`admin_config`) | What it does | Default | Edition |
@@ -144,6 +150,8 @@ On the free edition, Pro-only switches appear **locked** with a description and 
 
 ## Per-shop settings
 Not everything is set marketplace-wide. These are set **for one shop**, and by whom.
+
+![Vendor stores list: open/close switch, the commission rate in force and the config button of each shop](../assets/MultiVendor/mv-free-stores_en.png)
 
 | Setting | Where | Who sets it |
 | --- | --- | --- |
@@ -177,6 +185,8 @@ The first one found wins. That is how a strategic dealer pays 5% while a new sel
 
 > Example: commission 10%, shop A has 3 completed orders totalling 5,000,000 VND in the period → the ledger records: 3 orders, total 5,000,000, seller share 90%, amount due **4,500,000 VND**.
 
+![Payments screen: lifetime sales, paid out and remaining, the processing date, batch payouts and the payout ledger per shop](../assets/MultiVendor/mv-pro-payout_en.png)
+
 ### Batch payouts (Pro)
 A batch = (processing date, currency). The preview shows the number of shops, the total amount and **which shops are excluded and why** (not verified · no payout details · amount not positive · already paid). You download a **bank payment file** (CSV/Excel), make the transfer at your bank, then **settle the whole batch with one reference code**. Both sides reconcile using the **Excel statement** for a date range.
 
@@ -186,6 +196,8 @@ Because the payment file contains real account numbers, **only administrator acc
 
 ### Shop plans (Pro)
 Created under the **Shop plans** menu. Each plan has: a product cap (empty = unlimited), its own commission rate (empty = marketplace rate), a **periodic fee** (monthly or yearly) and currency, plus a *default plan* flag and a *seller may choose* flag.
+
+![Shop plans screen: product cap, plan commission and periodic fee of each plan](../assets/MultiVendor/mv-pro-plans_en.png)
 
 - The owner **assigns a plan** on the shop config screen; the period starts immediately.
 - **Plan fees are not billed separately**: the system writes a **negative line** into the shop's payout ledger and **offsets it against the next payout**. No invoice, no debt collection.
@@ -204,11 +216,15 @@ Created under the **Shop plans** menu. Each plan has: a product cap (empty = unl
 ### Moderating sellers and products
 The free edition moderates through the shop list and the product list. The Pro edition adds a **Review queue** — one screen gathering three things: new shops awaiting approval, products awaiting approval, and verification files awaiting approval. Approve or reject with a **mandatory reason**; the decision is **logged** and emailed to the seller; a "last rejection" column appears when an item returns to the queue.
 
+![Review queue: tabs for shops, products and verification files waiting, with Approve and Reject buttons](../assets/MultiVendor/mv-pro-review_en.png)
+
 ### Two-tier disputes (Pro)
 - A **signed-in** customer opens a dispute right under their own order page: issue type, description of at least 10 characters, requested amount (optional). Only for orders not cancelled or refunded, already paid or completed, and **within the N-day window** after completion (14 by default). One open dispute per order; the customer can withdraw it while the seller has not answered.
 - **The seller answers first** within N days (3 by default): *Accept & refund* (full or partial, never above the refundable amount) or *Reject* with a reason ⇒ escalates to the marketplace. Missing the deadline **escalates automatically** (checked when the screen is opened — no cron needed).
 - **The marketplace decides last** under the **Disputes** menu: full refund / partial refund / rejection, with a mandatory note.
 - A refund decision is **written straight into the order ledger** (a full refund moves the order to *Refunded*) and **the seller's share is clawed back automatically** in the next period. Returning the money to the customer is done by the marketplace through the original payment method — outside the system, just like paying sellers.
+
+![Disputes screen: status filters, the customer's problem, the seller's response and the marketplace decision](../assets/MultiVendor/mv-pro-disputes_en.png)
 
 ### Identity verification — KYC (Pro)
 - The seller submits a **text-based file** (individual or company: legal name, tax code or ID number — **stored encrypted**, representative, address, notes) under the **Identity verification** menu. No document photos required.
@@ -216,10 +232,14 @@ The free edition moderates through the shop list and the product list. The Pro e
 - While **Require verification** is on, an unapproved shop **cannot put products live** (even with product auto-approval on) and its **payout lines are held pending** (the money is still recorded, just not paid).
 - An approved shop carries a **"Verified" badge** on its shop page, in the directory and in the marketplace list. Turning the flag off blocks nothing, and the badge stays.
 
+![Identity verification in the seller area: status, encrypted ID fields and the resubmit button](../assets/MultiVendor/mv-pro-vendor-kyc_en.png)
+
 ## B2B wholesale (Pro)
 
 ### Quick order
 Each shop's `/shop/{code}/quick-order` page, enabled by the **Quick order** switch:
+
+![Per-shop quick order page: SKU table with quantities, and a box to paste a "SKU, quantity" list](../assets/MultiVendor/mv-pro-quick-order_en.png)
 
 - search by SKU/name or by the shop's categories, and enter quantities for many products at once;
 - **paste a "SKU, quantity" list** from the customer's file;
@@ -235,6 +255,8 @@ Every line is validated before anything is added, and **the cart is only filled 
 - **They do not stack with promotions** — the customer pays the **lower** of the two prices.
 - Prices are resolved at the store layer, so the product page, product grids, quick order, cart, checkout and quotes **always agree**.
 
+![Price groups in the seller area: a group with its discount, and the customers assigned to it](../assets/MultiVendor/mv-pro-vendor-price-groups_en.png)
+
 ### Sellers creating orders for customers
 The **Create order** screen in the seller area: pick a customer, add products from your own shop, prices **prefilled from that customer's group**. Made for orders taken by phone or in person.
 
@@ -246,6 +268,8 @@ The **Create order** screen in the seller area: pick a customer, add products fr
 ## Reports (Pro)
 - **Reports**: filter by date / shop / status, a chart of shops by order count, Excel export.
 - **Commission report**: pick a period (this month / last month / quarter / year / custom) and the **basis** — *completed orders* (matching the payout ledger) or *placed orders* (revenue). Each shop × currency shows: order count, sales, the commission rate in force, the marketplace's share, the amount due to the seller, **already paid** (per the ledger) and **outstanding**. Pick a single shop for a month-by-month view; Excel export.
+
+![Commission report: period and basis filters, totals, and per-shop commission, amount owed, paid and outstanding](../assets/MultiVendor/mv-pro-commission_en.png)
 
 ## Conditions & Rules (know before you act)
 
@@ -346,4 +370,4 @@ The **Create order** screen in the seller area: pick a customer, add products fr
 
 ---
 
-<sub>📅 **Last updated:** 2026-10-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-21 · ✍️ **Author:** GP247</sub>

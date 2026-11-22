@@ -40,6 +40,8 @@ flowchart LR
     E --> F["Sàn giữ hoa hồng,<br>chuyển phần còn lại cho gian hàng"]
 ```
 
+![Trang gian hàng ngoài storefront: ảnh bìa, logo, nhãn đã xác minh, chỉ số uy tín và các tab Sản phẩm · Đánh giá · Thông tin](../assets/MultiVendor/mv-shop-page_vi.png)
+
 ## Plugin làm được gì
 
 **Cho khách hàng** — mua sắm như một sàn thật: duyệt sản phẩm của mọi gian hàng trên cùng website, xem danh bạ gian hàng, vào trang riêng của từng gian hàng, đọc đánh giá, bỏ hàng nhiều gian hàng vào một giỏ rồi thanh toán một lần.
@@ -91,6 +93,10 @@ Tính năng ghi **Pro** cần cài thêm plugin trả phí bên cạnh bản mi�
 
 ## So sánh bản miễn phí và bản Pro
 **Ai mua Pro**: chủ sàn. Người bán và khách hàng không trả gì và không bao giờ thấy lời mời nâng cấp — bản miễn phí chỉ cho chủ sàn thấy mỗi tính năng Pro sẽ nằm ở đâu, bấm vào là có trang giải thích.
+
+![Cấu hình nhanh ở bản Free: thiết lập Free sửa được, thiết lập Pro có nhãn khoá Pro](../assets/MultiVendor/mv-free-config_vi.png)
+
+![Mục menu Pro mở ở bản Free: trang giải thích liệt kê những gì bản Pro bổ sung](../assets/MultiVendor/mv-free-pro-locked_vi.png)
 
 Bản miễn phí là **một sàn chạy thật cho tối đa 3 gian hàng**. Bản Pro là plugin thứ hai cài **thêm** lên bản miễn phí: cài xong, mọi lối vào đang khóa mở thẳng màn thật — không cài lại, không chuyển dữ liệu.
 
@@ -173,4 +179,4 @@ Nói ngắn gọn: **Multi-Vendor = một cái chợ cho nhiều người bán; 
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-10-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-21 · ✍️ **Tác giả (Author):** GP247</sub>

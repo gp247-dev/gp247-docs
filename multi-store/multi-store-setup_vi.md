@@ -58,6 +58,8 @@ Mở **Multi-store → Danh sách cửa hàng**: bạn thấy cửa hàng gốc 
 
 Nếu bạn đã dùng hết hạn mức (bản miễn phí: 3 cửa hàng, **tính cả cửa hàng gốc**), nút thêm mới bị chặn và hệ thống báo rõ — đây là ranh giới giữa hai bản, không phải lỗi.
 
+![Form thêm cửa hàng: thông tin liên hệ, tên miền, mã cửa hàng, ngôn ngữ, tiền tệ, giao diện bên trái; nội dung theo ngôn ngữ bên phải](../assets/MultiStore/ms-create-store_vi.png)
+
 ## Bước 4: Trỏ tên miền về hệ thống
 Cửa hàng mới chỉ mở được khi tên miền của nó **thực sự trỏ về chính website này**. Hai việc, làm ở ngoài S-Cart:
 
@@ -69,6 +71,8 @@ Cửa hàng mới chỉ mở được khi tên miền của nó **thực sự tr
 
 ## Bước 5: Bật kiểm duyệt tên miền (khuyến nghị)
 Ở **Danh sách cửa hàng**, bật công tắc **Kiểm duyệt tên miền nghiêm ngặt (STRICT)**.
+
+![Danh sách cửa hàng ở bản Free: đã dùng 3 / 3, công tắc STRICT và các mục menu Pro bị khoá](../assets/MultiStore/ms-free-stores_vi.png)
 
 Khi bật, website **chỉ phục vụ** các tên miền đã khai cho cửa hàng, cộng với tên miền gốc trong `.env` (`APP_URL`). Mọi tên miền lạ trỏ tới máy chủ của bạn đều nhận trang **từ chối truy cập** thay vì mở website. Việc này ngăn người khác trỏ tên miền của họ vào website của bạn.
 
@@ -105,6 +109,8 @@ Chỉ làm bước này nếu bạn đã mua bản Pro. Pro **cài thêm** lên 
 Không phải cài lại gì và không phải chuyển dữ liệu: cửa hàng, sản phẩm, đơn hàng và cấu hình giữ nguyên.
 
 **Nếu bạn tắt hoặc gỡ bản Pro**: các màn Pro quay về trang giải thích, hạn mức trở lại 3 cửa hàng và cột Khóa bị vô hiệu. **Dữ liệu không bị xóa** — cửa hàng vượt hạn mức vẫn còn nguyên và vẫn chạy, các liên kết đồng bộ sản phẩm và việc phân công quản trị viên cửa hàng vẫn được giữ; cài lại Pro là dùng tiếp.
+
+![Danh sách cửa hàng khi có Pro: không giới hạn, trạng thái bảo trì và nút Khoá của từng cửa hàng](../assets/MultiStore/ms-pro-stores_vi.png)
 
 ## Điều kiện & ràng buộc (hiểu trước khi thao tác)
 
@@ -174,4 +180,4 @@ Không phải cài lại gì và không phải chuyển dữ liệu: cửa hàng
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-10-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-21 · ✍️ **Tác giả (Author):** GP247</sub>

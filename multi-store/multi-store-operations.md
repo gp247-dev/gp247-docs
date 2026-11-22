@@ -22,6 +22,8 @@ flowchart LR
 
 An order placed on a given domain is recorded against that store, so revenue is separated from the moment it happens.
 
+![Three stores of one system, each on its own domain with its own template, language and currency](../assets/MultiStore/ms-storefronts.png)
+
 ## What is per-store and what is shared
 This is the most important thing to understand before you operate.
 
@@ -39,6 +41,8 @@ When you are a platform administrator and open a screen holding per-store data, 
 
 ## Tiered configuration
 Not every setting is split per store — splitting everything would force you to re-enter the same values for each store. The system uses three tiers:
+
+![Per-store configuration: logo, contact details and per-language name, keywords, description and maintenance page](../assets/MultiStore/ms-free-store-config_en.png)
 
 | Tier | What it means | Examples |
 | --- | --- | --- |
@@ -63,6 +67,10 @@ Some plugins (payment, shipping, promotions, news, product reviews…) declare t
 
 ## A dedicated administrator per store (Pro)
 This is the feature that matters once you no longer run every store personally.
+
+![Store administrators screen: assign a user to a store with a store-scoped role, and the list of current store admins](../assets/MultiStore/ms-pro-store-admins_en.png)
+
+![A store administrator signed in on the store's own domain: a reduced menu and only that store's orders](../assets/MultiStore/ms-pro-store-admin-view_en.png)
 
 **How to hand a store to someone** — open the **Store administrators** screen (platform administrators only):
 
@@ -96,6 +104,8 @@ flowchart TD
 ## Cross-store product publishing (Pro)
 When several stores sell the same item but need different prices, stock and wording, you do not have to re-enter anything.
 
+![Cross-store product publishing: target store, what to copy, and root products already published or ready to publish](../assets/MultiStore/ms-pro-cross-catalog_en.png)
+
 **How it works** — open **Cross-store product publishing**: pick the root product, pick the target store, pick the target category, then click **Publish**.
 
 The target store receives **its own independent copy of the product**, and the system **keeps a link** back to the root product. Later, when the root content changes, click **Re-sync** to update the content without touching what the store set for itself.
@@ -111,7 +121,11 @@ Each root product has **one copy per store**: publishing again returns the exist
 
 **Unified dashboard** — one screen comparing your stores over the period you choose (this month / last 30 days / this year / all time): revenue, order count and **average order value** per store, with Excel export. Revenue uses the same semantics as the rest of the shop — cancelled and failed orders excluded, amounts normalised to one currency by each order's exchange rate.
 
+![Unified dashboard: revenue, orders and average order value over time and per store, converted to the base currency](../assets/MultiStore/ms-pro-dashboard_en.png)
+
 **Product revenue report** — ranks root products by **combined total revenue**: revenue at the root store **plus** the revenue of every copy published into other stores. Each root product expands into rows for its store copies, each with that copy's own revenue. This tells you how much an item really sells across the whole system, not just on one website.
+
+![Product revenue report: each root product with its combined revenue and the rows of its store copies](../assets/MultiStore/ms-pro-product-report_en.png)
 
 Both screens are for **platform administrators**; a store administrator cannot open them.
 
@@ -119,6 +133,8 @@ Both screens are for **platform administrators**; a store administrator cannot o
 
 ### Locking a store (Pro)
 Locking **suspends** a store while keeping all of its data: its domain no longer opens the website, but products, orders and customers stay untouched and you can unlock at any time.
+
+![Store list with Pro: unlimited stores, maintenance status and the Lock button of each store](../assets/MultiStore/ms-pro-stores_en.png)
 
 - The control sits in the **Store list**, in the **Lock** column.
 - **Only platform administrators** can lock or unlock.
@@ -221,4 +237,4 @@ The error message states how many records of each kind remain. You must move or 
 
 ---
 
-<sub>📅 **Last updated:** 2026-10-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-21 · ✍️ **Author:** GP247</sub>

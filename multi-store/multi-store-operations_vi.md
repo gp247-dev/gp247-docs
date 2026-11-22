@@ -22,6 +22,8 @@ flowchart LR
 
 Đơn hàng khách đặt trên tên miền nào sẽ được ghi nhận thuộc cửa hàng đó, nên doanh thu tách bạch được ngay từ lúc phát sinh.
 
+![Ba cửa hàng của cùng một hệ thống, mỗi cửa hàng một tên miền, giao diện, ngôn ngữ và tiền tệ riêng](../assets/MultiStore/ms-storefronts.png)
+
 ## Dữ liệu nào riêng, dữ liệu nào chung
 Đây là điều quan trọng nhất cần nắm trước khi vận hành.
 
@@ -39,6 +41,8 @@ Khi bạn là quản trị viên gốc và mở một màn có dữ liệu theo 
 
 ## Cấu hình phân tầng
 Không phải cấu hình nào cũng tách theo cửa hàng — tách hết sẽ khiến bạn phải khai lại mọi thứ cho từng cửa hàng. Hệ thống chia ba tầng:
+
+![Cấu hình riêng từng cửa hàng: logo, thông tin liên hệ và tên, từ khoá, mô tả, trang bảo trì theo từng ngôn ngữ](../assets/MultiStore/ms-free-store-config_vi.png)
 
 | Tầng | Nghĩa là gì | Ví dụ |
 | --- | --- | --- |
@@ -63,6 +67,10 @@ Một số plugin (thanh toán, vận chuyển, khuyến mãi, tin tức, đánh
 
 ## Quản trị viên riêng cho từng cửa hàng (Pro)
 Đây là tính năng làm nên khác biệt khi bạn không tự tay quản lý mọi cửa hàng.
+
+![Màn Quản trị viên cửa hàng: gán người dùng vào cửa hàng với vai trò theo cửa hàng, và danh sách quản trị viên hiện có](../assets/MultiStore/ms-pro-store-admins_vi.png)
+
+![Quản trị viên cửa hàng đăng nhập trên tên miền của cửa hàng: menu thu gọn và chỉ thấy đơn của cửa hàng đó](../assets/MultiStore/ms-pro-store-admin-view_vi.png)
 
 **Cách giao một cửa hàng cho một người** — vào màn **Quản trị viên cửa hàng** (chỉ quản trị viên hệ thống vào được):
 
@@ -96,6 +104,8 @@ flowchart TD
 ## Đồng bộ sản phẩm sang cửa hàng (Pro)
 Khi nhiều cửa hàng bán cùng một mặt hàng nhưng cần giá, tồn kho và mô tả khác nhau, bạn không phải nhập lại từ đầu.
 
+![Đồng bộ sản phẩm sang cửa hàng: cửa hàng đích, phần cần sao chép và các sản phẩm gốc đã đăng hoặc sẵn sàng đăng](../assets/MultiStore/ms-pro-cross-catalog_vi.png)
+
 **Cách làm** — vào màn **Đồng bộ sản phẩm sang cửa hàng**: chọn sản phẩm gốc, chọn cửa hàng đích, chọn danh mục đích, rồi bấm **Đăng**.
 
 Kết quả: cửa hàng đích nhận **một bản sản phẩm độc lập của riêng nó**, đồng thời hệ thống **giữ liên kết** về sản phẩm gốc. Về sau khi nội dung gốc thay đổi, bạn bấm **Đồng bộ lại** để cập nhật phần nội dung mà không đụng tới những gì cửa hàng đã tự đặt.
@@ -111,7 +121,11 @@ Mỗi sản phẩm gốc chỉ có **một bản** trong mỗi cửa hàng: đă
 
 **Dashboard hợp nhất** — một màn so sánh các cửa hàng với nhau theo kỳ bạn chọn (tháng này / 30 ngày gần nhất / năm nay / toàn bộ): doanh thu, số đơn và **giá trị đơn trung bình** của từng cửa hàng, xuất Excel. Doanh thu dùng đúng cách tính của phần bán hàng — loại trừ đơn đã hủy và đơn thất bại, quy đổi về cùng một đồng tiền theo tỷ giá của đơn.
 
+![Dashboard hợp nhất: doanh thu, số đơn, giá trị đơn trung bình theo thời gian và theo cửa hàng, quy về tiền tệ gốc](../assets/MultiStore/ms-pro-dashboard_vi.png)
+
 **Báo cáo doanh thu sản phẩm** — xếp hạng sản phẩm gốc theo **tổng doanh thu gộp**: doanh thu tại cửa hàng gốc **cộng** doanh thu của mọi bản sao đã đăng sang các cửa hàng khác. Mỗi sản phẩm gốc mở ra được các dòng con là bản sao ở từng cửa hàng kèm doanh thu riêng của bản đó. Nhờ vậy bạn biết một mặt hàng thực sự bán được bao nhiêu trên toàn hệ, chứ không chỉ ở một website.
+
+![Báo cáo doanh thu sản phẩm: mỗi sản phẩm gốc với tổng doanh thu cộng dồn và các dòng bản sao ở từng cửa hàng](../assets/MultiStore/ms-pro-product-report_vi.png)
 
 Hai màn này dành cho **quản trị viên hệ thống**; quản trị viên một cửa hàng không mở được.
 
@@ -119,6 +133,8 @@ Hai màn này dành cho **quản trị viên hệ thống**; quản trị viên 
 
 ### Khóa cửa hàng (Pro)
 Khóa là cách **tạm ngừng phục vụ** một cửa hàng mà vẫn giữ nguyên toàn bộ dữ liệu: tên miền của nó không còn mở ra website nữa, nhưng sản phẩm, đơn hàng, khách hàng vẫn còn nguyên và mở khóa lúc nào cũng được.
+
+![Danh sách cửa hàng khi có Pro: không giới hạn, trạng thái bảo trì và nút Khoá của từng cửa hàng](../assets/MultiStore/ms-pro-stores_vi.png)
 
 - Thao tác nằm ngay trong **Danh sách cửa hàng**, cột **Khóa**.
 - **Chỉ quản trị viên hệ thống** khóa/mở khóa được.
@@ -221,4 +237,4 @@ Thông báo lỗi nêu rõ còn bao nhiêu bản ghi mỗi loại. Bạn phải 
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-10-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-21 · ✍️ **Tác giả (Author):** GP247</sub>

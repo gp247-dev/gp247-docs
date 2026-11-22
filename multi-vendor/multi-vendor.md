@@ -40,6 +40,8 @@ flowchart LR
     E --> F["Marketplace keeps the commission,<br>transfers the rest to the shop"]
 ```
 
+![Shop page on the storefront: cover, logo, verified badge, trust signals and the Products · Reviews · Info tabs](../assets/MultiVendor/mv-shop-page_en.png)
+
 ## What the plugin does
 
 **For customers** — shopping on a real marketplace: browse products from every shop on one website, open the shop directory, visit each shop's own page, read reviews, put items from several shops into one cart and pay once.
@@ -91,6 +93,10 @@ Features marked **Pro** require the paid plugin installed alongside the free one
 
 ## Free edition vs Pro edition
 **Who buys Pro**: the marketplace owner. Sellers and customers pay nothing and never see an upgrade prompt — the free edition only shows the owner where each Pro feature would sit, with an explanation page one click away.
+
+![Quick configuration in the free edition: Free settings are editable, Pro settings carry a locked Pro label](../assets/MultiVendor/mv-free-config_en.png)
+
+![A Pro menu item opened in the free edition: an explanation page listing what Pro adds](../assets/MultiVendor/mv-free-pro-locked_en.png)
 
 The free edition is **a real, working marketplace for up to 3 shops**. The Pro edition is a second plugin installed **on top of** the free one: once installed, every locked entry point opens the real screen — no reinstall, no data migration.
 
@@ -173,4 +179,4 @@ In short: **Multi-Vendor is a marketplace for many sellers; Multi-Store is many 
 
 ---
 
-<sub>📅 **Last updated:** 2026-10-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-21 · ✍️ **Author:** GP247</sub>

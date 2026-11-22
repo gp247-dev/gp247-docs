@@ -104,8 +104,8 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
-| [Multi-Store — nhiều website, một admin](./multi-store/multi-store_vi.md) | Nhiều cửa hàng của cùng một doanh nghiệp, mỗi cửa hàng một tên miền/giao diện/ngôn ngữ/tiền tệ: mô hình, tính năng, so sánh Free/Pro; mục lục dẫn tới cài đặt, vận hành và tùy chỉnh | 2026-10-22 |
-| [Multi-Vendor — sàn nhiều người bán](./multi-vendor/multi-vendor_vi.md) | Biến S-Cart thành sàn trên một tên miền: mô hình, tính năng, so sánh Free/Pro, so sánh Multi-Store; mục lục dẫn tới cài đặt, vận hành và tùy chỉnh | 2026-10-22 |
+| [Multi-Store — nhiều website, một admin](./multi-store/multi-store_vi.md) | Nhiều cửa hàng của cùng một doanh nghiệp, mỗi cửa hàng một tên miền/giao diện/ngôn ngữ/tiền tệ: mô hình, tính năng, so sánh Free/Pro; mục lục dẫn tới cài đặt, vận hành và tùy chỉnh; ảnh chụp màn hình bản Free và Pro | 2026-11-21 |
+| [Multi-Vendor — sàn nhiều người bán](./multi-vendor/multi-vendor_vi.md) | Biến S-Cart thành sàn trên một tên miền: mô hình, tính năng, so sánh Free/Pro, so sánh Multi-Store; mục lục dẫn tới cài đặt, vận hành và tùy chỉnh; ảnh chụp màn hình bản Free và Pro | 2026-11-21 |
 
 ### Nhập hàng, trả hàng & thu chi (InOut)
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
