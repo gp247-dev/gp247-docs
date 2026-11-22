@@ -12,15 +12,15 @@ Chạy `php artisan gp247:info` (hoặc `composer show "gp247/*"`) rồi so từ
 | Package | Tối thiểu khuyến nghị | Mới nhất |
 | --- | --- | --- |
 | gp247/core | **3.16.0** | 3.16.0 |
-| gp247/front | **3.11.0** | 3.12.0 |
-| gp247/shop | **3.12.0** | 3.13.0 |
+| gp247/front | **3.11.0** | 3.12.1 |
+| gp247/shop | **3.12.0** | 3.13.1 |
 | gp247/mcp | **2.0.1** | 2.1.1 |
 
 - **Thấp hơn** cột "Tối thiểu khuyến nghị" → nên [cập nhật](#cập-nhật-thế-nào).
 - **Đã đạt** → site đã có đủ các cải tiến quan trọng, kể cả khi bạn chưa cài lại S-Cart.
 - **Thư viện bên thứ ba** → chạy thêm `composer audit` để kiểm, xem [Thư viện bên thứ ba](#thư-viện-bên-thứ-ba).
 
-> ⚠️ **Lưu ý:** cập nhật **cả bộ package cùng lúc**: `gp247/shop` 3.12.0 cần `gp247/front` ≥ 3.11, `gp247/front` 3.9.1 và `gp247/shop` 3.11.1 cần `gp247/core` ≥ 3.14, `gp247/front` 3.8.1 và `gp247/shop` 3.10.1 cần `gp247/core` ≥ 3.12.1, `gp247/front` 3.7.0 và `gp247/shop` 3.9.0 cần `gp247/core` ≥ 3.11, `gp247/shop` 3.8.1 cần `gp247/core` ≥ 3.10.3, `gp247/mcp` 2.0.1 cần `gp247/core` ≥ 3.9, `gp247/shop` 3.6.0 cần `gp247/core` ≥ 3.7,
+> ⚠️ **Lưu ý:** cập nhật **cả bộ package cùng lúc**: `gp247/shop` 3.12.0 cần `gp247/front` ≥ 3.11, `gp247/front` 3.10.0 trở lên cần `gp247/core` ≥ 3.14.2, `gp247/shop` 3.11.3 trở lên cần `gp247/core` ≥ 3.14.1, `gp247/front` 3.9.1 và `gp247/shop` 3.11.1 cần `gp247/core` ≥ 3.14, `gp247/front` 3.8.1 và `gp247/shop` 3.10.1 cần `gp247/core` ≥ 3.12.1, `gp247/front` 3.7.0 và `gp247/shop` 3.9.0 cần `gp247/core` ≥ 3.11, `gp247/shop` 3.8.1 cần `gp247/core` ≥ 3.10.3, `gp247/mcp` 2.0.1 cần `gp247/core` ≥ 3.9, `gp247/shop` 3.6.0 cần `gp247/core` ≥ 3.7,
 > `gp247/front` 3.2.3 cần `gp247/core` ≥ 3.2.3. Dòng nào còn được hỗ trợ: xem [Vòng đời hỗ trợ](#vòng-đời-hỗ-trợ).
 
 ## Vòng đời hỗ trợ
@@ -253,4 +253,4 @@ trước khi có bản vá.
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-20 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

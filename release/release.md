@@ -12,15 +12,15 @@ Run `php artisan gp247:info` (or `composer show "gp247/*"`) and compare each lin
 | Package | Recommended minimum | Latest |
 | --- | --- | --- |
 | gp247/core | **3.16.0** | 3.16.0 |
-| gp247/front | **3.11.0** | 3.12.0 |
-| gp247/shop | **3.12.0** | 3.13.0 |
+| gp247/front | **3.11.0** | 3.12.1 |
+| gp247/shop | **3.12.0** | 3.13.1 |
 | gp247/mcp | **2.0.1** | 2.1.1 |
 
 - **Below** the "Recommended minimum" column → [update](#how-to-update) when you can.
 - **At or above it** → your site has all the important improvements, even if you have not reinstalled S-Cart.
 - **Third-party libraries** → also run `composer audit`; see [Third-party libraries](#third-party-libraries).
 
-> ⚠️ **Note:** update **all the packages together**: `gp247/shop` 3.12.0 needs `gp247/front` ≥ 3.11, `gp247/front` 3.9.1 and `gp247/shop` 3.11.1 need `gp247/core` ≥ 3.14, `gp247/front` 3.8.1 and `gp247/shop` 3.10.1 need `gp247/core` ≥ 3.12.1, `gp247/front` 3.7.0 and `gp247/shop` 3.9.0 need `gp247/core` ≥ 3.11, `gp247/shop` 3.8.1 needs `gp247/core` ≥ 3.10.3, `gp247/mcp` 2.0.1 needs `gp247/core` ≥ 3.9, `gp247/shop` 3.6.0 needs `gp247/core` ≥ 3.7,
+> ⚠️ **Note:** update **all the packages together**: `gp247/shop` 3.12.0 needs `gp247/front` ≥ 3.11, `gp247/front` 3.10.0 and later need `gp247/core` ≥ 3.14.2, `gp247/shop` 3.11.3 and later need `gp247/core` ≥ 3.14.1, `gp247/front` 3.9.1 and `gp247/shop` 3.11.1 need `gp247/core` ≥ 3.14, `gp247/front` 3.8.1 and `gp247/shop` 3.10.1 need `gp247/core` ≥ 3.12.1, `gp247/front` 3.7.0 and `gp247/shop` 3.9.0 need `gp247/core` ≥ 3.11, `gp247/shop` 3.8.1 needs `gp247/core` ≥ 3.10.3, `gp247/mcp` 2.0.1 needs `gp247/core` ≥ 3.9, `gp247/shop` 3.6.0 needs `gp247/core` ≥ 3.7,
 > `gp247/front` 3.2.3 needs `gp247/core` ≥ 3.2.3. Which lines are still supported: see [Support lifecycle](#support-lifecycle).
 
 ## Support lifecycle
@@ -257,4 +257,4 @@ exposed before a fix is released.
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-20 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>
