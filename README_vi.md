@@ -42,7 +42,7 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 ### SEO
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
-| [SEO trong GP247](./seo/seo-introduction_vi.md) | Trang chính của bộ tài liệu SEO: những gì hệ thống tự làm, cài đặt toàn cửa hàng (xác minh Google/Bing, robots, sitemap, mẫu tiêu đề, IndexNow), tab SEO từng nội dung và tự 301, Kiểm tra SEO, nhật ký 404, AI agent, mã đo lường (GA4, GTM, Meta Pixel) và banner cookie, hook cho lập trình viên | 2026-11-20 |
+| [SEO trong S-Cart](./seo/seo-introduction_vi.md) | Trang chính của bộ tài liệu SEO: những gì hệ thống tự làm, cài đặt toàn cửa hàng (xác minh Google/Bing, robots, sitemap, mẫu tiêu đề, IndexNow), tab SEO từng nội dung và tự 301, Kiểm tra SEO, nhật ký 404, AI agent, mã đo lường (GA4, GTM, Meta Pixel) và banner cookie, hook cho lập trình viên | 2026-11-20 |
 | [SEO Pro (plugin trả phí)](./seo/seo-pro_vi.md) | Sửa SEO hàng loạt, số liệu Google Search Console trong admin, gợi ý 301 cho trang 404, tìm link hỏng, dữ liệu Google Shopping; so sánh với SEO có sẵn, cách kết nối và giới hạn | 2026-11-21 |
 
 ### Sao lưu & phục hồi
@@ -88,10 +88,10 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 | --- | --- | --- |
 | [Vòng đời đơn hàng](./s-cart/order-processing/order-lifecycle_vi.md) | Từng chặng của đơn — đặt, sửa, thu tiền, hoàn tiền, hủy, mở lại, xóa — kèm tồn kho/tiền/lịch sử ở mỗi chặng và sơ đồ luồng | 2026-10-22 |
 | [Yêu cầu thanh toán (Payment Request)](./s-cart/order-processing/payment-request_vi.md) | Thu/chi tiền ngoài giỏ hàng: link thanh toán online, ghi nhận tay, hoàn tiền; 4 luồng tiền, mục đích đơn hàng/InOut/MultiVendor, phân quyền chi tiền, sơ đồ luồng | 2026-10-22 |
-| [Thanh toán trong GP247](./s-cart/payment/payment_vi.md) | Thiết lập và vận hành: cài cổng thanh toán (thử → thật, webhook), sổ thanh toán của đơn, COD, hướng dẫn khách thấy khi thanh toán; developer xem [Tạo plugin thanh toán](./extension/create-payment-plugin_vi.md) | 2026-11-03 |
-| [Vận chuyển trong GP247](./s-cart/shipping/shipping_vi.md) | Thiết lập và vận hành: tab Vận chuyển, kho lấy hàng, vận đơn, theo dõi, thu hộ (từ shop 3.1.4); developer xem [Tạo plugin vận chuyển](./extension/create-shipping-plugin_vi.md) | 2026-11-03 |
+| [Thanh toán trong S-Cart](./s-cart/payment/payment_vi.md) | Thiết lập và vận hành: cài cổng thanh toán (thử → thật, webhook), sổ thanh toán của đơn, COD, hướng dẫn khách thấy khi thanh toán; developer xem [Tạo plugin thanh toán](./extension/create-payment-plugin_vi.md) | 2026-11-03 |
+| [Vận chuyển trong S-Cart](./s-cart/shipping/shipping_vi.md) | Thiết lập và vận hành: tab Vận chuyển, kho lấy hàng, vận đơn, theo dõi, thu hộ (từ shop 3.1.4); developer xem [Tạo plugin vận chuyển](./extension/create-shipping-plugin_vi.md) | 2026-11-03 |
 | [Tiền tệ (Currency)](./s-cart/tax-and-currency/currency_vi.md) | Đồng tiền gốc tường minh, đổi gốc bảo toàn giá trị, ghi chú ô nhập tiền (từ shop 2.1) | 2026-10-22 |
-| [Thuế trong GP247](./s-cart/tax-and-currency/tax_vi.md) | Cách thuế theo sản phẩm hoạt động và cách cấu hình | 2026-10-22 |
+| [Thuế trong S-Cart](./s-cart/tax-and-currency/tax_vi.md) | Cách thuế theo sản phẩm hoạt động và cách cấu hình | 2026-10-22 |
 | [Sản phẩm gói (Bundle/Combo)](./s-cart/product/product-bundle_vi.md) | Tạo sản phẩm combo gồm nhiều sản phẩm con; giá & trừ kho | 2026-10-22 |
 | [Tổ chức sản phẩm (Single/Bundle/Group)](./s-cart/product/product-structure_vi.md) | So sánh 3 loại sản phẩm kèm sơ đồ; chọn loại nào | 2026-10-22 |
 | [Quản lý tồn kho sản phẩm](./s-cart/product/product-stock-management_vi.md) | Tồn kho tăng/giảm khi nào; cấu hình vượt tồn; **hủy đơn hoàn kho, xóa đơn thì không** (đổi từ v3.0) | 2026-10-22 |
@@ -114,4 +114,4 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-21 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

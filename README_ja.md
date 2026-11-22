@@ -42,7 +42,7 @@ GP247 を初めてお使いの方は、[GP247について](./about/gp247_ja.md)�
 ### SEO
 | ドキュメント | 概要 | 最終更新 |
 | --- | --- | --- |
-| [GP247 の SEO](./seo/seo-introduction_ja.md) | SEO ドキュメントの入口：システムが自動で行うこと、ストア全体の設定（Google / Bing の所有権確認、robots、サイトマップ、タイトルテンプレート、IndexNow）、コンテンツごとの SEO タブと自動 301、SEO チェック、404 ログ、AI エージェント、トラッキングコード（GA4、GTM、Meta ピクセル）と Cookie バナー、開発者向けフック | 2026-11-20 |
+| [S-Cart の SEO](./seo/seo-introduction_ja.md) | SEO ドキュメントの入口：システムが自動で行うこと、ストア全体の設定（Google / Bing の所有権確認、robots、サイトマップ、タイトルテンプレート、IndexNow）、コンテンツごとの SEO タブと自動 301、SEO チェック、404 ログ、AI エージェント、トラッキングコード（GA4、GTM、Meta ピクセル）と Cookie バナー、開発者向けフック | 2026-11-20 |
 | [SEO Pro（有料プラグイン）](./seo/seo-pro_ja.md) | SEO の一括編集、管理画面での Google Search Console のデータ、404 ページへの 301 の提案、リンク切れの検出、Google ショッピング用データ。標準の SEO との比較、接続方法と制限 | 2026-11-21 |
 
 ### バックアップと復元
@@ -88,10 +88,10 @@ GP247 を初めてお使いの方は、[GP247について](./about/gp247_ja.md)�
 | --- | --- | --- |
 | [注文のライフサイクル](./s-cart/order-processing/order-lifecycle_ja.md) | 注文の各段階 — 注文、編集、入金、返金、キャンセル、再開、削除 — と各段階での在庫／金額／履歴、フロー図 | 2026-10-22 |
 | [支払リクエスト（Payment Request）](./s-cart/order-processing/payment-request_ja.md) | カート外での入金／出金：オンライン支払リンク、手動記録、返金；4 つのお金の流れ、注文／InOut／MultiVendor の用途、出金の権限、フロー図 | 2026-10-22 |
-| [GP247 の決済](./s-cart/payment/payment_ja.md) | 設定と運用：決済ゲートウェイの導入（テスト → 本番、Webhook）、注文の支払台帳、代金引換、支払時にお客様に表示する案内；開発者は[決済プラグインを作る](./extension/create-payment-plugin_ja.md)を参照 | 2026-11-03 |
-| [GP247 の配送](./s-cart/shipping/shipping_ja.md) | 設定と運用：配送タブ、集荷倉庫、送り状、追跡、代金引換（shop 3.1.4 から）；開発者は[配送プラグインを作る](./extension/create-shipping-plugin_ja.md)を参照 | 2026-11-03 |
+| [S-Cart の決済](./s-cart/payment/payment_ja.md) | 設定と運用：決済ゲートウェイの導入（テスト → 本番、Webhook）、注文の支払台帳、代金引換、支払時にお客様に表示する案内；開発者は[決済プラグインを作る](./extension/create-payment-plugin_ja.md)を参照 | 2026-11-03 |
+| [S-Cart の配送](./s-cart/shipping/shipping_ja.md) | 設定と運用：配送タブ、集荷倉庫、送り状、追跡、代金引換（shop 3.1.4 から）；開発者は[配送プラグインを作る](./extension/create-shipping-plugin_ja.md)を参照 | 2026-11-03 |
 | [通貨（Currency）](./s-cart/tax-and-currency/currency_ja.md) | 明示的な基準通貨、価値を保ったままの基準通貨の変更、金額入力欄の注記（shop 2.1 から） | 2026-10-22 |
-| [GP247 の税](./s-cart/tax-and-currency/tax_ja.md) | 商品ごとの税の仕組みと設定方法 | 2026-10-22 |
+| [S-Cart の税](./s-cart/tax-and-currency/tax_ja.md) | 商品ごとの税の仕組みと設定方法 | 2026-10-22 |
 | [セット商品（Bundle/Combo）](./s-cart/product/product-bundle_ja.md) | 複数の子商品からなるセット商品の作成；価格と在庫の差し引き | 2026-10-22 |
 | [商品の構成（Single/Bundle/Group）](./s-cart/product/product-structure_ja.md) | 3 種類の商品を図で比較；どれを選ぶか | 2026-10-22 |
 | [商品の在庫管理](./s-cart/product/product-stock-management_ja.md) | 在庫が増減するタイミング；在庫超過の設定；**注文キャンセルでは在庫が戻り、注文削除では戻らない**（v3.0 から変更） | 2026-10-22 |
@@ -114,4 +114,4 @@ GP247 を初めてお使いの方は、[GP247について](./about/gp247_ja.md)�
 
 ---
 
-<sub>📅 **最終更新:** 2026-11-21 · ✍️ **作成者 (Author):** GP247</sub>
+<sub>📅 **最終更新:** 2026-11-22 · ✍️ **作成者 (Author):** GP247</sub>

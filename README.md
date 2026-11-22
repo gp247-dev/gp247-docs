@@ -42,7 +42,7 @@ New to GP247? Read [About GP247](./about/gp247.md).
 ### SEO
 | Document | Summary | Last updated |
 | --- | --- | --- |
-| [SEO in GP247](./seo/seo-introduction.md) | Entry page of the SEO documentation: what the system does by itself, store-wide settings (Google/Bing verification, robots, sitemap, title templates, IndexNow), the per-content SEO tab and automatic 301, SEO check, 404 log, AI agent, tracking code (GA4, GTM, Meta Pixel) and cookie banner, hooks for developers | 2026-11-20 |
+| [SEO in S-Cart](./seo/seo-introduction.md) | Entry page of the SEO documentation: what the system does by itself, store-wide settings (Google/Bing verification, robots, sitemap, title templates, IndexNow), the per-content SEO tab and automatic 301, SEO check, 404 log, AI agent, tracking code (GA4, GTM, Meta Pixel) and cookie banner, hooks for developers | 2026-11-20 |
 | [SEO Pro (paid plugin)](./seo/seo-pro.md) | Bulk SEO editing, Google Search Console figures in the admin, 301 suggestions for 404 pages, broken-link finder, Google Shopping data; comparison with the built-in SEO, how to connect and limits | 2026-11-21 |
 
 ### Backup & restore
@@ -88,10 +88,10 @@ New to GP247? Read [About GP247](./about/gp247.md).
 | --- | --- | --- |
 | [Order lifecycle](./s-cart/order-processing/order-lifecycle.md) | Every stage of an order — placing, editing, receiving money, refunding, cancelling, re-opening, deleting — with stock/money/history at each, plus flow diagrams | 2026-10-22 |
 | [Payment requests](./s-cart/order-processing/payment-request.md) | Money in/out outside the cart: online payment links, hand entries, refunds; 4 money flows, order/InOut/MultiVendor purposes, pay-out rights, flow diagrams | 2026-10-22 |
-| [Payments in GP247](./s-cart/payment/payment.md) | Store setup and day-to-day use: payment gateways (test → live, webhook), the order payment ledger, COD, the instructions customers see; developers are pointed to [Creating a payment plugin](./extension/create-payment-plugin.md) | 2026-11-03 |
-| [Shipping in GP247](./s-cart/shipping/shipping.md) | Store setup and day-to-day use: Shipping tab, pick-up warehouse, shipments, tracking, cash on delivery (since shop 3.1.4); developers are pointed to [Creating a shipping plugin](./extension/create-shipping-plugin.md) | 2026-11-03 |
+| [Payments in S-Cart](./s-cart/payment/payment.md) | Store setup and day-to-day use: payment gateways (test → live, webhook), the order payment ledger, COD, the instructions customers see; developers are pointed to [Creating a payment plugin](./extension/create-payment-plugin.md) | 2026-11-03 |
+| [Shipping in S-Cart](./s-cart/shipping/shipping.md) | Store setup and day-to-day use: Shipping tab, pick-up warehouse, shipments, tracking, cash on delivery (since shop 3.1.4); developers are pointed to [Creating a shipping plugin](./extension/create-shipping-plugin.md) | 2026-11-03 |
 | [Currency](./s-cart/tax-and-currency/currency.md) | Explicit base currency, value-preserving rebase, money-input hint (from shop 2.1) | 2026-10-22 |
-| [Tax in GP247](./s-cart/tax-and-currency/tax.md) | How per-product tax works and how to configure it | 2026-10-22 |
+| [Tax in S-Cart](./s-cart/tax-and-currency/tax.md) | How per-product tax works and how to configure it | 2026-10-22 |
 | [Product Bundle (Combo)](./s-cart/product/product-bundle.md) | Create a combo product of several child products; price & stock | 2026-10-22 |
 | [Product Structure (Single/Bundle/Group)](./s-cart/product/product-structure.md) | Compare the 3 product kinds with a chart; which to choose | 2026-10-22 |
 | [Product stock management](./s-cart/product/product-stock-management.md) | When stock decreases/returns; over-stock config; **cancelling returns stock, deleting no longer does** (changed in v3.0) | 2026-10-22 |
@@ -114,4 +114,4 @@ New to GP247? Read [About GP247](./about/gp247.md).
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-21 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>
