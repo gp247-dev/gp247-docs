@@ -65,9 +65,9 @@ GP247 を初めてお使いの方は、[GP247について](./about/gp247_ja.md)�
 | [更新に強いプラグイン](./extension/create-plugin-update-safety_ja.md) | 更新の仕組み、7 つのルール、`update()` フック、独自のデータテーブル | 2026-11-17 |
 | [高度なプラグイン](./extension/create-plugin-advanced_ja.md) | ストアごとの設定、秘密キー、ストアフロントのページ／ブロック／差し込みポイント、割引コード、メニュー | 2026-11-17 |
 | [テンプレート（デザイン）の作り方](./extension/create-template_ja.md) | 新しいストアフロントテンプレートの作成、gp247/shop のビューフォールバックの仕組み | 2026-11-20 |
-| [プラグインとテンプレートのインストール](./extension/install-extension_ja.md) | 4 つのインストール方法：オンライン（ライブラリ）、インポート（.zip）、手動、CLI（`gp247:ext-*`） | 2026-11-17 |
+| [プラグインとテンプレートのインストール](./extension/install-extension_ja.md) | 4 つのインストール方法：オンライン（ライブラリ）、インポート（.zip）、手動、CLI（`gp247:ext-*`） | 2026-11-22 |
 | [プラグインとテンプレートの更新](./extension/update-extension_ja.md) | ライブラリからの更新（管理画面、コマンドライン）、新しいバージョンの上書きコピー（git pull、FTP、`.zip`）、`public/` のファイル不足・古いファイルの対処、エラー時の復元 | 2026-11-19 |
-| [プラグイン v1 から v2 への移行](./extension/convert-plugin-v1-to-v2_ja.md) | プラグインを Core 1.x から Core 2.0 へアップグレード | 2026-11-03 |
+| [プラグイン v1 から v2 への移行](./extension/convert-plugin-v1-to-v2_ja.md) | プラグインを Core 1.x から Core 2.0 へアップグレード | 2026-11-22 |
 
 ### リリース
 | ドキュメント | 概要 | 最終更新 |

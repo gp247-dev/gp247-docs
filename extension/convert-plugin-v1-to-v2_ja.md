@@ -112,7 +112,7 @@ core 2.1 の標準に従って依存関係の 2 つのキーを**名称変更**�
 
 各行の意味：
 - `requireCore`：このプラグインが対応する GP247 コアのバージョン。`php artisan gp247:info` の `core` の行を正しく書きます（例：`["3.1"]`）。各値 `"X.Y"` は「X.x 系の中で X.Y 以上」という範囲です — `"2.1"` と書くと 3.x のコアは**インストールを拒否します**。
-- `requireLivewire`：プラグインが Livewire を必要とするかどうか（`true`／`false`）。ステップ 5 で Livewire の画面を導入するときに追加します（`false` が安全な既定値です — Livewire はコアに同梱されています）。
+- `requireLivewire`：説明のためだけのキーです — コアはこのキーを読まず、値に関係なく Livewire の画面は動作します。`gp247:make-plugin` のひな形どおり `false` のままにしてください（Livewire はコアに同梱されています）。
 - `requireComposerPackages`／`requireGp247Extensions`：依存元（Composer パッケージか GP247 拡張機能か）を明確にするため、`requirePackages`／`requireExtensions` から名称変更されました。Core 2.1 は旧キーも読みます（後方互換）が、非推奨（deprecated）です — 新しいキーを使ってください。
 - `minUpdateFrom`：このバージョンへワンクリック更新できる、インストール済みの**最低**バージョン。
   `"1.0"` にしておけば安全です（ほぼ制限なし）。旧系列から自動移行できないメジャーリリースを出すときだけ、
@@ -545,9 +545,10 @@ php artisan gp247:make-plugin --name=YourPluginName --download=0
 
 | 日付 | GP247 バージョン | 変更内容 |
 | --- | --- | --- |
+| 2026-11-22 |  | **修正：** `requireLivewire` は説明のためだけのキーで、コアは読みません |
 | 2026-11-03 | gp247/core 3.9 | キー `requireUpdateFrom` を `minUpdateFrom` に名称変更（直接更新できるインストール済みの最低バージョン、以上）。旧名称は非推奨の警告付きで引き続き動作し、core 4.0 で削除されます |
 | 2026-10-18 | gp247/core 3.1 | **修正：** `requireCore` を稼働中のコア（`php artisan gp247:info`）に従って書く — 古い値 `"2.1"` は 3.x のコアに拒否される。ステップ 8d から決済／配送プラグインのガイドへリンク |
 
 ---
 
-<sub>📅 **最終更新:** 2026-11-03 · ✍️ **作成者 (Author):** GP247</sub>
+<sub>📅 **最終更新:** 2026-11-22 · ✍️ **作成者 (Author):** GP247</sub>

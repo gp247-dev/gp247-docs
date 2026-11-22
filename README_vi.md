@@ -65,9 +65,9 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 | [Plugin an toàn khi cập nhật](./extension/create-plugin-update-safety_vi.md) | Cập nhật chạy thế nào, 7 quy tắc, hook `update()`, bảng dữ liệu riêng | 2026-11-17 |
 | [Plugin nâng cao](./extension/create-plugin-advanced_vi.md) | Cấu hình theo cửa hàng, khoá bí mật, trang / khối / điểm cắm storefront, mã giảm giá, menu | 2026-11-17 |
 | [Hướng dẫn tạo Template (giao diện)](./extension/create-template_vi.md) | Tạo template storefront mới; cơ chế fallback view của gp247/shop | 2026-11-20 |
-| [Cài đặt Plugin & Template](./extension/install-extension_vi.md) | 4 cách cài: online (thư viện), import (.zip), thủ công, CLI (`gp247:ext-*`) | 2026-11-17 |
+| [Cài đặt Plugin & Template](./extension/install-extension_vi.md) | 4 cách cài: online (thư viện), import (.zip), thủ công, CLI (`gp247:ext-*`) | 2026-11-22 |
 | [Cập nhật Plugin & Template](./extension/update-extension_vi.md) | Cập nhật từ thư viện (trang quản trị, dòng lệnh), chép đè bản mới (git pull, FTP, `.zip`), xử lý khi thiếu hoặc cũ file trong `public/`, khôi phục khi lỗi | 2026-11-19 |
-| [Chuyển đổi Plugin v1 lên v2](./extension/convert-plugin-v1-to-v2_vi.md) | Nâng cấp plugin từ Core 1.x lên Core 2.0 | 2026-11-03 |
+| [Chuyển đổi Plugin v1 lên v2](./extension/convert-plugin-v1-to-v2_vi.md) | Nâng cấp plugin từ Core 1.x lên Core 2.0 | 2026-11-22 |
 
 ### Phát hành
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |

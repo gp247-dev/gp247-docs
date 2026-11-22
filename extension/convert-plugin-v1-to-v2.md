@@ -116,7 +116,7 @@ and **rename** the two dependency keys per the core 2.1 standard: `requirePackag
 
 Meaning of the lines:
 - `requireCore`: the GP247 core version this plugin is valid for. Write the `core` line of `php artisan gp247:info` (e.g. `["3.1"]`). Each `"X.Y"` value is the range "from X.Y within the X.x line" — `"2.1"` is **refused** by a 3.x core.
-- `requireLivewire`: whether the plugin needs Livewire (`true`/`false`). Add it when you introduce a Livewire screen in Step 5 (`false` is a safe default — Livewire ships with core).
+- `requireLivewire`: descriptive only — core does not read this key, and Livewire screens work whatever its value. Keep `false` as the `gp247:make-plugin` scaffold writes it (Livewire ships with core).
 - `requireComposerPackages` / `requireGp247Extensions`: renamed from `requirePackages` / `requireExtensions` to state the dependency source (Composer package vs GP247 extension). Core 2.1 still reads the old keys (backward compatible) but they are deprecated — use the new keys.
 - `minUpdateFrom`: the **minimum** currently-installed version allowed to 1-click update to
   this release. Leaving it at `"1.0"` is safe (practically no restriction). Only raise this
@@ -560,9 +560,10 @@ new layout) so you do not have to create each file by hand.
 
 | Date | GP247 version | Change |
 | --- | --- | --- |
+| 2026-11-22 |  | **Fixed:** `requireLivewire` is descriptive only — core does not read this key |
 | 2026-11-03 | gp247/core 3.9 | Key `requireUpdateFrom` renamed to `minUpdateFrom` (lowest installed version, ≥, allowed to update straight); the old name still works with a deprecation warning and is removed in core 4.0 |
 | 2026-10-18 | gp247/core 3.1 | **Fixed:** `requireCore` follows the running core (`php artisan gp247:info`) — the old `"2.1"` is refused by a 3.x core; Step 8d points to the payment / shipping plugin guides |
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-03 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

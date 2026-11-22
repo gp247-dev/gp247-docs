@@ -76,7 +76,13 @@ below. Step 0 is a one-time task; later installs don't require repeating it.
 1. Log in to admin. Go to the **Plugin** (or **Template**) menu, then choose the **Online** submenu
    (extension library / store).
 2. The list of extensions from the GP247 library appears. You can **search by keyword**, filter
-   **free / paid**, and sort. Each extension shows its name, version and price.
+   **free / paid**, filter by **group** (each group shows its count), and sort. Each extension shows its name, version and price.
+   - The list holds **every** extension of the library. An extension that cannot run on your site shows
+     **"Needs core X.Y+ (running …)"** — or **"Not available for core …"** when it was only released for older cores — instead
+     of the Install button. To install it, update GP247 first (`composer update`, then `php artisan gp247:update`).
+   - Pick **"Runs on my core"** to see only the extensions you can install right away.
+
+   > ℹ️ **Available since:** gp247/core 3.13.0
 3. Choose the extension to install and click **Install**.
 4. GP247 automatically: downloads the file → checks compatibility → extracts → installs. On success you
    see an install-successful notice and the extension appears in the installed list.
@@ -395,8 +401,9 @@ action. To actually remove it, take its name out of the corresponding `.env` var
 
 | Date | GP247 version | Change |
 | --- | --- | --- |
+| 2026-11-22 | gp247/core 3.13.0 | The online library lists every extension; one that needs a newer core shows "Needs core X.Y+" instead of Install; "Runs on my core" filter and group filter |
 | 2026-09-29 |  | Replacing an extension's files by hand / `git pull` / Composer: the list shows a **"Data update pending"** badge and an **Apply data update** button; new `gp247:ext-update --local` command (sections 4, 5). |
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-17 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

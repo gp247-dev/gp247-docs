@@ -114,7 +114,7 @@ Mở file `gp247.json` trong thư mục plugin. Sửa `requireCore`, **thêm** `
 
 Ý nghĩa các dòng:
 - `requireCore`: phiên bản lõi GP247 mà plugin này hợp lệ. Ghi đúng dòng `core` của `php artisan gp247:info` (ví dụ `["3.1"]`). Mỗi giá trị `"X.Y"` là khoảng "từ X.Y trong dòng X.x" — ghi `"2.1"` thì lõi 3.x **từ chối cài**.
-- `requireLivewire`: plugin có cần Livewire hay không (`true`/`false`). Thêm khi bạn đưa màn Livewire vào ở Bước 5 (`false` là mặc định an toàn — Livewire đi kèm core).
+- `requireLivewire`: khoá chỉ để mô tả — core không đọc khoá này, màn Livewire chạy được với bất kỳ giá trị nào. Giữ `false` như khuôn `gp247:make-plugin` sinh ra (Livewire đi kèm core).
 - `requireComposerPackages` / `requireGp247Extensions`: đổi tên từ `requirePackages` / `requireExtensions` cho rõ nguồn phụ thuộc (gói Composer vs extension GP247). Core 2.1 vẫn đọc khóa cũ (tương thích ngược) nhưng đã deprecated — hãy dùng khóa mới.
 - `minUpdateFrom`: phiên bản đang cài **tối thiểu** được phép cập nhật 1-click lên bản này.
   Để `"1.0"` là an toàn (gần như không giới hạn). Chỉ nâng số này lên khi bạn phát hành bản
@@ -551,9 +551,10 @@ Lệnh này sinh sẵn đầy đủ cấu trúc chuẩn v2 (đã có Livewire, S
 
 | Ngày | Phiên bản GP247 | Thay đổi |
 | --- | --- | --- |
+| 2026-11-22 |  | **Sửa:** `requireLivewire` chỉ để mô tả — core không đọc khoá này |
 | 2026-11-03 | gp247/core 3.9 | Khoá `requireUpdateFrom` đổi tên thành `minUpdateFrom` (bản đang cài thấp nhất, ≥, được cập nhật thẳng); tên cũ vẫn chạy kèm cảnh báo deprecated và bị gỡ ở core 4.0 |
 | 2026-10-18 | gp247/core 3.1 | **Sửa:** `requireCore` ghi theo lõi đang chạy (`php artisan gp247:info`) — giá trị `"2.1"` cũ bị lõi 3.x từ chối; Bước 8d trỏ sang hướng dẫn plugin thanh toán / vận chuyển |
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-03 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

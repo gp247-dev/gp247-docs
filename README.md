@@ -65,9 +65,9 @@ New to GP247? Read [About GP247](./about/gp247.md).
 | [Update-safe plugins](./extension/create-plugin-update-safety.md) | How updates run, 7 rules, the `update()` hook, own data tables | 2026-11-17 |
 | [Advanced plugins](./extension/create-plugin-advanced.md) | Per-store settings, secret keys, storefront pages / blocks / hooks, coupons, menus | 2026-11-17 |
 | [Creating a Template (storefront theme)](./extension/create-template.md) | Build a new storefront template; the gp247/shop view fallback mechanism | 2026-11-20 |
-| [Installing Plugins & Templates](./extension/install-extension.md) | 4 methods: online (library), import (.zip), manual, CLI (`gp247:ext-*`) | 2026-11-17 |
+| [Installing Plugins & Templates](./extension/install-extension.md) | 4 methods: online (library), import (.zip), manual, CLI (`gp247:ext-*`) | 2026-11-22 |
 | [Updating Plugins & Templates](./extension/update-extension.md) | Update from the library (admin, command line), copy a new version over (git pull, FTP, `.zip`), fix missing or outdated files in `public/`, restore on error | 2026-11-19 |
-| [Converting a Plugin from v1 to v2](./extension/convert-plugin-v1-to-v2.md) | Upgrade a plugin from Core 1.x to Core 2.0 | 2026-11-03 |
+| [Converting a Plugin from v1 to v2](./extension/convert-plugin-v1-to-v2.md) | Upgrade a plugin from Core 1.x to Core 2.0 | 2026-11-22 |
 
 ### Releases
 | Document | Summary | Last updated |

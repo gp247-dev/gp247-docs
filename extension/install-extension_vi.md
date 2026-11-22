@@ -74,7 +74,13 @@ Bước 0 này chỉ làm một lần; các lần cài sau không phải làm l�
 1. Đăng nhập admin. Vào menu **Plugin** (hoặc **Template**), rồi chọn mục con **Online** (Thư viện /
    Cửa hàng extension).
 2. Danh sách extension từ thư viện GP247 hiện ra. Bạn có thể **tìm theo từ khoá**, lọc **miễn phí / trả
-   phí**, và sắp xếp. Mỗi extension hiển thị tên, phiên bản và giá.
+   phí**, lọc theo **nhóm** (mỗi nhóm kèm số lượng) và sắp xếp. Mỗi extension hiển thị tên, phiên bản và giá.
+   - Danh sách gồm **mọi** extension của thư viện. Extension chưa chạy được trên site của bạn hiện nhãn
+     **"Cần core X.Y+ (đang chạy …)"** — hoặc **"Chưa hỗ trợ core …"** khi nó chỉ có bản cho core cũ hơn — thay cho nút
+     Cài đặt. Muốn cài thì nâng GP247 trước (`composer update`, rồi `php artisan gp247:update`).
+   - Chọn **"Chạy được trên core của tôi"** để chỉ xem những extension cài được ngay.
+
+   > ℹ️ **Có từ:** gp247/core 3.13.0
 3. Chọn extension muốn cài, bấm nút **Cài đặt (Install)**.
 4. GP247 tự động: tải file về → kiểm tra tương thích → giải nén → cài đặt. Nếu thành công, bạn thấy
    thông báo cài đặt thành công và extension xuất hiện trong danh sách đã cài.
@@ -382,8 +388,9 @@ extension đó khỏi biến `.env` tương ứng rồi thử lại.
 
 | Ngày | Phiên bản GP247 | Thay đổi |
 | --- | --- | --- |
+| 2026-11-22 | gp247/core 3.13.0 | Thư viện online liệt kê mọi extension; extension cần core mới hơn hiện nhãn "Cần core X.Y+" thay cho nút Cài đặt; lọc "Chạy được trên core của tôi" và lọc theo nhóm |
 | 2026-09-29 |  | Thay file extension bằng chép tay / `git pull` / Composer: màn danh sách hiện nhãn **"Chờ cập nhật dữ liệu"** và nút **Áp dụng cập nhật dữ liệu**; lệnh `gp247:ext-update --local` (mục 4, 5). |
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-17 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>
