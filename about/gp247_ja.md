@@ -44,14 +44,14 @@ flowchart TB
 - **コマンドライン `gp247:*` — 完全な自動化を目指して** — インストール、更新、サイトの健康チェック（`gp247:doctor`）、
   バックアップ、プラグインとテンプレートの管理を、管理画面を開かずに行える 40 以上のコマンドがあります。すべてのコマンドに
   スクリプト・CI・Docker 向けの `--json` があり、データを削除しうるコマンドは必ず確認を求めます。詳しくは
-  [GP247 のコマンドライン（CLI）](../cli/cli-introduction_ja.md)をご覧ください。
+  [GP247 のコマンドライン（CLI）](https://gp247.net/ja/docs/gp247-system-command-line/gp247-command-line.html)をご覧ください。
 - **REST API v2 — アプリや ERP とつなぐ** — ストアフロント／顧客向けと管理向けの 2 つの API グループ、トークンによるログイン、
   OpenAPI 3.1 の仕様書を備えています。ERP、在庫管理ソフト、CRM は `updated_since`、イベントログ、署名付き Webhook でデータを
-  同期できます。詳しくは [API 入門](../api/api-introduction_ja.md)と [ERP とのデータ同期](../api/api-sync_ja.md)をご覧ください。
+  同期できます。詳しくは [API 入門](https://gp247.net/ja/docs/api/about-api-gp247.html)と [ERP とのデータ同期](https://gp247.net/ja/docs/api/api-sync.html)をご覧ください。
 - **MCP サーバー — AI エージェントと連携** — S-Cart に標準搭載され、有効にするまではオフです。ストアオーナーは Claude Code、
   Claude Desktop / claude.ai、Cursor、VS Code から普段の言葉で、注文の確認、在庫の確認、売上の要約を依頼できます。ツールは 18 個
   （読み取り 13 個、書き込み 5 個は初期状態でオフ）。書き込み操作は必ずプレビューと 1 回限りの確認コードを伴います。詳しくは
-  [MCP サーバーの紹介](../mcp/mcp-introduction_ja.md)をご覧ください。
+  [MCP サーバーの紹介](https://gp247.net/ja/docs/mcp/about-mcp-gp247.html)をご覧ください。
 
 ### 組み込み SEO、プラグイン不要
 
@@ -68,7 +68,7 @@ flowchart TB
 - **プラグインとテンプレートも利用可能** — 用意されたフックを通じて、プラグインのコンテンツにも同じ SEO タブ、サイトマップ、
   JSON-LD が使えます。
 
-詳しくは [S-Cart の SEO](../seo/seo-introduction_ja.md) をご覧ください。
+詳しくは [S-Cart の SEO](https://gp247.net/ja/docs/seo/seo-introduction.html) をご覧ください。
 
 ### 高度で一元管理されたセキュリティ
 
@@ -103,13 +103,13 @@ flowchart TB
   バックアップし、システムの更新、拡張機能の更新、テンプレートの変更の前にはスナップショットを取ります。S3 互換ストレージや
   SFTP / NAS へのコピーにも対応し、状況に応じた復元手順を用意しています。
 
-詳しくは [GP247 システムのセキュリティ](../security/security-introduction_ja.md)と[バックアップと復元](../backup/backup-and-restore_ja.md)
+詳しくは [GP247 システムのセキュリティ](https://gp247.net/ja/docs/security/security-introduction.html)と[バックアップと復元](https://gp247.net/ja/docs/backup-and-restore/backup-and-restore.html)
 をご覧ください。
 
 ### 利用者と開発者のサポート
 
 - **充実したドキュメントを継続的に更新** — 各言語（ベトナム語 · 英語 · 日本語）80 ページ以上。ストアオーナーと開発者の両方に向けて
-  書かれ、リリースごとに更新されます。詳しくは[ドキュメント目次](../README_ja.md)をご覧ください。
+  書かれ、リリースごとに更新されます。詳しくは[ドキュメント目次](https://gp247.net/ja/docs)をご覧ください。
 - **AI コーディングエージェント向けの Agent Skills** — AI エージェント（Claude Code など）が、GP247 の流儀どおりにプラグイン、
   決済プラグイン、配送プラグイン、テンプレートを構築し、コマンドラインで拡張機能を管理できるスキル集です。各スキルは作業の前に
   サイトの core バージョンを自動で判別します。詳しくは [gp247-skills](https://github.com/gp247net/gp247-skills) をご覧ください。
@@ -153,5 +153,5 @@ GP247 のエコシステムは、次の主要コンポーネントで構成さ�
 
 SNS のコミュニティに参加すると、開発チームや他のメンバーから迅速なサポートを受けられます。
 
-- **Facebook**: <https://www.facebook.com/gp247.official>
+- **Facebook**: <https://www.facebook.com/SCart.Ecommerce/>
 - **S-Cart グループ**: <https://www.facebook.com/groups/scart.opensource>

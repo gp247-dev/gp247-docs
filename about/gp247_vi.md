@@ -43,13 +43,13 @@ flowchart TB
 
 - **Dòng lệnh `gp247:*` — hướng tới tự động hoá hoàn toàn** — hơn 40 lệnh để cài đặt, cập nhật, kiểm tra sức khoẻ site
   (`gp247:doctor`), sao lưu, quản lý plugin và template mà không cần mở trang quản trị. Mọi lệnh có `--json` cho script, CI và
-  Docker; lệnh có thể xoá dữ liệu luôn hỏi xác nhận. Xem [Dòng lệnh GP247 (CLI)](../cli/cli-introduction_vi.md).
+  Docker; lệnh có thể xoá dữ liệu luôn hỏi xác nhận. Xem [Dòng lệnh GP247 (CLI)](https://gp247.net/vi/docs/gp247-system-command-line/gp247-command-line.html).
 - **REST API v2 — kết nối ứng dụng và ERP** — hai nhóm API cho cửa hàng/khách hàng và cho quản trị, đăng nhập bằng token, đặc tả
   OpenAPI 3.1. ERP, phần mềm kho hay CRM đồng bộ dữ liệu bằng `updated_since`, nhật ký sự kiện và webhook có chữ ký. Xem
-  [Giới thiệu API](../api/api-introduction_vi.md) và [Đồng bộ dữ liệu với ERP](../api/api-sync_vi.md).
+  [Giới thiệu API](https://gp247.net/vi/docs/api/about-api-gp247.html) và [Đồng bộ dữ liệu với ERP](https://gp247.net/vi/docs/api/api-sync.html).
 - **MCP server — làm việc với AI agent** — có sẵn trong S-Cart, tắt sẵn cho tới khi bạn bật. Chủ cửa hàng hỏi bằng lời thường
   trong Claude Code, Claude Desktop / claude.ai, Cursor hay VS Code để tra đơn, xem tồn kho, tóm tắt doanh thu. 18 công cụ (13 đọc,
-  5 ghi mặc định tắt); thao tác ghi luôn có bản xem trước và mã xác nhận. Xem [Giới thiệu MCP server](../mcp/mcp-introduction_vi.md).
+  5 ghi mặc định tắt); thao tác ghi luôn có bản xem trước và mã xác nhận. Xem [Giới thiệu MCP server](https://gp247.net/vi/docs/mcp/about-mcp-gp247.html).
 
 ### SEO tích hợp sẵn, không cần plugin
 
@@ -64,7 +64,7 @@ flowchart TB
   xác minh Google / Bing, mẫu tiêu đề và IndexNow có hướng dẫn từng bước. AI agent đọc và sửa SEO được qua MCP (có xác nhận).
 - **Plugin và template cắm vào được** — nội dung của plugin có cùng tab SEO, sitemap, JSON-LD qua các điểm cắm có sẵn.
 
-Xem [SEO trong S-Cart](../seo/seo-introduction_vi.md).
+Xem [SEO trong S-Cart](https://gp247.net/vi/docs/seo/seo-introduction.html).
 
 ### Bảo mật nâng cao, quản lý tập trung
 
@@ -98,12 +98,12 @@ flowchart TB
   cron; tự chụp một bản trước khi cập nhật hệ thống, cập nhật extension hay đổi template; chép được ra lưu trữ S3-compatible hoặc
   SFTP / NAS; phục hồi theo từng tình huống.
 
-Xem [Bảo mật hệ thống GP247](../security/security-introduction_vi.md) và [Sao lưu & phục hồi](../backup/backup-and-restore_vi.md).
+Xem [Bảo mật hệ thống GP247](https://gp247.net/vi/docs/security/security-introduction.html) và [Sao lưu & phục hồi](https://gp247.net/vi/docs/backup-and-restore/backup-and-restore.html).
 
 ### Hỗ trợ người dùng và lập trình viên
 
 - **Tài liệu đầy đủ, cập nhật liên tục** — hơn 80 trang cho mỗi ngôn ngữ (Việt · Anh · Nhật), viết cho cả chủ cửa hàng lẫn lập trình
-  viên, cập nhật cùng mỗi bản phát hành. Xem [mục lục tài liệu](../README_vi.md).
+  viên, cập nhật cùng mỗi bản phát hành. Xem [mục lục tài liệu](https://gp247.net/vi/docs).
 - **Agent Skills cho AI agent lập trình** — bộ skill giúp AI agent (như Claude Code) dựng plugin, plugin thanh toán, plugin vận
   chuyển, template và quản lý extension qua dòng lệnh theo đúng chuẩn GP247; skill tự nhận phiên bản core của site trước khi làm.
   Xem [gp247-skills](https://github.com/gp247net/gp247-skills).
@@ -147,5 +147,5 @@ Tìm hiểu thêm và xem mã nguồn tại:
 
 Tham gia cộng đồng trên mạng xã hội để được đội ngũ phát triển và các thành viên khác hỗ trợ nhanh:
 
-- **Facebook**: <https://www.facebook.com/gp247.official>
+- **Facebook**: <https://www.facebook.com/SCart.Ecommerce/>
 - **Nhóm S-Cart**: <https://www.facebook.com/groups/scart.opensource>
