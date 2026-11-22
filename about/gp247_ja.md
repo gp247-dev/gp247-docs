@@ -15,7 +15,7 @@
 | **ライセンス** | MIT — 無料。自由にカスタマイズし、ご自身の Laravel システムに組み込めます |
 | **技術スタック（GP247 3.x）** | PHP 8.3 以上 · Laravel 13 · Livewire 4 · Tailwind CSS 3（ビルド済みのため Node は不要）· MySQL / MariaDB |
 | **コンポーネント** | `gp247/core` · `gp247/front` · `gp247/shop` · `gp247/mcp` |
-| **オールインワン版** | **S-Cart** = core + front + shop + mcp |
+| **オールインワン版** | **S-Cart**（オンライン販売）= core + front + shop + mcp · **GP247 CMS**（コンテンツサイト）= core + front |
 | **運用と連携** | コマンドライン `php artisan gp247:*` · REST API v2（ERP 同期）· AI エージェント向け MCP サーバー |
 | **SEO** | メタタグ、サイトマップ、JSON-LD、hreflang を自動出力 · コンテンツごとの SEO タブ · URL 変更時の自動 301 · SEOチェック画面 |
 | **セキュリティ** | 管理画面・API・MCP で共通の権限とログ · 秘密情報の暗号化 · 暗号化されたバックアップと復元 |
@@ -24,7 +24,7 @@
 
 ## 主な特長
 
-GP247 は、実際に運営しているストアに必要な 4 つの能力に力を入れています。
+GP247 は、実際に運営している企業の Web サイトに必要な 4 つの能力に力を入れています。
 
 ```mermaid
 flowchart TB
@@ -111,7 +111,8 @@ flowchart TB
 - **充実したドキュメントを継続的に更新** — 各言語（ベトナム語 · 英語 · 日本語）80 ページ以上。ストアオーナーと開発者の両方に向けて
   書かれ、リリースごとに更新されます。詳しくは[ドキュメント目次](https://gp247.net/ja/docs)をご覧ください。
 - **AI コーディングエージェント向けの Agent Skills** — AI エージェント（Claude Code など）が、GP247 の流儀どおりにプラグイン、
-  決済プラグイン、配送プラグイン、テンプレートを構築し、コマンドラインで拡張機能を管理できるスキル集です。各スキルは作業の前に
+  決済プラグイン、配送プラグイン、テンプレートを構築し、コマンドラインで拡張機能を管理し、インストール済みのプラグインや
+  テンプレートを新しいリリースに更新できるスキル集です。各スキルは作業の前に
   サイトの core バージョンを自動で判別します。詳しくは [gp247-skills](https://github.com/gp247net/gp247-skills) をご覧ください。
 
 ## 構成コンポーネント
@@ -126,11 +127,22 @@ GP247 のエコシステムは、次の主要コンポーネントで構成さ�
 | **GP247/mcp** | AI エージェントがシステムを操作できるようにします |
 
 > **S-Cart プロジェクト** = GP247/core + GP247/front + GP247/shop + GP247/mcp
+>
+> **GP247 CMS** = GP247/core + GP247/front
 
 すべてのコンポーネントは**無料のオープンソース**です。自由にカスタマイズし、ご自身の Laravel システムに組み込むことが
 できます。
 
-![GP247 システム概要](./images/gp247-system.jpg)
+```mermaid
+flowchart TB
+    subgraph PKG["GP247 のパッケージ — Laravel 上で動作"]
+        direction LR
+        C["gp247/core<br/>管理画面"] --> F["gp247/front<br/>Web サイト"] --> S["gp247/shop<br/>販売"] --> M["gp247/mcp<br/>AI エージェント"]
+    end
+    E["プラグイン<br/>とテンプレート"] -.-> PKG
+    PKG --> P1["GP247 CMS<br/>core + front"]
+    PKG --> P2["S-Cart<br/>core + front + shop + mcp"]
+```
 
 ## ソースコード
 
@@ -141,6 +153,7 @@ GP247 のエコシステムは、次の主要コンポーネントで構成さ�
 - **GP247/shop**: <https://github.com/gp247net/shop>
 - **GP247/mcp**: <https://github.com/gp247net/mcp>
 - **GP247/s-cart**: <https://github.com/gp247net/s-cart>
+- **GP247/cms**: <https://github.com/gp247net/cms>
 - **プラグイン**: <https://github.com/gp247-plugin>
 - **ドキュメント**: <https://github.com/gp247net/gp247-docs>
 - **Agent Skills**: <https://github.com/gp247net/gp247-skills>

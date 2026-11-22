@@ -15,7 +15,7 @@ phục hồi** tích hợp sẵn. Tất cả miễn phí, giấy phép MIT.
 | **Giấy phép** | MIT — miễn phí, tự do tùy chỉnh và tích hợp vào hệ thống Laravel của bạn |
 | **Công nghệ (GP247 3.x)** | PHP 8.3+ · Laravel 13 · Livewire 4 · Tailwind CSS 3 (biên dịch sẵn, không cần Node) · MySQL / MariaDB |
 | **Thành phần** | `gp247/core` · `gp247/front` · `gp247/shop` · `gp247/mcp` |
-| **Bản trọn gói** | **S-Cart** = core + front + shop + mcp |
+| **Bản trọn gói** | **S-Cart** (bán hàng trực tuyến) = core + front + shop + mcp · **GP247 CMS** (website nội dung) = core + front |
 | **Vận hành & tích hợp** | Dòng lệnh `php artisan gp247:*` · REST API v2 (đồng bộ ERP) · MCP server cho AI agent |
 | **SEO** | Thẻ meta, sitemap, JSON-LD, hreflang tự động · tab SEO cho từng nội dung · tự 301 khi đổi đường dẫn · màn Kiểm tra SEO |
 | **Bảo mật** | Phân quyền và nhật ký dùng chung cho trang quản trị, API, MCP · mã hoá bí mật · sao lưu & phục hồi mã hoá |
@@ -24,7 +24,7 @@ phục hồi** tích hợp sẵn. Tất cả miễn phí, giấy phép MIT.
 
 ## Điểm nổi bật
 
-GP247 tập trung vào bốn nhóm năng lực mà một cửa hàng đang vận hành thật cần đến:
+GP247 tập trung vào bốn nhóm năng lực mà một website doanh nghiệp đang vận hành thật cần đến:
 
 ```mermaid
 flowchart TB
@@ -105,7 +105,8 @@ Xem [Bảo mật hệ thống GP247](https://gp247.net/vi/docs/security/security
 - **Tài liệu đầy đủ, cập nhật liên tục** — hơn 80 trang cho mỗi ngôn ngữ (Việt · Anh · Nhật), viết cho cả chủ cửa hàng lẫn lập trình
   viên, cập nhật cùng mỗi bản phát hành. Xem [mục lục tài liệu](https://gp247.net/vi/docs).
 - **Agent Skills cho AI agent lập trình** — bộ skill giúp AI agent (như Claude Code) dựng plugin, plugin thanh toán, plugin vận
-  chuyển, template và quản lý extension qua dòng lệnh theo đúng chuẩn GP247; skill tự nhận phiên bản core của site trước khi làm.
+  chuyển, template, quản lý extension qua dòng lệnh và cập nhật plugin, template đang cài lên bản mới, theo đúng chuẩn GP247; skill
+  tự nhận phiên bản core của site trước khi làm.
   Xem [gp247-skills](https://github.com/gp247net/gp247-skills).
 
 ## Các thành phần
@@ -120,11 +121,22 @@ Hệ sinh thái GP247 gồm các thành phần chính sau:
 | **GP247/mcp** | Cho phép AI agent làm việc với hệ thống |
 
 > **Dự án S-Cart** = GP247/core + GP247/front + GP247/shop + GP247/mcp
+>
+> **GP247 CMS** = GP247/core + GP247/front
 
 Tất cả thành phần đều **miễn phí và mã nguồn mở**. Bạn có thể tùy chỉnh và tích hợp chúng vào hệ thống Laravel
 của riêng mình.
 
-![Tổng quan hệ thống GP247](./images/gp247-system.jpg)
+```mermaid
+flowchart TB
+    subgraph PKG["Các gói GP247 — chạy trên Laravel"]
+        direction LR
+        C["gp247/core<br/>Quản trị"] --> F["gp247/front<br/>Website"] --> S["gp247/shop<br/>Bán hàng"] --> M["gp247/mcp<br/>AI agent"]
+    end
+    E["Plugin<br/>& template"] -.-> PKG
+    PKG --> P1["GP247 CMS<br/>core + front"]
+    PKG --> P2["S-Cart<br/>core + front + shop + mcp"]
+```
 
 ## Mã nguồn
 
@@ -135,6 +147,7 @@ Tìm hiểu thêm và xem mã nguồn tại:
 - **GP247/shop**: <https://github.com/gp247net/shop>
 - **GP247/mcp**: <https://github.com/gp247net/mcp>
 - **GP247/s-cart**: <https://github.com/gp247net/s-cart>
+- **GP247/cms**: <https://github.com/gp247net/cms>
 - **Plugin**: <https://github.com/gp247-plugin>
 - **Tài liệu**: <https://github.com/gp247net/gp247-docs>
 - **Agent Skills**: <https://github.com/gp247net/gp247-skills>
