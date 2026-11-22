@@ -41,9 +41,9 @@ for the packages your site uses:
 ```bash
 php artisan gp247:info
 
-composer require "gp247/core:^3.10.3" "gp247/front:^3.5.2" "gp247/shop:^3.8.1" "gp247/mcp:^2.0.1" -W # S-Cart
-composer require "gp247/core:^3.10.3" "gp247/front:^3.5.2" -W                                        # GP247 CMS
-composer require "gp247/core:^3.10.3" -W                                                             # core only
+composer require "gp247/core:^3.16.0" "gp247/front:^3.12.0" "gp247/shop:^3.13.0" "gp247/mcp:^2.1.1" -W # S-Cart
+composer require "gp247/core:^3.16.0" "gp247/front:^3.12.0" -W                                         # GP247 CMS
+composer require "gp247/core:^3.16.0" -W                                                               # core only
 
 php artisan gp247:update
 php artisan gp247:info
@@ -120,16 +120,16 @@ so they cannot break the site.
 
    | Your site | Command |
    | --- | --- |
-   | S-Cart | `composer require "gp247/core:^3.10.3" "gp247/front:^3.5.2" "gp247/shop:^3.8.1" "gp247/mcp:^2.0.1" -W` |
-   | GP247 CMS (core + front) | `composer require "gp247/core:^3.10.3" "gp247/front:^3.5.2" -W` |
-   | Core + front + shop, no MCP needed | `composer require "gp247/core:^3.10.3" "gp247/front:^3.5.2" "gp247/shop:^3.8.1" -W` |
-   | Core only | `composer require "gp247/core:^3.10.3" -W` |
+   | S-Cart | `composer require "gp247/core:^3.16.0" "gp247/front:^3.12.0" "gp247/shop:^3.13.0" "gp247/mcp:^2.1.1" -W` |
+   | GP247 CMS (core + front) | `composer require "gp247/core:^3.16.0" "gp247/front:^3.12.0" -W` |
+   | Core + front + shop, no MCP needed | `composer require "gp247/core:^3.16.0" "gp247/front:^3.12.0" "gp247/shop:^3.13.0" -W` |
+   | Core only | `composer require "gp247/core:^3.16.0" -W` |
 
    The command switches the site's `composer.json` to the 3.x line and downloads the new versions; `-W` lets Composer upgrade
    the related libraries too. On success Composer lists the changed packages, with `gp247/core` now on `3.x`. The S-Cart row
    also adds the MCP server package (included since S-Cart 3.5).
 
-   > ℹ️ **Info:** the numbers above are the minimums of S-Cart 3.5.2. Newer S-Cart releases may raise them — compare with
+   > ℹ️ **Info:** the numbers above are the minimums of S-Cart 3.10.0. Newer S-Cart releases may raise them — compare with
    > [the latest S-Cart `composer.json`](https://github.com/gp247net/s-cart/blob/master/composer.json).
 
 4. **Convert the data to the 3.x line**:
@@ -242,4 +242,4 @@ only for changing lines.
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-07 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

@@ -436,8 +436,9 @@ Site vừa cài đã chạy được, nhưng làm hết danh sách này **trư�
 
 | Ngày | Phiên bản GP247 | Thay đổi |
 | --- | --- | --- |
+| 2026-11-18 | gp247/front 3.9.2, gp247/shop 3.11.2 | `gp247:front-install` và `gp247:shop-install` hỏi trước khi xoá bảng đã có của phần đó; chạy trong script thì từ chối, cần `--force=1` mới cài lại. |
 | 2026-11-08 | gp247/core 3.11.0 | Tài khoản quản trị đầu tiên nhận mật khẩu ngẫu nhiên, in một lần ở khối cuối cùng của `gp247:install` (thay cho `admin` / `admin`); mất mật khẩu thì dùng `gp247:admin-password`. |
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-08 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

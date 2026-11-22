@@ -57,8 +57,10 @@ php artisan gp247:info
 
 ## Before you start
 
-- [ ] **Back up** — the database, the `.env` file and the `app/GP247`, `public/GP247`, `storage` folders. If something goes
-      wrong, the backup is your way back: [Encryption keys & backups](../security/security-keys-and-backup.md).
+- [ ] **Back up** — make a **Full backup** in **System config → Backup & restore**
+      ([how](../backup/backup-and-restore.md#make-a-backup)), or copy the database, the `.env` file and the `app/GP247`,
+      `public/GP247`, `storage` folders yourself. If something goes wrong, the backup is your way back:
+      [Encryption keys & backups](../security/security-keys-and-backup.md).
 - [ ] **Note the current version** — run `php artisan gp247:info` and write down the core / front / shop / mcp numbers.
 - [ ] **Read what the new release needs** — the **📋 To do when updating** part of each release in
       [S-Cart releases and security](../release/release.md#releases).
@@ -91,12 +93,16 @@ php artisan gp247:info
    ```
 
    The command runs, in order, and prints the name of each step it ran:
+   - a **snapshot before the change** — once backups are set up, GP247 snapshots the data before it changes anything
+     ([details](../backup/backup-and-restore.md#automatic-snapshot-before-a-risky-change));
    - **core**;
    - **front** and **shop** — only when the site has them;
    - **MCP server** — only when the `gp247/mcp` package is present;
    - **plugins / templates** whose files are newer than the data in use — see
      [section C](#c-pluginstemplates-updated-with-git-pull-composer-or-by-copying-files);
    - a **cache** refresh.
+
+   > ℹ️ **Available since:** gp247/core 3.11.0 (snapshot before the change).
 
 4. **Check** following [Check the result](#check-the-result).
 
@@ -150,6 +156,7 @@ Update a **copy on your own computer**, then upload the result:
 | Composer refuses, reporting a version conflict | A new package needs a newer core / library than the locked one | Rerun the command with `-W` at the end, or update the whole package set at once |
 | Admin screens have broken CSS / JS | The published admin assets are still the old ones | `php artisan gp247:update --publish=core-public` (safe) |
 | `gp247:update` stops halfway | One step reported an error; later steps did not run | Read the message, fix the cause, run it again — rerunning is safe |
+| `gp247:update` stops before updating and says it could not take a snapshot (`pre_change_stopped`) | The snapshot before the change failed, for example another backup is running or the disk is full | Fix the cause and run it again. If you have just made your own backup, run `php artisan gp247:update --skip-pre-change` |
 | A plugin keeps its "Data update pending" label | The plugin's data update reported an error | Fix the cause, click **Apply data update**; `gp247:doctor` reports `extension_data_pending` until it is done |
 
 Still not right: restore the database and folders from the backup, then try again.
@@ -220,6 +227,9 @@ php artisan gp247:ext-update --local --type=plugin --key=InOut       # or just o
 **When running `gp247:update`**
 
 - **Upgrades only, never reinstalls** — no step deletes data, so it is safe on a live site.
+- **Snapshots the data before changing it** — once backups are set up, the command takes a snapshot before the first step that
+  changes data; if the snapshot fails it stops (in a terminal you are asked whether to update anyway, default **no**).
+  `--skip-pre-change` skips this step — use it only right after making your own backup.
 - **No cron, queue or websocket needed** — being able to run `php artisan` is enough, even on restricted hosting.
 - **The front / shop / MCP parts run only when present** — parts the site does not have are skipped without an error.
 - **Never jumps lines** — a site pinned to `^3.x` only receives 3.x releases; to change lines follow
@@ -276,10 +286,11 @@ tokens other than `core-public`, `front-public`).
 
 | Date | GP247 version | Change |
 | --- | --- | --- |
+| 2026-11-22 | gp247/core 3.11.0 | Documents the **snapshot before the change** taken by `gp247:update` (`--skip-pre-change` option, `pre_change_stopped` error) and the **Backup & restore** screen in the backup step. |
 | 2026-11-07 |  | Page moved from `system/update-gp247` to the `install-upgrade` folder next to the Install and Upgrade pages; commands per package set (S-Cart, GP247 CMS, core only); added updating on Docker, hosting without a command line and a troubleshooting table; changing lines (2.x → 3.x) moved to the Upgrade page. |
 | 2026-09-29 |  | `gp247:update` gained a step that **applies the data update of plugins/templates** updated with `git pull`/Composer/copying (GP247 remembers each installed version); new `gp247:ext-update --local` command and **Apply data update** button in the admin (section C). |
 | 2026-08-29 | gp247/core 2.2 | `gp247:update` now also runs **core's upgrade migrations** (via `gp247:core-update`); before, it only re-seeded. Documents the rule in place since the public v2.1: every breaking change ships with an automatic data conversion, so `composer update` + `gp247:update` is the whole process. |
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-08 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

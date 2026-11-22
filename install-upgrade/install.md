@@ -444,8 +444,9 @@ only exists in the backup.
 
 | Date | GP247 version | Change |
 | --- | --- | --- |
+| 2026-11-18 | gp247/front 3.9.2, gp247/shop 3.11.2 | `gp247:front-install` and `gp247:shop-install` ask before deleting the tables that part already has; run from a script they refuse, and `--force=1` is needed to reinstall. |
 | 2026-11-08 | gp247/core 3.11.0 | The first admin account gets a random password, printed once in the last block of `gp247:install` (instead of `admin` / `admin`); if it is lost, use `gp247:admin-password`. |
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-08 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

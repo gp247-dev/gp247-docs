@@ -55,8 +55,10 @@ php artisan gp247:info
 
 ## Trước khi bắt đầu
 
-- [ ] **Sao lưu** — cơ sở dữ liệu, file `.env` và các thư mục `app/GP247`, `public/GP247`, `storage`. Có sự cố thì bản sao lưu
-      là đường quay lại: [Khoá mã hoá & sao lưu](../security/security-keys-and-backup_vi.md).
+- [ ] **Sao lưu** — tạo một bản **Sao lưu toàn bộ** ở **Cấu hình hệ thống → Sao lưu & phục hồi**
+      ([cách làm](../backup/backup-and-restore_vi.md#tạo-một-bản-sao-lưu)), hoặc tự chép cơ sở dữ liệu, file `.env` và các thư mục
+      `app/GP247`, `public/GP247`, `storage`. Có sự cố thì bản sao lưu là đường quay lại:
+      [Khoá mã hoá & sao lưu](../security/security-keys-and-backup_vi.md).
 - [ ] **Ghi lại phiên bản hiện tại** — chạy `php artisan gp247:info`, chép lại số của core / front / shop / mcp.
 - [ ] **Đọc việc riêng của bản mới** — mục **📋 Cần làm khi cập nhật** của các bản trong
       [Phát hành và bảo mật S-Cart](../release/release_vi.md#các-bản-phát-hành).
@@ -88,12 +90,16 @@ php artisan gp247:info
    ```
 
    Lệnh chạy lần lượt, và in tên từng bước đã chạy:
+   - **bản chụp trước thay đổi** — khi sao lưu đã được thiết lập, GP247 tự chụp dữ liệu trước khi sửa bất cứ gì
+     ([chi tiết](../backup/backup-and-restore_vi.md#bản-chụp-tự-động-trước-thay-đổi-rủi-ro));
    - **core**;
    - **front** và **shop** — chỉ khi site có cài các phần này;
    - **MCP server** — chỉ khi có gói `gp247/mcp`;
    - **plugin / giao diện** có file mới hơn dữ liệu đang dùng — xem
      [mục C](#c-plugintemplate-cập-nhật-bằng-git-pull-composer-hoặc-chép-tay);
    - làm mới **cache**.
+
+   > ℹ️ **Có từ:** gp247/core 3.11.0 (bản chụp trước thay đổi).
 
 4. **Kiểm tra** theo [Kiểm tra kết quả](#kiểm-tra-kết-quả).
 
@@ -144,6 +150,7 @@ Cập nhật trên **bản sao ở máy bạn**, rồi đưa kết quả lên ho
 | Composer từ chối, báo xung đột phiên bản | Gói mới cần bản core / thư viện mới hơn bản đang khoá | Chạy lại lệnh với `-W` ở cuối, hoặc cập nhật cả bộ gói cùng lúc |
 | Giao diện quản trị lỗi CSS / JS | Asset quản trị đã publish còn bản cũ | `php artisan gp247:update --publish=core-public` (an toàn) |
 | `gp247:update` dừng giữa chừng | Một bước báo lỗi; các bước sau chưa chạy | Đọc thông báo, sửa nguyên nhân, chạy lại — chạy lại an toàn |
+| `gp247:update` dừng trước khi cập nhật, báo không tạo được bản chụp (`pre_change_stopped`) | Bản chụp trước thay đổi thất bại, ví dụ đang có bản sao lưu khác chạy hoặc đĩa đầy | Sửa nguyên nhân rồi chạy lại. Vừa tự sao lưu xong thì chạy `php artisan gp247:update --skip-pre-change` |
 | Plugin còn nhãn "Chờ cập nhật dữ liệu" | Phần dữ liệu của plugin báo lỗi | Sửa nguyên nhân, bấm **Áp dụng cập nhật dữ liệu**; `gp247:doctor` báo mục `extension_data_pending` tới khi xong |
 
 Vẫn không ổn: khôi phục CSDL và thư mục từ bản sao lưu, rồi làm lại.
@@ -211,6 +218,9 @@ php artisan gp247:ext-update --local --type=plugin --key=InOut       # hoặc ch
 **Khi chạy `gp247:update`**
 
 - **Chỉ nâng cấp, không cài lại** — không có bước nào xoá dữ liệu, nên dùng được ngay trên site thật.
+- **Chụp dữ liệu trước khi sửa** — khi sao lưu đã được thiết lập, lệnh chụp một bản trước bước đầu tiên đổi dữ liệu; chụp không được
+  thì dừng (trong Terminal bạn được hỏi có cập nhật tiếp không, mặc định **không**). `--skip-pre-change` bỏ bước này — chỉ dùng khi
+  bạn vừa tự sao lưu.
 - **Không cần cron, queue hay websocket** — chạy được `php artisan` là đủ, kể cả trên hosting hạn chế.
 - **Phần front / shop / MCP chỉ chạy khi đã có** — site chưa cài phần nào thì phần đó được bỏ qua, không báo lỗi.
 - **Không tự nhảy dòng** — site ràng buộc `^3.x` chỉ nhận bản 3.x; đổi dòng thì theo [Nâng cấp lên dòng 3.x](./upgrade_vi.md).
@@ -264,10 +274,11 @@ thể lỗi.
 
 | Ngày | Phiên bản GP247 | Thay đổi |
 | --- | --- | --- |
+| 2026-11-22 | gp247/core 3.11.0 | Ghi bước **bản chụp trước thay đổi** của `gp247:update` (tuỳ chọn `--skip-pre-change`, lỗi `pre_change_stopped`) và màn **Sao lưu & phục hồi** ở bước sao lưu. |
 | 2026-11-07 |  | Chuyển trang từ `system/update-gp247` sang thư mục `install-upgrade` cùng hai trang Cài đặt và Nâng cấp; lệnh theo bộ gói (S-Cart, GP247 CMS, chỉ core); thêm cập nhật trên Docker, hosting không có dòng lệnh, bảng xử lý sự cố; việc đổi dòng (2.x → 3.x) chuyển sang trang Nâng cấp. |
 | 2026-09-29 |  | `gp247:update` thêm bước **áp dụng cập nhật dữ liệu cho plugin/template** được cập nhật bằng `git pull`/Composer/chép tay (GP247 ghi nhớ phiên bản đã cài); có lệnh `gp247:ext-update --local` và nút **Áp dụng cập nhật dữ liệu** trên trang quản trị (mục C). |
 | 2026-08-29 | gp247/core 2.2 | `gp247:update` nay chạy thêm **migration nâng cấp của core** (qua `gp247:core-update`), trước đây lệnh này chỉ seed lại. Ghi rõ quy tắc có từ bản public v2.1: mọi thay đổi phá vỡ đều kèm phần chuyển đổi dữ liệu tự động, nên `composer update` + `gp247:update` là toàn bộ quy trình. |
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-08 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>
