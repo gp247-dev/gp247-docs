@@ -23,6 +23,9 @@ Six important things to grasp:
 
 1. **A shop can use multiple currencies.** You declare a list of currencies (e.g. USD, VND). Each currency
    can be **enabled** (usable by customers) or **disabled** (hidden).
+   New installs come with **USD**, **VND** and **JPY** (¥, no decimals). Sites installed earlier get JPY when you run
+   `php artisan gp247:update`, with its rate worked out against the site's base currency; without a usable USD rate, JPY is added
+   **disabled** so you can enter the rate yourself. *(Since gp247/shop 3.2.0.)*
 2. **Product prices are stored in ONE "base currency".** You enter product prices once, in the **base
    currency** (S-Cart informally calls it the store's "base"/"bit" unit). When displaying in another currency,
    the system **converts automatically** using that currency's **exchange rate**.

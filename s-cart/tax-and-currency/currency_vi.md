@@ -22,6 +22,9 @@ Có 6 điều quan trọng cần nắm:
 
 1. **Shop có thể dùng nhiều đồng tiền.** Bạn khai báo một danh sách đồng tiền (ví dụ USD, VND). Mỗi đồng
    tiền có thể **bật** (khách dùng được) hoặc **tắt** (ẩn đi).
+   Bản cài mới có sẵn **USD**, **VND** và **JPY** (¥, không có số lẻ). Site cài từ trước nhận thêm JPY khi chạy
+   `php artisan gp247:update`, tỉ giá tính theo đồng gốc của site; không có tỉ giá USD dùng được thì JPY được thêm ở trạng thái
+   **tắt** để bạn tự nhập tỉ giá. *(Có từ gp247/shop 3.2.0.)*
 2. **Giá sản phẩm được lưu theo MỘT "đồng tiền gốc".** Bạn chỉ nhập giá sản phẩm một lần, theo **đồng tiền
    gốc** (base currency — S-Cart gọi vui là đơn vị "gốc"/"bit" của cửa hàng). Khi hiển thị sang đồng tiền
    khác, hệ thống **tự quy đổi** bằng **tỉ giá (exchange rate)** của đồng tiền đó.
