@@ -88,6 +88,11 @@ addresses (http_uri)** in the person's Permissions. The slug plays no role — i
 > 💡 So if you pick the "all" line `ANY::<group>/*` for a feature, the user **sees the menu**,
 > **can view**, and **can act** on that feature — all in one.
 
+**The admin REST API and MCP use the same permissions.** An app calling the admin API v2 (since gp247/core 3.2.3) or an AI agent
+through MCP signs in with an administrator account, so it can only read and change what that account may do on screen, within
+that account's store scope. For example, a role that cannot open the **Orders** screen cannot read orders through the API or an
+AI agent either. See [Admin API](../api/api-admin.md) and [MCP security & permissions](../mcp/mcp-security.md).
+
 ---
 
 ## 5. Hands-on: create a Permission
@@ -245,4 +250,4 @@ hasn't updated, ask them to reload the page (or log in again) to be sure.
 
 ---
 
-<sub>📅 **Last updated:** 2026-10-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

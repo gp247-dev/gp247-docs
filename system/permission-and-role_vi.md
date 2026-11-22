@@ -88,6 +88,11 @@ Nói cách khác: **menu, việc vào màn và việc thao tác đều dựa tr�
 > 💡 Vì thế, nếu chọn dòng "toàn bộ" `ANY::<nhóm>/*` cho một chức năng, người dùng
 > vừa **thấy menu**, vừa **vào xem**, vừa **thao tác** được chức năng đó — trọn gói.
 
+**REST API quản trị và MCP dùng cùng quyền này.** Ứng dụng gọi API quản trị v2 (từ gp247/core 3.2.3) hay AI agent qua MCP đều
+đăng nhập bằng một tài khoản quản trị, nên chỉ đọc và sửa được những gì tài khoản đó được làm trên màn hình, trong đúng phạm vi
+cửa hàng của nó. Ví dụ vai trò không xem được màn **Đơn hàng** thì cũng không đọc được đơn qua API hay qua AI agent. Xem
+[API quản trị](../api/api-admin_vi.md) và [An toàn & phân quyền của MCP](../mcp/mcp-security_vi.md).
+
 ---
 
 ## 5. Thực hành: tạo Quyền
@@ -246,4 +251,4 @@ Nếu menu chưa cập nhật, bảo họ tải lại trang (hoặc đăng nhậ
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-10-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

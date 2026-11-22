@@ -79,13 +79,13 @@ GP247 を初めてお使いの方は、[GP247について](./about/gp247_ja.md)�
 | --- | --- | --- |
 | [リリースノート v3.0 — 注文の金額](./system/release-notes-3.0_ja.md) | v2.1／v3.0 からのアップグレード：注文ごとの支払台帳、入金日基準のキャッシュフロー、一段ずれた支払ステータスの修正、**割引は税の前に差し引き**；プラグイン開発者向けの注意点 | 2026-11-07 |
 | [多言語システム](./system/language-system_ja.md) | GP247 での言語／i18n の使い方 | 2026-11-10 |
-| [メール送信システム](./system/mail-system_ja.md) | メール送信の流れ（図付き）、SMTP 設定、送信チャネルの選択 | 2026-10-22 |
+| [メール送信システム](./system/mail-system_ja.md) | メール送信の流れ（図付き）、SMTP 設定、送信チャネルの選択 | 2026-11-22 |
 | [機密データの暗号化](./system/data-encryption_ja.md) | 秘密情報（SMTP／OAuth／ライセンス）の保存時暗号化；専用キー `GP247_ENCRYPTION_KEY`；`gp247:encryption-key-rotate` による**安全なキー変更の手順**；他テーブルの列の暗号化 | 2026-11-04 |
 | [スケジュールとキュー](./system/schedule-and-queue_ja.md) | schedule:run と queue:work の違い；環境別のメール送信用 cron の設定 | 2026-11-07 |
 | [キャッシュの扱い](./system/cache-system_ja.md) | Config Cache Manager 画面；キャッシュするもの／しないもの；バージョン番号の更新；ヘルパー関数 | 2026-10-22 |
 | [カスタムフィールド（Custom Field）](./system/custom-fields_ja.md) | 4 つのフックの仕組み；対象は customer／product のみ；他テーブルで有効にする開発者向け手順 | 2026-10-22 |
 | [レイアウトブロック（Layout Block）](./system/layout-block-system_ja.md) | ブロック表示の仕組み：テーマ → プラグインの優先順位、更新で失われない 3 つのカスタマイズ方法、プラグインのブロック登録方法 | 2026-10-22 |
-| [権限管理（権限・ロール・ユーザー）](./system/permission-and-role_ja.md) | 管理画面の RBAC：3 つのブロック、2 つの特別なロール、アドレス＋メソッドによる制御、戦略の考え方 | 2026-10-22 |
+| [権限管理（権限・ロール・ユーザー）](./system/permission-and-role_ja.md) | 管理画面の RBAC：3 つのブロック、2 つの特別なロール、アドレス＋メソッドによる制御、戦略の考え方 | 2026-11-22 |
 
 ### S-Cart（販売）
 | ドキュメント | 概要 | 最終更新 |

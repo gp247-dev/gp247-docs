@@ -101,6 +101,11 @@ Ngay trên màn Email/SMTP, GP247 hiện một **khung nhắc nhở** tự đổ
 
 - **Gửi thẳng:** lỗi được **ghi vào file log** (`storage/logs/gp247.log`) nhưng **không làm hỏng** đơn hàng/đăng ký của khách.
 - **Qua hàng đợi:** lỗi khiến job **vào bảng `failed_jobs`** để tự thử lại — bạn thấy được và không bị "thành công giả".
+- **Link trong mail trỏ về `localhost` hay sai tên miền:** link đặt lại mật khẩu và xác minh email dựng theo `APP_URL` (cửa hàng
+  có tên miền riêng thì theo tên miền đó), không theo địa chỉ khách đang mở. Sửa `APP_URL` trong `.env` rồi chạy
+  `php artisan config:clear`. *(Từ gp247/core 3.11.0.)*
+- **SMTP từ chối đăng nhập sau khi cập nhật:** mật khẩu SMTP có ký tự `& < > "` lưu trước gp247/core 3.11.3 bị lưu sai — nhập
+  lại mật khẩu một lần trên màn cấu hình. Từ bản này giá trị được lưu đúng như bạn gõ (vẫn mã hoá).
 
 ## Hỏi & Đáp (Q&A)
 
@@ -146,4 +151,4 @@ Ngay trên màn Email/SMTP, GP247 hiện một **khung nhắc nhở** tự đổ
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-10-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

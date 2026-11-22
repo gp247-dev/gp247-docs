@@ -101,6 +101,11 @@ Right above the Email/SMTP screen, GP247 shows a **reminder box** that adapts to
 
 - **Direct:** the error is **written to the log file** (`storage/logs/gp247.log`) but does **not break** the customer's order/registration.
 - **Via queue:** the error puts the job into the **`failed_jobs`** table for retry — visible, no "false success".
+- **Links in the mail point to `localhost` or the wrong domain:** password-reset and email-verification links are built from
+  `APP_URL` (or the store's own domain when it has one), not from the address the visitor opened. Fix `APP_URL` in `.env`, then
+  run `php artisan config:clear`. *(Since gp247/core 3.11.0.)*
+- **SMTP refuses to sign in after an update:** an SMTP password with `& < > "` saved before gp247/core 3.11.3 was stored wrongly —
+  enter the password again once on the config screen. Since that release the value is stored exactly as typed (still encrypted).
 
 ## Q&A
 
@@ -146,4 +151,4 @@ Right above the Email/SMTP screen, GP247 shows a **reminder box** that adapts to
 
 ---
 
-<sub>📅 **Last updated:** 2026-10-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>
