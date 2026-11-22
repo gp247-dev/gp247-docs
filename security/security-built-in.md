@@ -26,12 +26,13 @@ flowchart TB
     end
     subgraph DATA["Data"]
         direction LR
-        D["Database<br/>encrypted secrets ✅"] --> K["Backup 👤"]
+        D["Database<br/>encrypted secrets ✅"] --> K["Automatic backup ✅<br/>off-site copy 👤"]
     end
     O --> APP --> DATA
 ```
 
-- **✅ = GP247 does it, 👤 = you do it.** HTTPS and backups live outside the application, so GP247 cannot do them for you.
+- **✅ = GP247 does it, 👤 = you do it.** HTTPS lives outside the application, so GP247 cannot do it for you; backups GP247
+  runs itself once you set them up — keeping a copy off the server and test-restoring stay yours.
 - **Safe by default where GP247 has control**: debug turns off automatically in production, MCP is off by default, secrets are never shown again on screen.
 - **No layer is absolute**: someone with full server access (both the database and the `.env` file) can still read everything.
 
@@ -82,6 +83,7 @@ This layer keeps secrets (passwords, third-party keys) unreadable if someone get
 | **Secrets never shown again** | Secret fields on config screens can only be overwritten; the old value is not shown and not sent to the browser | — |
 | **A wrong key does not crash the site** | If a secret cannot be decrypted it is treated as empty, the related feature (sending mail, payment) pauses, and the site keeps running; `gp247:doctor` check `secret_decryptable` points to the broken rows | Silent failure — run `gp247:doctor` after moving servers or changing `.env` |
 | **Changing the key without losing data** | The `php artisan gp247:encryption-key-rotate` command re-encrypts every secret with the new key | Follow the exact procedure in [Sensitive data encryption](../system/data-encryption.md) |
+| **Backup & restore** (since core 3.11.0) | Backups are encrypted with your backup password and checked right after they are made; the site backs itself up every 24 hours (no cron needed) and takes a snapshot before a system update, an extension update or a template change; copies can go to S3-compatible storage or SFTP / NAS | Set the backup password and keep the recovery key; keep one copy off the server; test a restore — [Backup & restore](../backup/backup-and-restore.md) |
 
 > ⚠️ **Note:** the REST API **webhook** signing secret is still encrypted with `APP_KEY`, not with the dedicated key. If you change `APP_KEY`, you must create a new secret for each webhook.
 
@@ -152,7 +154,7 @@ This layer stops reinstalls from wiping data and stops update packages from bein
 | Mechanism | What GP247 does | Limits — what you do |
 | --- | --- | --- |
 | **Install** | The `gp247:install` command asks for confirmation and warns about data loss; it refuses to install over an installed site without clear confirmation. Installing is command-line only — there is no install page on the web; a site not installed yet only shows a page telling you to run the install command | Copy the admin password printed at the end of the command; on a site installed from an older version, replace the default account right away |
-| **Platform update** | `php artisan gp247:update` only refreshes; it never reruns the data-destroying install step | Back up before updating |
+| **Platform update** | `php artisan gp247:update` only refreshes; it never reruns the data-destroying install step; once backups are set up, it snapshots the data it is about to touch before changing it | If backups are not set up, back up yourself before updating |
 | **Plugin / template update** | Packages are downloaded over a certificate-verified connection (`GP247_UPDATE_VERIFY_SSL`), and the hash is checked when the library provides one; the old version is kept in `storage/backups/extensions/` before overwriting | Install only from trusted sources |
 
 ## What GP247 does not do
@@ -160,7 +162,9 @@ This layer stops reinstalls from wiping data and stops update packages from bein
 The tasks below are **not** in GP247 — if you do not do them, no one will:
 
 - **Does not turn on HTTPS, does not send a CSP header** — configure these in the web server or proxy. HSTS can be turned on on the **Security headers** screen once the site runs HTTPS.
-- **Does not back up the database, `.env` or uploaded images** — see [Encryption keys & backup](./security-keys-and-backup.md).
+- **Does not back up until you set it up, does not copy backups off the server until you configure a destination, does not test a
+  restore for you** — once set up, GP247 backs up the database, uploads, extensions and `.env` itself; see
+  [Encryption keys & backup](./security-keys-and-backup.md).
 - **Does not force you to replace the default admin account** — see [Accounts & permissions](./security-accounts-and-access.md).
 - **Does not send alerts when nobody opens the admin** — the System alerts block and page only check when someone opens the admin; visit the admin regularly.
 - **Does not check the site from the outside** — whether `.env` can be downloaded, whether `http://` redirects to `https://`: check these yourself with [Production config](./security-production-config.md#self-check-in-5-minutes).
@@ -209,4 +213,4 @@ The tasks below are **not** in GP247 — if you do not do them, no one will:
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-20 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

@@ -37,6 +37,7 @@ flowchart LR
 
 - [ ] `APP_ENV=production`, `APP_DEBUG=false`; header trang quản trị không có nhãn "DEBUG ON" — [Cấu hình production](./security-production-config_vi.md#vì-sao-không-được-bật-debug-trên-site-thật)
 - [ ] HTTPS bật, `http://` tự chuyển sang `https://`, `APP_URL` bắt đầu bằng `https://`, `SESSION_SECURE_COOKIE=true` — [Cấu hình production](./security-production-config_vi.md#https-và-cookie)
+- [ ] Màn **Header bảo mật**: giữ bốn header bật; HTTPS chạy ổn thì bật HSTS, tăng thời gian dần; `php artisan gp247:doctor --probe-headers` không báo WARN ở dòng `security_headers_live` — [Cấu hình production](./security-production-config_vi.md#header-bảo-mật)
 - [ ] Document root trỏ vào `public/`; mở `/.env` trên trình duyệt phải lỗi 404 hoặc 403 — [Cấu hình production](./security-production-config_vi.md#thư-mục-gốc-của-web-và-quyền-thư-mục)
 - [ ] `LOG_LEVEL` là `warning` hoặc `error` — [Cấu hình production](./security-production-config_vi.md#bảng-biến-môi-trường-cho-production)
 - [ ] Mật khẩu cơ sở dữ liệu và mọi mật khẩu mẫu đã đổi — [Cấu hình production](./security-production-config_vi.md#bảng-biến-môi-trường-cho-production)
@@ -125,4 +126,4 @@ Mười lỗi dưới đây gây phần lớn sự cố trên site thật. Mỗi
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-13 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

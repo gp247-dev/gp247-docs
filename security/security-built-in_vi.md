@@ -26,12 +26,13 @@ flowchart TB
     end
     subgraph DATA["Dữ liệu"]
         direction LR
-        D["Cơ sở dữ liệu<br/>bí mật mã hoá ✅"] --> K["Sao lưu 👤"]
+        D["Cơ sở dữ liệu<br/>bí mật mã hoá ✅"] --> K["Sao lưu tự động ✅<br/>bản ngoài máy chủ 👤"]
     end
     O --> APP --> DATA
 ```
 
-- **✅ = GP247 làm sẵn, 👤 = bạn làm.** HTTPS và sao lưu nằm ngoài ứng dụng nên GP247 không làm thay được.
+- **✅ = GP247 làm sẵn, 👤 = bạn làm.** HTTPS nằm ngoài ứng dụng nên GP247 không làm thay được; sao lưu thì GP247 tự
+  chạy khi bạn đã thiết lập, phần của bạn là giữ một bản ngoài máy chủ và thử khôi phục.
 - **Mặc định an toàn ở chỗ GP247 kiểm soát được**: debug tự tắt khi chạy production, MCP tắt sẵn, bí mật không hiện lại trên màn hình.
 - **Không có lớp nào tuyệt đối**: người có toàn quyền máy chủ (cả cơ sở dữ liệu lẫn file `.env`) vẫn đọc được mọi thứ.
 
@@ -82,6 +83,7 @@ Lớp này giữ các bí mật (mật khẩu, khoá bên thứ ba) không đọ
 | **Bí mật không hiện lại** | Ô bí mật trên màn cấu hình chỉ cho ghi đè, không hiện giá trị cũ, không gửi xuống trình duyệt | — |
 | **Khoá sai không làm sập site** | Không giải mã được thì bí mật được coi là rỗng, tính năng liên quan (gửi mail, thanh toán) tạm ngừng, site vẫn chạy; `gp247:doctor` mục `secret_decryptable` chỉ ra dòng hỏng | Lỗi im lặng — hãy chạy `gp247:doctor` sau khi chuyển máy chủ hoặc đổi `.env` |
 | **Đổi khoá không mất dữ liệu** | Lệnh `php artisan gp247:encryption-key-rotate` mã hoá lại mọi bí mật sang khoá mới | Phải làm đúng quy trình ở [Mã hoá dữ liệu nhạy cảm](../system/data-encryption_vi.md) |
+| **Sao lưu & phục hồi** (từ core 3.11.0) | Bản sao lưu mã hoá bằng mật khẩu sao lưu của bạn và tự kiểm ngay sau khi tạo; site tự sao lưu mỗi 24 giờ (không cần cron) và tự chụp trước khi cập nhật hệ thống, cập nhật extension, đổi template; chép được ra S3-compatible hoặc SFTP / NAS | Thiết lập mật khẩu sao lưu và cất recovery key; giữ một bản ngoài máy chủ; thử khôi phục — [Sao lưu & phục hồi](../backup/backup-and-restore_vi.md) |
 
 > ⚠️ **Lưu ý:** secret ký **webhook** của REST API vẫn được mã hoá bằng `APP_KEY`, không bằng khoá riêng. Đổi `APP_KEY` thì phải tạo lại secret cho từng webhook.
 
@@ -152,7 +154,7 @@ Lớp này chống cài đè làm mất dữ liệu và chống gói cập nhậ
 | Cơ chế | GP247 làm gì | Giới hạn — bạn làm |
 | --- | --- | --- |
 | **Cài đặt** | Lệnh `gp247:install` hỏi xác nhận và cảnh báo mất dữ liệu; từ chối cài đè site đã cài nếu không có xác nhận rõ. Chỉ cài được bằng lệnh — không có trang cài đặt nào trên web; site chưa cài chỉ hiện trang hướng dẫn chạy lệnh cài | Chép mật khẩu quản trị in ra cuối lệnh; site cài từ bản cũ thì thay ngay tài khoản mặc định |
-| **Cập nhật nền tảng** | `php artisan gp247:update` chỉ làm mới, không bao giờ chạy lại bước cài phá dữ liệu | Sao lưu trước khi cập nhật |
+| **Cập nhật nền tảng** | `php artisan gp247:update` chỉ làm mới, không bao giờ chạy lại bước cài phá dữ liệu; khi sao lưu đã được thiết lập, tự chụp phần dữ liệu sắp bị chạm tới trước khi sửa | Chưa thiết lập sao lưu thì tự sao lưu trước khi cập nhật |
 | **Cập nhật plugin / template** | Gói tải về qua kết nối được kiểm chứng chỉ (`GP247_UPDATE_VERIFY_SSL`), kiểm mã băm khi thư viện cung cấp; giữ bản cũ ở `storage/backups/extensions/` trước khi ghi đè | Chỉ cài từ nguồn tin cậy |
 
 ## Những gì GP247 không làm
@@ -160,7 +162,9 @@ Lớp này chống cài đè làm mất dữ liệu và chống gói cập nhậ
 Các việc dưới đây **không có** trong GP247 — nếu bạn không làm thì không ai làm:
 
 - **Không bật HTTPS, không gửi header CSP** — cấu hình ở web server hoặc proxy. HSTS bật được trên màn **Header bảo mật** khi site đã chạy HTTPS.
-- **Không sao lưu cơ sở dữ liệu, `.env`, ảnh tải lên** — xem [Khoá mã hoá & sao lưu](./security-keys-and-backup_vi.md).
+- **Không tự sao lưu khi bạn chưa thiết lập, không chép bản sao lưu ra ngoài máy chủ khi bạn chưa cấu hình đích, không thử khôi phục
+  thay bạn** — đã thiết lập thì GP247 tự sao lưu cơ sở dữ liệu, ảnh tải lên, extension và `.env`; xem
+  [Khoá mã hoá & sao lưu](./security-keys-and-backup_vi.md).
 - **Không buộc đổi tài khoản quản trị mặc định** — xem [Tài khoản & phân quyền](./security-accounts-and-access_vi.md).
 - **Không gửi cảnh báo khi không ai vào trang quản trị** — block và trang Cảnh báo hệ thống chỉ kiểm khi có người mở trang quản trị; hãy vào trang quản trị định kỳ.
 - **Không kiểm site từ bên ngoài** — `.env` có tải được không, `http://` có tự chuyển sang `https://` không: tự kiểm theo [Cấu hình production](./security-production-config_vi.md#tự-kiểm-trong-5-phút).
@@ -209,4 +213,4 @@ Các việc dưới đây **không có** trong GP247 — nếu bạn không làm
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-20 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

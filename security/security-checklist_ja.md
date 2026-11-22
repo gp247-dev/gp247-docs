@@ -37,6 +37,7 @@ flowchart LR
 
 - [ ] `APP_ENV=production`、`APP_DEBUG=false`。管理画面のヘッダーに「DEBUG ON」ラベルがない — [本番環境の設定](./security-production-config_ja.md#本番サイトでデバッグを有効にしてはいけない理由)
 - [ ] HTTPS が有効、`http://` が自動で `https://` に切り替わる、`APP_URL` が `https://` で始まる、`SESSION_SECURE_COOKIE=true` — [本番環境の設定](./security-production-config_ja.md#https-と-cookie)
+- [ ] **セキュリティヘッダー** 画面：4 つのヘッダーを有効のままにし、HTTPS が安定したら HSTS を有効にして期間を少しずつ延ばす。`php artisan gp247:doctor --probe-headers` の `security_headers_live` の行に WARN がない — [本番環境の設定](./security-production-config_ja.md#セキュリティヘッダー)
 - [ ] ドキュメントルートが `public/` を指している。ブラウザで `/.env` を開くと 404 または 403 エラーになる — [本番環境の設定](./security-production-config_ja.md#web-のドキュメントルートとフォルダの権限)
 - [ ] `LOG_LEVEL` が `warning` または `error` — [本番環境の設定](./security-production-config_ja.md#本番環境の環境変数一覧)
 - [ ] データベースのパスワードとすべてのサンプルパスワードを変更した — [本番環境の設定](./security-production-config_ja.md#本番環境の環境変数一覧)
@@ -125,4 +126,4 @@ flowchart LR
 
 ---
 
-<sub>📅 **最終更新:** 2026-11-13 · ✍️ **作成者 (Author):** GP247</sub>
+<sub>📅 **最終更新:** 2026-11-22 · ✍️ **作成者 (Author):** GP247</sub>

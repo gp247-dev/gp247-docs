@@ -37,6 +37,7 @@ flowchart LR
 
 - [ ] `APP_ENV=production`, `APP_DEBUG=false`; the admin header has no "DEBUG ON" label — [Production config](./security-production-config.md#why-debug-must-never-be-on-for-a-live-site)
 - [ ] HTTPS is on, `http://` redirects to `https://`, `APP_URL` starts with `https://`, `SESSION_SECURE_COOKIE=true` — [Production config](./security-production-config.md#https-and-cookies)
+- [ ] **Security headers** screen: keep the four headers on; once HTTPS works, turn on HSTS and raise its time step by step; `php artisan gp247:doctor --probe-headers` shows no WARN on the `security_headers_live` line — [Production config](./security-production-config.md#security-headers)
 - [ ] The document root points to `public/`; opening `/.env` in a browser must give a 404 or 403 error — [Production config](./security-production-config.md#web-root-and-folder-permissions)
 - [ ] `LOG_LEVEL` is `warning` or `error` — [Production config](./security-production-config.md#environment-variables-for-production)
 - [ ] The database password and every sample password have been changed — [Production config](./security-production-config.md#environment-variables-for-production)
@@ -125,4 +126,4 @@ The ten mistakes below cause most incidents on live sites. Each one has its cons
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-13 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>
