@@ -127,16 +127,7 @@ Hệ sinh thái GP247 gồm các thành phần chính sau:
 Tất cả thành phần đều **miễn phí và mã nguồn mở**. Bạn có thể tùy chỉnh và tích hợp chúng vào hệ thống Laravel
 của riêng mình.
 
-```mermaid
-flowchart TB
-    subgraph PKG["Các gói GP247 — chạy trên Laravel"]
-        direction LR
-        C["gp247/core<br/>Quản trị"] --> F["gp247/front<br/>Website"] --> S["gp247/shop<br/>Bán hàng"] --> M["gp247/mcp<br/>AI agent"]
-    end
-    E["Plugin<br/>& template"] -.-> PKG
-    PKG --> P1["GP247 CMS<br/>core + front"]
-    PKG --> P2["S-Cart<br/>core + front + shop + mcp"]
-```
+![Tổng quan hệ thống GP247](./images/gp247-system.jpg)
 
 ## Mã nguồn
 

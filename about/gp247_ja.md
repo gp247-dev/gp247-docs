@@ -133,16 +133,7 @@ GP247 のエコシステムは、次の主要コンポーネントで構成さ�
 すべてのコンポーネントは**無料のオープンソース**です。自由にカスタマイズし、ご自身の Laravel システムに組み込むことが
 できます。
 
-```mermaid
-flowchart TB
-    subgraph PKG["GP247 のパッケージ — Laravel 上で動作"]
-        direction LR
-        C["gp247/core<br/>管理画面"] --> F["gp247/front<br/>Web サイト"] --> S["gp247/shop<br/>販売"] --> M["gp247/mcp<br/>AI エージェント"]
-    end
-    E["プラグイン<br/>とテンプレート"] -.-> PKG
-    PKG --> P1["GP247 CMS<br/>core + front"]
-    PKG --> P2["S-Cart<br/>core + front + shop + mcp"]
-```
+![GP247 システム概要](./images/gp247-system.jpg)
 
 ## ソースコード
 
