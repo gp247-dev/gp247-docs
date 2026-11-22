@@ -101,6 +101,10 @@ flowchart TD
     D -->|"tên miền gốc hoặc cửa hàng khác"| F["Từ chối và đăng xuất<br>(ghi nhật ký)"]
 ```
 
+**REST API quản trị** áp cùng quy tắc *(MultiStorePro 1.0.7)*: quản trị viên cửa hàng chỉ gọi được API quản trị trên tên miền của
+cửa hàng mình được giao, và mọi dữ liệu trả về bị giới hạn trong cửa hàng đó. Không có bản Pro thì API quản trị chỉ mở cho quản
+trị viên hệ thống. Xem [API quản trị](../api/api-admin_vi.md).
+
 ## Đồng bộ sản phẩm sang cửa hàng (Pro)
 Khi nhiều cửa hàng bán cùng một mặt hàng nhưng cần giá, tồn kho và mô tả khác nhau, bạn không phải nhập lại từ đầu.
 

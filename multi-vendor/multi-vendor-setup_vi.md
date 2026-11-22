@@ -7,7 +7,7 @@ Tài liệu này hướng dẫn cài S-Cart 3.x, cài và kích hoạt plugin **
 
 ## Yêu cầu trước khi bắt đầu
 - PHP **8.3** trở lên, Composer, MySQL/MariaDB (SQLite chỉ để thử nhanh).
-- S-Cart **3.x** với `gp247/core` **3.0** và `gp247/shop` đã cài (plugin dựa vào sản phẩm, giỏ hàng, đơn hàng của shop).
+- S-Cart **3.x** với `gp247/core` **3.11** trở lên (MultiVendor từ bản 1.1.3 cần bản này; core cũ hơn thì không cài được) và `gp247/shop` đã cài (plugin dựa vào sản phẩm, giỏ hàng, đơn hàng của shop).
 - **Chưa cài** plugin Multi-Store trên cùng website — hai mô hình loại trừ lẫn nhau.
 - Có quyền chạy lệnh `php artisan` trên máy chủ, **hoặc** dùng cách cài qua giao diện admin ở Bước 2.
 
@@ -93,6 +93,8 @@ và ô *Phạm vi xử lý đơn của người bán* hiện **Chỉ trạng th�
 **Cách A — Admin tạo**
 1. **Chợ bán hàng** → **Gian hàng người bán** → **Thêm mới**: nhập mã gian hàng (chỉ chữ và số, tối đa 20 ký tự, ví dụ `vendor01`), tên, mô tả → **Lưu**.
 2. **Chợ bán hàng** → **Tài khoản người bán** → **Thêm mới**: nhập email, mật khẩu, chọn gian hàng vừa tạo, trạng thái **Kích hoạt** → **Lưu**.
+   Mật khẩu phải đạt quy tắc của khối **Người bán (gian hàng)** trên màn **Chính sách mật khẩu** (menu Bảo mật; cài mới tối
+   thiểu 12 ký tự) — áp cả khi người bán tự đăng ký, đổi hay quên mật khẩu *(MultiVendor 1.1.3)*.
 3. Mở `https://ten-mien-cua-ban/vendor_admin`, đăng nhập bằng email/mật khẩu trên. Nếu thành công, bạn thấy bảng điều khiển của gian hàng.
 
 **Cách B — Người bán tự đăng ký** (khi đã bật "Cho phép đăng ký vendor")
@@ -231,7 +233,7 @@ Muốn đổi chữ hiển thị, nội dung email, giao diện trang gian hàng
 ## Hỏi & Đáp (Q&A)
 **Câu 1: Site của tôi đang chạy S-Cart 2.x hoặc còn dùng bộ lệnh `sc:*` cũ, có cài được không?**
 
-→ Plugin yêu cầu `gp247/core` 3.0. Hãy nâng cấp S-Cart lên 3.x trước; bộ lệnh `gp247:*` thay cho `sc:*` cũ.
+→ Plugin yêu cầu `gp247/core` 3.11 trở lên. Hãy nâng cấp S-Cart lên 3.x và cập nhật core trước; bộ lệnh `gp247:*` thay cho `sc:*` cũ.
 
 **Câu 2: Tôi không có quyền chạy lệnh trên hosting thì sao?**
 

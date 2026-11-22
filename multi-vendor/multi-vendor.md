@@ -144,7 +144,7 @@ In short: **Multi-Vendor is a marketplace for many sellers; Multi-Store is many 
 
 ## System requirements
 - PHP **8.3** or newer, Composer, MySQL/MariaDB.
-- S-Cart **3.x** with `gp247/core` **3.0** and `gp247/shop` installed.
+- S-Cart **3.x** with `gp247/core` **3.11** or later and `gp247/shop` installed.
 - Multi-Store **not installed** on the same website.
 - Runs on ordinary shared hosting: **no** cron, queue worker or websocket required.
 

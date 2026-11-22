@@ -7,7 +7,7 @@ This document walks you through installing S-Cart 3.x, installing and enabling t
 
 ## Before you start
 - PHP **8.3** or newer, Composer, MySQL/MariaDB (SQLite only for a quick trial).
-- S-Cart **3.x** with `gp247/core` **3.0** and `gp247/shop` installed (the plugin builds on shop products, carts and orders).
+- S-Cart **3.x** with `gp247/core` **3.11** or later (MultiVendor needs it from 1.1.3; it does not install on an older core) and `gp247/shop` installed (the plugin builds on shop products, carts and orders).
 - Multi-Store **not installed** on the same website — the two models are mutually exclusive.
 - Permission to run `php artisan` on the server, **or** use the admin-interface install method in Step 2.
 
@@ -93,6 +93,8 @@ turn Pro back on and it comes back.
 **Option A — The admin creates it**
 1. **Marketplace** → **Vendor stores** → **Add new**: enter the shop code (letters and digits only, max 20 characters, e.g. `vendor01`), name, description → **Save**.
 2. **Marketplace** → **Vendor users** → **Add new**: enter email, password, pick the shop you just created, status **Active** → **Save**.
+   The password must meet the rule of the **Vendors** block on the **Password policy** screen (Security menu; at least 12
+   characters on a new install) — also when vendors sign up, change or reset their password *(MultiVendor 1.1.3)*.
 3. Open `https://your-domain/vendor_admin` and sign in with that email/password. If it succeeds, you land on the shop dashboard.
 
 **Option B — The seller registers** (once "Allow vendor registration" is on)
@@ -232,7 +234,7 @@ To change on-screen text, email content, shop page design or staff permissions, 
 ## Q&A
 **Q1: My site runs S-Cart 2.x or still uses the old `sc:*` commands — can I install this?**
 
-→ The plugin requires `gp247/core` 3.0. Upgrade S-Cart to 3.x first; the `gp247:*` commands replace the old `sc:*` ones.
+→ The plugin requires `gp247/core` 3.11 or later. Upgrade S-Cart to 3.x and update core first; the `gp247:*` commands replace the old `sc:*` ones.
 
 **Q2: What if I cannot run commands on my hosting?**
 

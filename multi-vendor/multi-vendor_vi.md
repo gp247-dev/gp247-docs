@@ -144,7 +144,7 @@ Nói ngắn gọn: **Multi-Vendor = một cái chợ cho nhiều người bán; 
 
 ## Yêu cầu hệ thống
 - PHP **8.3** trở lên, Composer, MySQL/MariaDB.
-- S-Cart **3.x** với `gp247/core` **3.0** và `gp247/shop` đã cài.
+- S-Cart **3.x** với `gp247/core` **3.11** trở lên và `gp247/shop` đã cài.
 - **Chưa cài** plugin Multi-Store trên cùng website.
 - Chạy được trên hosting chia sẻ thông thường: **không cần** cron, queue worker hay websocket.
 

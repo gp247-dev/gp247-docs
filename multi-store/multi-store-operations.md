@@ -101,6 +101,10 @@ flowchart TD
     D -->|"root domain or another store"| F["Denied and signed out<br>(logged)"]
 ```
 
+The **admin REST API** follows the same rule *(MultiStorePro 1.0.7)*: a store admin can call the admin API only on the domain of
+the store it is assigned to, and everything it gets back is limited to that store. Without Pro, the admin API is open to platform
+administrators only. See [Admin API](../api/api-admin.md).
+
 ## Cross-store product publishing (Pro)
 When several stores sell the same item but need different prices, stock and wording, you do not have to re-enter anything.
 
