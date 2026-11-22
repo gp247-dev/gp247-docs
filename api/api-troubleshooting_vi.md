@@ -103,6 +103,12 @@ Mỗi mục dưới đây là một giá trị của khoá `code`. Mã HTTP đi 
 
 (`401`) Mã xác thực hai lớp hoặc ticket sai / hết hạn. → Đăng nhập lại để nhận ticket mới.
 
+### `password_change_required`
+
+(`403`) Site vừa được [phục hồi sau sự cố bảo mật](../backup/restore-guide_vi.md#phục-hồi-sau-sự-cố-bảo-mật): mọi token cũ đã
+bị thu hồi và tài khoản quản trị phải đặt mật khẩu mới. → Đăng nhập trang quản trị bằng trình duyệt, đặt mật khẩu mới, rồi đăng
+nhập API lại. Có từ core 3.11.0.
+
 ### `login_required`
 
 (`401`) Cửa hàng không cho khách vãng lai dùng giỏ hàng. → Đăng nhập khách trước khi dùng giỏ.
@@ -269,4 +275,4 @@ lại tạm thời và cách chuyển sang v2.
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-03 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

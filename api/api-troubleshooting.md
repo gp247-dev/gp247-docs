@@ -103,6 +103,12 @@ Each entry below is one value of the `code` key. The matching HTTP code is in br
 
 (`401`) The two-factor code or the ticket is wrong / expired. → Sign in again to get a new ticket.
 
+### `password_change_required`
+
+(`403`) The site was just [restored after a security incident](../backup/restore-guide.md#restore-after-a-security-incident): every
+old token was revoked and the administrator account must set a new password. → Sign in to the admin in a browser, set a new
+password, then sign in to the API again. Since core 3.11.0.
+
 ### `login_required`
 
 (`401`) The store does not let guests use the cart. → Sign the customer in before using the cart.
@@ -271,4 +277,4 @@ it back on. If your app calls `api/core` or `api/front` (API v1): fresh installs
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-03 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

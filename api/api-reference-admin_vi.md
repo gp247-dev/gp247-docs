@@ -68,6 +68,8 @@ curl "https://shop.example.com/api/v2/core/info" \
 }
 ```
 
+**Lỗi**: [`password_change_required`](./api-troubleshooting_vi.md#password_change_required)
+
 ### Quản trị viên đăng nhập — `POST /api/v2/core/login`
 
 Đăng nhập quản trị viên đang hoạt động bằng username và mật khẩu, trả về bearer token. Kèm with_refresh=true thì phản hồi có thêm refresh token và access token chỉ sống thời gian ngắn. Khi plugin yêu cầu bước thứ hai (MFA), phản hồi là 401 challenge_required kèm ticket để hoàn tất ở login/challenge. Số lần đăng nhập sai bị giới hạn theo tài khoản và IP.
@@ -112,7 +114,7 @@ curl -X POST "https://shop.example.com/api/v2/core/login" \
 }
 ```
 
-**Lỗi**: [`validation_failed`](./api-troubleshooting_vi.md#validation_failed) · [`unauthenticated`](./api-troubleshooting_vi.md#unauthenticated) · [`too_many_attempts`](./api-troubleshooting_vi.md#too_many_attempts) · [`challenge_required`](./api-troubleshooting_vi.md#challenge_required) · [`challenge_invalid`](./api-troubleshooting_vi.md#challenge_invalid)
+**Lỗi**: [`validation_failed`](./api-troubleshooting_vi.md#validation_failed) · [`unauthenticated`](./api-troubleshooting_vi.md#unauthenticated) · [`too_many_attempts`](./api-troubleshooting_vi.md#too_many_attempts) · [`challenge_required`](./api-troubleshooting_vi.md#challenge_required) · [`challenge_invalid`](./api-troubleshooting_vi.md#challenge_invalid) · [`password_change_required`](./api-troubleshooting_vi.md#password_change_required)
 
 ### Quản trị viên đăng xuất — `POST /api/v2/core/logout`
 
@@ -141,6 +143,8 @@ curl -X POST "https://shop.example.com/api/v2/core/logout" \
     }
 }
 ```
+
+**Lỗi**: [`password_change_required`](./api-troubleshooting_vi.md#password_change_required)
 
 ### Hoàn tất đăng nhập MFA của quản trị viên — `POST /api/v2/core/login/challenge`
 
@@ -278,6 +282,8 @@ curl "https://shop.example.com/api/v2/core/sessions" \
 }
 ```
 
+**Lỗi**: [`password_change_required`](./api-troubleshooting_vi.md#password_change_required)
+
 ### Đăng xuất một phiên quản trị viên — `DELETE /api/v2/core/sessions/{id}`
 
 Đăng xuất một phiên của chính quản trị viên (cả access token và refresh token). Id phiên của người khác trả 404.
@@ -306,7 +312,7 @@ curl -X DELETE "https://shop.example.com/api/v2/core/sessions/123" \
 }
 ```
 
-**Lỗi**: [`not_found`](./api-troubleshooting_vi.md#not_found)
+**Lỗi**: [`not_found`](./api-troubleshooting_vi.md#not_found) · [`password_change_required`](./api-troubleshooting_vi.md#password_change_required)
 
 ## Admin · Danh mục sản phẩm
 
@@ -2505,4 +2511,4 @@ Chỉ status; không có gì khác
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-03 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

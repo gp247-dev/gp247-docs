@@ -68,6 +68,8 @@ curl "https://shop.example.com/api/v2/core/info" \
 }
 ```
 
+**Errors**: [`password_change_required`](./api-troubleshooting.md#password_change_required)
+
 ### Admin sign-in — `POST /api/v2/core/login`
 
 Signs an active admin in with username and password and returns a bearer token. With with_refresh=true the answer adds a refresh token and the access token lives a short time. When a plugin requires a second step (MFA), the answer is 401 challenge_required with a ticket to finish on login/challenge. Failed attempts are limited per account and IP.
@@ -112,7 +114,7 @@ curl -X POST "https://shop.example.com/api/v2/core/login" \
 }
 ```
 
-**Errors**: [`validation_failed`](./api-troubleshooting.md#validation_failed) · [`unauthenticated`](./api-troubleshooting.md#unauthenticated) · [`too_many_attempts`](./api-troubleshooting.md#too_many_attempts) · [`challenge_required`](./api-troubleshooting.md#challenge_required) · [`challenge_invalid`](./api-troubleshooting.md#challenge_invalid)
+**Errors**: [`validation_failed`](./api-troubleshooting.md#validation_failed) · [`unauthenticated`](./api-troubleshooting.md#unauthenticated) · [`too_many_attempts`](./api-troubleshooting.md#too_many_attempts) · [`challenge_required`](./api-troubleshooting.md#challenge_required) · [`challenge_invalid`](./api-troubleshooting.md#challenge_invalid) · [`password_change_required`](./api-troubleshooting.md#password_change_required)
 
 ### Admin sign-out — `POST /api/v2/core/logout`
 
@@ -141,6 +143,8 @@ curl -X POST "https://shop.example.com/api/v2/core/logout" \
     }
 }
 ```
+
+**Errors**: [`password_change_required`](./api-troubleshooting.md#password_change_required)
 
 ### Finish admin MFA sign-in — `POST /api/v2/core/login/challenge`
 
@@ -278,6 +282,8 @@ curl "https://shop.example.com/api/v2/core/sessions" \
 }
 ```
 
+**Errors**: [`password_change_required`](./api-troubleshooting.md#password_change_required)
+
 ### Sign one admin session out — `DELETE /api/v2/core/sessions/{id}`
 
 Signs one of the admin's own sessions out (its access and refresh token). Another owner's session id answers 404.
@@ -306,7 +312,7 @@ curl -X DELETE "https://shop.example.com/api/v2/core/sessions/123" \
 }
 ```
 
-**Errors**: [`not_found`](./api-troubleshooting.md#not_found)
+**Errors**: [`not_found`](./api-troubleshooting.md#not_found) · [`password_change_required`](./api-troubleshooting.md#password_change_required)
 
 ## Admin · Catalog
 
@@ -2505,4 +2511,4 @@ At least one of shipping_status / tracking_number. payment_status is refused (42
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-03 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

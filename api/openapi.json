@@ -2,9 +2,9 @@
     "openapi": "3.1.0",
     "info": {
         "title": "GP247 REST API v2",
-        "version": "3.8.0",
+        "version": "3.11.0",
         "description": "REST API v2 of gp247\/core, gp247\/front and gp247\/shop. Every error body is {\"error\":1,\"msg\":\"\u2026\",\"code\":\"\u2026\"}. Every response carries an X-Request-Id header (since 3.4.0; a valid id sent by the client is reused). A group turned off on the API management screen answers 404 with code api_disabled (since 3.3.1). See api-introduction.md. API v1 (frozen) is described separately in openapi-v1.json and api-v1.md. API v2 sessions (since core 3.6.0 \/ shop 3.4.0): with_refresh on login returns a rotating refresh token; a sign-in challenge registered by a plugin answers 401 challenge_required. Admin lists of api\/v2\/core (since core 3.7.0 \/ shop 3.6.0 \/ front 3.4.0) have a change-sync mode: updated_since + page[after]. Event log for ERP \/ sync tools (since core 3.7.0, off by default): GET api\/v2\/core\/events, read by the after cursor.",
-        "x-gp247-last-updated": "2026-11-03"
+        "x-gp247-last-updated": "2026-11-22"
     },
     "servers": [
         {
@@ -1665,6 +1665,16 @@
                             }
                         }
                     },
+                    "403": {
+                        "description": "password_change_required: the account must choose a new password on the admin screen first (since core 3.11.0)",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    },
                     "429": {
                         "description": "Rate limit exceeded",
                         "content": {
@@ -1699,7 +1709,9 @@
                 "description": "Returns the profile and role slugs of the admin who owns the token. Any active admin token may call it; no screen permission is needed.",
                 "x-gp247-since": "core 3.3.0",
                 "x-gp247-permission": null,
-                "x-gp247-error-codes": []
+                "x-gp247-error-codes": [
+                    "password_change_required"
+                ]
             }
         },
         "\/api\/v2\/core\/login": {
@@ -1726,6 +1738,16 @@
                     },
                     "401": {
                         "description": "Wrong credentials, inactive\/locked account, or challenge_required (plugin MFA)",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "password_change_required: the account was flagged by a restore after a security incident; choose a new password on the admin screen first (since core 3.11.0)",
                         "content": {
                             "application\/json": {
                                 "schema": {
@@ -1782,7 +1804,8 @@
                     "unauthenticated",
                     "too_many_attempts",
                     "challenge_required",
-                    "challenge_invalid"
+                    "challenge_invalid",
+                    "password_change_required"
                 ]
             }
         },
@@ -1818,6 +1841,16 @@
                             }
                         }
                     },
+                    "403": {
+                        "description": "password_change_required: the account must choose a new password on the admin screen first (since core 3.11.0)",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    },
                     "429": {
                         "description": "Rate limit exceeded",
                         "content": {
@@ -1844,7 +1877,9 @@
                 "description": "Signs the current session out: its access token stops working and its refresh token can no longer be used. Any active admin token may call it.",
                 "x-gp247-since": "core 3.3.0",
                 "x-gp247-permission": null,
-                "x-gp247-error-codes": []
+                "x-gp247-error-codes": [
+                    "password_change_required"
+                ]
             }
         },
         "\/api\/v2\/core\/order\/detail\/{id}": {
@@ -6515,6 +6550,16 @@
                             }
                         }
                     },
+                    "403": {
+                        "description": "password_change_required: the account must choose a new password on the admin screen first (since core 3.11.0)",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    },
                     "304": {
                         "$ref": "#\/components\/responses\/NotModified"
                     }
@@ -6538,7 +6583,9 @@
                 "description": "Returns the live API sessions (devices) of the signed-in admin, newest first, with the current one flagged. No token material is returned. Not paginated; an empty array before the site runs gp247:update.",
                 "x-gp247-since": "core 3.5.1",
                 "x-gp247-permission": null,
-                "x-gp247-error-codes": []
+                "x-gp247-error-codes": [
+                    "password_change_required"
+                ]
             }
         },
         "\/api\/v2\/core\/sessions\/{id}": {
@@ -6574,6 +6621,16 @@
                             }
                         }
                     },
+                    "403": {
+                        "description": "password_change_required: the account must choose a new password on the admin screen first (since core 3.11.0)",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    },
                     "404": {
                         "description": "Not found (or not yours)",
                         "content": {
@@ -6600,7 +6657,8 @@
                 "x-gp247-since": "core 3.5.1",
                 "x-gp247-permission": null,
                 "x-gp247-error-codes": [
-                    "not_found"
+                    "not_found",
+                    "password_change_required"
                 ]
             }
         },
@@ -9168,6 +9226,7 @@
                             "refresh_in_progress",
                             "challenge_required",
                             "challenge_invalid",
+                            "password_change_required",
                             "address_required",
                             "admin.order.reopen_blocked_stock",
                             "admin.order.shipping_status_invalid",

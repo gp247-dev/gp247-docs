@@ -26,6 +26,12 @@ Cơ chế hoạt động chung cho cả hai nhóm:
 
 4. Khi muốn thoát, gọi **`POST logout`** để **đăng xuất phiên hiện tại** (token cũ và refresh token của nó hết hiệu lực ngay).
 
+> ⚠️ **Lưu ý:** sau khi site được [phục hồi sau sự cố bảo mật](../backup/restore-guide_vi.md#phục-hồi-sau-sự-cố-bảo-mật), mọi
+> token bị thu hồi và quản trị viên phải đặt mật khẩu mới trên trang quản trị trước. Tới lúc đó, `api/v2/core/login` trả `403`
+> với mã [`password_change_required`](./api-troubleshooting_vi.md#password_change_required).
+>
+> ℹ️ **Có từ:** gp247/core 3.11.0
+
 ### Phạm vi quyền (scope / ability)
 
 Mỗi token được cấp kèm **phạm vi** cho biết nó là token của ai:
@@ -205,4 +211,4 @@ và token không dùng lại được nữa.
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-03 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

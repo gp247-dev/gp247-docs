@@ -3264,4 +3264,4 @@ curl -X POST "https://shop.example.com/api/v2/front/orders/123/cancel" \
 
 ---
 
-<sub>📅 **最終更新:** 2026-11-03 · ✍️ **作成者 (Author):** GP247</sub>
+<sub>📅 **最終更新:** 2026-11-22 · ✍️ **作成者 (Author):** GP247</sub>

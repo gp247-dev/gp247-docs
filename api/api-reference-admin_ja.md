@@ -68,6 +68,8 @@ curl "https://shop.example.com/api/v2/core/info" \
 }
 ```
 
+**エラー**: [`password_change_required`](./api-troubleshooting_ja.md#password_change_required)
+
 ### 管理者ログイン — `POST /api/v2/core/login`
 
 有効な管理者をユーザー名とパスワードでログインさせ、Bearer トークンを返します。with_refresh=true の場合、レスポンスにリフレッシュトークンが追加され、アクセストークンの有効期間は短くなります。プラグインが 2 段階目（MFA）を要求する場合、レスポンスは 401 challenge_required となり、login/challenge で完了するためのチケットが付きます。失敗した試行はアカウントと IP ごとに回数が制限されます。
@@ -112,7 +114,7 @@ curl -X POST "https://shop.example.com/api/v2/core/login" \
 }
 ```
 
-**エラー**: [`validation_failed`](./api-troubleshooting_ja.md#validation_failed) · [`unauthenticated`](./api-troubleshooting_ja.md#unauthenticated) · [`too_many_attempts`](./api-troubleshooting_ja.md#too_many_attempts) · [`challenge_required`](./api-troubleshooting_ja.md#challenge_required) · [`challenge_invalid`](./api-troubleshooting_ja.md#challenge_invalid)
+**エラー**: [`validation_failed`](./api-troubleshooting_ja.md#validation_failed) · [`unauthenticated`](./api-troubleshooting_ja.md#unauthenticated) · [`too_many_attempts`](./api-troubleshooting_ja.md#too_many_attempts) · [`challenge_required`](./api-troubleshooting_ja.md#challenge_required) · [`challenge_invalid`](./api-troubleshooting_ja.md#challenge_invalid) · [`password_change_required`](./api-troubleshooting_ja.md#password_change_required)
 
 ### 管理者のサインアウト — `POST /api/v2/core/logout`
 
@@ -141,6 +143,8 @@ curl -X POST "https://shop.example.com/api/v2/core/logout" \
     }
 }
 ```
+
+**エラー**: [`password_change_required`](./api-troubleshooting_ja.md#password_change_required)
 
 ### 管理者の MFA ログインを完了 — `POST /api/v2/core/login/challenge`
 
@@ -278,6 +282,8 @@ curl "https://shop.example.com/api/v2/core/sessions" \
 }
 ```
 
+**エラー**: [`password_change_required`](./api-troubleshooting_ja.md#password_change_required)
+
 ### 管理者のセッションを 1 つサインアウト — `DELETE /api/v2/core/sessions/{id}`
 
 管理者自身のセッションを 1 つ（そのアクセストークンとリフレッシュトークン）サインアウトします。他の所有者のセッション id は 404 を返します。
@@ -306,7 +312,7 @@ curl -X DELETE "https://shop.example.com/api/v2/core/sessions/123" \
 }
 ```
 
-**エラー**: [`not_found`](./api-troubleshooting_ja.md#not_found)
+**エラー**: [`not_found`](./api-troubleshooting_ja.md#not_found) · [`password_change_required`](./api-troubleshooting_ja.md#password_change_required)
 
 ## Admin · カタログ
 
@@ -2505,4 +2511,4 @@ shipping_status / tracking_number のうち 1 つ以上。payment_status は拒�
 
 ---
 
-<sub>📅 **最終更新:** 2026-11-03 · ✍️ **作成者 (Author):** GP247</sub>
+<sub>📅 **最終更新:** 2026-11-22 · ✍️ **作成者 (Author):** GP247</sub>

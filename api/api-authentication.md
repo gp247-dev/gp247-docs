@@ -27,6 +27,12 @@ The mechanism is the same for both groups:
 4. To sign out, call **`POST logout`** to **sign the current session out** (the old token and its refresh token become
    invalid immediately).
 
+> ⚠️ **Note:** after the site is [restored after a security incident](../backup/restore-guide.md#restore-after-a-security-incident),
+> every token is revoked and administrators must first set a new password on the admin screen. Until then,
+> `api/v2/core/login` answers `403` with the code [`password_change_required`](./api-troubleshooting.md#password_change_required).
+>
+> ℹ️ **Available since:** gp247/core 3.11.0
+
 ### Scopes (abilities)
 
 Each token is issued with a **scope** that tells whose token it is:
@@ -212,4 +218,4 @@ sign in again, and a leaked token is only usable for a short time.
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-03 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>
