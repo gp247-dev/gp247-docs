@@ -23,7 +23,7 @@ flowchart LR
 - **Making a backup needs no password, opening one does** — the schedule runs without anyone typing anything.
 - **By default the site backs itself up every 24 hours** while an administrator has the admin open — no cron needed.
 - **Every backup is checked right after it is made**; only a **Verified** backup is used to restore.
-- **Before a system update, an extension update or a template switch**, GP247 takes a backup of the data about to be touched.
+- **Before a system update, an extension update, a template switch or a data import by a plugin**, GP247 takes a backup of the data about to be touched.
 
 ## On this page
 - [What is backed up](#what-is-backed-up) — data and files inside one backup
@@ -159,13 +159,16 @@ real limit: if no admin opens the admin for 3 days, there is no new backup for t
 **48 hours** and the schedule is on, GP247 mails the site owner, at most **once a day**.
 
 ## Automatic snapshot before a risky change
-Before three operations that can easily break data, GP247 takes a backup of **the data that operation may touch**:
+Before four operations that can easily break data, GP247 takes a backup of **the data that operation may touch**:
 
 | Operation | GP247 backs up |
 | --- | --- |
 | **System update** (`php artisan gp247:update`) | Every data group except logs |
 | **Plugin / template update** | Configuration + that extension's own data; for an extension that does not declare its tables, every data group except logs, plus **Other tables** |
 | **Template switch** | Configuration + content |
+| **Data import** by a plugin (e.g. DataImport), since core 3.11.3 | The data groups the import will write to |
+
+While a plugin is importing data in bulk, backups, restores and bringing a backup in wait until the import is done — and the other way round.
 
 - **From the command line**: the backup finishes first, then the operation runs.
 - **From the admin**: if the backup is not done within a few seconds, the screen says the backup is being made and asks you to do the same
@@ -296,8 +299,9 @@ including the restore itself.
 
 | Date | GP247 version | Change |
 | --- | --- | --- |
+| 2026-11-22 | gp247/core 3.11.3 | A fourth operation gets a snapshot before the change: a data import by a plugin (e.g. DataImport); backups and restores never run at the same time as a bulk import |
 | 2026-11-11 | | The newest verified full backup is always kept, with a warning when no full backup is available; confirming it is you to check again, unpin, delete a backup and save the general settings; wrong backup passwords limited; a backup of unverified origin restored on the screen only by an Administrator; the activity log is not replaced by a restore; `gp247:doctor` row `backup_key_ring` |
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-11 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>

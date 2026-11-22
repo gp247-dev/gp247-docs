@@ -191,7 +191,7 @@ những bảng bị bỏ qua và lý do.
 - **Thêm lại bản ghi chỉ áp dụng cho bảng có khoá chính, tối đa 5 000 bản ghi một lần**; nhiều hơn thì dùng **Thay nhóm dữ liệu**.
 
 **Khi chạy**
-- **Mỗi lúc chỉ một việc ghi** — đang sao lưu hay phục hồi khác thì phải chờ.
+- **Mỗi lúc chỉ một việc ghi** — đang sao lưu, phục hồi khác, hay một plugin đang nhập dữ liệu hàng loạt (vd DataImport) thì phải chờ.
 - **Khoá mở bản chỉ dùng trong 1 giờ** kể từ khi bắt đầu — phục hồi bỏ dở quá lâu phải làm lại từ đầu.
 - **Chế độ bảo trì tự tắt** nếu một lần phục hồi toàn bộ không thể hoàn tất, để site không bị kẹt ở trang bảo trì.
 - **Lần phục hồi đã thay xong bảng mà bị bỏ dở thì tự kết thúc** — sau khoảng 15 phút (khoảng 1 giờ nếu đang cập nhật dữ liệu), vào lần kế tiếp
@@ -245,8 +245,9 @@ hãy chạy `php artisan gp247:update`.
 
 | Ngày | Phiên bản GP247 | Thay đổi |
 | --- | --- | --- |
+| 2026-11-22 | gp247/core 3.11.3 | Phục hồi cũng chờ khi một plugin đang nhập dữ liệu hàng loạt |
 | 2026-11-11 | | Xem trước liệt kê những gì không được đưa lại; cột mà site không còn phải xác nhận riêng (`--accept-column-loss`); bản chưa xác minh nguồn gốc chỉ Administrator phục hồi trên màn; nhật ký thao tác không bị thay; phục hồi bỏ dở sau khi đã thay bảng tự kết thúc sau khoảng 15 phút (khoảng 1 giờ nếu đang cập nhật dữ liệu), vào lần kế tiếp có người mở site; giới hạn nhập sai mật khẩu sao lưu |
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-11 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

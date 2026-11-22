@@ -23,7 +23,7 @@ flowchart LR
 - **Tạo bản không cần mật khẩu, mở bản mới cần** — lịch tự động chạy được mà không ai phải nhập gì.
 - **Mặc định site tự sao lưu mỗi 24 giờ** khi có quản trị viên mở trang quản trị — không cần cron.
 - **Mỗi bản được kiểm ngay sau khi tạo**; chỉ bản "Đã kiểm, tốt" mới dùng để phục hồi.
-- **Trước khi cập nhật hệ thống, cập nhật extension hay đổi template**, GP247 tự chụp một bản phần dữ liệu sắp bị chạm tới.
+- **Trước khi cập nhật hệ thống, cập nhật extension, đổi template hay nhập dữ liệu bằng plugin**, GP247 tự chụp một bản phần dữ liệu sắp bị chạm tới.
 
 ## Trong trang này
 - [Sao lưu những gì](#sao-lưu-những-gì) — dữ liệu và file nằm trong một bản sao lưu
@@ -159,13 +159,16 @@ thật: admin không vào trang quản trị 3 ngày thì 3 ngày đó không c�
 GP247 gửi email cho chủ site, tối đa **một lần mỗi ngày**.
 
 ## Bản chụp tự động trước thay đổi rủi ro
-Trước ba thao tác dễ làm hỏng dữ liệu, GP247 tự chụp một bản **phần dữ liệu thao tác đó có thể chạm tới**:
+Trước bốn thao tác dễ làm hỏng dữ liệu, GP247 tự chụp một bản **phần dữ liệu thao tác đó có thể chạm tới**:
 
 | Thao tác | GP247 tự chụp |
 | --- | --- |
 | **Cập nhật hệ thống** (`php artisan gp247:update`) | Mọi nhóm dữ liệu trừ nhật ký |
 | **Cập nhật plugin / template** | Cấu hình + dữ liệu của chính extension đó; extension chưa khai bảng của mình thì mọi nhóm dữ liệu trừ nhật ký, kèm **Bảng khác** |
 | **Đổi template** | Cấu hình + nội dung |
+| **Nhập dữ liệu** bằng plugin (vd DataImport), từ core 3.11.3 | Các nhóm dữ liệu mà lần nhập sẽ ghi vào |
+
+Trong lúc một plugin đang nhập dữ liệu hàng loạt, sao lưu, phục hồi và đưa bản sao lưu vào phải chờ lần nhập xong — và ngược lại.
 
 - **Chạy từ dòng lệnh**: bản được chụp xong rồi thao tác mới chạy.
 - **Bấm từ trang quản trị**: nếu bản chưa xong trong vài giây, màn báo "Đang tạo bản sao lưu… hãy thao tác lại sau vài giây". Bấm lại
@@ -294,8 +297,9 @@ ngay sau khi xử lý nguyên nhân (thường là đĩa đầy).
 
 | Ngày | Phiên bản GP247 | Thay đổi |
 | --- | --- | --- |
+| 2026-11-22 | gp247/core 3.11.3 | Thêm thao tác thứ tư có bản chụp trước thay đổi: nhập dữ liệu bằng plugin (vd DataImport); sao lưu, phục hồi không chạy chồng với một lần nhập hàng loạt |
 | 2026-11-11 | | Luôn giữ bản toàn bộ đã kiểm mới nhất, cảnh báo khi thiếu bản toàn bộ; xác nhận lại danh tính khi kiểm lại, bỏ ghim, xoá bản, lưu cài đặt chung; giới hạn nhập sai mật khẩu sao lưu; bản chưa xác minh nguồn gốc chỉ Administrator phục hồi trên màn; nhật ký thao tác không bị thay khi phục hồi; dòng `backup_key_ring` của `gp247:doctor` |
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-11 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

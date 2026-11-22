@@ -195,7 +195,7 @@ also prints the tables that are skipped and why.
 - **Add back deleted records only works for tables with a primary key, up to 5,000 records at a time**; for more, use **Replace data groups**.
 
 **While running**
-- **Only one writing task at a time** — wait if another backup or restore is running.
+- **Only one writing task at a time** — wait if another backup or restore, or a bulk data import by a plugin (e.g. DataImport), is running.
 - **The key that opens the backup is usable for 1 hour** from the start — a restore left too long must be started again.
 - **Maintenance mode turns itself off** if a whole-database restore cannot finish, so the site does not stay stuck on the maintenance page.
 - **A restore left unfinished after its tables were replaced ends by itself** — after about 15 minutes (about 1 hour while data is being
@@ -250,8 +250,9 @@ time someone opens the site: the site leaves maintenance mode, the restored data
 
 | Date | GP247 version | Change |
 | --- | --- | --- |
+| 2026-11-22 | gp247/core 3.11.3 | A restore also waits while a plugin is importing data in bulk |
 | 2026-11-11 | | The preview lists what is not brought back; columns the site no longer has need their own confirmation (`--accept-column-loss`); a backup of unverified origin restored on the screen only by an Administrator; the activity log is not replaced; a restore left unfinished after its tables were replaced ends by itself after about 15 minutes (about 1 hour while data is being updated), the next time someone opens the site; wrong backup passwords limited |
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-11 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>
