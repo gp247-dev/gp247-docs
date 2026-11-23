@@ -4,16 +4,16 @@
 
 ## Giới thiệu
 Trang này dành cho **chủ site và người vận hành** S-Cart (dòng 3.x): cho biết mỗi bản phát hành có gì mới, nên dùng phiên
-bản nào và cách cập nhật. Bản mới nhất: **S-Cart 3.10.0** (2026-11-20).
+bản nào và cách cập nhật. Bản mới nhất: **S-Cart 3.11.0** (2026-11-23).
 
 ## Phiên bản nên dùng
 Chạy `php artisan gp247:info` (hoặc `composer show "gp247/*"`) rồi so từng dòng với cột **Tối thiểu khuyến nghị**:
 
 | Package | Tối thiểu khuyến nghị | Mới nhất |
 | --- | --- | --- |
-| gp247/core | **3.16.0** | 3.16.0 |
-| gp247/front | **3.11.0** | 3.12.1 |
-| gp247/shop | **3.12.0** | 3.13.1 |
+| gp247/core | **3.16.0** | 3.18.0 |
+| gp247/front | **3.11.0** | 3.14.2 |
+| gp247/shop | **3.12.0** | 3.14.1 |
 | gp247/mcp | **2.0.1** | 2.1.1 |
 
 - **Thấp hơn** cột "Tối thiểu khuyến nghị" → nên [cập nhật](#cập-nhật-thế-nào).
@@ -36,10 +36,10 @@ Chạy `php artisan gp247:info` (hoặc `composer show "gp247/*"`) rồi so từ
   `composer require … -W` và `php artisan gp247:update` — xem [Nâng cấp lên dòng 3.x](../install-upgrade/upgrade_vi.md).
 
 ## Điểm mới nổi bật
-- **Mã đo lường GA4, GTM, Meta Pixel** — chỉ dán ID, mã chạy theo nhóm cookie khách cho phép *(S-Cart 3.10)*
-- **Banner cookie** — hỏi đồng ý trước, chỉ thông báo hoặc tắt *(S-Cart 3.10)*
-- **Doanh thu quảng cáo trong GA4 và Meta** — tự gửi sự kiện bán hàng *(S-Cart 3.10)*
-- **Nhân bản sản phẩm và trang** — một nút có bản sao, chỉ sửa chỗ khác *(S-Cart 3.10)*
+- **Nhân bản không chép SEO** — bản sao bắt đầu với tab SEO trống, không trùng tiêu đề bản gốc *(S-Cart 3.11)*
+- **Cài mới mang tên và logo S-Cart** — cửa hàng, trang quản trị, lời chào đặt sẵn *(S-Cart 3.11)*
+- **Nút Lưu cho Cấu hình tuỳ chỉnh** — sửa nhiều dòng rồi lưu một lần *(S-Cart 3.11)*
+- **Nhóm Facebook ở chân trang** — biểu tượng nhóm Facebook trên giao diện mặc định *(S-Cart 3.11)*
 
 ## Cập nhật thế nào
 **Bước 1 —** Sao lưu cơ sở dữ liệu và thư mục site.
@@ -62,6 +62,28 @@ Chi tiết từng bước: [Cập nhật GP247 và S-Cart](../install-upgrade/up
 
 ## Các bản phát hành
 Mới nhất ở trên. Bản *x.**Y*** có tính năng mới; bản *x.y.**Z*** chỉ sửa lỗi.
+
+### S-Cart 3.11.0 — 2026-11-23
+**Bản sao không mang SEO của bản gốc; cài mới có sẵn tên và logo S-Cart.**
+
+**✨ Mới**
+- **Nhân bản không chép SEO** — bản sao sản phẩm, trang bắt đầu với tab SEO trống, không lên Google với tiêu đề trùng bản gốc
+  ([tài liệu](../s-cart/product/product-duplicate_vi.md))
+- **Cài mới mang tên và logo S-Cart** — tên cửa hàng, trang quản trị, lời chào, menu đặt sẵn; site đang chạy không đổi
+- **Nút Lưu cho Cấu hình tuỳ chỉnh** — sửa nhiều dòng rồi lưu một lần, như các tab cấu hình khác
+- **Nhóm Facebook ở chân trang** — biểu tượng nhóm Facebook cạnh Facebook trên giao diện mặc định
+- **Cho lập trình viên:** điểm cắm cho plugin SEO (nguồn nội dung cho màn Kiểm tra SEO, JSON-LD bổ sung, 301 của plugin); bộ
+  test và CI công khai cho core, front, shop, mcp kèm helper test dùng chung; sản phẩm dựng trên GP247 tự khai tên, logo khi cài
+
+**🔧 Cải thiện:** trang không có mô tả riêng thôi lặp mô tả cửa hàng; màn Kiểm tra SEO chạy được trên MariaDB; mục chuyển
+hướng tới trang lỗi chỉ báo khi đích còn 404 trong 7 ngày qua
+
+**📋 Cần làm khi cập nhật**
+- Chạy `composer update` rồi `php artisan gp247:update` (đổi khoá link Facebook sang `group_url`, giữ link bạn đã nhập)
+- *(Template tự viết)* link Facebook đang đọc `fanpage_url` thì đọc `group_url`, giữ `fanpage_url` làm dự phòng
+- *(Site dùng plugin Tin tức)* cập nhật News ≥ 3.2.0 để nhân bản bài viết
+
+<sub>Gồm core 3.18.0 · front 3.14.2 · shop 3.14.1 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.11.0)</sub>
 
 ### S-Cart 3.10.0 — 2026-11-20
 **Gắn GA4, Meta Pixel chỉ bằng dán ID, có banner cookie; nhân bản sản phẩm một nút.**
@@ -172,31 +194,10 @@ cột hợp lệ; `gp247:info` in phiên bản đúng như tag (3.12.1, không c
 
 <sub>Gồm core 3.12.1 · front 3.8.1 · shop 3.10.1 · mcp 2.0.2 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.7.0)</sub>
 
-### S-Cart 3.6.1 — 2026-11-11
-Bản cải tiến sao lưu và phục hồi cho site thật và shared host — nên cập nhật.
-
-**✨ Mới**
-- **Mỗi nhóm sao lưu ghi rõ chứa gì** — màn sao lưu và phục hồi nói nhóm gồm những dữ liệu nào trước khi chọn
-  ([tài liệu](../backup/backup-and-restore_vi.md))
-- **Xem trước phục hồi nói rõ phần không mang về** — cột site không còn phải xác nhận riêng; bản mới hơn site nêu bản cập
-  nhật còn thiếu ([tài liệu](../backup/restore-guide_vi.md))
-- **Cảnh báo khi thiếu bản sao lưu toàn bộ** — màn sao lưu báo khi chưa có bản toàn bộ đã kiểm hoặc bản đó đã cũ
-
-**🔧 Cải thiện:** phục hồi bị bỏ dở tự kết thúc và đưa site ra khỏi bảo trì; sao lưu chạy được với bảng lớn không có khoá
-chính và bảng dòng rộng trong 128 MB, giữ bản luôn giữ bản toàn bộ mới nhất; màn tải file lên trong quản trị không còn lỗi
-hết bộ nhớ
-
-**📋 Cần làm khi cập nhật**
-- Chạy `composer update` rồi `php artisan gp247:update`
-- Kiểm lại, bỏ ghim, xoá bản sao lưu và lưu cài đặt sao lưu nay hỏi xác nhận đăng nhập; nhập sai mật khẩu sao lưu nhiều lần
-  bị tạm chặn
-- *(Phục hồi bằng dòng lệnh)* bản có cột mà site không còn: xem trước rồi chạy lại với `--accept-column-loss`
-
-<sub>Gồm core 3.11.2 · front 3.7.1 · shop 3.9.1 · mcp 2.0.2 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.6.1)</sub>
-
 ### Các bản cũ hơn
 | Bản | Ngày | Tóm tắt |
 | --- | --- | --- |
+| [S-Cart 3.6.1](https://github.com/gp247net/s-cart/releases/tag/3.6.1) | 2026-11-11 | Sao lưu và phục hồi chắc hơn cho site thật và shared host |
 | [S-Cart 3.6.0](https://github.com/gp247net/s-cart/releases/tag/3.6.0) | 2026-11-09 | Sao lưu và phục hồi có sẵn trong S-Cart, chạy được cả trên shared host |
 | [S-Cart 3.5.2](https://github.com/gp247net/s-cart/releases/tag/3.5.2) | 2026-11-07 | Cải tiến cho site chạy Docker hoặc đứng sau proxy / CDN |
 | [S-Cart 3.5.1](https://github.com/gp247net/s-cart/releases/tag/3.5.1) | 2026-11-05 | Trang quản trị tự báo cấu hình chưa an toàn; cài đặt qua web gọn hơn |
@@ -253,4 +254,4 @@ trước khi có bản vá.
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-23 · ✍️ **Tác giả (Author):** GP247</sub>

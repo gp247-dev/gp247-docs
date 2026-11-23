@@ -4,16 +4,16 @@
 
 ## Introduction
 This page is for S-Cart (3.x line) **site owners and operators**: it tells you what each release brings, which version to run
-and how to update. Latest release: **S-Cart 3.10.0** (2026-11-20).
+and how to update. Latest release: **S-Cart 3.11.0** (2026-11-23).
 
 ## Recommended versions
 Run `php artisan gp247:info` (or `composer show "gp247/*"`) and compare each line with the **Recommended minimum** column:
 
 | Package | Recommended minimum | Latest |
 | --- | --- | --- |
-| gp247/core | **3.16.0** | 3.16.0 |
-| gp247/front | **3.11.0** | 3.12.1 |
-| gp247/shop | **3.12.0** | 3.13.1 |
+| gp247/core | **3.16.0** | 3.18.0 |
+| gp247/front | **3.11.0** | 3.14.2 |
+| gp247/shop | **3.12.0** | 3.14.1 |
 | gp247/mcp | **2.0.1** | 2.1.1 |
 
 - **Below** the "Recommended minimum" column → [update](#how-to-update) when you can.
@@ -36,10 +36,10 @@ Run `php artisan gp247:info` (or `composer show "gp247/*"`) and compare each lin
   `composer require … -W` and `php artisan gp247:update` — see [Upgrading to the 3.x line](../install-upgrade/upgrade.md).
 
 ## Highlights
-- **GA4, GTM and Meta Pixel tracking** — paste the ID; the code runs only for the cookie groups the visitor allows *(S-Cart 3.10)*
-- **Cookie banner** — ask first, notice only, or off *(S-Cart 3.10)*
-- **Ad revenue in GA4 and Meta** — sales events are sent automatically *(S-Cart 3.10)*
-- **Duplicate products and pages** — one button makes a copy; change only what differs *(S-Cart 3.10)*
+- **Duplicates leave SEO behind** — a copy starts with an empty SEO tab, never repeating the original's title *(S-Cart 3.11)*
+- **New installs named and branded S-Cart** — store, admin and welcome text set up for you *(S-Cart 3.11)*
+- **Save button for Custom config** — edit several rows, then save once *(S-Cart 3.11)*
+- **Facebook group in the footer** — a Facebook group icon in the default theme *(S-Cart 3.11)*
 
 ## How to update
 **Step 1 —** Back up the database and the site folder.
@@ -62,6 +62,28 @@ Step-by-step details: [Updating GP247 and S-Cart](../install-upgrade/update.md).
 
 ## Releases
 Newest first. An *x.**Y*** release brings new features; an *x.y.**Z*** release only fixes bugs.
+
+### S-Cart 3.11.0 — 2026-11-23
+**Copies no longer carry the original's SEO; new installs come named and branded S-Cart.**
+
+**✨ New**
+- **Duplicates leave SEO behind** — a copied product or page starts with an empty SEO tab, so it never reaches Google with the
+  original's title ([docs](../s-cart/product/product-duplicate.md))
+- **New installs named and branded S-Cart** — store name, admin, welcome text and menu set up for S-Cart; running sites unchanged
+- **Save button for Custom config** — edit several rows, then save once, like the other configuration tabs
+- **Facebook group in the footer** — a Facebook group icon next to Facebook in the default theme
+- **For developers:** hooks for SEO plugins (content sources for the SEO check, extra JSON-LD, plugin 301s); public test suites and
+  CI for core, front, shop and mcp with shared test helpers; a product built on GP247 declares its name and logo at install
+
+**🔧 Improvements:** pages without their own description no longer repeat the store's; the SEO check runs on MariaDB; the
+redirect-to-error item reports only targets still returning 404 in the last 7 days
+
+**📋 To do when updating**
+- Run `composer update`, then `php artisan gp247:update` (renames the Facebook link key to `group_url` and keeps the link you set)
+- *(Custom templates)* if the Facebook link reads `fanpage_url`, read `group_url` and keep `fanpage_url` as a fallback
+- *(Sites using the News plugin)* update News to 3.2.0 or later to duplicate articles
+
+<sub>Includes core 3.18.0 · front 3.14.2 · shop 3.14.1 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.11.0)</sub>
 
 ### S-Cart 3.10.0 — 2026-11-20
 **Add GA4 and Meta Pixel by pasting an ID, with a cookie banner; duplicate a product in one click.**
@@ -175,32 +197,10 @@ sorting accepts only valid columns; `gp247:info` prints versions as tagged (3.12
 
 <sub>Includes core 3.12.1 · front 3.8.1 · shop 3.10.1 · mcp 2.0.2 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.7.0)</sub>
 
-### S-Cart 3.6.1 — 2026-11-11
-Backup and restore hardened for real sites and shared hosts — recommended update.
-
-**✨ New**
-- **Each backup group says what it holds** — the backup and restore screens show which data a group contains before you
-  choose ([docs](../backup/backup-and-restore.md))
-- **The restore preview says what is not brought back** — columns the site no longer has need a separate confirmation; a
-  backup newer than the site names the missing updates ([docs](../backup/restore-guide.md))
-- **Warning when no full backup is available** — the backup screen warns when there is no verified full backup, or it is old
-
-**🔧 Improvements:** a restore left unfinished ends by itself and takes the site out of maintenance; backups handle large
-tables without a primary key and tables of wide rows within 128 MB, and retention always keeps the newest full backup; admin
-screens with file uploads no longer run out of memory
-
-**📋 To do when updating**
-- Run `composer update`, then `php artisan gp247:update`
-- Verifying, unpinning and deleting backups, and saving backup settings, now ask you to confirm your sign-in; repeated wrong
-  backup passwords are temporarily blocked
-- *(Restoring from the command line)* a backup with columns the site no longer has: preview it, then run again with
-  `--accept-column-loss`
-
-<sub>Includes core 3.11.2 · front 3.7.1 · shop 3.9.1 · mcp 2.0.2 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.6.1)</sub>
-
 ### Older releases
 | Release | Date | Summary |
 | --- | --- | --- |
+| [S-Cart 3.6.1](https://github.com/gp247net/s-cart/releases/tag/3.6.1) | 2026-11-11 | Sturdier backup and restore for live sites and shared hosting |
 | [S-Cart 3.6.0](https://github.com/gp247net/s-cart/releases/tag/3.6.0) | 2026-11-09 | Backup and restore built into S-Cart, ready for shared hosting |
 | [S-Cart 3.5.2](https://github.com/gp247net/s-cart/releases/tag/3.5.2) | 2026-11-07 | Improvements for sites on Docker or behind a proxy / CDN |
 | [S-Cart 3.5.1](https://github.com/gp247net/s-cart/releases/tag/3.5.1) | 2026-11-05 | The admin flags unsafe settings; a simpler web installer |
@@ -257,4 +257,4 @@ exposed before a fix is released.
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-23 · ✍️ **Author:** GP247</sub>
