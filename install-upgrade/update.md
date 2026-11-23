@@ -4,7 +4,7 @@
 
 ## Introduction
 This page explains how to bring a running GP247 site — an S-Cart store, a GP247 CMS website, or a Laravel app that uses only
-core — to a newer release **within the 3.x line** (for example core 3.9 to 3.10), **without losing data or customizations**.
+core — to a newer release **within the 3.x line** (for example core 3.17 to 3.18), **without losing data or customizations**.
 It is written for site administrators, including non-technical ones: follow the steps and copy the exact commands. After reading
 it you can update your site, check the result, and use the advanced options when you need them.
 
@@ -197,7 +197,7 @@ without any token. Which folders each token touches:
 
 ### C. Plugins/templates updated with `git pull`, Composer or by copying files
 
-> ℹ️ **Since:** the update of 2026-09-29
+> ℹ️ **Available since:** gp247/core 3.0.14
 
 Clicking **Update** in the extension library both replaces the files and runs the **data update** the new version needs.
 Replacing the files any other way (`git pull`, Composer, FTP, copying a folder) changes **only the files** — the data part has
@@ -217,7 +217,7 @@ php artisan gp247:ext-update --local --type=plugin --key=InOut       # or just o
 ```
 
 - **Safe to run any number of times** — extensions already up to date are skipped.
-- **Sites installed before 2026-09-29** have no recorded versions yet, so the **first time** every extension shows as pending.
+- **Sites installed with a core older than 3.0.14** have no recorded versions yet, so the **first time** every extension shows as pending.
   Apply once and it clears.
 - **If the data update fails**, the new files stay in place (no automatic restore as when updating from the library). Fix the
   cause and run it again.
@@ -288,9 +288,9 @@ tokens other than `core-public`, `front-public`).
 | --- | --- | --- |
 | 2026-11-22 | gp247/core 3.11.0 | Documents the **snapshot before the change** taken by `gp247:update` (`--skip-pre-change` option, `pre_change_stopped` error) and the **Backup & restore** screen in the backup step. |
 | 2026-11-07 |  | Page moved from `system/update-gp247` to the `install-upgrade` folder next to the Install and Upgrade pages; commands per package set (S-Cart, GP247 CMS, core only); added updating on Docker, hosting without a command line and a troubleshooting table; changing lines (2.x → 3.x) moved to the Upgrade page. |
-| 2026-09-29 |  | `gp247:update` gained a step that **applies the data update of plugins/templates** updated with `git pull`/Composer/copying (GP247 remembers each installed version); new `gp247:ext-update --local` command and **Apply data update** button in the admin (section C). |
+| 2026-09-29 | gp247/core 3.0.14 | `gp247:update` gained a step that **applies the data update of plugins/templates** updated with `git pull`/Composer/copying (GP247 remembers each installed version); new `gp247:ext-update --local` command and **Apply data update** button in the admin (section C). |
 | 2026-08-29 | gp247/core 2.2 | `gp247:update` now also runs **core's upgrade migrations** (via `gp247:core-update`); before, it only re-seeded. Documents the rule in place since the public v2.1: every breaking change ships with an automatic data conversion, so `composer update` + `gp247:update` is the whole process. |
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-23 · ✍️ **Author:** GP247</sub>

@@ -4,7 +4,7 @@
 
 ## Giới thiệu
 Trang này hướng dẫn đưa một site GP247 đang chạy — cửa hàng S-Cart, website GP247 CMS, hay ứng dụng Laravel chỉ dùng core —
-lên bản mới hơn **trong cùng dòng 3.x** (ví dụ core 3.9 lên 3.10), **không mất dữ liệu, không mất tùy biến**. Tài liệu dành cho người quản trị site, kể cả người không rành kỹ thuật: làm theo từng bước, copy
+lên bản mới hơn **trong cùng dòng 3.x** (ví dụ core 3.17 lên 3.18), **không mất dữ liệu, không mất tùy biến**. Tài liệu dành cho người quản trị site, kể cả người không rành kỹ thuật: làm theo từng bước, copy
 đúng lệnh là được. Đọc xong, bạn cập nhật được site, kiểm tra được kết quả, và biết dùng các tùy chọn nâng cao khi cần.
 
 ## Chọn đúng trang
@@ -190,7 +190,7 @@ Từng token chạm thư mục nào: [Làm mới file đã publish (`--publish`)
 
 ### C. Plugin/template cập nhật bằng `git pull`, Composer hoặc chép tay
 
-> ℹ️ **Có từ:** bản cập nhật ngày 2026-09-29
+> ℹ️ **Có từ:** gp247/core 3.0.14
 
 Bấm **Cập nhật** trong thư viện extension thì GP247 vừa thay file vừa chạy phần **cập nhật dữ liệu** bản mới cần. Tự thay file
 bằng cách khác (`git pull`, Composer, FTP, chép thư mục) thì chỉ **file** đổi, phần dữ liệu **chưa** chạy. GP247 ghi nhớ phiên
@@ -209,7 +209,7 @@ php artisan gp247:ext-update --local --type=plugin --key=InOut       # hoặc ch
 ```
 
 - **Chạy lại bao nhiêu lần cũng an toàn** — extension đã áp dụng xong được bỏ qua.
-- **Site cài trước 2026-09-29** chưa có bản ghi phiên bản, nên **lần đầu** mọi extension đều hiện "chờ". Áp dụng một lần là hết.
+- **Site cài với core cũ hơn 3.0.14** chưa có bản ghi phiên bản, nên **lần đầu** mọi extension đều hiện "chờ". Áp dụng một lần là hết.
 - **Phần dữ liệu báo lỗi** thì file mới vẫn giữ nguyên (không tự khôi phục như khi cập nhật từ thư viện). Sửa nguyên nhân rồi
   chạy lại.
 
@@ -276,9 +276,9 @@ thể lỗi.
 | --- | --- | --- |
 | 2026-11-22 | gp247/core 3.11.0 | Ghi bước **bản chụp trước thay đổi** của `gp247:update` (tuỳ chọn `--skip-pre-change`, lỗi `pre_change_stopped`) và màn **Sao lưu & phục hồi** ở bước sao lưu. |
 | 2026-11-07 |  | Chuyển trang từ `system/update-gp247` sang thư mục `install-upgrade` cùng hai trang Cài đặt và Nâng cấp; lệnh theo bộ gói (S-Cart, GP247 CMS, chỉ core); thêm cập nhật trên Docker, hosting không có dòng lệnh, bảng xử lý sự cố; việc đổi dòng (2.x → 3.x) chuyển sang trang Nâng cấp. |
-| 2026-09-29 |  | `gp247:update` thêm bước **áp dụng cập nhật dữ liệu cho plugin/template** được cập nhật bằng `git pull`/Composer/chép tay (GP247 ghi nhớ phiên bản đã cài); có lệnh `gp247:ext-update --local` và nút **Áp dụng cập nhật dữ liệu** trên trang quản trị (mục C). |
+| 2026-09-29 | gp247/core 3.0.14 | `gp247:update` thêm bước **áp dụng cập nhật dữ liệu cho plugin/template** được cập nhật bằng `git pull`/Composer/chép tay (GP247 ghi nhớ phiên bản đã cài); có lệnh `gp247:ext-update --local` và nút **Áp dụng cập nhật dữ liệu** trên trang quản trị (mục C). |
 | 2026-08-29 | gp247/core 2.2 | `gp247:update` nay chạy thêm **migration nâng cấp của core** (qua `gp247:core-update`), trước đây lệnh này chỉ seed lại. Ghi rõ quy tắc có từ bản public v2.1: mọi thay đổi phá vỡ đều kèm phần chuyển đổi dữ liệu tự động, nên `composer update` + `gp247:update` là toàn bộ quy trình. |
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-23 · ✍️ **Tác giả (Author):** GP247</sub>
