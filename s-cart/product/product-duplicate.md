@@ -49,8 +49,8 @@ put it on sale." The original does not change.
 
 | | Includes |
 | --- | --- |
-| **Copied** | Name, description and content in **every language**; price, cost, promotion price with its start / end dates; tax; attributes (colour, size…) and their surcharges; main and extra images; downloadable files; categories, brand, supplier, keyword tags, custom fields; product kind, weight, dimensions, minimum quantity, available date, sort order, approval status; the product's store; the **SEO** tab content of every language |
-| **Not copied** | Stock (the copy starts at 0); units sold, views; customer reviews; flash sales; UPC / EAN / JAN / ISBN / MPN barcodes; a canonical URL pointing to the original's own page; a plugin's own data (unless the plugin copies it) |
+| **Copied** | Name, description and content in **every language**; price, cost, promotion price with its start / end dates; tax; attributes (colour, size…) and their surcharges; main and extra images; downloadable files; categories, brand, supplier, keyword tags, custom fields; product kind, weight, dimensions, minimum quantity, available date, sort order, approval status; the product's store |
+| **Not copied** | Stock (the copy starts at 0); units sold, views; customer reviews; flash sales; UPC / EAN / JAN / ISBN / MPN barcodes; the **SEO** tab content (title, description, canonical, no-index setting, sharing image — the copy starts with an empty SEO tab); a plugin's own data (unless the plugin copies it) |
 | **Changed** | Status: **off**; each language's name gets the label of that language: "(bản sao)", "(copy)", "(コピー)"; the SKU and the URL get `-copy`, then `-copy-2`, `-copy-3`… until nothing in the store clashes |
 
 - **Images and downloadable files share the original's files** — no extra disk space. To change an image of the copy, upload a new
@@ -66,7 +66,7 @@ The copy is switched off, so you can edit it freely. Before you turn **Status** 
 3. **Stock** — enter the real quantity (the copy starts at 0).
 4. **Barcodes** — enter the new item's codes, if you use them.
 5. **Images, prices, attributes** — change whatever differs from the original.
-6. **SEO tab** — the SEO title and description match the original; rewrite them so search engines do not see two pages with the same content.
+6. **SEO tab** — it is empty on the copy, so the page uses the product's own name, description and image. Fill it in if you want a separate title / description for search engines. If the original was set to noindex, the copy does not carry it — set it again if needed.
 7. Turn **Status** on and press **Save**.
 
 ## Duplicating a content page
@@ -80,8 +80,8 @@ If it works, the edit screen of the copy opens right away with the message "Copy
 
 | | Includes |
 | --- | --- |
-| **Copied** | Title, description and content in every language; the image (shared file); the page's store; the **SEO** tab content |
-| **Not copied** | A canonical URL pointing to the original page itself; the original's 301 redirects; custom field values |
+| **Copied** | Title, description and content in every language; the image (shared file); the page's store |
+| **Not copied** | The **SEO** tab content (the copy starts with an empty SEO tab); the original's 301 redirects; custom field values |
 | **Changed** | Status: **off**; each language's title gets that language's "(copy)" label; the URL gets `-copy`, `-copy-2`… |
 
 Once the title, URL and content are changed, turn the page on and press **Save**.
@@ -92,7 +92,6 @@ When something goes wrong, **no copy is created** and the original stays as it w
 | Message | Reason | What to do |
 | --- | --- | --- |
 | "Could not duplicate: the plugin … failed to copy its data…" (product) | A plugin copies its own data to the copy and hit an error | Try again; if it still fails, contact the provider of the plugin named in the message |
-| "Could not duplicate: some saved values of this page (e.g. SEO) are no longer valid…" (page) | The original was saved long ago and holds a value that no longer passes today's checks | Open the original page, press **Save** again (fix what the screen points out), then duplicate again |
 | A "no permission" message when you press **Duplicate** | Your account may not create products / pages | Ask an administrator for the right to create them |
 
 ## Conditions & constraints (read before you start)
@@ -138,8 +137,8 @@ putting the copy on sale.
 
 **Q7: Does duplicating create duplicate content for search engines?**
 
-→ The copy is switched off, so search engines do not see it yet. Before you turn it on, rewrite the title, description and SEO
-content so the two pages differ.
+→ The copy is switched off, so search engines do not see it yet, and its SEO tab starts empty — it does not carry the original's SEO
+title or description. Before you turn it on, change the name and description so the two pages differ.
 
 **Q8: If a duplicate fails, is a half-made copy left in the list?**
 
@@ -147,4 +146,4 @@ content so the two pages differ.
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-20 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-23 · ✍️ **Author:** GP247</sub>

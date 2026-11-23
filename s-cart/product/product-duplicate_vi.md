@@ -47,8 +47,8 @@ Bản gốc không thay đổi gì.
 
 | | Gồm |
 | --- | --- |
-| **Chép sang bản sao** | Tên, mô tả, nội dung của **mọi ngôn ngữ**; giá, giá vốn, giá khuyến mãi kèm ngày bắt đầu / kết thúc; thuế; thuộc tính (màu, cỡ…) và phụ phí của chúng; ảnh chính và ảnh phụ; file tải về; danh mục, thương hiệu, nhà cung cấp, thẻ từ khóa, trường tuỳ chỉnh; loại sản phẩm, cân nặng, kích thước, số lượng mua tối thiểu, ngày bán, thứ tự, trạng thái duyệt; cửa hàng của sản phẩm; nội dung tab **SEO** của mọi ngôn ngữ |
-| **Không chép** | Tồn kho (bản sao bắt đầu ở 0); số đã bán, lượt xem; đánh giá của khách; flash sale; mã vạch UPC / EAN / JAN / ISBN / MPN; canonical đang trỏ về chính trang của sản phẩm gốc; dữ liệu riêng của plugin (trừ khi plugin tự chép) |
+| **Chép sang bản sao** | Tên, mô tả, nội dung của **mọi ngôn ngữ**; giá, giá vốn, giá khuyến mãi kèm ngày bắt đầu / kết thúc; thuế; thuộc tính (màu, cỡ…) và phụ phí của chúng; ảnh chính và ảnh phụ; file tải về; danh mục, thương hiệu, nhà cung cấp, thẻ từ khóa, trường tuỳ chỉnh; loại sản phẩm, cân nặng, kích thước, số lượng mua tối thiểu, ngày bán, thứ tự, trạng thái duyệt; cửa hàng của sản phẩm |
+| **Không chép** | Tồn kho (bản sao bắt đầu ở 0); số đã bán, lượt xem; đánh giá của khách; flash sale; mã vạch UPC / EAN / JAN / ISBN / MPN; nội dung tab **SEO** (tiêu đề, mô tả, canonical, chặn lập chỉ mục, ảnh chia sẻ — bản sao bắt đầu với tab SEO trống); dữ liệu riêng của plugin (trừ khi plugin tự chép) |
 | **Đổi** | Trạng thái: **tắt**; tên mỗi ngôn ngữ thêm nhãn của chính ngôn ngữ đó: "(bản sao)", "(copy)", "(コピー)"; SKU và đường dẫn (URL) thêm `-copy`, rồi `-copy-2`, `-copy-3`… cho tới khi không trùng trong cửa hàng |
 
 - **Ảnh và file tải về dùng chung file với bản gốc** — không tốn thêm dung lượng. Đổi ảnh của bản sao bằng cách tải ảnh mới lên, không sửa file cũ.
@@ -63,7 +63,7 @@ Bản sao đang tắt nên bạn sửa thoải mái. Trước khi bật **Trạn
 3. **Tồn kho** — nhập số lượng thật (bản sao bắt đầu ở 0).
 4. **Mã vạch** — nhập mã của mặt hàng mới, nếu bạn dùng.
 5. **Ảnh, giá, thuộc tính** — sửa những gì khác với bản gốc.
-6. **Tab SEO** — tiêu đề và mô tả SEO đang giống bản gốc; viết lại để hai trang không bị máy tìm kiếm coi là trùng nội dung.
+6. **Tab SEO** — tab này trống trên bản sao, nên trang dùng tên, mô tả và ảnh của chính sản phẩm. Muốn tiêu đề / mô tả riêng cho máy tìm kiếm thì điền ở đây. Nếu bản gốc có đặt chặn lập chỉ mục (noindex), bản sao không mang theo — đặt lại nếu cần.
 7. Bật **Trạng thái** rồi bấm **Lưu**.
 
 ## Nhân bản một trang nội dung
@@ -77,8 +77,8 @@ Nếu thành công, màn sửa của bản sao mở ngay, kèm thông báo "Đã
 
 | | Gồm |
 | --- | --- |
-| **Chép sang bản sao** | Tiêu đề, mô tả, nội dung của mọi ngôn ngữ; ảnh (dùng chung file); cửa hàng của trang; nội dung tab **SEO** |
-| **Không chép** | Canonical đang trỏ về chính trang gốc; chuyển hướng 301 của trang gốc; giá trị trường tuỳ chỉnh |
+| **Chép sang bản sao** | Tiêu đề, mô tả, nội dung của mọi ngôn ngữ; ảnh (dùng chung file); cửa hàng của trang |
+| **Không chép** | Nội dung tab **SEO** (bản sao bắt đầu với tab SEO trống); chuyển hướng 301 của trang gốc; giá trị trường tuỳ chỉnh |
 | **Đổi** | Trạng thái: **tắt**; tiêu đề mỗi ngôn ngữ thêm "(bản sao)" của ngôn ngữ đó; đường dẫn thêm `-copy`, `-copy-2`… |
 
 Sửa tiêu đề, đường dẫn và nội dung xong thì bật hiển thị rồi bấm **Lưu**.
@@ -89,7 +89,6 @@ Khi có lỗi, **không có bản sao nào được tạo** và bản gốc gi�
 | Thông báo | Lý do | Cách xử lý |
 | --- | --- | --- |
 | "Không nhân bản được: plugin … báo lỗi khi chép dữ liệu…" (sản phẩm) | Một plugin chép dữ liệu riêng của nó sang bản sao và gặp lỗi | Thử lại; còn lỗi thì báo nhà cung cấp plugin có tên trong thông báo |
-| "Không nhân bản được: một số giá trị đã lưu của trang (vd SEO) không còn hợp lệ…" (trang) | Trang gốc lưu từ trước, có giá trị không còn qua được kiểm tra hiện nay | Mở trang gốc, bấm **Lưu** lại (sửa chỗ màn báo lỗi), rồi nhân bản lại |
 | Báo không có quyền khi bấm **Nhân bản** | Tài khoản của bạn không có quyền tạo sản phẩm / trang | Nhờ quản trị viên cấp quyền tạo |
 
 ## Điều kiện & ràng buộc (hiểu trước khi thao tác)
@@ -133,7 +132,7 @@ Khi có lỗi, **không có bản sao nào được tạo** và bản gốc gi�
 
 **Câu 7: Nhân bản có tạo trùng nội dung với máy tìm kiếm không?**
 
-→ Bản sao đang tắt nên máy tìm kiếm chưa thấy. Trước khi bật, viết lại tiêu đề, mô tả và nội dung SEO để hai trang khác nhau.
+→ Bản sao đang tắt nên máy tìm kiếm chưa thấy, và tab SEO của bản sao bắt đầu trống — không mang tiêu đề / mô tả SEO của bản gốc. Trước khi bật, sửa tên và mô tả để hai trang khác nhau.
 
 **Câu 8: Nhân bản lỗi thì có để lại bản sao dở trong danh sách không?**
 
@@ -141,4 +140,4 @@ Khi có lỗi, **không có bản sao nào được tạo** và bản gốc gi�
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-20 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-23 · ✍️ **Tác giả (Author):** GP247</sub>
