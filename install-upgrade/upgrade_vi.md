@@ -27,7 +27,6 @@ Không biết site đang ở dòng nào? Chạy `php artisan gp247:info` rồi x
 | **2.1.x / 2.2** | ✅ Nâng cấp tự động theo trang này |
 | **2.0.x** | ⚠️ Không được bảo đảm — thử trên bản sao trước, xem [Site 1.x và 2.0](#site-1x-và-20-không-nâng-cấp-trực-tiếp-được) |
 | **1.x** | ⛔ Không nâng cấp được — cài mới 3.x rồi chuyển dữ liệu |
-| S-Cart **10.x trở xuống** (package `s-cart/s-cart`) | ⛔ Không nâng cấp được — như site 1.x |
 
 Với site 2.1 / 2.2, cả quá trình gồm bốn chặng:
 
@@ -191,7 +190,6 @@ Chuyển đổi dữ liệu tự động chỉ có **từ bản public 2.1** tr�
 - **Site 1.x** — cấu trúc khác hẳn, **không có đường nâng cấp**. [Cài mới bản 3.x](./install_vi.md) (cùng bộ gói) trên CSDL mới, cấu hình
   lại site, rồi chuyển dữ liệu cần giữ (nội dung, sản phẩm, danh mục, khách hàng) bằng công cụ xuất / nhập của bạn hoặc nhờ đơn vị kỹ
   thuật. Giữ site 1.x chạy tới khi site mới sẵn sàng.
-- **Site S-Cart 10.x** — S-Cart 10.x (`s-cart/s-cart`) được tiếp nối bằng S-Cart (`gp247/s-cart`), đánh số lại từ 1.0 và hiện ở dòng 3.x. Không có đường nâng cấp: làm như site 1.x.
 - **Site 2.0.x** — không được bảo đảm. Thử **trên bản sao**: `composer update` (lên bản 2.x mới nhất) →
   `php artisan gp247:update` → kiểm tra kỹ; ổn thì làm tiếp [các bước](#các-bước). Bản sao lỗi hoặc số liệu lệch thì đi theo
   cách của site 1.x.
@@ -237,4 +235,4 @@ khi đổi dòng.
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-23 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>

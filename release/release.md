@@ -28,14 +28,12 @@ Run `php artisan gp247:info` (or `composer show "gp247/*"`) and compare each lin
 | --- | --- | --- | --- |
 | **3.x** | Laravel 13 · PHP 8.3+ | ✅ Supported | March 2028 |
 | 2.x and earlier | Laravel 12–13 | ⛔ No longer supported | — |
-| S-Cart 10.x and earlier (`s-cart/s-cart`) | Laravel 12 and earlier | ⛔ Discontinued | — |
 
 - **New features** go into the newest line only.
 - **When a new line ships:** the previous line gets critical bug fixes for 6 more months and security fixes until the time in
   the table — never past the security support of the Laravel version that line runs on.
 - **Sites still on 2.x or earlier:** they keep running but receive no more fixes. 2.1 / 2.2 sites move to 3.x with
   `composer require … -W` and `php artisan gp247:update` — see [Upgrading to the 3.x line](../install-upgrade/upgrade.md).
-- S-Cart 10.x (`s-cart/s-cart`) continues as S-Cart (`gp247/s-cart`), renumbered from 1.0 and now on the 3.x line.
 
 ## Highlights
 - **Duplicates leave SEO behind** — a copy starts with an empty SEO tab, never repeating the original's title *(S-Cart 3.11)*

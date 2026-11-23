@@ -19,7 +19,7 @@ GP247 を初めてお使いの方は、[GP247について](./about/gp247_ja.md)�
 | --- | --- | --- |
 | [GP247 と S-Cart のインストール](./install-upgrade/install_ja.md) | 新しいサイト：インストールセットの選択（S-Cart、GP247 CMS、core のみ、Laravel プロジェクトへの組み込み）；Composer、Git、Docker、コマンドラインのないホスティング；既存サイトへの front/shop 追加；インストール直後のセキュリティ対応 | 2026-11-23 |
 | [GP247 と S-Cart の更新](./install-upgrade/update_ja.md) | 3.x 系サイトを新しいリリースへ：パッケージセットごとの `composer update` + `gp247:update`；Docker、コマンドラインのないホスティング；`--overwrite-lang`、`--publish`；`git pull` で更新したプラグイン | 2026-11-22 |
-| [3.x 系へのアップグレード](./install-upgrade/upgrade_ja.md) | 2.1/2.2 のサイトを `composer require … -W` で 3.x へ；プラグインの確認、コピーでの試行、ロールバック；1.x/2.0 と S-Cart 10.x のサイト | 2026-11-23 |
+| [3.x 系へのアップグレード](./install-upgrade/upgrade_ja.md) | 2.1/2.2 のサイトを `composer require … -W` で 3.x へ；プラグインの確認、コピーでの試行、ロールバック；1.x/2.0 のサイト | 2026-11-22 |
 
 ### コマンドライン（CLI）
 | ドキュメント | 概要 | 最終更新 |
