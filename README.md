@@ -17,7 +17,7 @@ New to GP247? Read [About GP247](./about/gp247.md).
 ### Installing & updating
 | Document | Summary | Last updated |
 | --- | --- | --- |
-| [Installing GP247 and S-Cart](./install-upgrade/install.md) | New site: choose a package set (S-Cart, GP247 CMS, core only, inside a Laravel project); Composer, Git, Docker, hosting without a command line; adding front/shop to an existing site; security tasks right after installing | 2026-11-22 |
+| [Installing GP247 and S-Cart](./install-upgrade/install.md) | New site: choose a package set (S-Cart, GP247 CMS, core only, inside a Laravel project); Composer, Git, Docker, hosting without a command line; adding front/shop to an existing site; security tasks right after installing | 2026-11-23 |
 | [Updating GP247 and S-Cart](./install-upgrade/update.md) | 3.x site to a newer release: `composer update` per package set + `gp247:update`; Docker, hosting without a command line; `--overwrite-lang`, `--publish`; plugins updated with `git pull` | 2026-11-22 |
 | [Upgrading to the 3.x line](./install-upgrade/upgrade.md) | 2.1/2.2 site to 3.x with `composer require … -W`; checking plugins, testing on a copy, rolling back; 1.x/2.0 sites | 2026-11-22 |
 
@@ -118,4 +118,4 @@ New to GP247? Read [About GP247](./about/gp247.md).
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-23 · ✍️ **Author:** GP247</sub>

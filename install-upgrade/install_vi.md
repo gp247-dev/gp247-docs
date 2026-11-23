@@ -84,6 +84,7 @@ php artisan gp247:doctor
 - [Các bước: GP247 CMS](#các-bước-gp247-cms) — website nội dung
 - [Các bước: thêm GP247 vào dự án Laravel](#các-bước-thêm-gp247-vào-dự-án-laravel) — chỉ core, hoặc tự ghép gói
 - [Cách khác: Git, Docker, hosting không có dòng lệnh](#cách-khác-git-docker-hosting-không-có-dòng-lệnh) — chỗ khác với cách chuẩn
+- [Đặt tên và logo cho bản cài](#đặt-tên-và-logo-cho-bản-cài) — cửa hàng mang tên, logo của bạn ngay khi cài
 - [Kiểm tra kết quả và bảo mật](#kiểm-tra-kết-quả-và-bảo-mật) — làm ngay sau khi cài
 - [Khi gặp sự cố](#khi-gặp-sự-cố) — triệu chứng và cách xử lý
 
@@ -143,6 +144,9 @@ Cửa hàng online đầy đủ: core + front + shop + MCP server.
    ```
 
    `DB_HOST=mysql-local` có sẵn trong file là dành cho Docker — cài trực tiếp thì đổi như trên.
+
+   Muốn cửa hàng mang tên, logo của bạn ngay khi cài: sửa thêm bốn biến ở
+   [Đặt tên và logo cho bản cài](#đặt-tên-và-logo-cho-bản-cài).
 
 4. Chạy lệnh cài đặt:
 
@@ -347,6 +351,36 @@ flowchart TB
    **Giữ nguyên** `APP_KEY` và `GP247_ENCRYPTION_KEY`.
 7. Trỏ thư mục gốc của tên miền vào `public/`, mở tên miền: thấy trang chủ (hoặc trang quản trị, với bộ chỉ core) là xong.
 
+## Đặt tên và logo cho bản cài
+Bốn biến trong `.env` quyết định cửa hàng mới cài mang tên và logo gì. Bộ S-Cart điền sẵn tên, logo S-Cart; muốn dùng tên, logo
+của bạn ngay từ đầu thì sửa **trước khi** chạy `php artisan gp247:install`. Dùng được cho mọi bộ cài.
+
+> ℹ️ **Có từ:** gp247/core 3.17.0 — lời chào trên trang chủ và mục menu đầu tiên cần thêm gp247/front 3.13.0, tên trang quản
+> trị của shop cần gp247/shop 3.14.0.
+
+| Biến | Dùng cho | Bộ S-Cart điền sẵn |
+| --- | --- | --- |
+| `GP247_INSTALL_PRODUCT_NAME` | Tên cửa hàng, tên và tiêu đề trang quản trị, lời chào trên trang chủ | `S-Cart` |
+| `GP247_INSTALL_PRODUCT_URL` | Đường dẫn của mục đầu tiên trên menu chính | `https://gp247.net` |
+| `GP247_INSTALL_LOGO` | Logo cửa hàng — một file trong `public/` | `/s-cart/logo.png` |
+| `GP247_INSTALL_ICON` | Icon (favicon) — một file trong `public/` | `/s-cart/favicon.png` |
+
+Ví dụ cho cửa hàng tên "Nhà Sách Xanh", logo đặt trong `public/nha-sach-xanh/`:
+
+```env
+GP247_INSTALL_PRODUCT_NAME="Nhà Sách Xanh"
+GP247_INSTALL_PRODUCT_URL=https://nhasachxanh.example.vn
+GP247_INSTALL_LOGO=/nha-sach-xanh/logo.png
+GP247_INSTALL_ICON=/nha-sach-xanh/favicon.png
+```
+
+- **Chỉ đọc một lần, lúc cài.** Site đã cài thì sửa các biến này không đổi gì — đổi tên, logo trong trang quản trị.
+- **Bỏ trống hoặc xoá dòng** → bản cài dùng tên và logo mặc định của gói (GP247).
+- **Logo và icon phải là file có thật trong `public/`** — đường dẫn tính từ `public/`. Sai đường dẫn thì cửa hàng nhận logo mặc
+  định, lệnh cài vẫn chạy xong.
+- **Địa chỉ phải bắt đầu bằng `http://` hoặc `https://`** — sai thì mục menu đầu tiên giữ đường dẫn mặc định.
+- **Tên dài quá 100 ký tự** bị cắt bớt. Tên có dấu cách thì đặt trong dấu nháy kép như ví dụ.
+
 ## Kiểm tra kết quả và bảo mật
 Site vừa cài đã chạy được, nhưng làm hết danh sách này **trước khi** mở cho người dùng:
 
@@ -431,14 +465,19 @@ Site vừa cài đã chạy được, nhưng làm hết danh sách này **trư�
 
 → Theo [Cập nhật GP247 và S-Cart](./update_vi.md): `composer update` rồi `php artisan gp247:update`. Không bao giờ cài lại.
 
+**Câu 8: Site đã cài rồi, sửa `GP247_INSTALL_PRODUCT_NAME` hay `GP247_INSTALL_LOGO` trong `.env` có đổi tên, logo không?**
+
+→ Không. Bốn biến này chỉ được đọc lúc chạy `gp247:install`. Site đang chạy thì đổi tên, logo ngay trong trang quản trị.
+
 ## Lịch sử thay đổi
 <!-- Chỉ ghi khi có thay đổi về logic/hành vi. Dòng mới nhất ở trên cùng. Mỗi ngày một dòng: cùng ngày thì gộp vào dòng có sẵn, không tách dòng mới. -->
 
 | Ngày | Phiên bản GP247 | Thay đổi |
 | --- | --- | --- |
+| 2026-11-23 | gp247/core 3.17.0, gp247/front 3.13.0, gp247/shop 3.14.0 | `gp247:install` đặt tên cửa hàng, tên trang quản trị, lời chào, mục menu đầu tiên, logo và icon theo bốn biến `GP247_INSTALL_*` trong `.env`. |
 | 2026-11-18 | gp247/front 3.9.2, gp247/shop 3.11.2 | `gp247:front-install` và `gp247:shop-install` hỏi trước khi xoá bảng đã có của phần đó; chạy trong script thì từ chối, cần `--force=1` mới cài lại. |
 | 2026-11-08 | gp247/core 3.11.0 | Tài khoản quản trị đầu tiên nhận mật khẩu ngẫu nhiên, in một lần ở khối cuối cùng của `gp247:install` (thay cho `admin` / `admin`); mất mật khẩu thì dùng `gp247:admin-password`. |
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-23 · ✍️ **Tác giả (Author):** GP247</sub>

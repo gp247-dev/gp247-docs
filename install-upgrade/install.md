@@ -84,6 +84,7 @@ php artisan gp247:doctor
 - [Steps: GP247 CMS](#steps-gp247-cms) — content website
 - [Steps: add GP247 to a Laravel project](#steps-add-gp247-to-a-laravel-project) — core only, or your own combination
 - [Other setups: Git, Docker, hosting without a command line](#other-setups-git-docker-hosting-without-a-command-line) — what differs from the standard steps
+- [Set the name and logo of the install](#set-the-name-and-logo-of-the-install) — your store's name and logo from the first run
 - [Check the result and secure the site](#check-the-result-and-secure-the-site) — right after installing
 - [Troubleshooting](#troubleshooting) — symptoms and fixes
 
@@ -144,6 +145,9 @@ The full online store: core + front + shop + MCP server.
    ```
 
    The `DB_HOST=mysql-local` already in the file is for Docker — for a direct install change it as above.
+
+   Want the store to carry your name and logo from the start: also set the four variables in
+   [Set the name and logo of the install](#set-the-name-and-logo-of-the-install).
 
 4. Run the install command:
 
@@ -352,6 +356,36 @@ flowchart TB
 7. Point the domain's document root to `public/` and open the domain: seeing the home page (or the admin, for core only) means
    you are done.
 
+## Set the name and logo of the install
+Four variables in `.env` decide the name and logo a new store gets. The S-Cart package fills in the S-Cart name and logo; to use
+your own from the start, change them **before** running `php artisan gp247:install`. They work for every package set.
+
+> ℹ️ **Available since:** gp247/core 3.17.0 — the home page welcome and the first menu item also need gp247/front 3.13.0, the
+> shop's admin name needs gp247/shop 3.14.0.
+
+| Variable | Used for | S-Cart default |
+| --- | --- | --- |
+| `GP247_INSTALL_PRODUCT_NAME` | Store name, admin name and title, home page welcome | `S-Cart` |
+| `GP247_INSTALL_PRODUCT_URL` | Address of the first item in the main menu | `https://gp247.net` |
+| `GP247_INSTALL_LOGO` | Store logo — a file under `public/` | `/s-cart/logo.png` |
+| `GP247_INSTALL_ICON` | Icon (favicon) — a file under `public/` | `/s-cart/favicon.png` |
+
+Example for a store called "Green Books", with its images in `public/green-books/`:
+
+```env
+GP247_INSTALL_PRODUCT_NAME="Green Books"
+GP247_INSTALL_PRODUCT_URL=https://greenbooks.example.com
+GP247_INSTALL_LOGO=/green-books/logo.png
+GP247_INSTALL_ICON=/green-books/favicon.png
+```
+
+- **Read once, at install.** On an installed site changing these variables does nothing — change the name and logo in the admin.
+- **Left empty or removed** → the install uses the package's default name and logo (GP247).
+- **The logo and icon must be real files under `public/`** — the path starts from `public/`. A wrong path gives the store the
+  default logo; the install still finishes.
+- **The address must start with `http://` or `https://`** — otherwise the first menu item keeps its default address.
+- **A name longer than 100 characters** is cut. Put a name with spaces in double quotes, as in the example.
+
 ## Check the result and secure the site
 The freshly installed site already works, but go through this whole list **before** opening it to users:
 
@@ -439,14 +473,19 @@ only exists in the backup.
 
 → Follow [Updating GP247 and S-Cart](./update.md): `composer update`, then `php artisan gp247:update`. Never reinstall.
 
+**Q8: The site is installed — does changing `GP247_INSTALL_PRODUCT_NAME` or `GP247_INSTALL_LOGO` in `.env` change the name or logo?**
+
+→ No. These four variables are read only when `gp247:install` runs. On a running site, change the name and logo in the admin.
+
 ## Change history
 <!-- Only when logic/behavior changed. Newest row on top. One row per day: merge same-day changes into the existing row, never add a new row for the same date. -->
 
 | Date | GP247 version | Change |
 | --- | --- | --- |
+| 2026-11-23 | gp247/core 3.17.0, gp247/front 3.13.0, gp247/shop 3.14.0 | `gp247:install` sets the store name, admin name, welcome, first menu item, logo and icon from the four `GP247_INSTALL_*` variables in `.env`. |
 | 2026-11-18 | gp247/front 3.9.2, gp247/shop 3.11.2 | `gp247:front-install` and `gp247:shop-install` ask before deleting the tables that part already has; run from a script they refuse, and `--force=1` is needed to reinstall. |
 | 2026-11-08 | gp247/core 3.11.0 | The first admin account gets a random password, printed once in the last block of `gp247:install` (instead of `admin` / `admin`); if it is lost, use `gp247:admin-password`. |
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-23 · ✍️ **Author:** GP247</sub>
