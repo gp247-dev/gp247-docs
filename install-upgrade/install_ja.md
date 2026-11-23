@@ -122,7 +122,7 @@ php artisan gp247:doctor
    composer diagnose
    ```
 
-   `PHP version` の行が **8.3 以上**である必要があります。古い PHP だと、Composer は何も言わずに S-Cart 1.x をインストールします。
+   `PHP version` の行が **8.3 以上**である必要があります。古い PHP だと、Composer は何も言わずに S-Cart 2.0.x をインストールします。
    そのため、手順 2 では必ず `"^3.0"` を付けてください。
 
 2. プロジェクトを作成します（`my-site` は好きなフォルダ名に変えてください）。
@@ -410,7 +410,7 @@ GP247_INSTALL_ICON=/midori-shoten/favicon.png
 
 | 症状 | よくある原因 | 対処方法 |
 | --- | --- | --- |
-| Composer の完了後に `Access denied for user 'root'` と表示される | Composer が古い PHP で動き、1.x を誤ってインストールした | 作成したフォルダを削除し、PHP 8.3 以上に切り替えて `"^3.0"` 付きで再インストール |
+| Composer の完了後に `Access denied for user 'root'` と表示される | Composer が古い PHP で動き、2.0.x を誤ってインストールした | 作成したフォルダを削除し、PHP 8.3 以上に切り替えて `"^3.0"` 付きで再インストール |
 | ドメインを開くとファイル一覧、403 や 404 エラーが表示される | ドメインのドキュメントルートが `public/` を向いていない | ホスティングの管理画面／Web サーバーの設定で修正 |
 | トップページが Laravel のウェルカムページのまま | front を追加したが、既定の web ルートが有効なまま | `bootstrap/app.php` の `web:` の行をコメントアウト（[手順 3](#既存サイトに-front-または-shop-を追加)） |
 | front／shop を追加したのに `gp247:install` が core しかインストールしない | front／shop のプロバイダーを宣言していない | `bootstrap/providers.php` に追加（[手順 2](#既存サイトに-front-または-shop-を追加)） |
@@ -493,4 +493,4 @@ GP247_INSTALL_ICON=/midori-shoten/favicon.png
 
 ---
 
-<sub>📅 **最終更新:** 2026-11-23 · ✍️ **作成者 (Author):** GP247</sub>
+<sub>📅 **最終更新:** 2026-11-24 · ✍️ **作成者 (Author):** GP247</sub>

@@ -121,7 +121,7 @@ Cửa hàng online đầy đủ: core + front + shop + MCP server.
    composer diagnose
    ```
 
-   Dòng `PHP version` phải là **8.3 trở lên**. PHP cũ hơn thì Composer lặng lẽ cài S-Cart 1.x — vì vậy luôn giữ `"^3.0"` ở bước 2.
+   Dòng `PHP version` phải là **8.3 trở lên**. PHP cũ hơn thì Composer lặng lẽ cài S-Cart 2.0.x — vì vậy luôn giữ `"^3.0"` ở bước 2.
 
 2. Tạo dự án (đổi `my-site` thành tên thư mục bạn muốn):
 
@@ -403,7 +403,7 @@ Site vừa cài đã chạy được, nhưng làm hết danh sách này **trư�
 
 | Triệu chứng | Nguyên nhân thường gặp | Cách xử lý |
 | --- | --- | --- |
-| Composer xong rồi báo `Access denied for user 'root'` | Composer chạy PHP cũ, đã cài nhầm bản 1.x | Xoá thư mục vừa tạo, chuyển sang PHP 8.3+, cài lại với `"^3.0"` |
+| Composer xong rồi báo `Access denied for user 'root'` | Composer chạy PHP cũ, đã cài nhầm bản 2.0.x | Xoá thư mục vừa tạo, chuyển sang PHP 8.3+, cài lại với `"^3.0"` |
 | Mở tên miền thấy danh sách file, lỗi 403 hoặc 404 | Thư mục gốc của tên miền chưa trỏ vào `public/` | Sửa trong trang quản lý hosting / cấu hình web server |
 | Trang chủ vẫn là trang chào mừng của Laravel | Đã thêm front nhưng route web mặc định còn bật | Comment dòng `web:` trong `bootstrap/app.php` ([bước 3](#thêm-front-hoặc-shop-vào-site-đang-có)) |
 | `gp247:install` chỉ cài core dù đã thêm front / shop | Chưa khai báo provider của front / shop | Thêm vào `bootstrap/providers.php` ([bước 2](#thêm-front-hoặc-shop-vào-site-đang-có)) |
@@ -480,4 +480,4 @@ Site vừa cài đã chạy được, nhưng làm hết danh sách này **trư�
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-23 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-24 · ✍️ **Tác giả (Author):** GP247</sub>

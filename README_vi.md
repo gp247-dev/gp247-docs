@@ -17,7 +17,7 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 ### Cài đặt & cập nhật
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
-| [Cài đặt GP247 và S-Cart](./install-upgrade/install_vi.md) | Site mới: chọn bộ cài (S-Cart, GP247 CMS, chỉ core, ghép vào dự án Laravel); Composer, Git, Docker, hosting không có dòng lệnh; thêm front/shop vào site đang có; việc bảo mật ngay sau khi cài | 2026-11-23 |
+| [Cài đặt GP247 và S-Cart](./install-upgrade/install_vi.md) | Site mới: chọn bộ cài (S-Cart, GP247 CMS, chỉ core, ghép vào dự án Laravel); Composer, Git, Docker, hosting không có dòng lệnh; thêm front/shop vào site đang có; việc bảo mật ngay sau khi cài | 2026-11-24 |
 | [Cập nhật GP247 và S-Cart](./install-upgrade/update_vi.md) | Site dòng 3.x lên bản mới: `composer update` theo bộ gói + `gp247:update`; Docker, hosting không có dòng lệnh; `--overwrite-lang`, `--publish`; plugin cập nhật bằng `git pull` | 2026-11-23 |
 | [Nâng cấp lên dòng 3.x](./install-upgrade/upgrade_vi.md) | Site 2.1/2.2 lên 3.x bằng `composer require … -W`; kiểm plugin, thử trên bản sao, quay lui; site 1.x/2.0 | 2026-11-22 |
 
@@ -118,4 +118,4 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-23 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-24 · ✍️ **Tác giả (Author):** GP247</sub>

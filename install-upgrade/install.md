@@ -121,7 +121,7 @@ The full online store: core + front + shop + MCP server.
    composer diagnose
    ```
 
-   The `PHP version` line must be **8.3 or newer**. On an older PHP, Composer silently installs S-Cart 1.x — that is why step 2
+   The `PHP version` line must be **8.3 or newer**. On an older PHP, Composer silently installs S-Cart 2.0.x — that is why step 2
    always keeps `"^3.0"`.
 
 2. Create the project (replace `my-site` with the folder name you want):
@@ -408,7 +408,7 @@ The freshly installed site already works, but go through this whole list **befor
 
 | Symptom | Common cause | Fix |
 | --- | --- | --- |
-| Composer finishes, then reports `Access denied for user 'root'` | Composer ran on an old PHP and installed 1.x by mistake | Delete the new folder, switch to PHP 8.3+, install again with `"^3.0"` |
+| Composer finishes, then reports `Access denied for user 'root'` | Composer ran on an old PHP and installed 2.0.x by mistake | Delete the new folder, switch to PHP 8.3+, install again with `"^3.0"` |
 | The domain shows a file list, a 403 or a 404 | The document root does not point to `public/` | Fix it in the hosting panel / web server configuration |
 | The home page is still Laravel's welcome page | Front was added but the default web routes are still on | Comment out the `web:` line in `bootstrap/app.php` ([step 3](#add-front-or-shop-to-an-existing-site)) |
 | `gp247:install` installs only core although front / shop were added | The front / shop providers are not declared | Add them to `bootstrap/providers.php` ([step 2](#add-front-or-shop-to-an-existing-site)) |
@@ -488,4 +488,4 @@ only exists in the backup.
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-23 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-24 · ✍️ **Author:** GP247</sub>
