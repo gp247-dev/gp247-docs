@@ -28,12 +28,14 @@ Chạy `php artisan gp247:info` (hoặc `composer show "gp247/*"`) rồi so từ
 | --- | --- | --- | --- |
 | **3.x** | Laravel 13 · PHP 8.3+ | ✅ Đang hỗ trợ | 3/2028 |
 | 2.x trở xuống | Laravel 12–13 | ⛔ Ngừng hỗ trợ | — |
+| S-Cart 10.x trở xuống (`s-cart/s-cart`) | Laravel 12 trở xuống | ⛔ Ngừng phát triển | — |
 
 - **Tính năng mới** chỉ vào dòng mới nhất.
 - **Khi có dòng mới:** dòng trước được sửa lỗi nghiêm trọng thêm 6 tháng và vá bảo mật tới thời điểm ở bảng — không quá hạn
   hỗ trợ bảo mật của bản Laravel mà dòng đó dùng.
 - **Site còn chạy 2.x trở xuống:** vẫn chạy được nhưng không còn nhận bản sửa nào. Site 2.1 / 2.2 nâng lên 3.x bằng
   `composer require … -W` và `php artisan gp247:update` — xem [Nâng cấp lên dòng 3.x](../install-upgrade/upgrade_vi.md).
+- S-Cart 10.x (`s-cart/s-cart`) được tiếp nối bằng S-Cart (`gp247/s-cart`), đánh số lại từ 1.0 và hiện ở dòng 3.x.
 
 ## Điểm mới nổi bật
 - **Nhân bản không chép SEO** — bản sao bắt đầu với tab SEO trống, không trùng tiêu đề bản gốc *(S-Cart 3.11)*

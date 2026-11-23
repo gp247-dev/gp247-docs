@@ -27,6 +27,7 @@ The path depends on the version you are running:
 | **2.1.x / 2.2** | ✅ Automatic upgrade, following this page |
 | **2.0.x** | ⚠️ Not guaranteed — try on a copy first, see [Sites on 1.x and 2.0](#sites-on-1x-and-20-cannot-be-upgraded-directly) |
 | **1.x** | ⛔ Cannot be upgraded — install 3.x fresh, then move the data |
+| S-Cart **10.x and earlier** (package `s-cart/s-cart`) | ⛔ Cannot be upgraded — same as 1.x |
 
 For a 2.1 / 2.2 site the whole process has four stages:
 
@@ -197,6 +198,7 @@ Automatic data conversion exists only **from the public 2.1 release** onwards.
 - **1.x sites** — a completely different structure, **no upgrade path**. [Install 3.x fresh](./install.md) (same package set)
   on a new database, set the site up again, then move the data you need (content, products, categories, customers) with your
   own export / import tools or with help from a technical partner. Keep the 1.x site running until the new one is ready.
+- **S-Cart 10.x sites** — S-Cart 10.x (`s-cart/s-cart`) continues as S-Cart (`gp247/s-cart`), renumbered from 1.0 and now on the 3.x line. There is no upgrade path: follow the 1.x approach.
 - **2.0.x sites** — not guaranteed. Try **on a copy**: `composer update` (to the latest 2.x) → `php artisan gp247:update` →
   check carefully; if it is fine, continue with the [steps](#steps). If the copy fails or figures do not match, follow the 1.x
   approach.
@@ -242,4 +244,4 @@ only for changing lines.
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-23 · ✍️ **Author:** GP247</sub>
