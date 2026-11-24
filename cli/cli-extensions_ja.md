@@ -141,6 +141,7 @@ php artisan gp247:ext-update --local --type=plugin --key=News
 | `ext-uninstall --key=X` | インストール済み | はい | **はい** |
 | `ext-uninstall --key=X --only-data` | インストール済み | はい | いいえ — 再インストール用にファイルを残す |
 | `ext-uninstall --key=X --purge` | 未インストール、ディスク上 | — | **はい** |
+| `ext-uninstall --key=X --forget` | インストール済みだが**ソースなし** | 登録情報のみ（拡張機能独自の設定は残る） | — |
 
 ```bash
 php artisan gp247:ext-uninstall --type=plugin --key=News --only-data
@@ -212,6 +213,7 @@ php artisan gp247:make-plugin --name=MyBlog
 - **未インストールの拡張機能は有効化／無効化できません** — 設定のないフォルダーを「有効化」しないためです。
 - **使用中または既定のテンプレートは無効化／削除できません** — サイトの見た目が失われるためです。
 - **`--only-data` と `--purge` は同時に使えません** — 一方はファイルを残し、もう一方はファイルを消すためです。
+- **`--forget` はソースのない拡張機能専用**で、`--only-data`／`--purge` と同時には使えません。ソースがある拡張機能は通常どおりアンインストールします。
 
 ## よくある質問（Q&A）
 **Q1: インストール後、プラグインの画面が崩れ、CSS／JS が 404 になります。**
@@ -252,11 +254,18 @@ php artisan gp247:make-plugin --name=MyBlog
 
 → `--name` がありません。名前を付けて、例えば `php artisan gp247:make-plugin --name=MyBlog` と入力し直してください。
 
+**Q9: アンインストールすると、拡張機能はインストール済みだがサイトにソースがない（`orphan_source_missing`）と表示されます。**
+
+→ 拡張機能のフォルダをコピーせずにサイトを移転した場合によく起こります。まだ必要なら同じまたは新しいバージョンの
+`app/GP247/<Plugins|Templates>/<名前>` フォルダをコピーして `php artisan gp247:update` を実行し、不要なら
+`php artisan gp247:ext-uninstall --type=plugin --key=<名前> --forget` を実行してください。詳細：[インストールガイド Q11](../extension/install-extension_ja.md)。
+
 ## 変更履歴
 <!-- ロジック/動作が変わった場合のみ記載。最新の行を一番上に。1 日 1 行：同じ日の変更は既存の行にまとめ、同じ日付の行を追加しない。 -->
 
 | 日付 | GP247 バージョン | 変更内容 |
 | --- | --- | --- |
+| 2026-11-24 | gp247/core 3.19.0 | `ext-uninstall --forget` でソースのない拡張機能の登録を解除。そのような拡張機能を通常アンインストールすると、2 つの対処方法とともに `orphan_source_missing` を返す。`ext-update --local` はディスク上のファイルの `minUpdateFrom` より古いデータの拡張機能をスキップ |
 | 2026-11-17 | gp247/core 3.14.3 | `ext-update --local`（と `gp247:update`）はデータ更新の前に静的ファイルをコピーし直す。拡張機能のコードがすでに読み込まれているとき `ext-update` は新しいプロセスでデータ更新を実行し、新しいエラーコード `data_update_pending` を返す |
 
 ---

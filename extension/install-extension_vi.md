@@ -303,6 +303,9 @@ Ghi chú:
   `php artisan gp247:ext-publish --type=plugin --key=<TênExtension>` (template thì `--type=template`, hoặc `--all` cho tất cả).
 - **File `.zip` quá lớn không tải lên được:** vượt 50MB hoặc vượt giới hạn upload của máy chủ. Dùng Cách 3
   (thủ công) thay thế.
+- **Thư viện báo "Thiếu mã nguồn · 2.0.1" thay cho nút Cài đặt:** cơ sở dữ liệu ghi extension đã cài (ở phiên bản
+  dữ liệu 2.0.1) nhưng site không có thư mục của nó — thường gặp sau khi chuyển site mà quên chép `app/GP247/...`. GP247
+  không cài đè lên dữ liệu đang có. Xem Câu 11 để chọn một trong hai cách xử lý.
 
 ---
 
@@ -381,6 +384,29 @@ extension đó khỏi biến `.env` tương ứng rồi thử lại.
 > xóa file). CLI cũng tôn trọng `GP247_PROTECTED_*` và guard template đang-dùng/mặc-định như UI —
 > extension được bảo vệ hoặc đang dùng bị từ chối kèm thông báo rõ, kể cả khi có `--purge`.
 
+**Câu 11: Chuyển site xong, extension báo "Thiếu mã nguồn", không cài được cũng không gỡ được — làm sao?**
+
+→ Có hai cách, chọn theo việc bạn còn cần extension đó hay không:
+
+```mermaid
+flowchart TD
+    A["Extension báo<br/>Thiếu mã nguồn · phiên bản dữ liệu"] --> B{"Còn cần<br/>extension này?"}
+    B -- Có --> C["Chép thư mục app/GP247/... và public/GP247/...<br/>cùng phiên bản hoặc mới hơn"]
+    C --> D["Bấm Áp dụng cập nhật dữ liệu<br/>hoặc chạy gp247:update"]
+    D --> E["Extension chạy lại,<br/>dữ liệu cũ còn nguyên"]
+    B -- Không --> F["Bấm Gỡ đăng ký trên màn Plugins / Templates<br/>hoặc ext-uninstall --forget"]
+    F --> G["Extension ra khỏi danh sách đã cài,<br/>có thể cài lại như mới"]
+```
+
+- **Còn cần:** chép thư mục `app/GP247/Plugins/<Tên>` (và `public/GP247/Plugins/<Tên>`) của **cùng phiên bản hoặc bản mới
+  hơn** phiên bản dữ liệu vào site. Extension tự hoạt động lại; nếu bản bạn chép mới hơn, màn danh sách hiện nhãn
+  **"Chờ cập nhật dữ liệu"** — bấm **Áp dụng cập nhật dữ liệu** (hoặc chạy `php artisan gp247:update`). Bản mới hơn phải cho
+  phép nâng từ phiên bản dữ liệu của bạn; nếu không, lệnh báo phiên bản tối thiểu cần cài trước.
+- **Không cần nữa:** trên màn **Plugins** (hoặc **Templates**), extension thiếu mã nguồn có một dòng riêng với nút
+  **Gỡ đăng ký**. Trên dòng lệnh: `php artisan gp247:ext-uninstall --type=plugin --key=<Tên> --forget`. Gỡ đăng ký chỉ bỏ
+  extension khỏi danh sách đã cài; bảng và cấu hình riêng của extension vẫn nằm trong cơ sở dữ liệu. Muốn xoá cả những thứ
+  đó, chép lại mã nguồn rồi gỡ bỏ bình thường.
+
 ---
 
 ## Lịch sử thay đổi
@@ -388,6 +414,7 @@ extension đó khỏi biến `.env` tương ứng rồi thử lại.
 
 | Ngày | Phiên bản GP247 | Thay đổi |
 | --- | --- | --- |
+| 2026-11-24 | gp247/core 3.19.0 | Extension thiếu mã nguồn (cơ sở dữ liệu ghi đã cài, site không có thư mục): chép mã nguồn **cùng phiên bản hoặc mới hơn** rồi Áp dụng cập nhật dữ liệu, hoặc nút **Gỡ đăng ký** / `ext-uninstall --forget` (mục 8, Câu 11) |
 | 2026-11-22 | gp247/core 3.13.0 | Thư viện online liệt kê mọi extension; extension cần core mới hơn hiện nhãn "Cần core X.Y+" thay cho nút Cài đặt; lọc "Chạy được trên core của tôi" và lọc theo nhóm |
 | 2026-09-29 |  | Thay file extension bằng chép tay / `git pull` / Composer: màn danh sách hiện nhãn **"Chờ cập nhật dữ liệu"** và nút **Áp dụng cập nhật dữ liệu**; lệnh `gp247:ext-update --local` (mục 4, 5). |
 

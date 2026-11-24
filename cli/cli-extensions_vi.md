@@ -141,6 +141,7 @@ này.
 | `ext-uninstall --key=X` | đã cài | Có | **Có** |
 | `ext-uninstall --key=X --only-data` | đã cài | Có | Không — giữ file để cài lại |
 | `ext-uninstall --key=X --purge` | chưa cài, có trên đĩa | — | **Có** |
+| `ext-uninstall --key=X --forget` | đã cài nhưng **thiếu mã nguồn** | Chỉ bản ghi đăng ký (cấu hình riêng của extension giữ lại) | — |
 
 ```bash
 php artisan gp247:ext-uninstall --type=plugin --key=News --only-data
@@ -210,6 +211,7 @@ Hướng dẫn viết extension: [Tạo plugin](../extension/create-plugin_vi.md
 - **Extension chưa cài thì không bật / tắt được** — tránh "bật" một thư mục chưa có cấu hình.
 - **Không tắt / gỡ được template đang dùng hoặc mặc định** — site sẽ mất giao diện.
 - **`--only-data` và `--purge` không dùng chung** — một cái giữ file, một cái xoá file.
+- **`--forget` chỉ dùng cho extension thiếu mã nguồn** và không đi cùng `--only-data` / `--purge`. Extension còn mã nguồn thì gỡ bình thường.
 
 ## Hỏi & Đáp (Q&A)
 **Câu 1: Cài xong mà giao diện plugin vỡ, CSS/JS báo 404?**
@@ -248,11 +250,18 @@ plugin, và sao lưu trước khi gỡ.
 
 → Thiếu `--name`. Gõ lại kèm tên, ví dụ `php artisan gp247:make-plugin --name=MyBlog`.
 
+**Câu 9: Gỡ extension báo nó đã cài nhưng site không có mã nguồn (`orphan_source_missing`)?**
+
+→ Thường gặp sau khi chuyển site mà quên chép thư mục extension. Còn cần thì chép thư mục `app/GP247/<Plugins|Templates>/<Tên>`
+cùng phiên bản hoặc mới hơn rồi chạy `php artisan gp247:update`; không cần nữa thì
+`php artisan gp247:ext-uninstall --type=plugin --key=<Tên> --forget`. Chi tiết: [Hướng dẫn cài đặt, Câu 11](../extension/install-extension_vi.md).
+
 ## Lịch sử thay đổi
 <!-- Chỉ ghi khi có thay đổi về logic/hành vi. Dòng mới nhất ở trên cùng. Mỗi ngày một dòng: cùng ngày thì gộp vào dòng có sẵn, không tách dòng mới. -->
 
 | Ngày | Phiên bản GP247 | Thay đổi |
 | --- | --- | --- |
+| 2026-11-24 | gp247/core 3.19.0 | `ext-uninstall --forget` gỡ đăng ký extension thiếu mã nguồn; gỡ thường gặp extension thiếu mã nguồn báo `orphan_source_missing` kèm hai cách xử lý; `ext-update --local` bỏ qua extension có dữ liệu cũ hơn `minUpdateFrom` của bản trên đĩa |
 | 2026-11-17 | gp247/core 3.14.3 | `ext-update --local` (và `gp247:update`) chép lại file tĩnh trước khi cập nhật dữ liệu; `ext-update` cập nhật dữ liệu ở tiến trình mới khi mã extension đã nạp, mã lỗi mới `data_update_pending` |
 
 ---

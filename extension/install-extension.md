@@ -314,6 +314,9 @@ Notes:
   template, or `--all` for every one).
 - **The `.zip` file is too big to upload:** over 50MB or over the server's upload limit. Use Method 3
   (manual) instead.
+- **The library shows "Source missing · 2.0.1" instead of Install:** the database says the extension is installed
+  (data version 2.0.1) but the site has no folder for it — usually after moving a site without copying `app/GP247/...`.
+  GP247 does not install over existing data. See Q11 for the two ways out.
 
 ---
 
@@ -394,6 +397,29 @@ action. To actually remove it, take its name out of the corresponding `.env` var
 > `GP247_PROTECTED_*` and the in-use/default-template guard just like the UI — a protected or in-use
 > extension is refused with a clear error even with `--purge`.
 
+**Q11: After moving my site, an extension shows "Source missing" and can be neither installed nor uninstalled. What do I do?**
+
+→ There are two ways out, depending on whether you still need the extension:
+
+```mermaid
+flowchart TD
+    A["Extension shows<br/>Source missing · data version"] --> B{"Still need<br/>this extension?"}
+    B -- Yes --> C["Copy app/GP247/... and public/GP247/...<br/>of the same or a newer version"]
+    C --> D["Click Apply data update<br/>or run gp247:update"]
+    D --> E["The extension works again,<br/>existing data kept"]
+    B -- No --> F["Click Forget on the Plugins / Templates screen<br/>or ext-uninstall --forget"]
+    F --> G["Removed from the installed list,<br/>can be installed again like new"]
+```
+
+- **Still needed:** copy the `app/GP247/Plugins/<Name>` folder (and `public/GP247/Plugins/<Name>`) of **the same version or a
+  newer one** than the data version into the site. The extension works again by itself; if your copy is newer, the list
+  shows a **"Data update pending"** badge — click **Apply data update** (or run `php artisan gp247:update`). The newer version
+  must allow updating from your data version; if it does not, the update reports the minimum version to install first.
+- **No longer needed:** on the **Plugins** (or **Templates**) screen, an extension with a missing source has its own row with a
+  **Forget** button. From the command line: `php artisan gp247:ext-uninstall --type=plugin --key=<Name> --forget`. Forget only
+  removes the extension from the installed list; its own tables and settings stay in the database. To remove those too, copy
+  the source back and uninstall it the normal way.
+
 ---
 
 ## Change history
@@ -401,6 +427,7 @@ action. To actually remove it, take its name out of the corresponding `.env` var
 
 | Date | GP247 version | Change |
 | --- | --- | --- |
+| 2026-11-24 | gp247/core 3.19.0 | Extension with a missing source (installed in the database, no folder on the site): copy the source of **the same or a newer version** then Apply data update, or the **Forget** button / `ext-uninstall --forget` (section 8, Q11) |
 | 2026-11-22 | gp247/core 3.13.0 | The online library lists every extension; one that needs a newer core shows "Needs core X.Y+" instead of Install; "Runs on my core" filter and group filter |
 | 2026-09-29 |  | Replacing an extension's files by hand / `git pull` / Composer: the list shows a **"Data update pending"** badge and an **Apply data update** button; new `gp247:ext-update --local` command (sections 4, 5). |
 

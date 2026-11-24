@@ -142,6 +142,7 @@ php artisan gp247:ext-update --local --type=plugin --key=News
 | `ext-uninstall --key=X` | installed | Yes | **Yes** |
 | `ext-uninstall --key=X --only-data` | installed | Yes | No — files kept for reinstalling |
 | `ext-uninstall --key=X --purge` | not installed, on disk | — | **Yes** |
+| `ext-uninstall --key=X --forget` | installed but **source missing** | Registration records only (the extension's own settings stay) | — |
 
 ```bash
 php artisan gp247:ext-uninstall --type=plugin --key=News --only-data
@@ -213,6 +214,7 @@ Writing extensions: [Create a plugin](../extension/create-plugin.md), [Create a 
 - **A not-installed extension cannot be enabled / disabled** — no "enabling" a folder that has no configuration.
 - **The template in use or the default template cannot be disabled / removed** — the site would lose its look.
 - **`--only-data` and `--purge` cannot be combined** — one keeps the files, the other deletes them.
+- **`--forget` is for an extension whose source is missing** and cannot be combined with `--only-data` / `--purge`. An extension that still has its source is uninstalled the normal way.
 
 ## Q&A
 **Q1: After installing, the plugin's pages are broken and CSS/JS return 404?**
@@ -252,11 +254,18 @@ installed in place.
 
 → `--name` is missing. Type it again with a name, for example `php artisan gp247:make-plugin --name=MyBlog`.
 
+**Q9: Uninstall says the extension is installed but the site has no source for it (`orphan_source_missing`)?**
+
+→ Usually after moving a site without copying the extension folder. If you still need it, copy the `app/GP247/<Plugins|Templates>/<Name>`
+folder of the same or a newer version and run `php artisan gp247:update`; if not,
+`php artisan gp247:ext-uninstall --type=plugin --key=<Name> --forget`. Details: [Installation guide, Q11](../extension/install-extension.md).
+
 ## Change history
 <!-- Only when logic/behavior changed. Newest row on top. One row per day: merge same-day changes into the existing row, never add a new row for the same date. -->
 
 | Date | GP247 version | Change |
 | --- | --- | --- |
+| 2026-11-24 | gp247/core 3.19.0 | `ext-uninstall --forget` forgets an extension whose source is missing; the normal uninstall of such an extension reports `orphan_source_missing` with the two ways out; `ext-update --local` skips an extension whose data is older than the `minUpdateFrom` of the files on disk |
 | 2026-11-17 | gp247/core 3.14.3 | `ext-update --local` (and `gp247:update`) copies the static files again before the data update; `ext-update` runs the data update in a new process when the extension's code is already loaded, new error code `data_update_pending` |
 
 ---
