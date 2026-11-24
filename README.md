@@ -62,6 +62,7 @@ New to GP247? Read [About GP247](./about/gp247.md).
 | [Creating a Plugin](./extension/create-plugin.md) | Starting point: pick the right guide for your kind of plugin, a 6-step roadmap with code (settings in the database, settings screen, install, release) | 2026-11-13 |
 | [Creating a payment plugin](./extension/create-payment-plugin.md) | Step by step with code: a bank transfer plugin that works right away + a skeleton for an online gateway (money recorded once, webhook) | 2026-11-22 |
 | [Creating a shipping plugin](./extension/create-shipping-plugin.md) | Step by step with code: a weight-based price plugin that works right away + a skeleton for a carrier with an API (shipments, webhook, COD) | 2026-11-22 |
+| [Creating an address plugin](./extension/create-address-plugin.md) | Step by step with code: a two-level list plugin that works right away + postal code lookup; when to return errors, bundled data, the address block in a template | 2026-11-24 |
 | [Update-safe plugins](./extension/create-plugin-update-safety.md) | How updates run, 7 rules, the `update()` hook, own data tables | 2026-11-17 |
 | [Advanced plugins](./extension/create-plugin-advanced.md) | Per-store settings, secret keys, storefront pages / blocks / hooks, coupons, menus | 2026-11-17 |
 | [Creating a Template (storefront theme)](./extension/create-template.md) | Build a new storefront template; the gp247/shop view fallback mechanism | 2026-11-20 |
@@ -94,6 +95,7 @@ New to GP247? Read [About GP247](./about/gp247.md).
 | [Payment requests](./s-cart/order-processing/payment-request.md) | Money in/out outside the cart: online payment links, hand entries, refunds; 4 money flows, order/InOut/MultiVendor purposes, pay-out rights, flow diagrams | 2026-10-22 |
 | [Payments in S-Cart](./s-cart/payment/payment.md) | Store setup and day-to-day use: payment gateways (test → live, webhook), the order payment ledger, COD, the instructions customers see; developers are pointed to [Creating a payment plugin](./extension/create-payment-plugin.md) | 2026-11-22 |
 | [Shipping in S-Cart](./s-cart/shipping/shipping.md) | Store setup and day-to-day use: Shipping tab, pick-up warehouse, shipments, tracking, cash on delivery (since shop 3.1.4); developers are pointed to [Creating a shipping plugin](./extension/create-shipping-plugin.md) | 2026-11-22 |
+| [Customer addresses](./s-cart/customer-address/customer-address.md) | Pick lists (province → ward) and postal code lookup: the free AddressVN and AddressJP plugins, setup, the Address lists screen; developers see [Creating an address plugin](./extension/create-address-plugin.md) | 2026-11-24 |
 | [Currency](./s-cart/tax-and-currency/currency.md) | Explicit base currency, value-preserving rebase, money-input hint (from shop 2.1) | 2026-11-22 |
 | [Tax in S-Cart](./s-cart/tax-and-currency/tax.md) | How per-product tax works and how to configure it | 2026-11-22 |
 | [Product Bundle (Combo)](./s-cart/product/product-bundle.md) | Create a combo product of several child products; price & stock | 2026-11-22 |
