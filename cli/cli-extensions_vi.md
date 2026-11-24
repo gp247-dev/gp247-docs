@@ -261,7 +261,7 @@ cùng phiên bản hoặc mới hơn rồi chạy `php artisan gp247:update`; kh
 
 | Ngày | Phiên bản GP247 | Thay đổi |
 | --- | --- | --- |
-| 2026-11-24 | gp247/core 3.19.0 | `ext-uninstall --forget` gỡ đăng ký extension thiếu mã nguồn; gỡ thường gặp extension thiếu mã nguồn báo `orphan_source_missing` kèm hai cách xử lý; `ext-update --local` bỏ qua extension có dữ liệu cũ hơn `minUpdateFrom` của bản trên đĩa |
+| 2026-11-24 | gp247/core 3.18.2 | `ext-uninstall --forget` gỡ đăng ký extension thiếu mã nguồn; gỡ thường gặp extension thiếu mã nguồn báo `orphan_source_missing` kèm hai cách xử lý; `ext-update --local` bỏ qua extension có dữ liệu cũ hơn `minUpdateFrom` của bản trên đĩa |
 | 2026-11-17 | gp247/core 3.14.3 | `ext-update --local` (và `gp247:update`) chép lại file tĩnh trước khi cập nhật dữ liệu; `ext-update` cập nhật dữ liệu ở tiến trình mới khi mã extension đã nạp, mã lỗi mới `data_update_pending` |
 
 ---

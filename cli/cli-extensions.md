@@ -265,7 +265,7 @@ folder of the same or a newer version and run `php artisan gp247:update`; if not
 
 | Date | GP247 version | Change |
 | --- | --- | --- |
-| 2026-11-24 | gp247/core 3.19.0 | `ext-uninstall --forget` forgets an extension whose source is missing; the normal uninstall of such an extension reports `orphan_source_missing` with the two ways out; `ext-update --local` skips an extension whose data is older than the `minUpdateFrom` of the files on disk |
+| 2026-11-24 | gp247/core 3.18.2 | `ext-uninstall --forget` forgets an extension whose source is missing; the normal uninstall of such an extension reports `orphan_source_missing` with the two ways out; `ext-update --local` skips an extension whose data is older than the `minUpdateFrom` of the files on disk |
 | 2026-11-17 | gp247/core 3.14.3 | `ext-update --local` (and `gp247:update`) copies the static files again before the data update; `ext-update` runs the data update in a new process when the extension's code is already loaded, new error code `data_update_pending` |
 
 ---

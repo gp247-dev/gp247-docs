@@ -414,7 +414,7 @@ flowchart TD
 
 | Ngày | Phiên bản GP247 | Thay đổi |
 | --- | --- | --- |
-| 2026-11-24 | gp247/core 3.19.0 | Extension thiếu mã nguồn (cơ sở dữ liệu ghi đã cài, site không có thư mục): chép mã nguồn **cùng phiên bản hoặc mới hơn** rồi Áp dụng cập nhật dữ liệu, hoặc nút **Gỡ đăng ký** / `ext-uninstall --forget` (mục 8, Câu 11) |
+| 2026-11-24 | gp247/core 3.18.2 | Extension thiếu mã nguồn (cơ sở dữ liệu ghi đã cài, site không có thư mục): chép mã nguồn **cùng phiên bản hoặc mới hơn** rồi Áp dụng cập nhật dữ liệu, hoặc nút **Gỡ đăng ký** / `ext-uninstall --forget` (mục 8, Câu 11) |
 | 2026-11-22 | gp247/core 3.13.0 | Thư viện online liệt kê mọi extension; extension cần core mới hơn hiện nhãn "Cần core X.Y+" thay cho nút Cài đặt; lọc "Chạy được trên core của tôi" và lọc theo nhóm |
 | 2026-09-29 |  | Thay file extension bằng chép tay / `git pull` / Composer: màn danh sách hiện nhãn **"Chờ cập nhật dữ liệu"** và nút **Áp dụng cập nhật dữ liệu**; lệnh `gp247:ext-update --local` (mục 4, 5). |
 

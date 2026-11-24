@@ -427,7 +427,7 @@ flowchart TD
 
 | Date | GP247 version | Change |
 | --- | --- | --- |
-| 2026-11-24 | gp247/core 3.19.0 | Extension with a missing source (installed in the database, no folder on the site): copy the source of **the same or a newer version** then Apply data update, or the **Forget** button / `ext-uninstall --forget` (section 8, Q11) |
+| 2026-11-24 | gp247/core 3.18.2 | Extension with a missing source (installed in the database, no folder on the site): copy the source of **the same or a newer version** then Apply data update, or the **Forget** button / `ext-uninstall --forget` (section 8, Q11) |
 | 2026-11-22 | gp247/core 3.13.0 | The online library lists every extension; one that needs a newer core shows "Needs core X.Y+" instead of Install; "Runs on my core" filter and group filter |
 | 2026-09-29 |  | Replacing an extension's files by hand / `git pull` / Composer: the list shows a **"Data update pending"** badge and an **Apply data update** button; new `gp247:ext-update --local` command (sections 4, 5). |
 

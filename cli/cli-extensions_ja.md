@@ -265,7 +265,7 @@ php artisan gp247:make-plugin --name=MyBlog
 
 | 日付 | GP247 バージョン | 変更内容 |
 | --- | --- | --- |
-| 2026-11-24 | gp247/core 3.19.0 | `ext-uninstall --forget` でソースのない拡張機能の登録を解除。そのような拡張機能を通常アンインストールすると、2 つの対処方法とともに `orphan_source_missing` を返す。`ext-update --local` はディスク上のファイルの `minUpdateFrom` より古いデータの拡張機能をスキップ |
+| 2026-11-24 | gp247/core 3.18.2 | `ext-uninstall --forget` でソースのない拡張機能の登録を解除。そのような拡張機能を通常アンインストールすると、2 つの対処方法とともに `orphan_source_missing` を返す。`ext-update --local` はディスク上のファイルの `minUpdateFrom` より古いデータの拡張機能をスキップ |
 | 2026-11-17 | gp247/core 3.14.3 | `ext-update --local`（と `gp247:update`）はデータ更新の前に静的ファイルをコピーし直す。拡張機能のコードがすでに読み込まれているとき `ext-update` は新しいプロセスでデータ更新を実行し、新しいエラーコード `data_update_pending` を返す |
 
 ---
