@@ -81,6 +81,7 @@ Each role only needs to read a few pages, in this order:
 | [Accounts & permissions](./security-accounts-and-access.md) | Admin accounts, passwords, two-factor authentication, least permission, logs |
 | [Updates & incidents](./security-updates-and-incidents.md) | Follow security patches, update safely, steps to take when you suspect a leak |
 | [Security checklist](./security-checklist.md) | Checklist by timing plus common mistakes, ready to print and tick |
+| [S-Cart and ISO/IEC 27001](./security-iso27001.md) | Map S-Cart features to the ISO/IEC 27001 control groups, see what the business handles and the evidence for an audit |
 
 ## Security pages in other doc sets
 
@@ -147,4 +148,4 @@ Both read the site's configuration and do not open the site from the outside: wh
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-26 · ✍️ **Author:** GP247</sub>

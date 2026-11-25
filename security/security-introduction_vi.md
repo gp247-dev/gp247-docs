@@ -81,6 +81,7 @@ Mỗi vai trò chỉ cần đọc vài trang, theo thứ tự sau:
 | [Tài khoản & phân quyền](./security-accounts-and-access_vi.md) | Tài khoản quản trị, mật khẩu, xác thực hai lớp, phân quyền tối thiểu, nhật ký |
 | [Cập nhật & xử lý sự cố](./security-updates-and-incidents_vi.md) | Theo dõi bản vá, cập nhật an toàn, các bước khi nghi bị lộ |
 | [Checklist bảo mật](./security-checklist_vi.md) | Danh sách kiểm tra theo thời điểm và những lỗi hay gặp, in ra đánh dấu được |
+| [S-Cart và ISO/IEC 27001](./security-iso27001_vi.md) | Đối chiếu tính năng của S-Cart với các nhóm kiểm soát của ISO/IEC 27001, phần doanh nghiệp tự làm, bằng chứng khi đánh giá |
 
 ## Trang bảo mật ở các bộ tài liệu khác
 
@@ -147,4 +148,4 @@ Cả hai đọc cấu hình của site, không mở site từ bên ngoài: việ
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-26 · ✍️ **Tác giả (Author):** GP247</sub>

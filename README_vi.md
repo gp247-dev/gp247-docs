@@ -42,6 +42,7 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
 | [Bảo mật hệ thống GP247](./security/security-introduction_vi.md) | Trang chính của bộ tài liệu Bảo mật: GP247 tự lo gì, bạn phải làm gì — cấu hình production, khoá mã hoá & sao lưu, tài khoản & phân quyền, cập nhật & xử lý sự cố, checklist và những lỗi hay gặp | 2026-11-22 |
+| [S-Cart và ISO/IEC 27001](./security/security-iso27001_vi.md) | Đối chiếu tính năng S-Cart với các nhóm kiểm soát ISO/IEC 27001 (Annex A): phân quyền, xác thực, nhật ký, mã hoá, dữ liệu cá nhân, sao lưu, cập nhật; phần doanh nghiệp tự làm; bằng chứng khi đánh giá | 2026-11-26 |
 
 ### SEO
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
@@ -122,4 +123,4 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-25 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-26 · ✍️ **Tác giả (Author):** GP247</sub>

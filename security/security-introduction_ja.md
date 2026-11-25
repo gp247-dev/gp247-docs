@@ -81,6 +81,7 @@ flowchart TB
 | [アカウントと権限](./security-accounts-and-access_ja.md) | 管理者アカウント、パスワード、二要素認証、最小権限、ログ |
 | [更新とインシデント対応](./security-updates-and-incidents_ja.md) | パッチの確認、安全な更新、漏えいが疑われるときの手順 |
 | [セキュリティチェックリスト](./security-checklist_ja.md) | 時期ごとの確認項目とよくある間違い。印刷してチェックできます |
+| [S-Cart と ISO/IEC 27001](./security-iso27001_ja.md) | S-Cart の機能を ISO/IEC 27001 の管理策グループに対応させ、企業が担うことと審査の証跡を確認する |
 
 ## ほかのドキュメントにあるセキュリティのページ
 
@@ -147,4 +148,4 @@ GP247 の脆弱性を見つけた場合は、**support@gp247.net** にメール�
 
 ---
 
-<sub>📅 **最終更新:** 2026-11-22 · ✍️ **作成者 (Author):** GP247</sub>
+<sub>📅 **最終更新:** 2026-11-26 · ✍️ **作成者 (Author):** GP247</sub>

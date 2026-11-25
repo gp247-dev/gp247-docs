@@ -42,6 +42,7 @@ New to GP247? Read [About GP247](./about/gp247.md).
 | Document | Summary | Last updated |
 | --- | --- | --- |
 | [GP247 system security](./security/security-introduction.md) | Entry page of the Security documentation: what GP247 handles and what you must do — production configuration, encryption keys & backups, accounts & permissions, updates & incident response, checklist and common mistakes | 2026-11-22 |
+| [S-Cart and ISO/IEC 27001](./security/security-iso27001.md) | S-Cart features mapped to the ISO/IEC 27001 control groups (Annex A): permissions, authentication, logs, encryption, personal data, backup, updates; what the business handles; evidence for an audit | 2026-11-26 |
 
 ### SEO
 | Document | Summary | Last updated |
@@ -122,4 +123,4 @@ New to GP247? Read [About GP247](./about/gp247.md).
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-25 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-26 · ✍️ **Author:** GP247</sub>
