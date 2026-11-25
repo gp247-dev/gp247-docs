@@ -209,7 +209,7 @@ if (method_exists(PersonalDataRegistry::class, 'retention')) {
 
 | Ngày | Phiên bản GP247 | Thay đổi |
 | --- | --- | --- |
-| 2026-11-25 | gp247/core 3.19 | Trang mới: khai báo dữ liệu cá nhân (code, `gp247.json`), quy tắc xoá / ẩn danh, mục hạn lưu giữ |
+| 2026-11-25 | gp247/core 3.19.0 | Trang mới: khai báo dữ liệu cá nhân (code, `gp247.json`), quy tắc xoá / ẩn danh, mục hạn lưu giữ |
 
 ---
 

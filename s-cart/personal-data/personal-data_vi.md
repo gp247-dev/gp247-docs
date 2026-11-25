@@ -260,7 +260,7 @@ phần đó khi có yêu cầu.
 
 | Ngày | Phiên bản | Thay đổi |
 | --- | --- | --- |
-| 2026-11-25 | S-Cart (core 3.19, shop, front) | Trang mới: khách tự tải / xoá dữ liệu, yêu cầu của khách vãng lai, màn xử lý yêu cầu, hạn lưu giữ |
+| 2026-11-25 | S-Cart 3.12.0 | Trang mới: khách tự tải / xoá dữ liệu, yêu cầu của khách vãng lai, màn xử lý yêu cầu, hạn lưu giữ |
 
 ---
 

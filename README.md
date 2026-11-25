@@ -74,7 +74,7 @@ New to GP247? Read [About GP247](./about/gp247.md).
 ### Releases
 | Document | Summary | Last updated |
 | --- | --- | --- |
-| [S-Cart releases and security](./release/release.md) | Recommended versions (minimum per package); highlights; how to update; S-Cart releases (each bundling core/front/shop/mcp): what is new, bug fixes, what to do when updating; security and reporting a vulnerability | 2026-11-23 |
+| [S-Cart releases and security](./release/release.md) | Recommended versions (minimum per package); highlights; how to update; S-Cart releases (each bundling core/front/shop/mcp): what is new, bug fixes, what to do when updating; security and reporting a vulnerability | 2026-11-26 |
 
 ### System
 | Document | Summary | Last updated |

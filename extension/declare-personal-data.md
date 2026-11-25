@@ -213,7 +213,7 @@ and removes them from the text.
 
 | Date | GP247 version | Change |
 | --- | --- | --- |
-| 2026-11-25 | gp247/core 3.19 | New page: declaring personal data (code, `gp247.json`), erasure / anonymisation rules, retention items |
+| 2026-11-25 | gp247/core 3.19.0 | New page: declaring personal data (code, `gp247.json`), erasure / anonymisation rules, retention items |
 
 ---
 

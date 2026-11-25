@@ -4,23 +4,23 @@
 
 ## Giới thiệu
 Trang này dành cho **chủ site và người vận hành** S-Cart (dòng 3.x): cho biết mỗi bản phát hành có gì mới, nên dùng phiên
-bản nào và cách cập nhật. Bản mới nhất: **S-Cart 3.11.0** (2026-11-23).
+bản nào và cách cập nhật. Bản mới nhất: **S-Cart 3.12.0** (2026-11-26).
 
 ## Phiên bản nên dùng
 Chạy `php artisan gp247:info` (hoặc `composer show "gp247/*"`) rồi so từng dòng với cột **Tối thiểu khuyến nghị**:
 
 | Package | Tối thiểu khuyến nghị | Mới nhất |
 | --- | --- | --- |
-| gp247/core | **3.16.0** | 3.18.0 |
-| gp247/front | **3.11.0** | 3.14.2 |
-| gp247/shop | **3.12.0** | 3.14.1 |
+| gp247/core | **3.16.0** | 3.19.0 |
+| gp247/front | **3.11.0** | 3.15.0 |
+| gp247/shop | **3.12.0** | 3.16.0 |
 | gp247/mcp | **2.0.1** | 2.1.1 |
 
 - **Thấp hơn** cột "Tối thiểu khuyến nghị" → nên [cập nhật](#cập-nhật-thế-nào).
 - **Đã đạt** → site đã có đủ các cải tiến quan trọng, kể cả khi bạn chưa cài lại S-Cart.
 - **Thư viện bên thứ ba** → chạy thêm `composer audit` để kiểm, xem [Thư viện bên thứ ba](#thư-viện-bên-thứ-ba).
 
-> ⚠️ **Lưu ý:** cập nhật **cả bộ package cùng lúc**: `gp247/shop` 3.12.0 cần `gp247/front` ≥ 3.11, `gp247/front` 3.10.0 trở lên cần `gp247/core` ≥ 3.14.2, `gp247/shop` 3.11.3 trở lên cần `gp247/core` ≥ 3.14.1, `gp247/front` 3.9.1 và `gp247/shop` 3.11.1 cần `gp247/core` ≥ 3.14, `gp247/front` 3.8.1 và `gp247/shop` 3.10.1 cần `gp247/core` ≥ 3.12.1, `gp247/front` 3.7.0 và `gp247/shop` 3.9.0 cần `gp247/core` ≥ 3.11, `gp247/shop` 3.8.1 cần `gp247/core` ≥ 3.10.3, `gp247/mcp` 2.0.1 cần `gp247/core` ≥ 3.9, `gp247/shop` 3.6.0 cần `gp247/core` ≥ 3.7,
+> ⚠️ **Lưu ý:** cập nhật **cả bộ package cùng lúc**: `gp247/shop` 3.16.0 cần `gp247/core` ≥ 3.19, `gp247/shop` 3.12.0 cần `gp247/front` ≥ 3.11, `gp247/front` 3.10.0 trở lên cần `gp247/core` ≥ 3.14.2, `gp247/shop` 3.11.3 trở lên cần `gp247/core` ≥ 3.14.1, `gp247/front` 3.9.1 và `gp247/shop` 3.11.1 cần `gp247/core` ≥ 3.14, `gp247/front` 3.8.1 và `gp247/shop` 3.10.1 cần `gp247/core` ≥ 3.12.1, `gp247/front` 3.7.0 và `gp247/shop` 3.9.0 cần `gp247/core` ≥ 3.11, `gp247/shop` 3.8.1 cần `gp247/core` ≥ 3.10.3, `gp247/mcp` 2.0.1 cần `gp247/core` ≥ 3.9, `gp247/shop` 3.6.0 cần `gp247/core` ≥ 3.7,
 > `gp247/front` 3.2.3 cần `gp247/core` ≥ 3.2.3. Dòng nào còn được hỗ trợ: xem [Vòng đời hỗ trợ](#vòng-đời-hỗ-trợ).
 
 ## Vòng đời hỗ trợ
@@ -36,10 +36,10 @@ Chạy `php artisan gp247:info` (hoặc `composer show "gp247/*"`) rồi so từ
   `composer require … -W` và `php artisan gp247:update` — xem [Nâng cấp lên dòng 3.x](../install-upgrade/upgrade_vi.md).
 
 ## Điểm mới nổi bật
-- **Nhân bản không chép SEO** — bản sao bắt đầu với tab SEO trống, không trùng tiêu đề bản gốc *(S-Cart 3.11)*
-- **Cài mới mang tên và logo S-Cart** — cửa hàng, trang quản trị, lời chào đặt sẵn *(S-Cart 3.11)*
-- **Nút Lưu cho Cấu hình tuỳ chỉnh** — sửa nhiều dòng rồi lưu một lần *(S-Cart 3.11)*
-- **Nhóm Facebook ở chân trang** — biểu tượng nhóm Facebook trên giao diện mặc định *(S-Cart 3.11)*
+- **Dữ liệu của tôi** — khách tự tải bản sao dữ liệu và tự xoá tài khoản, có thời gian chờ để đổi ý *(S-Cart 3.12)*
+- **Yêu cầu dữ liệu cá nhân** — xử lý mọi yêu cầu xem, xoá dữ liệu của khách trên một màn, có hạn xử lý *(S-Cart 3.12)*
+- **Hạn lưu giữ dữ liệu** — tự dọn dữ liệu cũ theo số ngày bạn đặt, không cần cron *(S-Cart 3.12)*
+- **Chọn tỉnh, phường từ danh sách** — gõ để tìm, tra theo mã bưu chính khi có plugin địa chỉ *(S-Cart 3.12)*
 
 ## Cập nhật thế nào
 **Bước 1 —** Sao lưu cơ sở dữ liệu và thư mục site.
@@ -62,6 +62,37 @@ Chi tiết từng bước: [Cập nhật GP247 và S-Cart](../install-upgrade/up
 
 ## Các bản phát hành
 Mới nhất ở trên. Bản *x.**Y*** có tính năng mới; bản *x.y.**Z*** chỉ sửa lỗi.
+
+### S-Cart 3.12.0 — 2026-11-26
+**Khách tự tải, tự xoá dữ liệu của mình; địa chỉ chọn từ danh sách.**
+
+**✨ Mới**
+- **Dữ liệu của tôi** — khách tự tải bản sao dữ liệu (tệp ZIP) và tự xoá tài khoản, có thời gian chờ để đổi ý
+  ([tài liệu](../s-cart/personal-data/personal-data_vi.md))
+- **Yêu cầu dữ liệu cá nhân** — một màn xử lý mọi yêu cầu xem, xoá của khách, kể cả khách không có tài khoản qua trang
+  `/privacy-request`; quá hạn có cảnh báo
+- **Xoá khách là xoá sạch** — dữ liệu cá nhân bị xoá ở mọi nơi, đơn hàng giữ cho sổ sách và bỏ tên, liên hệ; khôi phục bản sao lưu
+  cũ không đưa khách đã xoá trở lại
+- **Hạn lưu giữ dữ liệu** — tự dọn giỏ hàng bỏ dở, tin nhắn liên hệ, nhật ký cũ theo số ngày bạn đặt, không cần cron
+- **Chọn tỉnh, phường từ danh sách** — khách gõ để tìm, tra theo mã bưu chính khi cài plugin địa chỉ của quốc gia
+  ([tài liệu](../s-cart/customer-address/customer-address_vi.md))
+- **Cho lập trình viên:** plugin khai báo bảng có dữ liệu khách để được tải, xoá, dọn theo hạn
+  ([tài liệu](../extension/declare-personal-data_vi.md)); plugin địa chỉ theo quốc gia
+  ([tài liệu](../extension/create-address-plugin_vi.md)); lệnh `gp247:personal-data-retention`
+
+**🔧 Cải thiện:** bản sao lưu không còn gói kèm bản sao bảng do lần phục hồi trước tạo ra; plugin, template mất thư mục gỡ đăng ký
+được bằng nút **Gỡ đăng ký** rồi cài lại như mới; Composer thôi cảnh báo gói `laravel/legacy-factories` bị bỏ
+
+**📋 Cần làm khi cập nhật**
+- Chạy `composer update` rồi `php artisan gp247:update` (tạo bảng yêu cầu dữ liệu, hạn lưu giữ; thêm cột lần đăng nhập cuối của khách)
+- Xem màn **Bảo mật › Hạn lưu giữ dữ liệu**: các mục bật sẵn (nhật ký thao tác quản trị giữ 365 ngày, giỏ hàng 180 ngày…) bắt đầu dọn
+  sau 30 ngày — muốn giữ lâu hơn thì đổi số ngày hoặc tắt trước đó
+- Nút **Xoá** khách trong quản trị nay tạo yêu cầu xoá, chờ 3 ngày rồi mới xoá (huỷ được; đổi số ngày ở **Cấu hình website › Dữ liệu cá nhân**)
+- Đặt liên kết tới trang `/privacy-request` ở chân trang hoặc trang chính sách bảo mật (trang chỉ có khi cửa hàng đã bật gửi email)
+- *(Template tự viết)* thêm mục **Dữ liệu của tôi** vào khu tài khoản — giao diện mặc định và GP247-EC ≥ 1.0.7 có sẵn
+- *(Code của site còn gọi `factory()` kiểu Laravel 7)* chạy `composer require laravel/legacy-factories`
+
+<sub>Gồm core 3.19.0 · front 3.15.0 · shop 3.16.0 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.12.0)</sub>
 
 ### S-Cart 3.11.0 — 2026-11-23
 **Bản sao không mang SEO của bản gốc; cài mới có sẵn tên và logo S-Cart.**
@@ -165,38 +196,10 @@ trở lại; site cài mới không chạy lại migration cũ ở lần `gp247:
 
 <sub>Gồm core 3.14.0 · front 3.9.1 · shop 3.11.1 · mcp 2.0.3 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.8.0)</sub>
 
-### S-Cart 3.7.0 — 2026-11-13
-**Tên và nội dung hiển thị đúng như bạn gõ — hết `&amp;`.**
-
-**✨ Mới**
-- **Chữ lưu đúng như gõ** — tên sản phẩm, danh mục, trang có `&`, `<`, `"` hiện đúng ở quản trị, cửa hàng và API; dữ liệu cũ
-  tự chuyển khi cập nhật
-- **Mật khẩu và khoá bí mật giữ nguyên ký tự** — mật khẩu có `& < > "` đăng nhập được; mật khẩu SMTP, khoá thanh toán gửi
-  đúng tới máy chủ
-- **Cảnh báo chỗ in HTML thô** — Cảnh báo hệ thống và `gp247:doctor` chỉ ra file template, plugin của site in biến bằng
-  `{!! !!}` ([tài liệu](../security/security-built-in_vi.md))
-- **Cảnh báo proxy chưa khai báo** — báo khi trang quản trị đi qua proxy chưa có trong `TRUSTED_PROXIES`, kèm giá trị cần
-  thêm ([tài liệu](../security/security-production-config_vi.md))
-- **Thông tin server hiện phiên bản GP247 trước tiên** — so ngay với bảng "Phiên bản nên dùng", không cần dòng lệnh
-- **Cho lập trình viên:** `gp247_text_plain()` thay `gp247_clean()` (deprecated, gỡ ở 4.0), escape khi in bằng `{{ }}`;
-  REST API trả chữ gốc; dịch vụ ghi dùng chung cho sản phẩm, danh mục, thương hiệu, nhà cung cấp, khách hàng
-
-**🔧 Cải thiện:** nội dung khách và quản trị nhập luôn hiện dạng chữ ở cửa hàng và màn đơn hàng; sắp xếp danh sách chỉ nhận
-cột hợp lệ; `gp247:info` in phiên bản đúng như tag (3.12.1, không còn 3.12.1.0)
-
-**📋 Cần làm khi cập nhật**
-- **Sao lưu cơ sở dữ liệu trước** — `gp247:update` chuyển một lần chữ đã lưu dạng mã hoá (`&amp;` → `&`), không hoàn tác được
-- Chạy `composer update` rồi `php artisan gp247:update`
-- Mở **Cảnh báo hệ thống** (hoặc `php artisan gp247:doctor`): chỗ template, plugin tự viết in biến bằng `{!! !!}` → đổi sang
-  `{{ }}`, trừ nội dung soạn bằng trình soạn thảo HTML
-- Mật khẩu SMTP hoặc khoá bí mật có `& < > "` đã lưu trước bản này: nhập lại một lần
-- *(Ứng dụng dùng REST API)* chuỗi nay trả đúng như gõ (`&`, không còn `&amp;`) — ứng dụng phải tự escape khi hiển thị
-
-<sub>Gồm core 3.12.1 · front 3.8.1 · shop 3.10.1 · mcp 2.0.2 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.7.0)</sub>
-
 ### Các bản cũ hơn
 | Bản | Ngày | Tóm tắt |
 | --- | --- | --- |
+| [S-Cart 3.7.0](https://github.com/gp247net/s-cart/releases/tag/3.7.0) | 2026-11-13 | Tên và nội dung hiển thị đúng như bạn gõ — hết `&amp;` |
 | [S-Cart 3.6.1](https://github.com/gp247net/s-cart/releases/tag/3.6.1) | 2026-11-11 | Sao lưu và phục hồi chắc hơn cho site thật và shared host |
 | [S-Cart 3.6.0](https://github.com/gp247net/s-cart/releases/tag/3.6.0) | 2026-11-09 | Sao lưu và phục hồi có sẵn trong S-Cart, chạy được cả trên shared host |
 | [S-Cart 3.5.2](https://github.com/gp247net/s-cart/releases/tag/3.5.2) | 2026-11-07 | Cải tiến cho site chạy Docker hoặc đứng sau proxy / CDN |
@@ -254,4 +257,4 @@ trước khi có bản vá.
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-23 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-26 · ✍️ **Tác giả (Author):** GP247</sub>

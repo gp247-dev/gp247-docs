@@ -264,7 +264,7 @@ them, or handle that part by hand when a request comes.
 
 | Date | Version | Change |
 | --- | --- | --- |
-| 2026-11-25 | S-Cart (core 3.19, shop, front) | New page: customers download / delete their data, requests from shoppers without an account, the requests screen, data retention |
+| 2026-11-25 | S-Cart 3.12.0 | New page: customers download / delete their data, requests from shoppers without an account, the requests screen, data retention |
 
 ---
 

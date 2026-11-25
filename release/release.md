@@ -4,23 +4,23 @@
 
 ## Introduction
 This page is for S-Cart (3.x line) **site owners and operators**: it tells you what each release brings, which version to run
-and how to update. Latest release: **S-Cart 3.11.0** (2026-11-23).
+and how to update. Latest release: **S-Cart 3.12.0** (2026-11-26).
 
 ## Recommended versions
 Run `php artisan gp247:info` (or `composer show "gp247/*"`) and compare each line with the **Recommended minimum** column:
 
 | Package | Recommended minimum | Latest |
 | --- | --- | --- |
-| gp247/core | **3.16.0** | 3.18.0 |
-| gp247/front | **3.11.0** | 3.14.2 |
-| gp247/shop | **3.12.0** | 3.14.1 |
+| gp247/core | **3.16.0** | 3.19.0 |
+| gp247/front | **3.11.0** | 3.15.0 |
+| gp247/shop | **3.12.0** | 3.16.0 |
 | gp247/mcp | **2.0.1** | 2.1.1 |
 
 - **Below** the "Recommended minimum" column → [update](#how-to-update) when you can.
 - **At or above it** → your site has all the important improvements, even if you have not reinstalled S-Cart.
 - **Third-party libraries** → also run `composer audit`; see [Third-party libraries](#third-party-libraries).
 
-> ⚠️ **Note:** update **all the packages together**: `gp247/shop` 3.12.0 needs `gp247/front` ≥ 3.11, `gp247/front` 3.10.0 and later need `gp247/core` ≥ 3.14.2, `gp247/shop` 3.11.3 and later need `gp247/core` ≥ 3.14.1, `gp247/front` 3.9.1 and `gp247/shop` 3.11.1 need `gp247/core` ≥ 3.14, `gp247/front` 3.8.1 and `gp247/shop` 3.10.1 need `gp247/core` ≥ 3.12.1, `gp247/front` 3.7.0 and `gp247/shop` 3.9.0 need `gp247/core` ≥ 3.11, `gp247/shop` 3.8.1 needs `gp247/core` ≥ 3.10.3, `gp247/mcp` 2.0.1 needs `gp247/core` ≥ 3.9, `gp247/shop` 3.6.0 needs `gp247/core` ≥ 3.7,
+> ⚠️ **Note:** update **all the packages together**: `gp247/shop` 3.16.0 needs `gp247/core` ≥ 3.19, `gp247/shop` 3.12.0 needs `gp247/front` ≥ 3.11, `gp247/front` 3.10.0 and later need `gp247/core` ≥ 3.14.2, `gp247/shop` 3.11.3 and later need `gp247/core` ≥ 3.14.1, `gp247/front` 3.9.1 and `gp247/shop` 3.11.1 need `gp247/core` ≥ 3.14, `gp247/front` 3.8.1 and `gp247/shop` 3.10.1 need `gp247/core` ≥ 3.12.1, `gp247/front` 3.7.0 and `gp247/shop` 3.9.0 need `gp247/core` ≥ 3.11, `gp247/shop` 3.8.1 needs `gp247/core` ≥ 3.10.3, `gp247/mcp` 2.0.1 needs `gp247/core` ≥ 3.9, `gp247/shop` 3.6.0 needs `gp247/core` ≥ 3.7,
 > `gp247/front` 3.2.3 needs `gp247/core` ≥ 3.2.3. Which lines are still supported: see [Support lifecycle](#support-lifecycle).
 
 ## Support lifecycle
@@ -36,10 +36,10 @@ Run `php artisan gp247:info` (or `composer show "gp247/*"`) and compare each lin
   `composer require … -W` and `php artisan gp247:update` — see [Upgrading to the 3.x line](../install-upgrade/upgrade.md).
 
 ## Highlights
-- **Duplicates leave SEO behind** — a copy starts with an empty SEO tab, never repeating the original's title *(S-Cart 3.11)*
-- **New installs named and branded S-Cart** — store, admin and welcome text set up for you *(S-Cart 3.11)*
-- **Save button for Custom config** — edit several rows, then save once *(S-Cart 3.11)*
-- **Facebook group in the footer** — a Facebook group icon in the default theme *(S-Cart 3.11)*
+- **My data** — customers download a copy of their data and delete their own account, with time to change their mind *(S-Cart 3.12)*
+- **Personal data requests** — handle every request to see or erase a customer's data on one screen, with due dates *(S-Cart 3.12)*
+- **Data retention** — old data is cleaned after the number of days you set, no cron needed *(S-Cart 3.12)*
+- **Province and ward picked from a list** — type to search, look up by postcode with an address plugin *(S-Cart 3.12)*
 
 ## How to update
 **Step 1 —** Back up the database and the site folder.
@@ -62,6 +62,38 @@ Step-by-step details: [Updating GP247 and S-Cart](../install-upgrade/update.md).
 
 ## Releases
 Newest first. An *x.**Y*** release brings new features; an *x.y.**Z*** release only fixes bugs.
+
+### S-Cart 3.12.0 — 2026-11-26
+**Customers download and delete their own data; addresses picked from a list.**
+
+**✨ New**
+- **My data** — customers download a copy of their data (a ZIP file) and delete their own account, with time to change their mind
+  ([docs](../s-cart/personal-data/personal-data.md))
+- **Personal data requests** — one screen for every request to see or erase a customer's data, including shoppers without an
+  account through the `/privacy-request` page; overdue requests raise a warning
+- **Erasing a customer erases everything** — personal data goes from every place; orders stay for the books without name or
+  contact; restoring an old backup does not bring an erased customer back
+- **Data retention** — abandoned carts, contact messages and old logs are cleaned after the number of days you set, no cron needed
+- **Province and ward picked from a list** — customers type to search, and look up by postcode, with a country address plugin
+  ([docs](../s-cart/customer-address/customer-address.md))
+- **For developers:** plugins declare their tables that hold customer data so they are exported, erased and cleaned on time
+  ([docs](../extension/declare-personal-data.md)); country address plugins
+  ([docs](../extension/create-address-plugin.md)); the `gp247:personal-data-retention` command
+
+**🔧 Improvements:** backups no longer pack the table copies left by an earlier restore; a plugin or template whose folder is
+gone can be removed with the **Forget** button and installed again as new; Composer no longer warns that `laravel/legacy-factories` is abandoned
+
+**📋 To do when updating**
+- Run `composer update`, then `php artisan gp247:update` (creates the personal data request and retention tables; adds the customer's last sign-in column)
+- Check **Security › Data retention**: the items on by default (admin activity log kept 365 days, carts 180 days…) start cleaning
+  after 30 days — to keep data longer, change the days or turn the item off before then
+- The admin **Delete** button for a customer now creates an erasure request that waits 3 days (it can be called off; change the days
+  in **Website configuration › Personal data**)
+- Link to the `/privacy-request` page from your footer or privacy policy (the page exists only when the shop sends email)
+- *(Your own template)* add **My data** to the account area — the default theme and GP247-EC ≥ 1.0.7 have it
+- *(Site code still calling Laravel 7 style `factory()`)* run `composer require laravel/legacy-factories`
+
+<sub>Includes core 3.19.0 · front 3.15.0 · shop 3.16.0 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.12.0)</sub>
 
 ### S-Cart 3.11.0 — 2026-11-23
 **Copies no longer carry the original's SEO; new installs come named and branded S-Cart.**
@@ -168,38 +200,10 @@ work again; a fresh site no longer re-runs old upgrade migrations on its first `
 
 <sub>Includes core 3.14.0 · front 3.9.1 · shop 3.11.1 · mcp 2.0.3 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.8.0)</sub>
 
-### S-Cart 3.7.0 — 2026-11-13
-**Names and content show exactly as you type them — no more `&amp;`.**
-
-**✨ New**
-- **Text stored as typed** — product, category and page names with `&`, `<`, `"` show correctly in the admin, the storefront
-  and the API; existing data is converted during the update
-- **Passwords and secrets keep every character** — passwords with `& < > "` sign in; SMTP passwords and payment keys reach the
-  server unchanged
-- **Raw HTML output warning** — System alerts and `gp247:doctor` point to the site's own templates and plugins that print a
-  variable with `{!! !!}` ([docs](../security/security-built-in.md))
-- **Untrusted proxy warning** — alerts when admin pages come through a proxy missing from `TRUSTED_PROXIES`, with the value to
-  add ([docs](../security/security-production-config.md))
-- **Server info shows GP247 versions first** — compare with the "Recommended versions" table without the command line
-- **For developers:** `gp247_text_plain()` replaces `gp247_clean()` (deprecated, removed in 4.0), escape on output with `{{ }}`;
-  the REST API returns text as typed; shared write services for products, categories, brands, suppliers and customers
-
-**🔧 Improvements:** text entered by customers and admins always shows as text on the storefront and order screens; list
-sorting accepts only valid columns; `gp247:info` prints versions as tagged (3.12.1, no longer 3.12.1.0)
-
-**📋 To do when updating**
-- **Back up the database first** — `gp247:update` converts text stored HTML-encoded (`&amp;` → `&`) once; this cannot be undone
-- Run `composer update`, then `php artisan gp247:update`
-- Open **System alerts** (or `php artisan gp247:doctor`): change `{!! !!}` prints of variables in your own templates and plugins
-  to `{{ }}`, except HTML written in the rich-text editor
-- SMTP passwords or secret keys containing `& < > "` saved before this release: enter them again once
-- *(Apps using the REST API)* strings now come back as typed (`&`, not `&amp;`) — the app must escape them when displaying
-
-<sub>Includes core 3.12.1 · front 3.8.1 · shop 3.10.1 · mcp 2.0.2 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.7.0)</sub>
-
 ### Older releases
 | Release | Date | Summary |
 | --- | --- | --- |
+| [S-Cart 3.7.0](https://github.com/gp247net/s-cart/releases/tag/3.7.0) | 2026-11-13 | Names and content show exactly as you type them — no more `&amp;` |
 | [S-Cart 3.6.1](https://github.com/gp247net/s-cart/releases/tag/3.6.1) | 2026-11-11 | Sturdier backup and restore for live sites and shared hosting |
 | [S-Cart 3.6.0](https://github.com/gp247net/s-cart/releases/tag/3.6.0) | 2026-11-09 | Backup and restore built into S-Cart, ready for shared hosting |
 | [S-Cart 3.5.2](https://github.com/gp247net/s-cart/releases/tag/3.5.2) | 2026-11-07 | Improvements for sites on Docker or behind a proxy / CDN |
@@ -257,4 +261,4 @@ exposed before a fix is released.
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-23 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-26 · ✍️ **Author:** GP247</sub>
