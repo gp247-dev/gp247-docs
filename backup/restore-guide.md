@@ -167,6 +167,22 @@ such a backup are not restored. On the screen, **only an Administrator** can res
 the **Backup - restore** right cannot, since a backup made with their own password could replace the admin accounts. A backup that only exists at the external destination is brought back as described in
 [External destination](./backup-offsite.md#bring-a-backup-back-from-the-external-destination).
 
+> ⚠️ **Note — the old site's encryption key:** configuration secrets in the backup (SMTP password, payment gateway API keys, paid plugin
+> licenses…) stay encrypted with the key of the **site that made the backup**: `GP247_ENCRYPTION_KEY`, or `APP_KEY` if that site had no
+> dedicated key. The backup does not carry `.env` across, so on a new site with a different key these secrets come back empty after the
+> restore — the site shows no error, mail and payments simply stop working. If the new site uses the old site's `.env` as is (moving
+> servers, keeping the keys), there is nothing to do. Otherwise, after the restore:
+>
+> 1. Take `GP247_ENCRYPTION_KEY` and `APP_KEY` from the old site's `.env`.
+> 2. In the new site's `.env`: set `GP247_ENCRYPTION_KEY` if it is empty; put the old encryption key in `GP247_ENCRYPTION_PREVIOUS_KEYS`
+>    (the old `APP_KEY` if the old site had no dedicated key); put the old `APP_KEY` in `APP_PREVIOUS_KEYS`.
+> 3. Run `php artisan config:clear`, then `php artisan gp247:encryption-key-rotate` to rewrite the secrets with the new site's key.
+> 4. Run `php artisan gp247:doctor`: the `secret_decryptable` row must PASS. Once the rotate command reports no old rows left,
+>    `GP247_ENCRYPTION_PREVIOUS_KEYS` can go; keep `APP_PREVIOUS_KEYS` if you need the old site's webhook signing secrets (the rotate
+>    command does not handle them).
+>
+> Without the old keys, re-enter each secret on the configuration screens. More on the two keys in [Encryption keys & backup](../security/security-keys-and-backup.md).
+
 ## Restore from the command line
 On a VPS, or when the site is too large for a browser, use `gp247:backup-restore`. The command asks for the backup password and the
 confirmation code while it runs.
@@ -231,7 +247,8 @@ database**. The preview shows how much data will be lost before you confirm.
 **Q6: Can a backup from the old site be restored on a new site?**
 
 → Yes: bring the `.gp247bak` file in with the old site's backup password or recovery key, tick the origin confirmation, then restore. The
-new site must run the same or a newer GP247 version than the old one.
+new site must run the same or a newer GP247 version than the old one. If the two sites have different encryption keys, also follow the
+steps in [Use a backup made elsewhere](#use-a-backup-made-elsewhere) so the SMTP password and payment gateway keys stay readable.
 
 **Q7: What if the browser closes during a restore?**
 
@@ -255,4 +272,4 @@ time someone opens the site: the site leaves maintenance mode, the restored data
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-25 · ✍️ **Author:** GP247</sub>

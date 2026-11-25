@@ -164,6 +164,20 @@ minh được ai tạo ra nó. Khi phục hồi, bạn phải tick **Tôi biết
 không được phục hồi. Trên màn, **chỉ Administrator** phục hồi được bản chưa xác minh nguồn gốc — người chỉ có quyền **Backup - restore** thì
 không, vì một bản tạo bằng mật khẩu của chính họ có thể thay cả tài khoản quản trị. Bản chỉ còn ở đích ngoài thì kéo về theo [Đích ngoài](./backup-offsite_vi.md#kéo-một-bản-từ-đích-ngoài-về).
 
+> ⚠️ **Lưu ý — khoá mã hoá của site cũ:** bí mật cấu hình trong bản (mật khẩu SMTP, khoá API cổng thanh toán, license plugin trả phí…) vẫn
+> được mã hoá bằng khoá của **site đã tạo bản**: `GP247_ENCRYPTION_KEY`, hoặc `APP_KEY` nếu site đó chưa đặt khoá riêng. Bản không mang
+> `.env` sang, nên site mới có khoá khác thì sau khi phục hồi các bí mật này thành rỗng — site không báo lỗi, chỉ là gửi mail, thanh toán
+> ngừng chạy. Site mới dùng nguyên `.env` của site cũ (chuyển máy chủ, giữ khoá) thì không cần làm gì. Ngược lại, sau khi phục hồi:
+>
+> 1. Lấy `GP247_ENCRYPTION_KEY` và `APP_KEY` trong `.env` của site cũ.
+> 2. Trong `.env` của site mới: đặt `GP247_ENCRYPTION_KEY` nếu đang trống; đưa khoá mã hoá cũ vào `GP247_ENCRYPTION_PREVIOUS_KEYS` (site cũ
+>    không có khoá riêng thì dùng `APP_KEY` cũ); đưa `APP_KEY` cũ vào `APP_PREVIOUS_KEYS`.
+> 3. Chạy `php artisan config:clear`, rồi `php artisan gp247:encryption-key-rotate` để ghi lại các bí mật bằng khoá của site mới.
+> 4. Chạy `php artisan gp247:doctor`: dòng `secret_decryptable` phải PASS. Lệnh xoay khoá báo không còn dòng cũ thì bỏ được
+>    `GP247_ENCRYPTION_PREVIOUS_KEYS`; giữ `APP_PREVIOUS_KEYS` nếu cần secret ký webhook của site cũ (lệnh xoay khoá không xử lý nó).
+>
+> Không còn khoá cũ thì nhập lại từng bí mật ở màn cấu hình. Chi tiết về hai khoá ở [Khoá mã hoá & sao lưu](../security/security-keys-and-backup_vi.md).
+
 ## Phục hồi bằng dòng lệnh
 Trên VPS, hoặc khi site quá lớn cho một trình duyệt, dùng `gp247:backup-restore`. Lệnh hỏi mật khẩu sao lưu và mã xác nhận khi chạy.
 
@@ -227,7 +241,8 @@ dữ liệu sẽ mất trước khi bạn xác nhận.
 **Câu 6: Bản tạo trên site cũ có phục hồi sang site mới được không?**
 
 → Được: đưa file `.gp247bak` vào bằng mật khẩu sao lưu hoặc recovery key của site cũ, tick xác nhận nguồn gốc, rồi phục hồi. Site mới phải chạy
-phiên bản GP247 bằng hoặc mới hơn site cũ.
+phiên bản GP247 bằng hoặc mới hơn site cũ. Khoá mã hoá hai site khác nhau thì làm thêm các bước ở [Dùng bản tạo ở nơi khác](#dùng-bản-tạo-ở-nơi-khác)
+để mật khẩu SMTP, khoá cổng thanh toán còn đọc được.
 
 **Câu 7: Trình duyệt bị đóng giữa lúc phục hồi thì sao?**
 
@@ -250,4 +265,4 @@ hãy chạy `php artisan gp247:update`.
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-25 · ✍️ **Tác giả (Author):** GP247</sub>
