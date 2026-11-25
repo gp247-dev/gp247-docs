@@ -815,6 +815,7 @@ class MyCarrierProviderTest extends TestCase
 - [ ] （Webhook の場合）データを信用する前に署名を検証している。`occurredAt` には配送業者の時刻を使っている。
 - [ ] 設定は `admin_config` にあり、秘密鍵は `password` 型の項目。`update()` は再実行しても安全。`clickApp()` で設定画面が開く。
 - [ ] テストで `Http::fake()` を使い、配送業者のエラー／タイムアウト、Webhook の署名の誤りのケースを含めている。
+- [ ] 顧客のデータを持つプラグイン独自のテーブル（ゲートウェイ／配送会社のペイロード、ログ）を[個人データとして宣言](./declare-personal-data_ja.md)した。
 
 ---
 
@@ -949,4 +950,4 @@ sequenceDiagram
 
 ---
 
-<sub>📅 **最終更新:** 2026-11-22 · ✍️ **作成者 (Author):** GP247</sub>
+<sub>📅 **最終更新:** 2026-11-25 · ✍️ **作成者 (Author):** GP247</sub>

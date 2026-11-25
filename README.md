@@ -59,11 +59,12 @@ New to GP247? Read [About GP247](./about/gp247.md).
 ### Extensions (Plugins)
 | Document | Summary | Last updated |
 | --- | --- | --- |
-| [Creating a Plugin](./extension/create-plugin.md) | Starting point: pick the right guide for your kind of plugin, a 6-step roadmap with code (settings in the database, settings screen, install, release) | 2026-11-13 |
-| [Creating a payment plugin](./extension/create-payment-plugin.md) | Step by step with code: a bank transfer plugin that works right away + a skeleton for an online gateway (money recorded once, webhook) | 2026-11-22 |
-| [Creating a shipping plugin](./extension/create-shipping-plugin.md) | Step by step with code: a weight-based price plugin that works right away + a skeleton for a carrier with an API (shipments, webhook, COD) | 2026-11-22 |
+| [Creating a Plugin](./extension/create-plugin.md) | Starting point: pick the right guide for your kind of plugin, a 6-step roadmap with code (settings in the database, settings screen, install, release) | 2026-11-25 |
+| [Creating a payment plugin](./extension/create-payment-plugin.md) | Step by step with code: a bank transfer plugin that works right away + a skeleton for an online gateway (money recorded once, webhook) | 2026-11-25 |
+| [Creating a shipping plugin](./extension/create-shipping-plugin.md) | Step by step with code: a weight-based price plugin that works right away + a skeleton for a carrier with an API (shipments, webhook, COD) | 2026-11-25 |
 | [Creating an address plugin](./extension/create-address-plugin.md) | Step by step with code: a two-level list plugin that works right away + postal code lookup; when to return errors, bundled data, the address block in a template | 2026-11-24 |
 | [Update-safe plugins](./extension/create-plugin-update-safety.md) | How updates run, 7 rules, the `update()` hook, own data tables | 2026-11-17 |
+| [Declaring personal data](./extension/declare-personal-data.md) | A plugin table with customers' data: declare it in code or `gp247.json`, erasure / anonymisation rules, retention items | 2026-11-25 |
 | [Advanced plugins](./extension/create-plugin-advanced.md) | Per-store settings, secret keys, storefront pages / blocks / hooks, coupons, menus | 2026-11-17 |
 | [Creating a Template (storefront theme)](./extension/create-template.md) | Build a new storefront template; the gp247/shop view fallback mechanism | 2026-11-20 |
 | [Installing Plugins & Templates](./extension/install-extension.md) | 4 methods: online (library), import (.zip), manual, CLI (`gp247:ext-*`) | 2026-11-22 |
@@ -104,6 +105,7 @@ New to GP247? Read [About GP247](./about/gp247.md).
 | [Product Attributes (Color/Size)](./s-cart/product/product-attribute.md) | Attribute groups & values + surcharge; admin setup; price/cart/order flow; price safety | 2026-11-22 |
 | [Product keyword tags (Product Tag)](./s-cart/product/product-tag.md) | Create/assign keyword tags to products; vs Delivery type; disable vs delete (from shop 2.1.6) | 2026-11-22 |
 | [Duplicating products and pages](./s-cart/product/product-duplicate.md) | One button makes a switched-off copy of a product / content page; what is copied and what is not (stock, barcodes, reviews); what to do before putting it on sale (from shop 3.13.0, front 3.12.0) | 2026-11-20 |
+| [Customers' personal data](./s-cart/personal-data/personal-data.md) | Customers download / delete their data, requests from shoppers without an account, the requests screen, data retention (no cron), the data list for your privacy policy | 2026-11-25 |
 
 ### Multi-store & Marketplace
 > The two models are **mutually exclusive** — pick one: several stores of your own (Multi-Store), or one marketplace for many sellers (Multi-Vendor).

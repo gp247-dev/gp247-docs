@@ -46,6 +46,7 @@ flowchart LR
 - [ ] Tắt REST API / MCP nếu không dùng — [Hệ thống bảo vệ những gì](./security-built-in_vi.md#rest-api--mcp)
 - [ ] Trang **Cảnh báo hệ thống** không còn mục cần xử lý — kể cả mục in thô `{!! !!}` (`raw_output_scan`) khi site có template hoặc plugin tự viết — [Cập nhật & xử lý sự cố](./security-updates-and-incidents_vi.md#plugin-và-giao-diện-chỉ-cài-từ-nguồn-tin-cậy)
 - [ ] Có lịch sao lưu tự động cơ sở dữ liệu + `storage/app/` + `app/GP247/`, có một bản ngoài máy chủ — [Khoá mã hoá & sao lưu](./security-keys-and-backup_vi.md#những-gì-phải-sao-lưu)
+- [ ] Xem màn **Hạn lưu giữ dữ liệu** và cài đặt **Dữ liệu cá nhân**; đưa danh sách dữ liệu S-Cart lưu vào chính sách bảo mật và liên kết tới trang `/privacy-request` — [Dữ liệu cá nhân của khách](../s-cart/personal-data/personal-data_vi.md)
 
 ## Định kỳ
 
@@ -126,4 +127,4 @@ Mười lỗi dưới đây gây phần lớn sự cố trên site thật. Mỗi
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-25 · ✍️ **Tác giả (Author):** GP247</sub>

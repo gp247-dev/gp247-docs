@@ -816,6 +816,7 @@ class MyCarrierProviderTest extends TestCase
 - [ ] (Nếu webhook) xác minh chữ ký trước khi tin dữ liệu; `occurredAt` lấy thời gian của hãng.
 - [ ] Thiết lập trong `admin_config`, khoá bí mật là ô `password`; `update()` chạy lại an toàn; `clickApp()` mở màn cấu hình.
 - [ ] Test dùng `Http::fake()`, có trường hợp hãng lỗi / timeout, webhook sai chữ ký.
+- [ ] Bảng riêng của plugin có dữ liệu của khách (payload cổng / hãng, nhật ký) đã được [khai báo dữ liệu cá nhân](./declare-personal-data_vi.md).
 
 ---
 
@@ -950,4 +951,4 @@ phẩm, trả về món hàng đã thêm `meta`. Không dùng closure — sẽ l
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-25 · ✍️ **Tác giả (Author):** GP247</sub>

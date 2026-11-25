@@ -820,6 +820,7 @@ class MyCarrierProviderTest extends TestCase
 - [ ] (If webhook) verify the signature before trusting data; `occurredAt` uses the carrier's time.
 - [ ] Settings in `admin_config`, secrets as `password` fields; `update()` safe to re-run; `clickApp()` opens the settings screen.
 - [ ] Tests use `Http::fake()`, including carrier error / timeout and a webhook with a bad signature.
+- [ ] The plugin's own tables holding customers' data (gateway / carrier payloads, logs) are [declared as personal data](./declare-personal-data.md).
 
 ---
 
@@ -955,4 +956,4 @@ product and returns the item with extra `meta`. Never a closure — it makes `ph
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-25 · ✍️ **Author:** GP247</sub>

@@ -21,6 +21,7 @@ your kind of plugin.
 | A **shipping** method (price table, carrier with an API) | [Creating a shipping plugin](./create-shipping-plugin.md) |
 | Coupons / loyalty points, an own storefront page, layout blocks, per-store settings, secret keys | [Advanced plugins](./create-plugin-advanced.md) |
 | Own data tables, data migration on a new version | [Update-safe plugins](./create-plugin-update-safety.md) |
+| A table with customers' data (names, emails, text they wrote…) | [Declaring personal data](./declare-personal-data.md) |
 | Upgrading a plugin written for GP247 1.x | [Converting a plugin from v1 to v2](./convert-plugin-v1-to-v2.md) |
 | A storefront look (template), not a plugin | [Creating a template](./create-template.md) |
 
@@ -498,6 +499,7 @@ UI rules: only `<x-gp247::*>` components, Livewire and Alpine; **no** jQuery, Ad
 - [ ] Input text is stored with `gp247_text_plain()` (not `gp247_clean()`) and printed with `{{ }}`; `{!! !!}` only for trusted HTML.
 - [ ] Ran `optimize:clear`, then install / enable / disable / uninstall `--only-data` / reinstall successfully.
 - [ ] Payment / shipping plugins: followed the dedicated guide for that kind.
+- [ ] Own tables holding customers' data are [declared as personal data](./declare-personal-data.md).
 
 ---
 
@@ -571,4 +573,4 @@ With an AI agent, use the `gp247-plugin-create` skill.
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-13 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-25 · ✍️ **Author:** GP247</sub>

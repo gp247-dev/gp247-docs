@@ -945,6 +945,7 @@ class MyGatewayWebhookTest extends TestCase
 - [ ] Trang quay về đọc lại kết quả từ cổng; webhook ngoài nhóm storefront, xác minh chữ ký trước khi chạm database.
 - [ ] Test có trường hợp báo lặp, sai chữ ký, sai số tiền — không gọi cổng thật.
 - [ ] Gỡ plugin chỉ xoá thiết lập, **không** xoá tiền đã ghi.
+- [ ] Bảng riêng của plugin có dữ liệu của khách (payload cổng / hãng, nhật ký) đã được [khai báo dữ liệu cá nhân](./declare-personal-data_vi.md).
 
 ---
 
@@ -1048,4 +1049,4 @@ hàng của **đơn** (`$order->store_id`).
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-25 · ✍️ **Tác giả (Author):** GP247</sub>

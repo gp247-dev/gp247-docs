@@ -46,6 +46,7 @@ flowchart LR
 - [ ] 使わない場合は REST API／MCP を無効にした — [システムが守るもの](./security-built-in_ja.md#rest-api-と-mcp)
 - [ ] **システムアラート** ページに対応の必要な項目が残っていない — 独自のテンプレートやプラグインがある場合は `{!! !!}` の項目（`raw_output_scan`）も含む — [更新とインシデント対応](./security-updates-and-incidents_ja.md#プラグインとテンプレート信頼できる提供元からのみインストール)
 - [ ] データベース + `storage/app/` + `app/GP247/` の自動バックアップのスケジュールがあり、1 つはサーバーの外にある — [暗号化キーとバックアップ](./security-keys-and-backup_ja.md#バックアップが必要なもの)
+- [ ] 「**データ保存期間**」画面と「**個人データ**」の設定を確認し、S-Cart が保存するデータの一覧をプライバシーポリシーに載せ、`/privacy-request` ページへリンクする — [顧客の個人データ](../s-cart/personal-data/personal-data_ja.md)
 
 ## 定期作業
 
@@ -126,4 +127,4 @@ flowchart LR
 
 ---
 
-<sub>📅 **最終更新:** 2026-11-22 · ✍️ **作成者 (Author):** GP247</sub>
+<sub>📅 **最終更新:** 2026-11-25 · ✍️ **作成者 (Author):** GP247</sub>

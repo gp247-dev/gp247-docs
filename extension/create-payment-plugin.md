@@ -948,6 +948,7 @@ class MyGatewayWebhookTest extends TestCase
 - [ ] The return page reads the result back from the gateway; the webhook is outside the storefront group and verifies the signature before touching the database.
 - [ ] Tests cover a repeat, a bad signature and a wrong amount — without calling the real gateway.
 - [ ] Uninstall only deletes settings, **never** recorded money.
+- [ ] The plugin's own tables holding customers' data (gateway / carrier payloads, logs) are [declared as personal data](./declare-personal-data.md).
 
 ---
 
@@ -1055,4 +1056,4 @@ save keeps the old secret.
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-25 · ✍️ **Author:** GP247</sub>

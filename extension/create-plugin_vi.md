@@ -20,6 +20,7 @@ xong, bạn có một plugin chạy được và biết cần đọc tiếp tran
 | Phương thức **vận chuyển** (bảng giá, hãng giao hàng có API) | [Tạo plugin vận chuyển](./create-shipping-plugin_vi.md) |
 | Mã giảm giá / tích điểm, trang storefront riêng, khối layout, cấu hình theo cửa hàng, khoá bí mật | [Plugin nâng cao](./create-plugin-advanced_vi.md) |
 | Bảng dữ liệu riêng, di trú dữ liệu khi lên bản mới | [Plugin an toàn khi cập nhật](./create-plugin-update-safety_vi.md) |
+| Bảng có dữ liệu của khách (tên, email, nội dung khách viết…) | [Khai báo dữ liệu cá nhân](./declare-personal-data_vi.md) |
 | Nâng cấp plugin viết cho GP247 1.x | [Chuyển đổi plugin v1 lên v2](./convert-plugin-v1-to-v2_vi.md) |
 | Giao diện cửa hàng (template), không phải plugin | [Tạo template](./create-template_vi.md) |
 
@@ -497,6 +498,7 @@ Quy tắc giao diện: chỉ dùng component `<x-gp247::*>`, Livewire và Alpine
 - [ ] Chữ nhập lưu bằng `gp247_text_plain()` (không `gp247_clean()`), in bằng `{{ }}`; `{!! !!}` chỉ cho HTML tin cậy.
 - [ ] Đã `optimize:clear`, cài / bật / tắt / gỡ `--only-data` / cài lại thành công.
 - [ ] Plugin thanh toán / vận chuyển: đã theo hướng dẫn riêng của loại đó.
+- [ ] Bảng riêng có dữ liệu của khách đã được [khai báo dữ liệu cá nhân](./declare-personal-data_vi.md).
 
 ---
 
@@ -570,4 +572,4 @@ Làm cùng AI agent thì dùng skill `gp247-plugin-create`.
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-13 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-25 · ✍️ **Tác giả (Author):** GP247</sub>

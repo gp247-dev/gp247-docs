@@ -127,9 +127,11 @@ This layer helps you know who did what, and when.
 
 | Mechanism | What GP247 does | Limits — what you do |
 | --- | --- | --- |
-| **Admin activity log** | Records each time an administrator opens a screen, saves, runs a Livewire action, calls the admin API or calls MCP (`GP247_ADMIN_LOG=1`). Passwords, secrets, tokens and licenses are masked in the logged data | Failed sign-ins are on the **Login failures** screen (next row); old activity records are not deleted automatically — review and clean up from time to time on the **Log access** screen |
+| **Admin activity log** | Records each time an administrator opens a screen, saves, runs a Livewire action, calls the admin API or calls MCP (`GP247_ADMIN_LOG=1`). Passwords, secrets, tokens and licenses are masked in the logged data | Failed sign-ins are on the **Login failures** screen (next row); activity records are kept 365 days then cleaned by themselves (change it on the **Data retention** screen) — review them from time to time on the **Log access** screen |
 | **Failed sign-in log** | Records every failed sign-in and every block for too many tries (web and API) on the **Login failures** screen, administrators only; the password is never stored; kept 30 days (`GP247_LOGIN_FAILURE_KEEP_DAYS`), removed automatically. **System alerts** warns on signs of password guessing in the last 24 hours | Only admin accounts by default — add customers / sellers on that screen if needed; open it when an alert shows |
 | **Application log file** | Writes errors to `storage/logs/gp247.log`, one file per day, kept for 14 days (`LOG_DAILY_DAYS`) | Set a suitable `LOG_LEVEL` for production; do not let the `storage/` folder be reachable from the web |
+
+Customers' personal data — download, deletion, retention: [Customers' personal data in S-Cart](../s-cart/personal-data/personal-data.md).
 
 ## Production config & Docker
 
@@ -213,4 +215,4 @@ The tasks below are **not** in GP247 — if you do not do them, no one will:
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-25 · ✍️ **Author:** GP247</sub>

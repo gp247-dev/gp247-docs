@@ -46,6 +46,7 @@ flowchart LR
 - [ ] Turn off the REST API / MCP if you do not use them — [What the system protects](./security-built-in.md#rest-api--mcp)
 - [ ] The **System alerts** page has nothing left to fix — including the raw `{!! !!}` print item (`raw_output_scan`) when the site has its own templates or plugins — [Updates & incidents](./security-updates-and-incidents.md#plugins-and-templates-install-only-from-trusted-sources)
 - [ ] Have an automatic backup schedule for the database + `storage/app/` + `app/GP247/`, with one copy off the server — [Encryption keys & backup](./security-keys-and-backup.md#what-you-must-back-up)
+- [ ] Review the **Data retention** screen and the **Personal data** settings; put the list of data S-Cart keeps in your privacy policy and link to the `/privacy-request` page — [Customers' personal data](../s-cart/personal-data/personal-data.md)
 
 ## Regular tasks
 
@@ -126,4 +127,4 @@ The ten mistakes below cause most incidents on live sites. Each one has its cons
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-25 · ✍️ **Author:** GP247</sub>

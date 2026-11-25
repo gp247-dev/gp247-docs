@@ -59,11 +59,12 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 ### Mở rộng (Plugin)
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
-| [Hướng dẫn tạo Plugin](./extension/create-plugin_vi.md) | Điểm bắt đầu: chọn đúng hướng dẫn theo loại plugin, lộ trình 6 bước có code (thiết lập lưu trong database, màn cấu hình, cài, phát hành) | 2026-11-13 |
-| [Tạo plugin thanh toán](./extension/create-payment-plugin_vi.md) | Từng bước có code: plugin chuyển khoản chạy được ngay + khung nối cổng thanh toán online (ghi tiền đúng một lần, webhook) | 2026-11-22 |
-| [Tạo plugin vận chuyển](./extension/create-shipping-plugin_vi.md) | Từng bước có code: plugin phí theo khối lượng chạy được ngay + khung nối hãng vận chuyển có API (vận đơn, webhook, thu hộ) | 2026-11-22 |
+| [Hướng dẫn tạo Plugin](./extension/create-plugin_vi.md) | Điểm bắt đầu: chọn đúng hướng dẫn theo loại plugin, lộ trình 6 bước có code (thiết lập lưu trong database, màn cấu hình, cài, phát hành) | 2026-11-25 |
+| [Tạo plugin thanh toán](./extension/create-payment-plugin_vi.md) | Từng bước có code: plugin chuyển khoản chạy được ngay + khung nối cổng thanh toán online (ghi tiền đúng một lần, webhook) | 2026-11-25 |
+| [Tạo plugin vận chuyển](./extension/create-shipping-plugin_vi.md) | Từng bước có code: plugin phí theo khối lượng chạy được ngay + khung nối hãng vận chuyển có API (vận đơn, webhook, thu hộ) | 2026-11-25 |
 | [Tạo plugin địa chỉ](./extension/create-address-plugin_vi.md) | Từng bước có code: plugin danh sách hai cấp chạy được ngay + tra mã bưu chính; khi nào trả lỗi, dữ liệu đi kèm, khối địa chỉ trong template | 2026-11-24 |
 | [Plugin an toàn khi cập nhật](./extension/create-plugin-update-safety_vi.md) | Cập nhật chạy thế nào, 7 quy tắc, hook `update()`, bảng dữ liệu riêng | 2026-11-17 |
+| [Khai báo dữ liệu cá nhân](./extension/declare-personal-data_vi.md) | Bảng của plugin có dữ liệu khách: khai báo bằng code hoặc `gp247.json`, quy tắc xoá / ẩn danh, mục hạn lưu giữ | 2026-11-25 |
 | [Plugin nâng cao](./extension/create-plugin-advanced_vi.md) | Cấu hình theo cửa hàng, khoá bí mật, trang / khối / điểm cắm storefront, mã giảm giá, menu | 2026-11-17 |
 | [Hướng dẫn tạo Template (giao diện)](./extension/create-template_vi.md) | Tạo template storefront mới; cơ chế fallback view của gp247/shop | 2026-11-20 |
 | [Cài đặt Plugin & Template](./extension/install-extension_vi.md) | 4 cách cài: online (thư viện), import (.zip), thủ công, CLI (`gp247:ext-*`) | 2026-11-22 |
@@ -104,6 +105,7 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 | [Thuộc tính sản phẩm (Color/Size)](./s-cart/product/product-attribute_vi.md) | Nhóm & giá trị thuộc tính + phụ phí; khai báo ở admin; luồng giá/giỏ/đơn; an toàn giá | 2026-11-22 |
 | [Thẻ từ khóa sản phẩm (Product Tag)](./s-cart/product/product-tag_vi.md) | Tạo/gán thẻ từ khóa cho sản phẩm; phân biệt với Loại giao hàng; tắt vs xóa (từ shop 2.1.6) | 2026-11-22 |
 | [Nhân bản sản phẩm và trang](./s-cart/product/product-duplicate_vi.md) | Một nút tạo bản sao (đang tắt) của sản phẩm / trang nội dung; chép gì, không chép gì (tồn kho, mã vạch, đánh giá); việc cần làm trước khi bật bán (từ shop 3.13.0, front 3.12.0) | 2026-11-20 |
+| [Dữ liệu cá nhân của khách](./s-cart/personal-data/personal-data_vi.md) | Khách tự tải / xoá dữ liệu, yêu cầu của khách không có tài khoản, màn xử lý yêu cầu, hạn lưu giữ (không cần cron), danh sách dữ liệu cho chính sách bảo mật | 2026-11-25 |
 
 ### Nhiều cửa hàng & Sàn bán hàng
 > Hai mô hình **loại trừ lẫn nhau** — chọn một: nhiều cửa hàng của chính bạn (Multi-Store), hay một sàn cho nhiều người bán (Multi-Vendor).
