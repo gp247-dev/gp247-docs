@@ -77,7 +77,10 @@ Cần quyền **Backup - restore**. Mọi lần phục hồi đều được ghi
    Nếu bản có **cột mà site không còn** (một bản cập nhật đã xoá hay đổi tên cột), màn liệt kê từng cột: dữ liệu của chúng sẽ **không** về.
    Tick **Tôi hiểu dữ liệu của các cột này sẽ mất** rồi bấm **Xem trước** lại; chưa tick thì không phục hồi được.
 5. Gõ đúng mã hiện trên màn vào ô **Xác nhận** để bắt đầu.
-6. Giữ tab mở tới khi màn báo kết quả. Với **Toàn bộ dữ liệu**, site chuyển sang chế độ bảo trì trong lúc chạy; riêng bạn vẫn dùng được trang quản trị.
+6. Giữ tab mở tới khi màn báo kết quả. Khung tiến trình cho biết đang ở bước nào —
+   **Kiểm bản sao lưu → Nạp vào bảng tạm → Hoán đổi bảng → Làm mới bộ nhớ đệm → Hoàn tất** — kèm số bảng đã nạp và thời gian đã chạy. Nút **Dừng** chỉ có tới hết bước nạp; từ bước hoán
+   đổi bảng thì không dừng được nữa. Với **Toàn bộ dữ liệu**, site chuyển sang chế độ bảo trì trong lúc chạy; riêng bạn vẫn dùng được
+   trang quản trị.
 
 Nếu thành công, màn báo kết quả và hiện nút **Hoàn tác lần phục hồi trước** kèm thời hạn.
 
@@ -160,7 +163,7 @@ Bạn có thể phục hồi từ một file `.gp247bak` đã tải về trướ
    rồi nhập recovery key của site đó. Với file từ site khác, đây **không** phải mật khẩu của site đang dùng; ô **Mật khẩu sao lưu** ở khối
    **Phục hồi** phía trên không dùng cho việc tải lên.
 4. Bấm **Tải lên và kiểm** (nút chỉ bấm được khi đã chọn file và nhập mật khẩu). File được gửi thành từng phần nhỏ (tối đa 2 GB mặc định)
-   và kiểm đầy đủ.
+   và kiểm đầy đủ; khung tiến trình hiện các bước **Giải nén file → Kiểm bản sao lưu → Đưa vào danh sách**.
 5. Kiểm đạt thì bản vào danh sách với loại **Đưa vào**. Tới đây **dữ liệu của site chưa thay đổi gì**: màn hiện thông báo này kèm nút
    **Phục hồi từ bản này**.
 6. Bấm **Phục hồi từ bản này** để chọn sẵn bản vừa đưa vào ở ô **Bản sao lưu**, rồi phục hồi như mọi bản khác. Trong ô đó, bản đưa vào

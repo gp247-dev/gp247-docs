@@ -77,8 +77,10 @@ You need the **Backup - restore** permission. Every restore is logged and e-mail
    If the backup has **columns the site no longer has** (an update removed or renamed them), the screen lists each one: their data will
    **not** come back. Tick **I understand that the data of these columns is lost** and click **Preview** again; without it the restore cannot start.
 5. Type the code shown on the screen into **Confirmation** to start.
-6. Keep the tab open until the screen shows the result. For **Whole database**, the site goes into maintenance mode while it runs; you
-   alone keep using the admin.
+6. Keep the tab open until the screen shows the result. The progress panel shows the step under way —
+   **Checking the backup → Loading into spare tables → Switching tables → Clearing caches → Finishing** — with the tables loaded so far and how long it has run. **Stop**
+   is offered until loading ends; from switching tables on, it can no longer be stopped. For **Whole database**, the site goes into
+   maintenance mode while it runs; you alone keep using the admin.
 
 If it worked, the screen shows the result and an **Undo the last restore** button with its deadline.
 
@@ -162,7 +164,7 @@ You can restore from a `.gp247bak` file downloaded earlier, or made on another s
    **Use the recovery key instead** and type that site's recovery key. For a file from another site, this is **not** the password of the site you are
    on; the **Backup password** field of the **Restore** block above is not used for uploads.
 4. Click **Upload and check** (the button works once a file is chosen and the password typed). The file is sent in small parts (up to 2 GB
-   by default) and fully checked.
+   by default) and fully checked; the progress panel shows the steps **Unpacking the file → Checking the backup → Adding to the list**.
 5. Once checked, the backup enters the list with kind **Imported**. At this point **nothing on the site has changed yet**: the screen says
    so and shows a **Restore from this backup** button.
 6. Click **Restore from this backup** to pick the backup you brought in in the **Backup** field, then restore it like any other backup. In

@@ -89,7 +89,11 @@ If it worked, the screen says "Backups are set up." and the schedule starts.
 
 > 💡 **Tip:** use a backup password **different** from your admin sign-in password. Someone who guesses the admin password still cannot open the backups.
 
-To change the password or create a new recovery key: **Backup settings → Backup password & recovery key**. Each change creates a new
+> ℹ️ **Info:** the **Backup settings** screen has four sections — **General**, **Schedule**, **External destination**,
+> **Backup password & recovery key**. Each folds to one line saying what is saved; an amber line is one to look at. Click **Edit** to open a section; once
+> saved, it folds again.
+
+To change the password or create a new recovery key: **Backup settings → Backup password & recovery key → Edit**. Each change creates a new
 encryption key and issues a **new recovery key** (shown only once). Backups made afterwards open only with the new password or the new
 recovery key. Backups that already exist open as follows:
 
@@ -115,8 +119,11 @@ The **Backup & restore** screen offers three ways to make a backup, differing in
 | **Full backup** | Every data group + uploads, extensions, `.env`, `composer.lock` | Longest | A backup that can rebuild the whole site |
 
 1. Choose the way, pick groups (if any), click **Start**.
-2. Keep the tab open: the backup is written in small parts in the background, then checked. Close the tab halfway and it carries on next time.
-3. When done, the backup appears in the list with the status **Verified**.
+2. Follow the progress panel at the top of the screen: a percentage bar, the steps (✓ done · ● under way · ○ to come), the tables written
+   so far and how long it has run. The backup is written in small parts in the background, then checked, so keep the tab open; close it
+   halfway and it carries on next time. After a few minutes without progress the bar turns amber and says what to do.
+3. When done, the result panel reads **Backup done** with the backup code, size and time taken; the backup appears in the list with the
+   status **Verified**.
 
 > ℹ️ **Info:** a very large backup (over 500 MB by default) started from the browser asks again — on a VPS,
 > `php artisan gp247:backup-run` is safer because it is not bound by a web request's time limit.
@@ -130,7 +137,11 @@ Each row of **Backups** shows the time, kind, groups, size, where it is stored a
 - **Restore** — open the restore screen with this backup ([Restore by situation](./restore-guide.md)).
 - **Delete** — type the backup id again and confirm it is you; a backup in use cannot be deleted.
 
-**How many are kept** (change it in **Backup settings**): by default **7** regular backups and **3** "before a change" backups. Older
+**Check again** and **Delete** open a dialog in the middle of the screen that names the backup (date, kind, size, last 6 characters of
+its code); its row is highlighted while the dialog is open. The result shows right above the list. **Cancel**, the Esc key or a click
+outside closes it without doing anything.
+
+**How many are kept** (change it in **Backup settings → General → Edit**): by default **7** regular backups and **3** "before a change" backups. Older
 ones are removed only **after** the new one passed its check. Always kept: the newest good backup, pinned backups and **the newest
 verified full backup** — a run of quick snapshots cannot push the last full backup out of the list.
 
@@ -138,11 +149,11 @@ verified full backup** — a run of quick snapshots cannot push the last full ba
 > yet, or when the newest one is older than 48 hours — even if there are newer quick snapshots. When you see this warning, make a
 > **Full backup**.
 
-Backups are stored in `storage/app/private/gp247-backup/` (outside the public web folder). To move them: **Backup settings →
-Storage folder**, give an absolute path outside the web folder.
+Backups are stored in `storage/app/private/gp247-backup/` (outside the public web folder). To move them: **Backup settings → General →
+Edit**, field **Storage folder (optional)**: give an absolute path outside the web folder.
 
 ## Scheduled backups
-The schedule is set in **Backup settings → Schedule**. Choose how it runs from where your site is hosted:
+The schedule is set in **Backup settings → Schedule → Edit**. Choose how it runs from where your site is hosted:
 
 | Site runs on | Choose | How it works |
 | --- | --- | --- |
@@ -155,7 +166,7 @@ the default, or the database only, lighter). Click **Save schedule**.
 
 **Install cron for "At a fixed hour"** (once, on the VPS or on the hosting's "Cron jobs" page):
 
-1. Open **Backup settings**, choose **At a fixed hour** — the screen shows the exact cron line for your server.
+1. Open **Backup settings**, click **Edit** on **Schedule**, choose **At a fixed hour** — the screen shows the exact cron line for your server.
 2. Add that line to the crontab. General form (replace the path with your site folder):
 
    ```
@@ -317,4 +328,4 @@ including the restore itself.
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-26 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-27 · ✍️ **Author:** GP247</sub>

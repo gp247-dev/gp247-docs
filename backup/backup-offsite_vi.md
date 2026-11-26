@@ -42,7 +42,7 @@ composer require league/flysystem-sftp-v3
 ## Cấu hình đích ngoài
 Chỉ **quản trị viên cấp cao (Administrator)** cấu hình được, và phải xác nhận lại danh tính trước khi lưu.
 
-1. Vào **Cấu hình hệ thống → Sao lưu & phục hồi → Cài đặt sao lưu**, khối **Đích ngoài**.
+1. Vào **Cấu hình hệ thống → Sao lưu & phục hồi → Cài đặt sao lưu**, ở mục **Đích ngoài** bấm **Sửa**.
 2. Chọn **Loại**: S3-compatible hoặc Máy chủ SFTP hoặc NAS.
 3. Điền thông tin:
    - **S3-compatible** — Địa chỉ endpoint (để trống với AWS S3), Vùng (region), Bucket, Thư mục trong bucket (tuỳ chọn), Access key ID,
@@ -51,7 +51,8 @@ Chỉ **quản trị viên cấp cao (Administrator)** cấu hình được, và
 4. Bấm **Kiểm tra kết nối**. GP247 thử ghi, đọc, liệt kê và cho biết credential có quyền **xoá** hay không.
 5. Với SFTP: màn hiện **vân tay khoá máy chủ**. Đối chiếu với vân tay nhà cung cấp / người quản trị NAS đưa cho bạn, khớp thì chấp nhận —
    từ đó GP247 chỉ kết nối tới đúng máy chủ này.
-6. Lưu. Từ bản đã kiểm tiếp theo, bản tự được chép ra ngoài; cột **Nơi lưu** trong danh sách cho biết bản đã chép hay chưa.
+6. Lưu. Mục tự thu gọn, dòng tóm tắt hiện loại đích và kết quả lần kiểm kết nối gần nhất. Từ bản đã kiểm tiếp theo, bản tự được chép
+   ra ngoài; cột **Nơi lưu** trong danh sách cho biết bản đã chép hay chưa.
 
 Nếu thành công, kết quả kiểm tra có dòng "Dùng được, và credential không có quyền xoá…" — đó là trạng thái nên đạt.
 
@@ -126,7 +127,8 @@ Dùng khi bản trên máy chủ đã mất (ổ hỏng, chuyển máy chủ) ho
 1. Vào màn **Phục hồi**, khối **Từ đích ngoài**, bấm **Xem ở đích ngoài**. Danh sách hiện mọi bản của site ở đích — không cần mật khẩu sao lưu.
 2. Trong khối đó, nhập vào ô **Mật khẩu sao lưu của site đã tạo các bản này** (hoặc tick **Dùng recovery key thay mật khẩu** rồi nhập
    recovery key), sau đó bấm **Kéo về** ở bản muốn dùng và xác nhận lại danh tính.
-3. Bản được tải về từng phần trong nền và **kiểm đầy đủ trước khi vào danh sách**. Bản bị sửa ở đích sẽ bị từ chối.
+3. Bản được tải về từng phần trong nền và **kiểm đầy đủ trước khi vào danh sách** — khung tiến trình hiện các bước
+   **Tải về từ đích ngoài → Kiểm bản sao lưu → Đưa vào danh sách**. Bản bị sửa ở đích sẽ bị từ chối.
 4. Khi bản hiện trong danh sách, phục hồi như mọi bản khác ([Phục hồi theo tình huống](./restore-guide_vi.md)).
 
 Trên máy chủ có dòng lệnh:
@@ -181,4 +183,4 @@ php artisan gp247:backup-offsite fetch <mã-bản>
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-26 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-27 · ✍️ **Tác giả (Author):** GP247</sub>

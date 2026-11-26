@@ -89,7 +89,11 @@ Nếu thành công, màn hiện "Đã thiết lập sao lưu." và lịch tự �
 
 > 💡 **Mẹo:** dùng mật khẩu sao lưu **khác** mật khẩu đăng nhập admin. Kẻ đoán được mật khẩu admin vẫn không mở được bản sao lưu.
 
-Đổi mật khẩu hoặc tạo recovery key mới: **Cài đặt sao lưu → Mật khẩu sao lưu & recovery key**. Mỗi lần đổi, hệ thống tạo khoá mã hoá
+> ℹ️ **Thông tin:** màn **Cài đặt sao lưu** có bốn mục — **Chung**, **Lịch sao lưu**, **Đích ngoài**, **Mật khẩu sao lưu & recovery key**.
+> Mỗi mục thu thành một dòng cho biết cấu hình đang lưu; dòng màu cam là chỗ nên xem lại. Bấm **Sửa** để mở mục; lưu xong thì mục tự
+> thu gọn.
+
+Đổi mật khẩu hoặc tạo recovery key mới: **Cài đặt sao lưu → Mật khẩu sao lưu & recovery key → Sửa**. Mỗi lần đổi, hệ thống tạo khoá mã hoá
 mới và cấp **recovery key mới** (chỉ hiện một lần). Bản tạo sau đó chỉ mở được bằng mật khẩu mới hoặc recovery key mới. Các bản đã có từ
 trước thì mở như sau:
 
@@ -114,8 +118,11 @@ Màn **Sao lưu & phục hồi** có ba cách tạo bản, khác nhau ở phạm
 | **Sao lưu toàn bộ** | Mọi nhóm dữ liệu + file tải lên, extension, `.env`, `composer.lock` | Lâu nhất | Bản đủ để dựng lại cả site |
 
 1. Chọn cách tạo, chọn nhóm (nếu có), bấm **Bắt đầu**.
-2. Giữ tab mở: bản được ghi từng phần nhỏ trong nền, rồi tự kiểm. Đóng tab giữa chừng thì lần mở sau chạy tiếp.
-3. Khi xong, bản hiện trong danh sách với trạng thái **Đã kiểm, tốt**.
+2. Theo dõi khung tiến trình ở đầu màn: thanh phần trăm, các bước (✓ xong · ● đang làm · ○ chưa tới), số bảng đã ghi và thời gian đã
+   chạy. Bản được ghi từng phần nhỏ trong nền rồi tự kiểm, nên hãy giữ tab mở; đóng tab giữa chừng thì lần mở sau chạy tiếp. Vài phút
+   không tiến thêm thì thanh chuyển màu cam, kèm cách xử lý.
+3. Khi xong, khung kết quả ghi **Đã sao lưu xong**, mã bản, dung lượng và thời gian chạy; bản hiện trong danh sách với trạng thái
+   **Đã kiểm, tốt**.
 
 > ℹ️ **Thông tin:** bản rất lớn (mặc định trên 500 MB) chạy từ trình duyệt sẽ hỏi lại — trên VPS dùng
 > `php artisan gp247:backup-run` an toàn hơn vì không bị giới hạn thời gian của request web.
@@ -129,7 +136,10 @@ Mỗi dòng trong **Các bản sao lưu** cho biết thời điểm, loại, nh�
 - **Phục hồi** — mở màn phục hồi với bản này ([Phục hồi theo tình huống](./restore-guide_vi.md)).
 - **Xoá** — gõ lại mã bản và xác nhận lại danh tính; không xoá được bản đang được dùng.
 
-**Giữ bao nhiêu bản** (đổi ở **Cài đặt sao lưu**): mặc định giữ **7** bản thường và **3** bản "trước thay đổi". Bản cũ hơn chỉ bị
+**Kiểm lại** và **Xoá** mở một hộp thoại giữa màn, ghi rõ bản đang thao tác (ngày, loại, dung lượng, 6 ký tự cuối của mã); dòng của bản
+đó được tô màu trong lúc hộp thoại mở. Kết quả hiện ngay trên danh sách. Bấm **Huỷ**, phím Esc hoặc bấm ra ngoài để đóng mà không làm gì.
+
+**Giữ bao nhiêu bản** (đổi ở **Cài đặt sao lưu → Chung → Sửa**): mặc định giữ **7** bản thường và **3** bản "trước thay đổi". Bản cũ hơn chỉ bị
 xoá **sau khi** bản mới đã kiểm đạt. Luôn được giữ: bản tốt mới nhất, bản đã ghim và **bản toàn bộ đã kiểm mới nhất** — nhiều bản chụp
 nhanh liên tiếp không đẩy được bản toàn bộ cuối cùng ra khỏi danh sách.
 
@@ -137,11 +147,11 @@ nhanh liên tiếp không đẩy được bản toàn bộ cuối cùng ra khỏ
 > hoặc bản toàn bộ gần nhất đã cũ hơn 48 giờ — kể cả khi vẫn có bản chụp nhanh mới hơn. Gặp cảnh báo này, hãy tạo một bản
 > **Sao lưu toàn bộ**.
 
-Bản sao lưu nằm ở `storage/app/private/gp247-backup/` (ngoài thư mục web công khai). Muốn đổi chỗ: **Cài đặt sao lưu → Thư mục lưu**,
+Bản sao lưu nằm ở `storage/app/private/gp247-backup/` (ngoài thư mục web công khai). Muốn đổi chỗ: **Cài đặt sao lưu → Chung → Sửa**, ô **Thư mục lưu (tuỳ chọn)**:
 nhập đường dẫn tuyệt đối ngoài thư mục web.
 
 ## Sao lưu tự động theo lịch
-Lịch đặt ở **Cài đặt sao lưu → Lịch sao lưu**. Chọn cách chạy theo nơi site của bạn đang chạy:
+Lịch đặt ở **Cài đặt sao lưu → Lịch sao lưu → Sửa**. Chọn cách chạy theo nơi site của bạn đang chạy:
 
 | Site chạy ở | Chọn | Hoạt động thế nào |
 | --- | --- | --- |
@@ -154,7 +164,7 @@ hoặc chỉ cơ sở dữ liệu cho nhẹ). Bấm **Lưu lịch**.
 
 **Cài cron cho chế độ "Vào giờ cố định"** (làm một lần, trên VPS hoặc trang "Cron jobs" của hosting):
 
-1. Mở màn **Cài đặt sao lưu**, chọn **Vào giờ cố định** — màn hiện đúng dòng cron cho máy chủ của bạn.
+1. Mở màn **Cài đặt sao lưu**, ở mục **Lịch sao lưu** bấm **Sửa**, chọn **Vào giờ cố định** — màn hiện đúng dòng cron cho máy chủ của bạn.
 2. Thêm dòng đó vào crontab. Dạng chung (thay đường dẫn tới thư mục site):
 
    ```
@@ -314,4 +324,4 @@ ngay sau khi xử lý nguyên nhân (thường là đĩa đầy).
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-26 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-27 · ✍️ **Tác giả (Author):** GP247</sub>
