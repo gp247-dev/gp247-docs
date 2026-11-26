@@ -90,10 +90,10 @@ If it worked, the screen says "Backups are set up." and the schedule starts.
 > 💡 **Tip:** use a backup password **different** from your admin sign-in password. Someone who guesses the admin password still cannot open the backups.
 
 > ℹ️ **Info:** the **Backup settings** screen has four sections — **General**, **Schedule**, **External destination**,
-> **Backup password & recovery key**. Each folds to one line saying what is saved; an amber line is one to look at. Click **Edit** to open a section; once
-> saved, it folds again.
+> **Backup password & recovery key**. They are listed in the menu on the left, each with a short line saying what is saved; an amber line
+> is one to look at. Click a section to open its form on the right.
 
-To change the password or create a new recovery key: **Backup settings → Backup password & recovery key → Edit**. Each change creates a new
+To change the password or create a new recovery key: **Backup settings → Backup password & recovery key**. Each change creates a new
 encryption key and issues a **new recovery key** (shown only once). Backups made afterwards open only with the new password or the new
 recovery key. Backups that already exist open as follows:
 
@@ -141,7 +141,7 @@ Each row of **Backups** shows the time, kind, groups, size, where it is stored a
 its code); its row is highlighted while the dialog is open. The result shows right above the list. **Cancel**, the Esc key or a click
 outside closes it without doing anything.
 
-**How many are kept** (change it in **Backup settings → General → Edit**): by default **7** regular backups and **3** "before a change" backups. Older
+**How many are kept** (change it in **Backup settings → General**): by default **7** regular backups and **3** "before a change" backups. Older
 ones are removed only **after** the new one passed its check. Always kept: the newest good backup, pinned backups and **the newest
 verified full backup** — a run of quick snapshots cannot push the last full backup out of the list.
 
@@ -149,11 +149,11 @@ verified full backup** — a run of quick snapshots cannot push the last full ba
 > yet, or when the newest one is older than 48 hours — even if there are newer quick snapshots. When you see this warning, make a
 > **Full backup**.
 
-Backups are stored in `storage/app/private/gp247-backup/` (outside the public web folder). To move them: **Backup settings → General →
-Edit**, field **Storage folder (optional)**: give an absolute path outside the web folder.
+Backups are stored in `storage/app/private/gp247-backup/` (outside the public web folder). To move them: **Backup settings → General**,
+field **Storage folder (optional)**: give an absolute path outside the web folder.
 
 ## Scheduled backups
-The schedule is set in **Backup settings → Schedule → Edit**. Choose how it runs from where your site is hosted:
+The schedule is set in **Backup settings → Schedule**. Choose how it runs from where your site is hosted:
 
 | Site runs on | Choose | How it works |
 | --- | --- | --- |
@@ -166,7 +166,7 @@ the default, or the database only, lighter). Click **Save schedule**.
 
 **Install cron for "At a fixed hour"** (once, on the VPS or on the hosting's "Cron jobs" page):
 
-1. Open **Backup settings**, click **Edit** on **Schedule**, choose **At a fixed hour** — the screen shows the exact cron line for your server.
+1. Open **Backup settings**, choose the **Schedule** section, then **At a fixed hour** — the screen shows the exact cron line for your server.
 2. Add that line to the crontab. General form (replace the path with your site folder):
 
    ```

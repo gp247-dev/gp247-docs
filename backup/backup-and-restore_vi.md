@@ -90,10 +90,10 @@ Nếu thành công, màn hiện "Đã thiết lập sao lưu." và lịch tự �
 > 💡 **Mẹo:** dùng mật khẩu sao lưu **khác** mật khẩu đăng nhập admin. Kẻ đoán được mật khẩu admin vẫn không mở được bản sao lưu.
 
 > ℹ️ **Thông tin:** màn **Cài đặt sao lưu** có bốn mục — **Chung**, **Lịch sao lưu**, **Đích ngoài**, **Mật khẩu sao lưu & recovery key**.
-> Mỗi mục thu thành một dòng cho biết cấu hình đang lưu; dòng màu cam là chỗ nên xem lại. Bấm **Sửa** để mở mục; lưu xong thì mục tự
-> thu gọn.
+> Các mục nằm ở menu bên trái, mỗi mục kèm một dòng ngắn cho biết cấu hình đang lưu; dòng màu cam là chỗ nên xem lại. Bấm tên mục
+> để mở form của nó ở khung bên phải.
 
-Đổi mật khẩu hoặc tạo recovery key mới: **Cài đặt sao lưu → Mật khẩu sao lưu & recovery key → Sửa**. Mỗi lần đổi, hệ thống tạo khoá mã hoá
+Đổi mật khẩu hoặc tạo recovery key mới: **Cài đặt sao lưu → Mật khẩu sao lưu & recovery key**. Mỗi lần đổi, hệ thống tạo khoá mã hoá
 mới và cấp **recovery key mới** (chỉ hiện một lần). Bản tạo sau đó chỉ mở được bằng mật khẩu mới hoặc recovery key mới. Các bản đã có từ
 trước thì mở như sau:
 
@@ -139,7 +139,7 @@ Mỗi dòng trong **Các bản sao lưu** cho biết thời điểm, loại, nh�
 **Kiểm lại** và **Xoá** mở một hộp thoại giữa màn, ghi rõ bản đang thao tác (ngày, loại, dung lượng, 6 ký tự cuối của mã); dòng của bản
 đó được tô màu trong lúc hộp thoại mở. Kết quả hiện ngay trên danh sách. Bấm **Huỷ**, phím Esc hoặc bấm ra ngoài để đóng mà không làm gì.
 
-**Giữ bao nhiêu bản** (đổi ở **Cài đặt sao lưu → Chung → Sửa**): mặc định giữ **7** bản thường và **3** bản "trước thay đổi". Bản cũ hơn chỉ bị
+**Giữ bao nhiêu bản** (đổi ở **Cài đặt sao lưu → Chung**): mặc định giữ **7** bản thường và **3** bản "trước thay đổi". Bản cũ hơn chỉ bị
 xoá **sau khi** bản mới đã kiểm đạt. Luôn được giữ: bản tốt mới nhất, bản đã ghim và **bản toàn bộ đã kiểm mới nhất** — nhiều bản chụp
 nhanh liên tiếp không đẩy được bản toàn bộ cuối cùng ra khỏi danh sách.
 
@@ -147,11 +147,11 @@ nhanh liên tiếp không đẩy được bản toàn bộ cuối cùng ra khỏ
 > hoặc bản toàn bộ gần nhất đã cũ hơn 48 giờ — kể cả khi vẫn có bản chụp nhanh mới hơn. Gặp cảnh báo này, hãy tạo một bản
 > **Sao lưu toàn bộ**.
 
-Bản sao lưu nằm ở `storage/app/private/gp247-backup/` (ngoài thư mục web công khai). Muốn đổi chỗ: **Cài đặt sao lưu → Chung → Sửa**, ô **Thư mục lưu (tuỳ chọn)**:
+Bản sao lưu nằm ở `storage/app/private/gp247-backup/` (ngoài thư mục web công khai). Muốn đổi chỗ: **Cài đặt sao lưu → Chung**, ô **Thư mục lưu (tuỳ chọn)**:
 nhập đường dẫn tuyệt đối ngoài thư mục web.
 
 ## Sao lưu tự động theo lịch
-Lịch đặt ở **Cài đặt sao lưu → Lịch sao lưu → Sửa**. Chọn cách chạy theo nơi site của bạn đang chạy:
+Lịch đặt ở **Cài đặt sao lưu → Lịch sao lưu**. Chọn cách chạy theo nơi site của bạn đang chạy:
 
 | Site chạy ở | Chọn | Hoạt động thế nào |
 | --- | --- | --- |
@@ -164,7 +164,7 @@ hoặc chỉ cơ sở dữ liệu cho nhẹ). Bấm **Lưu lịch**.
 
 **Cài cron cho chế độ "Vào giờ cố định"** (làm một lần, trên VPS hoặc trang "Cron jobs" của hosting):
 
-1. Mở màn **Cài đặt sao lưu**, ở mục **Lịch sao lưu** bấm **Sửa**, chọn **Vào giờ cố định** — màn hiện đúng dòng cron cho máy chủ của bạn.
+1. Mở màn **Cài đặt sao lưu**, chọn mục **Lịch sao lưu**, rồi chọn **Vào giờ cố định** — màn hiện đúng dòng cron cho máy chủ của bạn.
 2. Thêm dòng đó vào crontab. Dạng chung (thay đường dẫn tới thư mục site):
 
    ```

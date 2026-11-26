@@ -42,7 +42,7 @@ composer require league/flysystem-sftp-v3
 ## Set up the external destination
 Only an **Administrator** can set it up, and must confirm their identity before saving.
 
-1. Go to **System config → Backup & restore → Backup settings**, click **Edit** on **External destination**.
+1. Go to **System config → Backup & restore → Backup settings**, choose the **External destination** section.
 2. Choose the **Type**: S3-compatible or SFTP server or NAS.
 3. Fill in the details:
    - **S3-compatible** — Endpoint URL (leave empty for AWS S3), Region, Bucket, Folder in the bucket (optional), Access key ID,
@@ -51,7 +51,7 @@ Only an **Administrator** can set it up, and must confirm their identity before 
 4. Click **Test the connection**. GP247 tries to write, read and list, and tells you whether the credential may **delete**.
 5. For SFTP: the screen shows the **server key fingerprint**. Compare it with the fingerprint your provider / NAS administrator gave you;
    accept it if it matches — from then on GP247 connects only to that exact server.
-6. Save. The section folds; its line shows the destination type and the result of the last connection check. From the next verified
+6. Save. The section's line in the menu on the left shows the destination type, in amber when the last connection check failed. From the next verified
    backup, backups are copied off-site automatically; the **Stored** column of the list tells you whether a backup has been copied.
 
 If it worked, the test result includes "Works, and the credential cannot delete…" — the state to aim for.
