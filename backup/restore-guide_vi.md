@@ -161,7 +161,11 @@ Bạn có thể phục hồi từ một file `.gp247bak` đã tải về trướ
    **Phục hồi** phía trên không dùng cho việc tải lên.
 4. Bấm **Tải lên và kiểm** (nút chỉ bấm được khi đã chọn file và nhập mật khẩu). File được gửi thành từng phần nhỏ (tối đa 2 GB mặc định)
    và kiểm đầy đủ.
-5. Kiểm đạt thì bản hiện trong danh sách với loại **Đưa vào**; phục hồi như mọi bản khác.
+5. Kiểm đạt thì bản vào danh sách với loại **Đưa vào**. Tới đây **dữ liệu của site chưa thay đổi gì**: màn hiện thông báo này kèm nút
+   **Phục hồi từ bản này**.
+6. Bấm **Phục hồi từ bản này** để chọn sẵn bản vừa đưa vào ở ô **Bản sao lưu**, rồi phục hồi như mọi bản khác. Trong ô đó, bản đưa vào
+   ghi **Đưa vào · chưa xác minh nguồn gốc** và 6 ký tự cuối của mã bản. Đừng chọn nhầm bản **Theo lịch** của chính site: bản đó có thể
+   được tạo ngay sau khi bạn đưa file vào và đứng đầu danh sách.
 
 Bản tạo ở site khác được ghi là **chưa xác minh nguồn gốc** (không ký bằng khoá của site này): dữ liệu nguyên vẹn nhưng GP247 không chứng
 minh được ai tạo ra nó. Khi phục hồi, bạn phải tick **Tôi biết rõ nguồn gốc bản này — vẫn phục hồi**; mã và `.env` trong bản như vậy
@@ -269,4 +273,4 @@ hãy chạy `php artisan gp247:update`.
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-26 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-27 · ✍️ **Tác giả (Author):** GP247</sub>

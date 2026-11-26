@@ -163,7 +163,11 @@ You can restore from a `.gp247bak` file downloaded earlier, or made on another s
    on; the **Backup password** field of the **Restore** block above is not used for uploads.
 4. Click **Upload and check** (the button works once a file is chosen and the password typed). The file is sent in small parts (up to 2 GB
    by default) and fully checked.
-5. Once checked, the backup appears in the list with kind **Imported**; restore it like any other backup.
+5. Once checked, the backup enters the list with kind **Imported**. At this point **nothing on the site has changed yet**: the screen says
+   so and shows a **Restore from this backup** button.
+6. Click **Restore from this backup** to pick the backup you brought in in the **Backup** field, then restore it like any other backup. In
+   that field it reads **Imported · origin not verified** with the last 6 characters of its code. Do not pick the site's own **Scheduled**
+   backup by mistake: it may be made right after you bring the file in and then stands first in the list.
 
 A backup made on another site is marked **origin not verified** (it is not signed with this site's key): the data is intact, but GP247
 cannot prove who made it. When restoring, you must tick **I know where this backup comes from — restore it anyway**; code and `.env` from
@@ -276,4 +280,4 @@ time someone opens the site: the site leaves maintenance mode, the restored data
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-26 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-27 · ✍️ **Author:** GP247</sub>
