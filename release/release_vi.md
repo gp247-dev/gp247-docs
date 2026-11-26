@@ -20,8 +20,8 @@ Chạy `php artisan gp247:info` (hoặc `composer show "gp247/*"`) rồi so từ
 - **Đã đạt** → site đã có đủ các cải tiến quan trọng, kể cả khi bạn chưa cài lại S-Cart.
 - **Thư viện bên thứ ba** → chạy thêm `composer audit` để kiểm, xem [Thư viện bên thứ ba](#thư-viện-bên-thứ-ba).
 
-> ⚠️ **Lưu ý:** cập nhật **cả bộ package cùng lúc**: `gp247/shop` 3.16.0 cần `gp247/core` ≥ 3.19, `gp247/shop` 3.12.0 cần `gp247/front` ≥ 3.11, `gp247/front` 3.10.0 trở lên cần `gp247/core` ≥ 3.14.2, `gp247/shop` 3.11.3 trở lên cần `gp247/core` ≥ 3.14.1, `gp247/front` 3.9.1 và `gp247/shop` 3.11.1 cần `gp247/core` ≥ 3.14, `gp247/front` 3.8.1 và `gp247/shop` 3.10.1 cần `gp247/core` ≥ 3.12.1, `gp247/front` 3.7.0 và `gp247/shop` 3.9.0 cần `gp247/core` ≥ 3.11, `gp247/shop` 3.8.1 cần `gp247/core` ≥ 3.10.3, `gp247/mcp` 2.0.1 cần `gp247/core` ≥ 3.9, `gp247/shop` 3.6.0 cần `gp247/core` ≥ 3.7,
-> `gp247/front` 3.2.3 cần `gp247/core` ≥ 3.2.3. Dòng nào còn được hỗ trợ: xem [Vòng đời hỗ trợ](#vòng-đời-hỗ-trợ).
+> ⚠️ **Lưu ý:** luôn cập nhật **cả bộ package cùng lúc** bằng lệnh ở [Cập nhật thế nào](#cập-nhật-thế-nào) — Composer tự chọn
+> các bản khớp nhau (vd `gp247/shop` 3.16.0 cần `gp247/core` ≥ 3.19). Dòng nào còn được hỗ trợ: xem [Vòng đời hỗ trợ](#vòng-đời-hỗ-trợ).
 
 ## Vòng đời hỗ trợ
 | Dòng | Nền tảng | Trạng thái | Vá bảo mật đến |

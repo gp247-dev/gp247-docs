@@ -20,8 +20,9 @@ Run `php artisan gp247:info` (or `composer show "gp247/*"`) and compare each lin
 - **At or above it** → your site has all the important improvements, even if you have not reinstalled S-Cart.
 - **Third-party libraries** → also run `composer audit`; see [Third-party libraries](#third-party-libraries).
 
-> ⚠️ **Note:** update **all the packages together**: `gp247/shop` 3.16.0 needs `gp247/core` ≥ 3.19, `gp247/shop` 3.12.0 needs `gp247/front` ≥ 3.11, `gp247/front` 3.10.0 and later need `gp247/core` ≥ 3.14.2, `gp247/shop` 3.11.3 and later need `gp247/core` ≥ 3.14.1, `gp247/front` 3.9.1 and `gp247/shop` 3.11.1 need `gp247/core` ≥ 3.14, `gp247/front` 3.8.1 and `gp247/shop` 3.10.1 need `gp247/core` ≥ 3.12.1, `gp247/front` 3.7.0 and `gp247/shop` 3.9.0 need `gp247/core` ≥ 3.11, `gp247/shop` 3.8.1 needs `gp247/core` ≥ 3.10.3, `gp247/mcp` 2.0.1 needs `gp247/core` ≥ 3.9, `gp247/shop` 3.6.0 needs `gp247/core` ≥ 3.7,
-> `gp247/front` 3.2.3 needs `gp247/core` ≥ 3.2.3. Which lines are still supported: see [Support lifecycle](#support-lifecycle).
+> ⚠️ **Note:** always update **all the packages together** with the command in [How to update](#how-to-update) — Composer picks
+> versions that fit each other (e.g. `gp247/shop` 3.16.0 needs `gp247/core` ≥ 3.19). Which lines are still supported: see
+> [Support lifecycle](#support-lifecycle).
 
 ## Support lifecycle
 | Line | Platform | Status | Security fixes until |
