@@ -89,8 +89,21 @@ If it worked, the screen says "Backups are set up." and the schedule starts.
 
 > 💡 **Tip:** use a backup password **different** from your admin sign-in password. Someone who guesses the admin password still cannot open the backups.
 
-To change the password or create a new recovery key: **Backup settings → Backup password & recovery key**. Existing backups open with
-the new password; a new recovery key replaces the old one.
+To change the password or create a new recovery key: **Backup settings → Backup password & recovery key**. Each change creates a new
+encryption key and issues a **new recovery key** (shown only once). Backups made afterwards open only with the new password or the new
+recovery key. Backups that already exist open as follows:
+
+| Where the older backup is restored | Opens with |
+| --- | --- |
+| On this same site | The new password, or the password / recovery key in use when the backup was made |
+| The `.gp247bak` file brought into another site | **Only** the password / recovery key in use when the backup was made — the new password does not open it |
+
+> ⚠️ **Note:** each backup file carries its own key, wrapped with the password and recovery key **of the moment it was made**. Changing
+> the password therefore does **not** take away the means to open existing files: whoever holds an old file and the old password can
+> still open it.
+> - You keep old files to bring into another site → store the old password, next to the old recovery key.
+> - You change it because the password may have leaked → make a new **Full** backup at once, then delete the old backups everywhere they
+>   are stored: the server, the [external destination](./backup-offsite.md), computers they were downloaded to.
 
 ## Make a backup
 The **Backup & restore** screen offers three ways to make a backup, differing in scope and run time:
@@ -304,4 +317,4 @@ including the restore itself.
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-26 · ✍️ **Author:** GP247</sub>

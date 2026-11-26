@@ -89,8 +89,20 @@ Nếu thành công, màn hiện "Đã thiết lập sao lưu." và lịch tự �
 
 > 💡 **Mẹo:** dùng mật khẩu sao lưu **khác** mật khẩu đăng nhập admin. Kẻ đoán được mật khẩu admin vẫn không mở được bản sao lưu.
 
-Đổi mật khẩu hoặc tạo recovery key mới: **Cài đặt sao lưu → Mật khẩu sao lưu & recovery key**. Các bản đã có vẫn mở được bằng
-mật khẩu mới; recovery key mới thay key cũ.
+Đổi mật khẩu hoặc tạo recovery key mới: **Cài đặt sao lưu → Mật khẩu sao lưu & recovery key**. Mỗi lần đổi, hệ thống tạo khoá mã hoá
+mới và cấp **recovery key mới** (chỉ hiện một lần). Bản tạo sau đó chỉ mở được bằng mật khẩu mới hoặc recovery key mới. Các bản đã có từ
+trước thì mở như sau:
+
+| Phục hồi bản cũ ở đâu | Mở bằng |
+| --- | --- |
+| Trên chính site này | Mật khẩu mới, hoặc mật khẩu / recovery key dùng lúc tạo bản |
+| Đưa file `.gp247bak` sang site khác | **Chỉ** mật khẩu / recovery key dùng lúc tạo bản — mật khẩu mới không mở được |
+
+> ⚠️ **Lưu ý:** mỗi file sao lưu tự mang khoá của nó, khoá này được bọc bằng mật khẩu và recovery key **lúc tạo file**. Vì vậy đổi mật
+> khẩu **không** thu hồi được quyền mở các file đã có: ai cầm file cũ và mật khẩu cũ vẫn mở được.
+> - Còn giữ file cũ để đưa sang site khác → cất lại mật khẩu cũ, cùng nơi với recovery key cũ.
+> - Đổi vì nghi lộ mật khẩu → tạo ngay một bản **Toàn bộ** mới, rồi xoá các bản cũ ở mọi nơi đang lưu: máy chủ,
+>   [đích ngoài](./backup-offsite_vi.md), máy đã tải về.
 
 ## Tạo một bản sao lưu
 Màn **Sao lưu & phục hồi** có ba cách tạo bản, khác nhau ở phạm vi và thời gian chạy:
@@ -302,4 +314,4 @@ ngay sau khi xử lý nguyên nhân (thường là đĩa đầy).
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-26 · ✍️ **Tác giả (Author):** GP247</sub>
