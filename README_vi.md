@@ -54,8 +54,8 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |
 | --- | --- | --- |
 | [Sao lưu & phục hồi](./backup/backup-and-restore_vi.md) | Thiết lập mật khẩu sao lưu và recovery key, ba cách tạo bản, lịch tự động theo hosting (không cần cron), bản chụp trước thay đổi, quyền và dòng lệnh | 2026-11-22 |
-| [Đích ngoài](./backup/backup-offsite_vi.md) | Chép bản sao lưu ra S3-compatible hoặc SFTP / NAS, credential chỉ-ghi + Object Lock, kéo bản về | 2026-11-07 |
-| [Phục hồi theo tình huống](./backup/restore-guide_vi.md) | Chọn mức phục hồi, các bước trên màn, hoàn tác 24 giờ, phục hồi file, sau sự cố bảo mật, dùng bản từ site khác | 2026-11-25 |
+| [Đích ngoài](./backup/backup-offsite_vi.md) | Chép bản sao lưu ra S3-compatible hoặc SFTP / NAS, credential chỉ-ghi + Object Lock, kéo bản về | 2026-11-26 |
+| [Phục hồi theo tình huống](./backup/restore-guide_vi.md) | Chọn mức phục hồi, các bước trên màn, hoàn tác 24 giờ, phục hồi file, sau sự cố bảo mật, dùng bản từ site khác | 2026-11-26 |
 
 ### Mở rộng (Plugin)
 | Tài liệu | Mô tả ngắn | Cập nhật lần cuối |

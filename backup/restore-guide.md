@@ -157,9 +157,13 @@ flowchart TB
 You can restore from a `.gp247bak` file downloaded earlier, or made on another server (moving servers, building a test site).
 
 1. Go to the **Restore** screen, block **Bring in a backup file**.
-2. Type the **backup password or recovery key of the site that made the file**.
-3. Choose the file and click **Upload and check**. The file is sent in small parts (up to 2 GB by default) and fully checked.
-4. Once checked, the backup appears in the list with kind **Imported**; restore it like any other backup.
+2. Choose the `.gp247bak` file.
+3. Right below it, type in the field **Backup password of the site that made the file**. To use the recovery key, tick
+   **Use the recovery key instead** and type that site's recovery key. For a file from another site, this is **not** the password of the site you are
+   on; the **Backup password** field of the **Restore** block above is not used for uploads.
+4. Click **Upload and check** (the button works once a file is chosen and the password typed). The file is sent in small parts (up to 2 GB
+   by default) and fully checked.
+5. Once checked, the backup appears in the list with kind **Imported**; restore it like any other backup.
 
 A backup made on another site is marked **origin not verified** (it is not signed with this site's key): the data is intact, but GP247
 cannot prove who made it. When restoring, you must tick **I know where this backup comes from — restore it anyway**; code and `.env` from
@@ -272,4 +276,4 @@ time someone opens the site: the site leaves maintenance mode, the restored data
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-25 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-26 · ✍️ **Author:** GP247</sub>

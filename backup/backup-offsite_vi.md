@@ -124,7 +124,8 @@ Cột **Nơi lưu** của mỗi bản cho biết trạng thái ở đích ngoài
 Dùng khi bản trên máy chủ đã mất (ổ hỏng, chuyển máy chủ) hoặc muốn phục hồi từ một bản chỉ còn ở ngoài.
 
 1. Vào màn **Phục hồi**, khối **Từ đích ngoài**, bấm **Xem ở đích ngoài**. Danh sách hiện mọi bản của site ở đích — không cần mật khẩu sao lưu.
-2. Ở bản muốn dùng, bấm **Kéo về**, nhập **mật khẩu sao lưu hoặc recovery key** của site đã tạo bản, rồi xác nhận lại danh tính.
+2. Trong khối đó, nhập vào ô **Mật khẩu sao lưu của site đã tạo các bản này** (hoặc tick **Dùng recovery key thay mật khẩu** rồi nhập
+   recovery key), sau đó bấm **Kéo về** ở bản muốn dùng và xác nhận lại danh tính.
 3. Bản được tải về từng phần trong nền và **kiểm đầy đủ trước khi vào danh sách**. Bản bị sửa ở đích sẽ bị từ chối.
 4. Khi bản hiện trong danh sách, phục hồi như mọi bản khác ([Phục hồi theo tình huống](./restore-guide_vi.md)).
 
@@ -180,4 +181,4 @@ php artisan gp247:backup-offsite fetch <mã-bản>
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-07 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-26 · ✍️ **Tác giả (Author):** GP247</sub>

@@ -126,7 +126,8 @@ Use this when the backup on the server is gone (dead disk, server move) or you w
 
 1. Go to the **Restore** screen, block **From the external destination**, click **Look at the destination**. The list shows every backup of
    the site at the destination — no backup password needed.
-2. On the backup you want, click **Bring back**, type the **backup password or recovery key** of the site that made it, then confirm it is you.
+2. In that block, type in the field **Backup password of the site that made these backups** (or tick **Use the recovery key instead** and
+   type the recovery key), then click **Bring back** on the backup you want and confirm it is you.
 3. The backup is downloaded in parts in the background and **fully checked before it enters the list**. A backup changed at the destination is refused.
 4. Once it appears in the list, restore it like any other backup ([Restore by situation](./restore-guide.md)).
 
@@ -182,4 +183,4 @@ php artisan gp247:backup-offsite fetch <backup-id>
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-07 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-26 · ✍️ **Author:** GP247</sub>

@@ -155,9 +155,13 @@ flowchart TB
 Bạn có thể phục hồi từ một file `.gp247bak` đã tải về trước đó, hoặc tạo trên máy chủ khác (chuyển máy chủ, dựng site thử).
 
 1. Vào màn **Phục hồi**, khối **Đưa bản sao lưu vào**.
-2. Nhập **mật khẩu sao lưu hoặc recovery key của site đã tạo file**.
-3. Chọn file, bấm **Tải lên và kiểm**. File được gửi thành từng phần nhỏ (tối đa 2 GB mặc định) và kiểm đầy đủ.
-4. Kiểm đạt thì bản hiện trong danh sách với loại **Đưa vào**; phục hồi như mọi bản khác.
+2. Chọn file `.gp247bak`.
+3. Ngay dưới đó, nhập vào ô **Mật khẩu sao lưu của site đã tạo file**. Muốn dùng recovery key thì tick **Dùng recovery key thay mật khẩu**
+   rồi nhập recovery key của site đó. Với file từ site khác, đây **không** phải mật khẩu của site đang dùng; ô **Mật khẩu sao lưu** ở khối
+   **Phục hồi** phía trên không dùng cho việc tải lên.
+4. Bấm **Tải lên và kiểm** (nút chỉ bấm được khi đã chọn file và nhập mật khẩu). File được gửi thành từng phần nhỏ (tối đa 2 GB mặc định)
+   và kiểm đầy đủ.
+5. Kiểm đạt thì bản hiện trong danh sách với loại **Đưa vào**; phục hồi như mọi bản khác.
 
 Bản tạo ở site khác được ghi là **chưa xác minh nguồn gốc** (không ký bằng khoá của site này): dữ liệu nguyên vẹn nhưng GP247 không chứng
 minh được ai tạo ra nó. Khi phục hồi, bạn phải tick **Tôi biết rõ nguồn gốc bản này — vẫn phục hồi**; mã và `.env` trong bản như vậy
@@ -265,4 +269,4 @@ hãy chạy `php artisan gp247:update`.
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-25 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-26 · ✍️ **Tác giả (Author):** GP247</sub>
