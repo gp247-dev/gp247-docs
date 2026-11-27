@@ -91,8 +91,15 @@ If it worked, the screen shows the result and an **Undo the last restore** butto
 Restored the wrong backup or the wrong group? Go back without needing another backup.
 
 1. Go to the **Restore** screen: the top block says "The last restore can be undone until …".
-2. Click **Undo the last restore** and confirm.
-3. The tables the restore replaced go back exactly to how they were just before the restore.
+2. Click **Undo the last restore**. Nothing changes yet: the screen shows a preview with
+   - the tables that go back, each with the rows **added / changed / deleted since the restore** — these changes are **dropped** by the undo;
+   - the **other tables** with new rows pointing at them (for example new orders pointing at products) — check them after the undo.
+3. Type the code shown on the screen into **Confirmation** and click **Undo now**.
+4. GP247 makes a **"before a change"** backup of those tables, then puts them back exactly as they were just before the restore.
+
+Undid by mistake? The "before a change" backup just made is in the backup list: restore that group again, or use **Add back deleted
+records** to get back single new records (an order, a customer). If that backup cannot be made (for example another backup is running),
+nothing is undone; the screen says why and offers **Undo without the backup**. Not ready yet? Click again in a few seconds.
 
 - **The undo deadline is 24 hours** after the restore.
 - **Only the latest restore can be undone.**

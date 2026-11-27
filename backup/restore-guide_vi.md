@@ -91,8 +91,15 @@ Nếu thành công, màn báo kết quả và hiện nút **Hoàn tác lần ph�
 Phục hồi nhầm bản hay nhầm nhóm thì quay lại được mà không cần một bản sao lưu khác.
 
 1. Vào màn **Phục hồi**: khung trên cùng ghi "Có thể hoàn tác lần phục hồi trước tới …".
-2. Bấm **Hoàn tác lần phục hồi trước**, xác nhận.
-3. Các bảng mà lần phục hồi đã thay quay về đúng như ngay trước khi phục hồi.
+2. Bấm **Hoàn tác lần phục hồi trước**. Chưa có gì thay đổi: màn hiện khung xem trước gồm
+   - các bảng sẽ quay lại, mỗi bảng có số bản ghi **thêm / sửa / xoá kể từ lúc phục hồi** — những thay đổi này sẽ **mất** khi hoàn tác;
+   - các **bảng khác** có bản ghi mới đang trỏ vào các bảng đó (ví dụ đơn hàng mới trỏ tới sản phẩm) — kiểm lại chúng sau khi hoàn tác.
+3. Gõ mã hiện trên màn vào ô **Xác nhận**, bấm **Hoàn tác ngay**.
+4. GP247 tạo một bản **"Trước thay đổi"** của các bảng đó, rồi đưa chúng về đúng như ngay trước khi phục hồi.
+
+Hoàn tác nhầm? Bản "Trước thay đổi" vừa tạo nằm trong danh sách bản sao lưu: phục hồi lại nhóm đó, hoặc dùng **Thêm lại bản ghi đã xoá**
+để lấy lại từng bản ghi mới (một đơn hàng, một khách hàng). Bản đó chưa tạo được (ví dụ đang có lần sao lưu khác chạy) thì không có gì bị
+hoàn tác; màn nói lý do và cho chọn **Hoàn tác không cần bản chụp**. Chưa xong ngay thì bấm lại sau vài giây.
 
 - **Hạn hoàn tác là 24 giờ** sau lần phục hồi.
 - **Chỉ hoàn tác lần phục hồi gần nhất.**
