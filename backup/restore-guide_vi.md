@@ -88,6 +88,8 @@ Nếu thành công, màn báo kết quả và hiện nút **Hoàn tác lần ph�
 > cần giữ, hoặc chọn mức nhỏ hơn.
 
 ## Hoàn tác một lần phục hồi
+> ℹ️ **Có từ:** gp247/core 3.20.2 — xem trước, mã xác nhận và bản "Trước thay đổi" khi hoàn tác.
+
 Phục hồi nhầm bản hay nhầm nhóm thì quay lại được mà không cần một bản sao lưu khác.
 
 1. Vào màn **Phục hồi**: khung trên cùng ghi "Có thể hoàn tác lần phục hồi trước tới …".
@@ -278,6 +280,7 @@ hãy chạy `php artisan gp247:update`.
 
 | Ngày | Phiên bản GP247 | Thay đổi |
 | --- | --- | --- |
+| 2026-11-27 | gp247/core 3.20.2 | Hoàn tác hiện trước các bảng sẽ quay lại và số bản ghi thêm / sửa / xoá sẽ mất, các bảng khác có bản ghi mới trỏ vào chúng; phải gõ mã xác nhận; GP247 tạo bản "Trước thay đổi" của các bảng đó trước khi hoàn tác |
 | 2026-11-22 | gp247/core 3.11.3 | Phục hồi cũng chờ khi một plugin đang nhập dữ liệu hàng loạt |
 | 2026-11-11 | | Xem trước liệt kê những gì không được đưa lại; cột mà site không còn phải xác nhận riêng (`--accept-column-loss`); bản chưa xác minh nguồn gốc chỉ Administrator phục hồi trên màn; nhật ký thao tác không bị thay; phục hồi bỏ dở sau khi đã thay bảng tự kết thúc sau khoảng 15 phút (khoảng 1 giờ nếu đang cập nhật dữ liệu), vào lần kế tiếp có người mở site; giới hạn nhập sai mật khẩu sao lưu |
 

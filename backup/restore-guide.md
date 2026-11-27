@@ -88,6 +88,8 @@ If it worked, the screen shows the result and an **Undo the last restore** butto
 > Write down orders you must keep first, or choose a smaller level.
 
 ## Undo a restore
+> ℹ️ **Available since:** gp247/core 3.20.2 — the preview, the code and the "before a change" backup when undoing.
+
 Restored the wrong backup or the wrong group? Go back without needing another backup.
 
 1. Go to the **Restore** screen: the top block says "The last restore can be undone until …".
@@ -284,6 +286,7 @@ time someone opens the site: the site leaves maintenance mode, the restored data
 
 | Date | GP247 version | Change |
 | --- | --- | --- |
+| 2026-11-27 | gp247/core 3.20.2 | Undo first shows the tables that go back with the rows added / changed / deleted that will be dropped, and the other tables with new rows pointing at them; a confirmation code is required; GP247 makes a "before a change" backup of those tables before undoing |
 | 2026-11-22 | gp247/core 3.11.3 | A restore also waits while a plugin is importing data in bulk |
 | 2026-11-11 | | The preview lists what is not brought back; columns the site no longer has need their own confirmation (`--accept-column-loss`); a backup of unverified origin restored on the screen only by an Administrator; the activity log is not replaced; a restore left unfinished after its tables were replaced ends by itself after about 15 minutes (about 1 hour while data is being updated), the next time someone opens the site; wrong backup passwords limited |
 
