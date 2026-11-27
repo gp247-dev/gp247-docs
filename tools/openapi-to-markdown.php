@@ -179,6 +179,31 @@ function success(array $operation): array
 }
 
 /**
+ * Media type of an operation whose success answer is a file (no JSON body, only binary content), else null.
+ *
+ * @param array $operation
+ * @return string|null e.g. "application/zip"
+ */
+function file_media(array $operation): ?string
+{
+    foreach ($operation['responses'] ?? [] as $status => $response) {
+        if ((int) $status >= 200 && (int) $status < 300) {
+            $content = $response['content'] ?? [];
+            if ($content === [] || isset($content['application/json'])) {
+                return null;
+            }
+            foreach ($content as $media => $entry) {
+                if (($entry['schema']['format'] ?? null) === 'binary') {
+                    return (string) $media;
+                }
+            }
+            return null;
+        }
+    }
+    return null;
+}
+
+/**
  * What the success body carries: [kind ("list"|"single"|"object"), data object name or null].
  *
  * @param array      $spec
@@ -306,7 +331,8 @@ function parameter_table(array $spec, array $operation): array
 function curl_example(array $spec, string $method, string $path, array $operation, string $prefix): array
 {
     $url = 'https://shop.example.com' . preg_replace('/\{[^}]+\}/', '123', $path);
-    $parts = ['curl' . ($method !== 'get' ? ' -X ' . strtoupper($method) : '') . ' "' . $url . '"', '  -H "Accept: application/json"'];
+    $file = file_media($operation);
+    $parts = ['curl' . ($method !== 'get' ? ' -X ' . strtoupper($method) : '') . ' "' . $url . '"', '  -H "Accept: ' . ($file ?? 'application/json') . '"'];
     $flat = array_merge([], ...array_map('array_keys', $operation['security'] ?? []));
     if (in_array('bearerAuth', $flat, true)) {
         $parts[] = '  -H "Authorization: Bearer <' . ($prefix === '/api/v2/core/' ? 'admin-token' : 'customer-token') . '>"';
@@ -315,6 +341,9 @@ function curl_example(array $spec, string $method, string $path, array $operatio
     if ($body !== null) {
         $parts[] = '  -H "Content-Type: application/json"';
         $parts[] = "  -d '" . json_encode(example($spec, $body), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . "'";
+    }
+    if ($file !== null) {
+        $parts[] = '  -o "download' . ($file === 'application/zip' ? '.zip' : '') . '"';
     }
     return array_merge(['```bash'], [implode(" \\\n", $parts)], ['```', '']);
 }
@@ -338,7 +367,8 @@ function operation_section(array $spec, string $method, string $path, array $ope
         $permission = $operation['x-gp247-permission'] ?? null;
         $facts[] = [t('Permission'), $permission === null ? t('None beyond a valid admin token.') : cell(t($permission))];
     }
-    if ($method === 'get') {
+    // WHY on the 304 response, not on GET: a file download has no ETag and never answers 304.
+    if ($method === 'get' && isset($operation['responses']['304'])) {
         $facts[] = [t('Caching'), t('`ETag` — send `If-None-Match` to get `304` when nothing changed.')];
     }
     $facts[] = [t('Since'), '`' . $operation['x-gp247-since'] . '`'];
@@ -361,6 +391,18 @@ function operation_section(array $spec, string $method, string $path, array $ope
     $lines = array_merge($lines, curl_example($spec, $method, $path, $operation, $prefix));
 
     [$status, $schema] = success($operation);
+    $file = file_media($operation);
+    if ($file !== null) {
+        $lines[] = '**' . t('Response') . '** `' . $status . '` — ' . t('A file, not JSON:') . ' `' . $file . '`';
+        $lines[] = '';
+        $codes = $operation['x-gp247-error-codes'] ?? [];
+        if ($codes) {
+            $links = array_map(fn ($c) => '[`' . $c . '`](./api-troubleshooting' . $suffix . '.md#' . heading_id($c) . ')', $codes);
+            $lines[] = '**' . t('Errors') . '**: ' . implode(' · ', $links);
+            $lines[] = '';
+        }
+        return $lines;
+    }
     [$kind, $object] = body_kind($spec, $schema);
     $link = $object === null ? '' : '[' . $object . '](#' . heading_id($object) . ')';
     $returns = match ($kind) {

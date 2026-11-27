@@ -7463,6 +7463,532 @@
                 ]
             }
         },
+        "\/api\/v2\/front\/member\/export": {
+            "post": {
+                "tags": [
+                    "Front \u00b7 Customer account"
+                ],
+                "summary": "Ask for a package of my data",
+                "responses": {
+                    "202": {
+                        "description": "Package being prepared",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#\/components\/schemas\/PrivacyExport",
+                                            "description": "The new package."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "A package made in the last 24 hours is returned instead (reused: true)",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#\/components\/schemas\/PrivacyExport",
+                                            "description": "The existing package."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing, invalid or expired token",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Missing or invalid fields (validation_failed), wrong password (wrong_password) or wrong two-step code (wrong_code)",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    },
+                    "429": {
+                        "description": "Too many wrong passwords or codes (throttled), or too many calls (too_many_attempts) \u2014 see Retry-After",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    },
+                    "503": {
+                        "description": "Data packages cannot be made on this server (export_unavailable)",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": [],
+                        "apiConnection": [],
+                        "apiKey": []
+                    },
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "$ref": "#\/components\/schemas\/PrivacyConfirm"
+                            }
+                        }
+                    }
+                },
+                "operationId": "frontMemberExportCreate",
+                "description": "Asks for a ZIP package of everything the shop keeps about the signed-in customer, confirmed with the account password (and the two-step code when the account uses one) \u2014 the same rules as the account area of the website. One package per 24 hours: asking again within that time returns the same package. Rows found by email are included only when the account email is verified. Follow the package with GET member\/export\/{id}, then download it.",
+                "x-gp247-since": "shop 3.16.0",
+                "x-gp247-error-codes": [
+                    "validation_failed",
+                    "wrong_password",
+                    "wrong_code",
+                    "throttled",
+                    "too_many_attempts",
+                    "export_unavailable"
+                ]
+            }
+        },
+        "\/api\/v2\/front\/member\/export\/{id}": {
+            "get": {
+                "tags": [
+                    "Front \u00b7 Customer account"
+                ],
+                "summary": "Follow my data package",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "headers": {
+                            "ETag": {
+                                "$ref": "#\/components\/headers\/ETag"
+                            }
+                        },
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#\/components\/schemas\/PrivacyExport",
+                                            "description": "The package."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing, invalid or expired token",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found (or not yours)",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    },
+                    "304": {
+                        "$ref": "#\/components\/responses\/NotModified"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": [],
+                        "apiConnection": [],
+                        "apiKey": []
+                    },
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Package id (export_id) returned when the package was asked for (26 characters).",
+                        "schema": {
+                            "type": "string",
+                            "minLength": 26,
+                            "maxLength": 26
+                        }
+                    },
+                    {
+                        "$ref": "#\/components\/parameters\/IfNoneMatch"
+                    }
+                ],
+                "operationId": "frontMemberExportShow",
+                "description": "Returns the state of one of the customer's own packages. While the package is building, each call builds one more part, so call it again until status is ready. Another customer's id answers 404.",
+                "x-gp247-since": "shop 3.16.0",
+                "x-gp247-error-codes": [
+                    "not_found"
+                ]
+            }
+        },
+        "\/api\/v2\/front\/member\/export\/{id}\/download": {
+            "get": {
+                "tags": [
+                    "Front \u00b7 Customer account"
+                ],
+                "summary": "Download my data package",
+                "responses": {
+                    "200": {
+                        "description": "The package as a ZIP file (Cache-Control: no-store)",
+                        "content": {
+                            "application\/zip": {
+                                "schema": {
+                                    "type": "string",
+                                    "format": "binary"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing, invalid or expired token",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found (or not yours)",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    },
+                    "410": {
+                        "description": "Already downloaded the allowed number of times, expired, or not ready yet (export_gone)",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": [],
+                        "apiConnection": [],
+                        "apiKey": []
+                    },
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Package id (export_id) returned when the package was asked for (26 characters).",
+                        "schema": {
+                            "type": "string",
+                            "minLength": 26,
+                            "maxLength": 26
+                        }
+                    }
+                ],
+                "operationId": "frontMemberExportDownload",
+                "description": "Downloads a ready package with the customer's own token \u2014 3 times at most, within 24 hours of it being ready. The file is a ZIP, not JSON, so the answer has no ETag. A download that breaks halfway can be tried again until the allowed downloads are used.",
+                "x-gp247-since": "shop 3.16.0",
+                "x-gp247-error-codes": [
+                    "not_found",
+                    "export_gone"
+                ]
+            }
+        },
+        "\/api\/v2\/front\/member\/delete": {
+            "post": {
+                "tags": [
+                    "Front \u00b7 Customer account"
+                ],
+                "summary": "Ask to erase my account",
+                "responses": {
+                    "202": {
+                        "description": "Erasure scheduled (state scheduled) or held until open orders are closed (state held)",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#\/components\/schemas\/PrivacyErasure",
+                                            "description": "The erasure request."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "The site waits 0 days: the erasure runs now (state erasing) and the token stops working",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#\/components\/schemas\/PrivacyErasure",
+                                            "description": "The erasure request."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing, invalid or expired token",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "An earlier erasure of this account failed; the shop has been told (erasure_failed)",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Missing or invalid fields (validation_failed), wrong password (wrong_password) or wrong two-step code (wrong_code)",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    },
+                    "429": {
+                        "description": "Too many wrong passwords or codes (throttled), or too many calls (too_many_attempts) \u2014 see Retry-After",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    },
+                    "503": {
+                        "description": "Erasure is not available on this server (erasure_unavailable), or the request could not be recorded \u2014 try again in a moment (busy)",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": [],
+                        "apiConnection": [],
+                        "apiKey": []
+                    },
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "$ref": "#\/components\/schemas\/PrivacyConfirm"
+                            }
+                        }
+                    }
+                },
+                "operationId": "frontMemberDeleteCreate",
+                "description": "Asks to erase the signed-in customer's personal data, confirmed with the account password (and the two-step code when the account uses one). The erasure waits the number of days set by the shop, so it can still be called off with DELETE member\/delete; it is held while the customer has orders that are not closed. Asking again while one is open returns that request.",
+                "x-gp247-since": "shop 3.16.0",
+                "x-gp247-error-codes": [
+                    "validation_failed",
+                    "wrong_password",
+                    "wrong_code",
+                    "throttled",
+                    "too_many_attempts",
+                    "erasure_failed",
+                    "erasure_unavailable",
+                    "busy"
+                ]
+            },
+            "get": {
+                "tags": [
+                    "Front \u00b7 Customer account"
+                ],
+                "summary": "See my pending erasure",
+                "responses": {
+                    "200": {
+                        "description": "Success (data is null when no erasure is waiting)",
+                        "headers": {
+                            "ETag": {
+                                "$ref": "#\/components\/headers\/ETag"
+                            }
+                        },
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#\/components\/schemas\/PrivacyErasurePending",
+                                            "description": "The erasure that has not run yet, or null."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing, invalid or expired token",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    },
+                    "304": {
+                        "$ref": "#\/components\/responses\/NotModified"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": [],
+                        "apiConnection": [],
+                        "apiKey": []
+                    },
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#\/components\/parameters\/IfNoneMatch"
+                    }
+                ],
+                "operationId": "frontMemberDeleteShow",
+                "description": "Returns the customer's erasure that has not run yet (waiting, or held by open orders), or null when there is none.",
+                "x-gp247-since": "shop 3.16.0",
+                "x-gp247-error-codes": []
+            },
+            "delete": {
+                "tags": [
+                    "Front \u00b7 Customer account"
+                ],
+                "summary": "Call off my erasure",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#\/components\/schemas\/PrivacyErasureCancelled",
+                                            "description": "Result of the call."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Missing, invalid or expired token",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No erasure is waiting",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": [],
+                        "apiConnection": [],
+                        "apiKey": []
+                    },
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "operationId": "frontMemberDeleteCancel",
+                "description": "Calls off the customer's erasure that has not run yet. Answers 404 when none is waiting.",
+                "x-gp247-since": "shop 3.16.0",
+                "x-gp247-error-codes": [
+                    "not_found"
+                ]
+            }
+        },
         "\/api\/v2\/front\/cart": {
             "get": {
                 "tags": [
@@ -9259,7 +9785,15 @@
                             "stock_managed_by_components",
                             "stock_would_be_negative",
                             "store_required",
-                            "token_missing"
+                            "token_missing",
+                            "export_unavailable",
+                            "erasure_unavailable",
+                            "busy",
+                            "erasure_failed",
+                            "wrong_password",
+                            "wrong_code",
+                            "throttled",
+                            "export_gone"
                         ],
                         "description": "Machine-readable error code; branch on this, not on msg."
                     },
@@ -12766,6 +13300,124 @@
                             "type": "hosted",
                             "status": "paid"
                         }
+                    }
+                }
+            },
+            "PrivacyConfirm": {
+                "type": "object",
+                "required": [
+                    "password"
+                ],
+                "properties": {
+                    "password": {
+                        "type": "string",
+                        "maxLength": 200,
+                        "description": "Current password of the account."
+                    },
+                    "code": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 64,
+                        "description": "Two-step code, when the account uses two-step sign-in."
+                    }
+                }
+            },
+            "PrivacyExport": {
+                "type": "object",
+                "properties": {
+                    "export_id": {
+                        "type": "string",
+                        "description": "Package id (26 characters), used to follow and download it."
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "building",
+                            "ready",
+                            "downloaded",
+                            "expired",
+                            "failed"
+                        ],
+                        "description": "building: being prepared; ready: can be downloaded; downloaded: all allowed downloads used; expired: older than 24 hours; failed: could not be made."
+                    },
+                    "expires_at": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "When the package can no longer be downloaded (site time zone), null while building."
+                    },
+                    "downloads_left": {
+                        "type": "integer",
+                        "description": "Downloads still allowed (3 at most)."
+                    },
+                    "reused": {
+                        "type": "boolean",
+                        "description": "Only on POST member\/export: true when a package made in the last 24 hours is returned instead of a new one."
+                    }
+                }
+            },
+            "PrivacyErasure": {
+                "type": "object",
+                "properties": {
+                    "state": {
+                        "type": "string",
+                        "enum": [
+                            "scheduled",
+                            "held",
+                            "erasing",
+                            "failed"
+                        ],
+                        "description": "scheduled: waits the days set by the shop; held: waits for open orders to be closed; erasing: runs now; failed: an earlier erasure failed."
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Status of the request in the shop's request list (for example waiting, on_hold, processing)."
+                    },
+                    "request_id": {
+                        "type": "string",
+                        "description": "Id of the erasure request."
+                    },
+                    "runs_at": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "When the erasure runs (site time zone), null when it is not scheduled at a set time."
+                    }
+                }
+            },
+            "PrivacyErasurePending": {
+                "type": [
+                    "object",
+                    "null"
+                ],
+                "properties": {
+                    "request_id": {
+                        "type": "string",
+                        "description": "Id of the erasure request."
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "waiting (the days set by the shop) or on_hold (open orders)."
+                    },
+                    "runs_at": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "When the erasure runs (site time zone), null while held."
+                    }
+                }
+            },
+            "PrivacyErasureCancelled": {
+                "type": "object",
+                "properties": {
+                    "cancelled": {
+                        "type": "boolean",
+                        "description": "Always true: the erasure was called off."
                     }
                 }
             }

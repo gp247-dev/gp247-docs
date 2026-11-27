@@ -193,6 +193,38 @@ nhập API lại. Có từ core 3.11.0.
 
 (`409`) Chỉ hủy được đơn chưa thanh toán, đặt qua app và chưa được xử lý. → Liên hệ cửa hàng để hủy.
 
+### `export_unavailable`
+
+(`503`) Máy chủ không tạo được gói dữ liệu: thiếu extension PHP `zip`, hoặc site chưa chạy `php artisan gp247:update`. → Chủ site bật `zip` hoặc chạy lệnh cập nhật.
+
+### `erasure_unavailable`
+
+(`503`) Máy chủ chưa hỗ trợ xoá tài khoản: site chưa chạy `php artisan gp247:update`. → Chủ site chạy lệnh cập nhật.
+
+### `busy`
+
+(`503`) Chưa ghi nhận được yêu cầu xoá lúc này — một yêu cầu khác của cùng tài khoản đang được xử lý. → Thử lại sau giây lát.
+
+### `erasure_failed`
+
+(`409`) Lần xoá trước của tài khoản này đã thất bại và cửa hàng đã được báo. → Không gửi lại; cửa hàng sẽ liên hệ khách.
+
+### `wrong_password`
+
+(`422`) Mật khẩu gửi lên để xác nhận gói dữ liệu hoặc yêu cầu xoá không đúng. → Hỏi lại khách mật khẩu tài khoản.
+
+### `wrong_code`
+
+(`422`) Thiếu hoặc sai mã xác minh hai bước (tài khoản dùng đăng nhập hai bước). → Gửi mã hiện tại trong ứng dụng xác thực của khách.
+
+### `throttled`
+
+(`429`) Nhập sai mật khẩu hoặc mã quá nhiều lần khi xác nhận gói dữ liệu hoặc yêu cầu xoá; việc xác nhận bị khoá một lúc. → Chờ theo header `Retry-After`.
+
+### `export_gone`
+
+(`410`) Gói không còn tải được: đã tải đủ 3 lần, quá 24 giờ, hoặc chưa sẵn sàng. → Xem `GET /api/v2/front/member/export/{id}`; yêu cầu gói mới bằng `POST /api/v2/front/member/export` (mỗi 24 giờ một gói).
+
 ### `idempotency_key_required`
 
 (`400`) Lệnh ghi này bắt buộc header `Idempotency-Key` (8–255 ký tự). → Gửi một khóa duy nhất cho mỗi thay đổi.
@@ -275,4 +307,4 @@ lại tạm thời và cách chuyển sang v2.
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-22 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-27 · ✍️ **Tác giả (Author):** GP247</sub>

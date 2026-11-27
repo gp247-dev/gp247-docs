@@ -193,6 +193,38 @@ password, then sign in to the API again. Since core 3.11.0.
 
 (`409`) Only an unpaid order, placed through the app and not yet processed, can be cancelled. → Contact the store to cancel.
 
+### `export_unavailable`
+
+(`503`) This server cannot make data packages: the PHP `zip` extension is missing, or the site has not run `php artisan gp247:update`. → The site owner enables `zip` or runs the update.
+
+### `erasure_unavailable`
+
+(`503`) Account erasure is not available on this server: the site has not run `php artisan gp247:update`. → The site owner runs the update.
+
+### `busy`
+
+(`503`) The erasure request could not be recorded right now — another request for the same account is being handled. → Try again in a moment.
+
+### `erasure_failed`
+
+(`409`) An earlier erasure of this account failed and the shop has been told. → Do not send again; the shop contacts the customer.
+
+### `wrong_password`
+
+(`422`) The password sent to confirm a data package or an erasure is wrong. → Ask the customer for the account password again.
+
+### `wrong_code`
+
+(`422`) The two-step code is missing or wrong (the account uses two-step sign-in). → Send the current code from the customer's authenticator app.
+
+### `throttled`
+
+(`429`) Too many wrong passwords or codes while confirming a data package or an erasure; confirming is locked for a while. → Wait as told by the `Retry-After` header.
+
+### `export_gone`
+
+(`410`) The package can no longer be downloaded: already downloaded 3 times, older than 24 hours, or not ready yet. → Check `GET /api/v2/front/member/export/{id}`; ask for a new package with `POST /api/v2/front/member/export` (one per 24 hours).
+
 ### `idempotency_key_required`
 
 (`400`) This write call requires the `Idempotency-Key` header (8–255 characters). → Send a unique key for each change.
@@ -277,4 +309,4 @@ it back on. If your app calls `api/core` or `api/front` (API v1): fresh installs
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-22 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-27 · ✍️ **Author:** GP247</sub>

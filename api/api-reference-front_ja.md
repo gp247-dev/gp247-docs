@@ -1588,6 +1588,213 @@ curl -X DELETE "https://shop.example.com/api/v2/front/member/address/123" \
 
 **エラー**: [`not_found`](./api-troubleshooting_ja.md#not_found) · [`validation_failed`](./api-troubleshooting_ja.md#validation_failed)
 
+### 自分のデータパッケージを依頼する — `POST /api/v2/front/member/export`
+
+ログイン中の顧客についてショップが保管しているすべてのデータを ZIP パッケージとして依頼します。アカウントのパスワード（アカウントが 2 段階認証を使う場合はそのコードも）で確認します — Web サイトのアカウント画面と同じルールです。パッケージは 24 時間に 1 つで、その間に再度依頼すると同じパッケージが返ります。メールアドレスで見つかるデータは、アカウントのメールアドレスが確認済みの場合だけ含まれます。GET member/export/{id} で進捗を確認し、ダウンロードしてください。
+
+| | |
+|---|---|
+| ログイン | 顧客トークン（Bearer）。 |
+| 導入バージョン | `shop 3.16.0` |
+
+**リクエスト本文**: [PrivacyConfirm](#privacyconfirm)
+
+**リクエスト例**
+
+```bash
+curl -X POST "https://shop.example.com/api/v2/front/member/export" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <customer-token>" \
+  -H "Content-Type: application/json" \
+  -d '{"password":"","code":""}'
+```
+
+**レスポンス** `202` — `data`: [PrivacyExport](#privacyexport)
+
+```json
+{
+    "data": {
+        "export_id": "",
+        "status": "",
+        "expires_at": "",
+        "downloads_left": 0,
+        "reused": false
+    }
+}
+```
+
+**エラー**: [`validation_failed`](./api-troubleshooting_ja.md#validation_failed) · [`wrong_password`](./api-troubleshooting_ja.md#wrong_password) · [`wrong_code`](./api-troubleshooting_ja.md#wrong_code) · [`throttled`](./api-troubleshooting_ja.md#throttled) · [`too_many_attempts`](./api-troubleshooting_ja.md#too_many_attempts) · [`export_unavailable`](./api-troubleshooting_ja.md#export_unavailable)
+
+### 自分のデータパッケージの進捗を確認する — `GET /api/v2/front/member/export/{id}`
+
+顧客自身のパッケージの状態を返します。パッケージの作成中は呼び出すたびに 1 部分ずつ作成されるため、status が ready になるまで呼び出してください。他の顧客の ID には 404 を返します。
+
+| | |
+|---|---|
+| ログイン | 顧客トークン（Bearer）。 |
+| キャッシュ | `ETag` — `If-None-Match` を送ると、変更がない場合に `304` を受け取れます。 |
+| 導入バージョン | `shop 3.16.0` |
+
+**パラメーター**
+
+| 名前 | 場所 | 型 | 意味 |
+|---|---|---|---|
+| `id` *(必須)* | パス | `string` | パッケージを依頼したときに返されたパッケージ ID（export_id、26 文字）。 |
+| `If-None-Match` | ヘッダー | `string` | 以前のレスポンスの ETag。変更がない場合は本文が空の 304 を返します。core 3.8.0 以降。 |
+
+**リクエスト例**
+
+```bash
+curl "https://shop.example.com/api/v2/front/member/export/123" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <customer-token>"
+```
+
+**レスポンス** `200` — `data`: [PrivacyExport](#privacyexport)
+
+```json
+{
+    "data": {
+        "export_id": "",
+        "status": "",
+        "expires_at": "",
+        "downloads_left": 0,
+        "reused": false
+    }
+}
+```
+
+**エラー**: [`not_found`](./api-troubleshooting_ja.md#not_found)
+
+### 自分のデータパッケージをダウンロードする — `GET /api/v2/front/member/export/{id}/download`
+
+準備ができたパッケージを顧客自身のトークンでダウンロードします — 準備ができてから 24 時間以内に最大 3 回までです。ファイルは JSON ではなく ZIP のため、応答に ETag はありません。途中で切れたダウンロードは、許可された回数を使い切るまでやり直せます。
+
+| | |
+|---|---|
+| ログイン | 顧客トークン（Bearer）。 |
+| 導入バージョン | `shop 3.16.0` |
+
+**パラメーター**
+
+| 名前 | 場所 | 型 | 意味 |
+|---|---|---|---|
+| `id` *(必須)* | パス | `string` | パッケージを依頼したときに返されたパッケージ ID（export_id、26 文字）。 |
+
+**リクエスト例**
+
+```bash
+curl "https://shop.example.com/api/v2/front/member/export/123/download" \
+  -H "Accept: application/zip" \
+  -H "Authorization: Bearer <customer-token>" \
+  -o "download.zip"
+```
+
+**レスポンス** `200` — JSON ではなくファイル： `application/zip`
+
+**エラー**: [`not_found`](./api-troubleshooting_ja.md#not_found) · [`export_gone`](./api-troubleshooting_ja.md#export_gone)
+
+### 待機中の自分の削除依頼を確認する — `GET /api/v2/front/member/delete`
+
+まだ実行されていない顧客の削除依頼（待機中、または未完了の注文による保留中）を返します。ない場合は null です。
+
+| | |
+|---|---|
+| ログイン | 顧客トークン（Bearer）。 |
+| キャッシュ | `ETag` — `If-None-Match` を送ると、変更がない場合に `304` を受け取れます。 |
+| 導入バージョン | `shop 3.16.0` |
+
+**パラメーター**
+
+| 名前 | 場所 | 型 | 意味 |
+|---|---|---|---|
+| `If-None-Match` | ヘッダー | `string` | 以前のレスポンスの ETag。変更がない場合は本文が空の 304 を返します。core 3.8.0 以降。 |
+
+**リクエスト例**
+
+```bash
+curl "https://shop.example.com/api/v2/front/member/delete" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <customer-token>"
+```
+
+**レスポンス** `200` — `data`: [PrivacyErasurePending](#privacyerasurepending)
+
+```json
+{
+    "data": {
+        "request_id": "",
+        "status": "",
+        "runs_at": ""
+    }
+}
+```
+
+### 自分のアカウントの削除を依頼する — `POST /api/v2/front/member/delete`
+
+ログイン中の顧客の個人データの削除を依頼します。アカウントのパスワード（アカウントが 2 段階認証を使う場合はそのコードも）で確認します。削除はショップが設定した日数だけ待つため、その間は DELETE member/delete でキャンセルできます。未完了の注文がある間は保留されます。依頼中に再度依頼すると、その依頼が返ります。
+
+| | |
+|---|---|
+| ログイン | 顧客トークン（Bearer）。 |
+| 導入バージョン | `shop 3.16.0` |
+
+**リクエスト本文**: [PrivacyConfirm](#privacyconfirm)
+
+**リクエスト例**
+
+```bash
+curl -X POST "https://shop.example.com/api/v2/front/member/delete" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <customer-token>" \
+  -H "Content-Type: application/json" \
+  -d '{"password":"","code":""}'
+```
+
+**レスポンス** `202` — `data`: [PrivacyErasure](#privacyerasure)
+
+```json
+{
+    "data": {
+        "state": "",
+        "status": "",
+        "request_id": "",
+        "runs_at": ""
+    }
+}
+```
+
+**エラー**: [`validation_failed`](./api-troubleshooting_ja.md#validation_failed) · [`wrong_password`](./api-troubleshooting_ja.md#wrong_password) · [`wrong_code`](./api-troubleshooting_ja.md#wrong_code) · [`throttled`](./api-troubleshooting_ja.md#throttled) · [`too_many_attempts`](./api-troubleshooting_ja.md#too_many_attempts) · [`erasure_failed`](./api-troubleshooting_ja.md#erasure_failed) · [`erasure_unavailable`](./api-troubleshooting_ja.md#erasure_unavailable) · [`busy`](./api-troubleshooting_ja.md#busy)
+
+### 自分の削除依頼をキャンセルする — `DELETE /api/v2/front/member/delete`
+
+まだ実行されていない顧客の削除依頼をキャンセルします。待機中の依頼がない場合は 404 を返します。
+
+| | |
+|---|---|
+| ログイン | 顧客トークン（Bearer）。 |
+| 導入バージョン | `shop 3.16.0` |
+
+**リクエスト例**
+
+```bash
+curl -X DELETE "https://shop.example.com/api/v2/front/member/delete" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <customer-token>"
+```
+
+**レスポンス** `200` — `data`: [PrivacyErasureCancelled](#privacyerasurecancelled)
+
+```json
+{
+    "data": {
+        "cancelled": false
+    }
+}
+```
+
+**エラー**: [`not_found`](./api-troubleshooting_ja.md#not_found)
+
 ## Front · カート
 
 ログイン中の顧客またはゲスト（カートトークン）のカート：明細とプロモーションコード。
@@ -2977,6 +3184,46 @@ curl -X POST "https://shop.example.com/api/v2/front/orders/123/cancel" \
 | 項目 | 型 | 意味 |
 |---|---|---|
 | `deleted` | `boolean` | 常に true。 |
+
+### PrivacyExport
+
+| 項目 | 型 | 意味 |
+|---|---|---|
+| `export_id` | `string` | パッケージ ID（26 文字）。進捗確認とダウンロードに使います。 |
+| `status` | `string` | building：準備中、ready：ダウンロード可能、downloaded：許可された回数をすべて使用済み、expired：24 時間を経過、failed：作成できなかった。 |
+| `expires_at` | `string \| null` | パッケージをダウンロードできなくなる日時（サイトのタイムゾーン）。作成中は null。 |
+| `downloads_left` | `integer` | 残りのダウンロード可能回数（最大 3 回）。 |
+| `reused` | `boolean` | POST member/export のみ：新しいパッケージの代わりに過去 24 時間以内に作成されたパッケージを返した場合に true。 |
+
+### PrivacyConfirm
+
+| 項目 | 型 | 意味 |
+|---|---|---|
+| `password` | `string` | アカウントの現在のパスワード。 *(必須)* |
+| `code` | `string \| null` | アカウントが 2 段階認証を使う場合の確認コード。 |
+
+### PrivacyErasurePending
+
+| 項目 | 型 | 意味 |
+|---|---|---|
+| `request_id` | `string` | 削除依頼の ID。 |
+| `status` | `string` | waiting（ショップが設定した日数を待機中）または on_hold（未完了の注文あり）。 |
+| `runs_at` | `string \| null` | 削除が実行される日時（サイトのタイムゾーン）。保留中は null。 |
+
+### PrivacyErasure
+
+| 項目 | 型 | 意味 |
+|---|---|---|
+| `state` | `string` | scheduled：ショップが設定した日数を待機中、held：未完了の注文が完了するのを待機中、erasing：実行中、failed：以前の削除が失敗した。 |
+| `status` | `string` | ショップの依頼一覧での依頼の状態（例：waiting、on_hold、processing）。 |
+| `request_id` | `string` | 削除依頼の ID。 |
+| `runs_at` | `string \| null` | 削除が実行される日時（サイトのタイムゾーン）。日時が決まっていない場合は null。 |
+
+### PrivacyErasureCancelled
+
+| 項目 | 型 | 意味 |
+|---|---|---|
+| `cancelled` | `boolean` | 常に true：削除はキャンセルされました。 |
 
 ### Cart
 

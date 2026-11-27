@@ -1588,6 +1588,213 @@ curl -X DELETE "https://shop.example.com/api/v2/front/member/address/123" \
 
 **Lỗi**: [`not_found`](./api-troubleshooting_vi.md#not_found) · [`validation_failed`](./api-troubleshooting_vi.md#validation_failed)
 
+### Yêu cầu gói dữ liệu của tôi — `POST /api/v2/front/member/export`
+
+Yêu cầu một gói ZIP gồm mọi dữ liệu cửa hàng lưu về khách đang đăng nhập, xác nhận bằng mật khẩu tài khoản (và mã xác minh hai bước khi tài khoản dùng nó) — cùng quy tắc với khu tài khoản trên website. Mỗi 24 giờ một gói: yêu cầu lại trong khoảng đó sẽ nhận lại đúng gói đó. Dữ liệu tìm theo email chỉ được đưa vào khi email của tài khoản đã xác minh. Theo dõi gói bằng GET member/export/{id}, rồi tải về.
+
+| | |
+|---|---|
+| Đăng nhập | Token của khách hàng (Bearer). |
+| Có từ | `shop 3.16.0` |
+
+**Nội dung yêu cầu**: [PrivacyConfirm](#privacyconfirm)
+
+**Ví dụ yêu cầu**
+
+```bash
+curl -X POST "https://shop.example.com/api/v2/front/member/export" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <customer-token>" \
+  -H "Content-Type: application/json" \
+  -d '{"password":"","code":""}'
+```
+
+**Phản hồi** `202` — `data`: [PrivacyExport](#privacyexport)
+
+```json
+{
+    "data": {
+        "export_id": "",
+        "status": "",
+        "expires_at": "",
+        "downloads_left": 0,
+        "reused": false
+    }
+}
+```
+
+**Lỗi**: [`validation_failed`](./api-troubleshooting_vi.md#validation_failed) · [`wrong_password`](./api-troubleshooting_vi.md#wrong_password) · [`wrong_code`](./api-troubleshooting_vi.md#wrong_code) · [`throttled`](./api-troubleshooting_vi.md#throttled) · [`too_many_attempts`](./api-troubleshooting_vi.md#too_many_attempts) · [`export_unavailable`](./api-troubleshooting_vi.md#export_unavailable)
+
+### Theo dõi gói dữ liệu của tôi — `GET /api/v2/front/member/export/{id}`
+
+Trả trạng thái một gói của chính khách. Khi gói đang được tạo, mỗi lần gọi tạo thêm một phần, nên gọi lại cho tới khi status là ready. Mã gói của khách khác trả 404.
+
+| | |
+|---|---|
+| Đăng nhập | Token của khách hàng (Bearer). |
+| Lưu tạm (cache) | `ETag` — gửi `If-None-Match` để nhận `304` khi không có gì thay đổi. |
+| Có từ | `shop 3.16.0` |
+
+**Tham số**
+
+| Tên | Vị trí | Kiểu | Ý nghĩa |
+|---|---|---|---|
+| `id` *(bắt buộc)* | path | `string` | Mã gói (export_id) nhận được khi yêu cầu gói (26 ký tự). |
+| `If-None-Match` | header | `string` | ETag của lần trả lời trước; trả 304 với nội dung rỗng khi không có gì thay đổi. Có từ core 3.8.0. |
+
+**Ví dụ yêu cầu**
+
+```bash
+curl "https://shop.example.com/api/v2/front/member/export/123" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <customer-token>"
+```
+
+**Phản hồi** `200` — `data`: [PrivacyExport](#privacyexport)
+
+```json
+{
+    "data": {
+        "export_id": "",
+        "status": "",
+        "expires_at": "",
+        "downloads_left": 0,
+        "reused": false
+    }
+}
+```
+
+**Lỗi**: [`not_found`](./api-troubleshooting_vi.md#not_found)
+
+### Tải gói dữ liệu của tôi — `GET /api/v2/front/member/export/{id}/download`
+
+Tải một gói đã sẵn sàng bằng token của chính khách — tối đa 3 lần, trong 24 giờ kể từ khi gói sẵn sàng. File là ZIP, không phải JSON, nên câu trả lời không có ETag. Lần tải bị đứt giữa chừng có thể thử lại cho tới khi hết số lần được tải.
+
+| | |
+|---|---|
+| Đăng nhập | Token của khách hàng (Bearer). |
+| Có từ | `shop 3.16.0` |
+
+**Tham số**
+
+| Tên | Vị trí | Kiểu | Ý nghĩa |
+|---|---|---|---|
+| `id` *(bắt buộc)* | path | `string` | Mã gói (export_id) nhận được khi yêu cầu gói (26 ký tự). |
+
+**Ví dụ yêu cầu**
+
+```bash
+curl "https://shop.example.com/api/v2/front/member/export/123/download" \
+  -H "Accept: application/zip" \
+  -H "Authorization: Bearer <customer-token>" \
+  -o "download.zip"
+```
+
+**Phản hồi** `200` — Một tệp, không phải JSON: `application/zip`
+
+**Lỗi**: [`not_found`](./api-troubleshooting_vi.md#not_found) · [`export_gone`](./api-troubleshooting_vi.md#export_gone)
+
+### Xem yêu cầu xoá đang chờ của tôi — `GET /api/v2/front/member/delete`
+
+Trả yêu cầu xoá chưa chạy của khách (đang chờ, hoặc bị giữ vì còn đơn hàng chưa đóng), hoặc null khi không có.
+
+| | |
+|---|---|
+| Đăng nhập | Token của khách hàng (Bearer). |
+| Lưu tạm (cache) | `ETag` — gửi `If-None-Match` để nhận `304` khi không có gì thay đổi. |
+| Có từ | `shop 3.16.0` |
+
+**Tham số**
+
+| Tên | Vị trí | Kiểu | Ý nghĩa |
+|---|---|---|---|
+| `If-None-Match` | header | `string` | ETag của lần trả lời trước; trả 304 với nội dung rỗng khi không có gì thay đổi. Có từ core 3.8.0. |
+
+**Ví dụ yêu cầu**
+
+```bash
+curl "https://shop.example.com/api/v2/front/member/delete" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <customer-token>"
+```
+
+**Phản hồi** `200` — `data`: [PrivacyErasurePending](#privacyerasurepending)
+
+```json
+{
+    "data": {
+        "request_id": "",
+        "status": "",
+        "runs_at": ""
+    }
+}
+```
+
+### Yêu cầu xoá tài khoản của tôi — `POST /api/v2/front/member/delete`
+
+Yêu cầu xoá dữ liệu cá nhân của khách đang đăng nhập, xác nhận bằng mật khẩu tài khoản (và mã xác minh hai bước khi tài khoản dùng nó). Việc xoá chờ số ngày cửa hàng đặt, nên vẫn huỷ được bằng DELETE member/delete; việc xoá bị giữ lại khi khách còn đơn hàng chưa đóng. Yêu cầu lại khi đang có một yêu cầu mở sẽ nhận lại yêu cầu đó.
+
+| | |
+|---|---|
+| Đăng nhập | Token của khách hàng (Bearer). |
+| Có từ | `shop 3.16.0` |
+
+**Nội dung yêu cầu**: [PrivacyConfirm](#privacyconfirm)
+
+**Ví dụ yêu cầu**
+
+```bash
+curl -X POST "https://shop.example.com/api/v2/front/member/delete" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <customer-token>" \
+  -H "Content-Type: application/json" \
+  -d '{"password":"","code":""}'
+```
+
+**Phản hồi** `202` — `data`: [PrivacyErasure](#privacyerasure)
+
+```json
+{
+    "data": {
+        "state": "",
+        "status": "",
+        "request_id": "",
+        "runs_at": ""
+    }
+}
+```
+
+**Lỗi**: [`validation_failed`](./api-troubleshooting_vi.md#validation_failed) · [`wrong_password`](./api-troubleshooting_vi.md#wrong_password) · [`wrong_code`](./api-troubleshooting_vi.md#wrong_code) · [`throttled`](./api-troubleshooting_vi.md#throttled) · [`too_many_attempts`](./api-troubleshooting_vi.md#too_many_attempts) · [`erasure_failed`](./api-troubleshooting_vi.md#erasure_failed) · [`erasure_unavailable`](./api-troubleshooting_vi.md#erasure_unavailable) · [`busy`](./api-troubleshooting_vi.md#busy)
+
+### Huỷ yêu cầu xoá của tôi — `DELETE /api/v2/front/member/delete`
+
+Huỷ yêu cầu xoá chưa chạy của khách. Trả 404 khi không có yêu cầu nào đang chờ.
+
+| | |
+|---|---|
+| Đăng nhập | Token của khách hàng (Bearer). |
+| Có từ | `shop 3.16.0` |
+
+**Ví dụ yêu cầu**
+
+```bash
+curl -X DELETE "https://shop.example.com/api/v2/front/member/delete" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <customer-token>"
+```
+
+**Phản hồi** `200` — `data`: [PrivacyErasureCancelled](#privacyerasurecancelled)
+
+```json
+{
+    "data": {
+        "cancelled": false
+    }
+}
+```
+
+**Lỗi**: [`not_found`](./api-troubleshooting_vi.md#not_found)
+
 ## Front · Giỏ hàng
 
 Giỏ hàng của khách hàng đã đăng nhập hoặc của khách vãng lai (cart token): các dòng hàng và mã khuyến mãi.
@@ -2977,6 +3184,46 @@ Các trường địa chỉ khác theo cấu hình của cửa hàng; "default":
 | Trường | Kiểu | Ý nghĩa |
 |---|---|---|
 | `deleted` | `boolean` | Luôn là true. |
+
+### PrivacyExport
+
+| Trường | Kiểu | Ý nghĩa |
+|---|---|---|
+| `export_id` | `string` | Mã gói (26 ký tự), dùng để theo dõi và tải gói. |
+| `status` | `string` | building: đang chuẩn bị; ready: tải được; downloaded: đã dùng hết số lần tải; expired: quá 24 giờ; failed: không tạo được. |
+| `expires_at` | `string \| null` | Thời điểm gói hết hạn tải (múi giờ của site), null khi đang tạo. |
+| `downloads_left` | `integer` | Số lần tải còn lại (tối đa 3). |
+| `reused` | `boolean` | Chỉ có ở POST member/export: true khi trả lại gói đã tạo trong 24 giờ qua thay vì tạo gói mới. |
+
+### PrivacyConfirm
+
+| Trường | Kiểu | Ý nghĩa |
+|---|---|---|
+| `password` | `string` | Mật khẩu hiện tại của tài khoản. *(bắt buộc)* |
+| `code` | `string \| null` | Mã xác minh hai bước, khi tài khoản dùng đăng nhập hai bước. |
+
+### PrivacyErasurePending
+
+| Trường | Kiểu | Ý nghĩa |
+|---|---|---|
+| `request_id` | `string` | Mã của yêu cầu xoá. |
+| `status` | `string` | waiting (chờ số ngày cửa hàng đặt) hoặc on_hold (còn đơn hàng chưa đóng). |
+| `runs_at` | `string \| null` | Thời điểm việc xoá chạy (múi giờ của site), null khi đang bị giữ. |
+
+### PrivacyErasure
+
+| Trường | Kiểu | Ý nghĩa |
+|---|---|---|
+| `state` | `string` | scheduled: chờ số ngày cửa hàng đặt; held: chờ các đơn hàng chưa đóng được đóng; erasing: đang chạy; failed: lần xoá trước đã thất bại. |
+| `status` | `string` | Trạng thái của yêu cầu trong danh sách yêu cầu của cửa hàng (ví dụ waiting, on_hold, processing). |
+| `request_id` | `string` | Mã của yêu cầu xoá. |
+| `runs_at` | `string \| null` | Thời điểm việc xoá chạy (múi giờ của site), null khi không hẹn giờ cụ thể. |
+
+### PrivacyErasureCancelled
+
+| Trường | Kiểu | Ý nghĩa |
+|---|---|---|
+| `cancelled` | `boolean` | Luôn là true: yêu cầu xoá đã được huỷ. |
 
 ### Cart
 

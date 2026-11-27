@@ -1588,6 +1588,213 @@ curl -X DELETE "https://shop.example.com/api/v2/front/member/address/123" \
 
 **Errors**: [`not_found`](./api-troubleshooting.md#not_found) · [`validation_failed`](./api-troubleshooting.md#validation_failed)
 
+### Ask for a package of my data — `POST /api/v2/front/member/export`
+
+Asks for a ZIP package of everything the shop keeps about the signed-in customer, confirmed with the account password (and the two-step code when the account uses one) — the same rules as the account area of the website. One package per 24 hours: asking again within that time returns the same package. Rows found by email are included only when the account email is verified. Follow the package with GET member/export/{id}, then download it.
+
+| | |
+|---|---|
+| Sign-in | Customer token (Bearer). |
+| Since | `shop 3.16.0` |
+
+**Request body**: [PrivacyConfirm](#privacyconfirm)
+
+**Example request**
+
+```bash
+curl -X POST "https://shop.example.com/api/v2/front/member/export" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <customer-token>" \
+  -H "Content-Type: application/json" \
+  -d '{"password":"","code":""}'
+```
+
+**Response** `202` — `data`: [PrivacyExport](#privacyexport)
+
+```json
+{
+    "data": {
+        "export_id": "",
+        "status": "",
+        "expires_at": "",
+        "downloads_left": 0,
+        "reused": false
+    }
+}
+```
+
+**Errors**: [`validation_failed`](./api-troubleshooting.md#validation_failed) · [`wrong_password`](./api-troubleshooting.md#wrong_password) · [`wrong_code`](./api-troubleshooting.md#wrong_code) · [`throttled`](./api-troubleshooting.md#throttled) · [`too_many_attempts`](./api-troubleshooting.md#too_many_attempts) · [`export_unavailable`](./api-troubleshooting.md#export_unavailable)
+
+### Follow my data package — `GET /api/v2/front/member/export/{id}`
+
+Returns the state of one of the customer's own packages. While the package is building, each call builds one more part, so call it again until status is ready. Another customer's id answers 404.
+
+| | |
+|---|---|
+| Sign-in | Customer token (Bearer). |
+| Caching | `ETag` — send `If-None-Match` to get `304` when nothing changed. |
+| Since | `shop 3.16.0` |
+
+**Parameters**
+
+| Name | In | Type | Meaning |
+|---|---|---|---|
+| `id` *(required)* | path | `string` | Package id (export_id) returned when the package was asked for (26 characters). |
+| `If-None-Match` | header | `string` | ETag of a previous answer; 304 with an empty body when nothing changed. Since core 3.8.0. |
+
+**Example request**
+
+```bash
+curl "https://shop.example.com/api/v2/front/member/export/123" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <customer-token>"
+```
+
+**Response** `200` — `data`: [PrivacyExport](#privacyexport)
+
+```json
+{
+    "data": {
+        "export_id": "",
+        "status": "",
+        "expires_at": "",
+        "downloads_left": 0,
+        "reused": false
+    }
+}
+```
+
+**Errors**: [`not_found`](./api-troubleshooting.md#not_found)
+
+### Download my data package — `GET /api/v2/front/member/export/{id}/download`
+
+Downloads a ready package with the customer's own token — 3 times at most, within 24 hours of it being ready. The file is a ZIP, not JSON, so the answer has no ETag. A download that breaks halfway can be tried again until the allowed downloads are used.
+
+| | |
+|---|---|
+| Sign-in | Customer token (Bearer). |
+| Since | `shop 3.16.0` |
+
+**Parameters**
+
+| Name | In | Type | Meaning |
+|---|---|---|---|
+| `id` *(required)* | path | `string` | Package id (export_id) returned when the package was asked for (26 characters). |
+
+**Example request**
+
+```bash
+curl "https://shop.example.com/api/v2/front/member/export/123/download" \
+  -H "Accept: application/zip" \
+  -H "Authorization: Bearer <customer-token>" \
+  -o "download.zip"
+```
+
+**Response** `200` — A file, not JSON: `application/zip`
+
+**Errors**: [`not_found`](./api-troubleshooting.md#not_found) · [`export_gone`](./api-troubleshooting.md#export_gone)
+
+### See my pending erasure — `GET /api/v2/front/member/delete`
+
+Returns the customer's erasure that has not run yet (waiting, or held by open orders), or null when there is none.
+
+| | |
+|---|---|
+| Sign-in | Customer token (Bearer). |
+| Caching | `ETag` — send `If-None-Match` to get `304` when nothing changed. |
+| Since | `shop 3.16.0` |
+
+**Parameters**
+
+| Name | In | Type | Meaning |
+|---|---|---|---|
+| `If-None-Match` | header | `string` | ETag of a previous answer; 304 with an empty body when nothing changed. Since core 3.8.0. |
+
+**Example request**
+
+```bash
+curl "https://shop.example.com/api/v2/front/member/delete" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <customer-token>"
+```
+
+**Response** `200` — `data`: [PrivacyErasurePending](#privacyerasurepending)
+
+```json
+{
+    "data": {
+        "request_id": "",
+        "status": "",
+        "runs_at": ""
+    }
+}
+```
+
+### Ask to erase my account — `POST /api/v2/front/member/delete`
+
+Asks to erase the signed-in customer's personal data, confirmed with the account password (and the two-step code when the account uses one). The erasure waits the number of days set by the shop, so it can still be called off with DELETE member/delete; it is held while the customer has orders that are not closed. Asking again while one is open returns that request.
+
+| | |
+|---|---|
+| Sign-in | Customer token (Bearer). |
+| Since | `shop 3.16.0` |
+
+**Request body**: [PrivacyConfirm](#privacyconfirm)
+
+**Example request**
+
+```bash
+curl -X POST "https://shop.example.com/api/v2/front/member/delete" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <customer-token>" \
+  -H "Content-Type: application/json" \
+  -d '{"password":"","code":""}'
+```
+
+**Response** `202` — `data`: [PrivacyErasure](#privacyerasure)
+
+```json
+{
+    "data": {
+        "state": "",
+        "status": "",
+        "request_id": "",
+        "runs_at": ""
+    }
+}
+```
+
+**Errors**: [`validation_failed`](./api-troubleshooting.md#validation_failed) · [`wrong_password`](./api-troubleshooting.md#wrong_password) · [`wrong_code`](./api-troubleshooting.md#wrong_code) · [`throttled`](./api-troubleshooting.md#throttled) · [`too_many_attempts`](./api-troubleshooting.md#too_many_attempts) · [`erasure_failed`](./api-troubleshooting.md#erasure_failed) · [`erasure_unavailable`](./api-troubleshooting.md#erasure_unavailable) · [`busy`](./api-troubleshooting.md#busy)
+
+### Call off my erasure — `DELETE /api/v2/front/member/delete`
+
+Calls off the customer's erasure that has not run yet. Answers 404 when none is waiting.
+
+| | |
+|---|---|
+| Sign-in | Customer token (Bearer). |
+| Since | `shop 3.16.0` |
+
+**Example request**
+
+```bash
+curl -X DELETE "https://shop.example.com/api/v2/front/member/delete" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <customer-token>"
+```
+
+**Response** `200` — `data`: [PrivacyErasureCancelled](#privacyerasurecancelled)
+
+```json
+{
+    "data": {
+        "cancelled": false
+    }
+}
+```
+
+**Errors**: [`not_found`](./api-troubleshooting.md#not_found)
+
 ## Front · Cart
 
 The cart of a signed-in customer or of a guest (cart token): lines and promotion codes.
@@ -2977,6 +3184,46 @@ Other address fields as configured for the store; "default": true makes it the d
 | Field | Type | Meaning |
 |---|---|---|
 | `deleted` | `boolean` | Always true. |
+
+### PrivacyExport
+
+| Field | Type | Meaning |
+|---|---|---|
+| `export_id` | `string` | Package id (26 characters), used to follow and download it. |
+| `status` | `string` | building: being prepared; ready: can be downloaded; downloaded: all allowed downloads used; expired: older than 24 hours; failed: could not be made. |
+| `expires_at` | `string \| null` | When the package can no longer be downloaded (site time zone), null while building. |
+| `downloads_left` | `integer` | Downloads still allowed (3 at most). |
+| `reused` | `boolean` | Only on POST member/export: true when a package made in the last 24 hours is returned instead of a new one. |
+
+### PrivacyConfirm
+
+| Field | Type | Meaning |
+|---|---|---|
+| `password` | `string` | Current password of the account. *(required)* |
+| `code` | `string \| null` | Two-step code, when the account uses two-step sign-in. |
+
+### PrivacyErasurePending
+
+| Field | Type | Meaning |
+|---|---|---|
+| `request_id` | `string` | Id of the erasure request. |
+| `status` | `string` | waiting (the days set by the shop) or on_hold (open orders). |
+| `runs_at` | `string \| null` | When the erasure runs (site time zone), null while held. |
+
+### PrivacyErasure
+
+| Field | Type | Meaning |
+|---|---|---|
+| `state` | `string` | scheduled: waits the days set by the shop; held: waits for open orders to be closed; erasing: runs now; failed: an earlier erasure failed. |
+| `status` | `string` | Status of the request in the shop's request list (for example waiting, on_hold, processing). |
+| `request_id` | `string` | Id of the erasure request. |
+| `runs_at` | `string \| null` | When the erasure runs (site time zone), null when it is not scheduled at a set time. |
+
+### PrivacyErasureCancelled
+
+| Field | Type | Meaning |
+|---|---|---|
+| `cancelled` | `boolean` | Always true: the erasure was called off. |
 
 ### Cart
 
