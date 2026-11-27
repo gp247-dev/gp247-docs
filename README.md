@@ -85,6 +85,7 @@ New to GP247? Read [About GP247](./about/gp247.md).
 | [Mail system](./system/mail-system.md) | Mail sending flow (with diagrams), SMTP config, channel selection | 2026-11-22 |
 | [Sensitive data encryption](./system/data-encryption.md) | At-rest secret encryption (SMTP/OAuth/license); dedicated `GP247_ENCRYPTION_KEY`; **safe key-change steps** with `gp247:encryption-key-rotate`; encrypting custom columns | 2026-11-04 |
 | [Scheduler & Queue](./system/schedule-and-queue.md) | schedule:run vs queue:work; per-environment cron for mail | 2026-11-07 |
+| [Error reports to Slack, Google Chat…](./system/error-reporting.md) | Webhook screen: send site errors to Slack, Google Chat or any `{"text"}` webhook; example URLs, .env fallback, limits | 2026-11-25 |
 | [Cache Handling](./system/cache-system.md) | Config Cache Manager screen; what is/isn't cached; version-bump; helper functions | 2026-10-22 |
 | [Custom Fields](./system/custom-fields.md) | The 4 hook links; coverage limited to customer/product; dev guide to wire other tables | 2026-10-22 |
 | [Layout Blocks](./system/layout-block-system.md) | How a block renders: template-first then plugin fallback, three update-safe ways to customise, how a plugin registers a block | 2026-10-22 |

@@ -85,6 +85,7 @@ Mới biết GP247? Đọc [Giới thiệu về GP247](./about/gp247_vi.md).
 | [Hệ thống gửi mail](./system/mail-system_vi.md) | Luồng gửi mail (kèm sơ đồ), cấu hình SMTP, chọn kênh gửi | 2026-11-22 |
 | [Mã hoá dữ liệu nhạy cảm](./system/data-encryption_vi.md) | Mã hoá at-rest bí mật (SMTP/OAuth/license); khoá riêng `GP247_ENCRYPTION_KEY`; **các bước đổi khoá an toàn** bằng `gp247:encryption-key-rotate`; mã hoá cột bảng khác | 2026-11-04 |
 | [Lịch chạy & Hàng đợi](./system/schedule-and-queue_vi.md) | schedule:run vs queue:work; cài cron gửi mail theo môi trường | 2026-11-07 |
+| [Báo lỗi qua Slack, Google Chat…](./system/error-reporting_vi.md) | Màn Webhook: gửi lỗi của site tới Slack, Google Chat hoặc webhook `{"text"}` bất kỳ; URL mẫu, dự phòng .env, giới hạn | 2026-11-25 |
 | [Xử lý Cache](./system/cache-system_vi.md) | Màn Config Cache Manager; cache gì/không cache gì; version-bump; hàm helper | 2026-10-22 |
 | [Trường tùy chỉnh (Custom Field)](./system/custom-fields_vi.md) | Cơ chế 4 hook; độ phủ chỉ customer/product; hướng dẫn dev bật cho bảng khác | 2026-10-22 |
 | [Khối bố cục (Layout Block)](./system/layout-block-system_vi.md) | Cơ chế hiển thị khối: thứ tự ưu tiên giao diện → plugin, 3 cách tùy chỉnh không mất khi cập nhật, cách plugin đăng ký khối | 2026-10-22 |
