@@ -51,8 +51,10 @@ Chỉ **quản trị viên cấp cao (Administrator)** cấu hình được, và
 4. Bấm **Kiểm tra kết nối**. GP247 thử ghi, đọc, liệt kê và cho biết credential có quyền **xoá** hay không.
 5. Với SFTP: màn hiện **vân tay khoá máy chủ**. Đối chiếu với vân tay nhà cung cấp / người quản trị NAS đưa cho bạn, khớp thì chấp nhận —
    từ đó GP247 chỉ kết nối tới đúng máy chủ này.
-6. Lưu. Dòng của mục ở menu bên trái hiện loại đích; lần kiểm kết nối gần nhất lỗi thì dòng có màu cam. Từ bản đã kiểm tiếp theo, bản tự được chép
+6. Bấm **Lưu và kiểm tra**. Dòng của mục ở menu bên trái hiện loại đích; lần kiểm kết nối gần nhất lỗi thì dòng có màu cam. Từ bản đã kiểm tiếp theo, bản tự được chép
    ra ngoài; cột **Nơi lưu** trong danh sách cho biết bản đã chép hay chưa.
+
+![Mục Đích ngoài ở màn Cài đặt sao lưu, loại Máy chủ SFTP hoặc NAS: các ô Máy chủ, Cổng, Tên đăng nhập, Thư mục trên máy chủ, Mật khẩu, Khoá riêng và passphrase; nút Lưu và kiểm tra, Kiểm tra kết nối](./images/backup-offsite-settings_vi.png)
 
 Nếu thành công, kết quả kiểm tra có dòng "Dùng được, và credential không có quyền xoá…" — đó là trạng thái nên đạt.
 
@@ -183,4 +185,4 @@ php artisan gp247:backup-offsite fetch <mã-bản>
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-27 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-28 · ✍️ **Tác giả (Author):** GP247</sub>

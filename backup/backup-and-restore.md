@@ -125,6 +125,8 @@ The **Backup & restore** screen offers three ways to make a backup, differing in
 3. When done, the result panel reads **Backup done** with the backup code, size and time taken; the backup appears in the list with the
    status **Verified**.
 
+![The Backup & restore screen: the status panel with the last verified backup and the "Backup done" result; below it the three ways to make a backup — Quick snapshot, Selected groups, Full backup](./images/backup-overview_en.png)
+
 > ℹ️ **Info:** a very large backup (over 500 MB by default) started from the browser asks again — on a VPS,
 > `php artisan gp247:backup-run` is safer because it is not bound by a web request's time limit.
 
@@ -140,6 +142,8 @@ Each row of **Backups** shows the time, kind, groups, size, where it is stored a
 **Check again** and **Delete** open a dialog in the middle of the screen that names the backup (date, kind, size, last 6 characters of
 its code); its row is highlighted while the dialog is open. The result shows right above the list. **Cancel**, the Esc key or a click
 outside closes it without doing anything.
+
+![The Backups list: each row shows when, kind (Scheduled, By hand, Before a change, Imported), groups, size, where it is stored, the check result (Verified or Failed the check) and the action buttons; one backup carries the Pinned label](./images/backup-list_en.png)
 
 **How many are kept** (change it in **Backup settings → General**): by default **7** regular backups and **3** "before a change" backups. Older
 ones are removed only **after** the new one passed its check. Always kept: the newest good backup, pinned backups and **the newest
@@ -163,6 +167,8 @@ The schedule is set in **Backup settings → Schedule**. Choose how it runs from
 
 Also choose **How often** (every 6, 12, 24, 48 hours or every week) and **What a scheduled backup holds** (whole site without logs —
 the default, or the database only, lighter). Click **Save schedule**.
+
+![The Backup settings screen: a menu of four sections on the left (General, Schedule, External destination, Backup password & recovery key); the Schedule section is open with the "while an administrator opens the admin" mode, every 24 hours, and what a scheduled backup holds](./images/backup-settings-schedule_en.png)
 
 **Install cron for "At a fixed hour"** (once, on the VPS or on the hosting's "Cron jobs" page):
 
@@ -219,6 +225,8 @@ Four more layers protect actions that take data out, overwrite it or make backup
 - **Log** — every create, download, restore and delete (including refused ones) is recorded with who and when.
 - **E-mail** — the site owner is mailed when a backup fails, when someone downloads a backup and when someone restores. Mail goes out only
   when the site has mail sending turned on (**Configuration → Email**).
+
+![The Confirm it is you dialog: it asks for the admin sign-in password (not the backup password) and stays valid 5 minutes in this browser](./images/backup-step-up_en.png)
 
 ## Check backup health
 Run this command (on a VPS, or ask your hosting provider) to know for sure the site **can really be restored**:
@@ -328,4 +336,4 @@ including the restore itself.
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-27 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-28 · ✍️ **Author:** GP247</sub>

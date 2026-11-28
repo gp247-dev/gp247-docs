@@ -51,8 +51,10 @@ Only an **Administrator** can set it up, and must confirm their identity before 
 4. Click **Test the connection**. GP247 tries to write, read and list, and tells you whether the credential may **delete**.
 5. For SFTP: the screen shows the **server key fingerprint**. Compare it with the fingerprint your provider / NAS administrator gave you;
    accept it if it matches — from then on GP247 connects only to that exact server.
-6. Save. The section's line in the menu on the left shows the destination type, in amber when the last connection check failed. From the next verified
+6. Click **Save and test**. The section's line in the menu on the left shows the destination type, in amber when the last connection check failed. From the next verified
    backup, backups are copied off-site automatically; the **Stored** column of the list tells you whether a backup has been copied.
+
+![The External destination section of Backup settings, type SFTP server or NAS: the Server, Port, User name, Folder on the server, Password, Private key and passphrase fields; the Save and test and Test the connection buttons](./images/backup-offsite-settings_en.png)
 
 If it worked, the test result includes "Works, and the credential cannot delete…" — the state to aim for.
 
@@ -184,4 +186,4 @@ php artisan gp247:backup-offsite fetch <backup-id>
 
 ---
 
-<sub>📅 **Last updated:** 2026-11-27 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-11-28 · ✍️ **Author:** GP247</sub>

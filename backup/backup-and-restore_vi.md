@@ -124,6 +124,8 @@ Màn **Sao lưu & phục hồi** có ba cách tạo bản, khác nhau ở phạm
 3. Khi xong, khung kết quả ghi **Đã sao lưu xong**, mã bản, dung lượng và thời gian chạy; bản hiện trong danh sách với trạng thái
    **Đã kiểm, tốt**.
 
+![Màn Sao lưu & phục hồi: khung tình trạng với bản đã kiểm gần nhất và kết quả "Đã sao lưu xong"; bên dưới là ba cách tạo bản Chụp nhanh, Chọn nhóm, Sao lưu toàn bộ](./images/backup-overview_vi.png)
+
 > ℹ️ **Thông tin:** bản rất lớn (mặc định trên 500 MB) chạy từ trình duyệt sẽ hỏi lại — trên VPS dùng
 > `php artisan gp247:backup-run` an toàn hơn vì không bị giới hạn thời gian của request web.
 
@@ -138,6 +140,8 @@ Mỗi dòng trong **Các bản sao lưu** cho biết thời điểm, loại, nh�
 
 **Kiểm lại** và **Xoá** mở một hộp thoại giữa màn, ghi rõ bản đang thao tác (ngày, loại, dung lượng, 6 ký tự cuối của mã); dòng của bản
 đó được tô màu trong lúc hộp thoại mở. Kết quả hiện ngay trên danh sách. Bấm **Huỷ**, phím Esc hoặc bấm ra ngoài để đóng mà không làm gì.
+
+![Danh sách Các bản sao lưu: mỗi dòng có thời điểm, loại (Theo lịch, Thủ công, Trước thay đổi, Đưa vào), nhóm, cỡ, nơi lưu, kết quả kiểm (Đã kiểm, tốt hoặc Kiểm không đạt) và các nút thao tác; một bản có nhãn Đã ghim](./images/backup-list_vi.png)
 
 **Giữ bao nhiêu bản** (đổi ở **Cài đặt sao lưu → Chung**): mặc định giữ **7** bản thường và **3** bản "trước thay đổi". Bản cũ hơn chỉ bị
 xoá **sau khi** bản mới đã kiểm đạt. Luôn được giữ: bản tốt mới nhất, bản đã ghim và **bản toàn bộ đã kiểm mới nhất** — nhiều bản chụp
@@ -161,6 +165,8 @@ Lịch đặt ở **Cài đặt sao lưu → Lịch sao lưu**. Chọn cách ch�
 
 Chọn thêm **Tần suất** (mỗi 6, 12, 24, 48 giờ hoặc mỗi tuần) và **Bản theo lịch chứa gì** (toàn bộ site bỏ nhật ký — mặc định,
 hoặc chỉ cơ sở dữ liệu cho nhẹ). Bấm **Lưu lịch**.
+
+![Màn Cài đặt sao lưu: menu bốn mục bên trái (Chung, Lịch sao lưu, Đích ngoài, Mật khẩu sao lưu & recovery key), mục Lịch sao lưu đang mở với chế độ chạy khi quản trị viên mở trang quản trị, tần suất mỗi 24 giờ và nội dung bản theo lịch](./images/backup-settings-schedule_vi.png)
 
 **Cài cron cho chế độ "Vào giờ cố định"** (làm một lần, trên VPS hoặc trang "Cron jobs" của hosting):
 
@@ -217,6 +223,8 @@ Bốn lớp bảo vệ thêm cho các thao tác đưa dữ liệu ra ngoài, ghi
 - **Nhật ký** — mọi lần tạo, tải, phục hồi, xoá (kể cả lần bị từ chối) được ghi lại với người làm và thời điểm.
 - **Email** — chủ site nhận email khi một bản thất bại, khi có người tải bản về và khi có người phục hồi. Email chỉ gửi được khi
   site đã bật gửi mail (**Cấu hình → Email**).
+
+![Hộp thoại Xác nhận lại danh tính: yêu cầu mật khẩu đăng nhập trang quản trị (không phải mật khẩu sao lưu), hiệu lực 5 phút trên trình duyệt này](./images/backup-step-up_vi.png)
 
 ## Kiểm tra sức khoẻ sao lưu
 Chạy lệnh sau (trên VPS, hoặc nhờ nhà cung cấp hosting chạy) để biết chắc site **phục hồi được thật**:
@@ -324,4 +332,4 @@ ngay sau khi xử lý nguyên nhân (thường là đĩa đầy).
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-27 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-28 · ✍️ **Tác giả (Author):** GP247</sub>

@@ -82,6 +82,8 @@ Cần quyền **Backup - restore**. Mọi lần phục hồi đều được ghi
    đổi bảng thì không dừng được nữa. Với **Toàn bộ dữ liệu**, site chuyển sang chế độ bảo trì trong lúc chạy; riêng bạn vẫn dùng được
    trang quản trị.
 
+![Khung Phục hồi này sẽ làm gì sau khi bấm Xem trước nhóm Danh mục sản phẩm: phần Lần phục hồi này KHÔNG đưa lại, rồi bảng các bảng sẽ bị thay với số dòng hiện có, số dòng trong bản và số dòng đổi sau bản (sẽ mất)](./images/restore-preview_vi.png)
+
 Nếu thành công, màn báo kết quả và hiện nút **Hoàn tác lần phục hồi trước** kèm thời hạn.
 
 > ⚠️ **Lưu ý:** mọi dữ liệu tạo **sau** thời điểm của bản ở các bảng bị thay (đơn mới, khách mới…) sẽ mất khỏi site. Ghi lại trước những đơn
@@ -94,10 +96,13 @@ Phục hồi nhầm bản hay nhầm nhóm thì quay lại được mà không c
 
 1. Vào màn **Phục hồi**: khung trên cùng ghi "Có thể hoàn tác lần phục hồi trước tới …".
 2. Bấm **Hoàn tác lần phục hồi trước**. Chưa có gì thay đổi: màn hiện khung xem trước gồm
-   - các bảng sẽ quay lại, mỗi bảng có số bản ghi **thêm / sửa / xoá kể từ lúc phục hồi** — những thay đổi này sẽ **mất** khi hoàn tác;
+   - các bảng sẽ quay lại, mỗi bảng có số bản ghi **thêm / sửa / xoá kể từ lúc phục hồi** — những thay đổi này sẽ **mất** khi hoàn tác
+     (bảng không theo dõi được thời điểm sửa thì ghi "không đo được thay đổi", kèm số bản ghi hiện có);
    - các **bảng khác** có bản ghi mới đang trỏ vào các bảng đó (ví dụ đơn hàng mới trỏ tới sản phẩm) — kiểm lại chúng sau khi hoàn tác.
 3. Gõ mã hiện trên màn vào ô **Xác nhận**, bấm **Hoàn tác ngay**.
 4. GP247 tạo một bản **"Trước thay đổi"** của các bảng đó, rồi đưa chúng về đúng như ngay trước khi phục hồi.
+
+![Khung Hoàn tác lần phục hồi trước: bảng các bảng sẽ quay lại với số bản ghi thêm, sửa, xoá từ đó và số hiện có; ô Xác nhận, nút Hoàn tác ngay và Huỷ](./images/restore-undo-preview_vi.png)
 
 Hoàn tác nhầm? Bản "Trước thay đổi" vừa tạo nằm trong danh sách bản sao lưu: phục hồi lại nhóm đó, hoặc dùng **Thêm lại bản ghi đã xoá**
 để lấy lại từng bản ghi mới (một đơn hàng, một khách hàng). Bản đó chưa tạo được (ví dụ đang có lần sao lưu khác chạy) thì không có gì bị
@@ -160,6 +165,8 @@ flowchart TB
    - Chạy `php artisan gp247:doctor` và xử lý những gì nó báo.
 5. Làm xong thì bấm **Đã làm xong các việc này**.
 
+![Đầu màn Sao lưu & phục hồi sau lần phục hồi sau sự cố: khung các việc phải tự làm (xoay khoá mã hoá, cài lại mã, đổi mật khẩu hosting, chạy gp247:doctor) và nút Đã làm xong các việc này](./images/restore-post-incident-tasks_vi.png)
+
 > ℹ️ **Thông tin:** chế độ này **không** phục hồi mã và `.env` từ bản — mã có thể đã bị cài cửa hậu từ trước. Quy trình xử lý sự cố đầy đủ ở
 > [Cập nhật & sự cố](../security/security-updates-and-incidents_vi.md).
 
@@ -178,6 +185,8 @@ Bạn có thể phục hồi từ một file `.gp247bak` đã tải về trướ
 6. Bấm **Phục hồi từ bản này** để chọn sẵn bản vừa đưa vào ở ô **Bản sao lưu**, rồi phục hồi như mọi bản khác. Trong ô đó, bản đưa vào
    ghi **Đưa vào · chưa xác minh nguồn gốc** và 6 ký tự cuối của mã bản. Đừng chọn nhầm bản **Theo lịch** của chính site: bản đó có thể
    được tạo ngay sau khi bạn đưa file vào và đứng đầu danh sách.
+
+![Khối Đưa bản sao lưu vào trên màn Phục hồi: chọn file .gp247bak, ô Mật khẩu sao lưu của site đã tạo file, tuỳ chọn Dùng recovery key thay mật khẩu và nút Tải lên và kiểm](./images/restore-import_vi.png)
 
 Bản tạo ở site khác được ghi là **chưa xác minh nguồn gốc** (không ký bằng khoá của site này): dữ liệu nguyên vẹn nhưng GP247 không chứng
 minh được ai tạo ra nó. Khi phục hồi, bạn phải tick **Tôi biết rõ nguồn gốc bản này — vẫn phục hồi**; mã và `.env` trong bản như vậy
@@ -286,4 +295,4 @@ hãy chạy `php artisan gp247:update`.
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-11-27 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-11-28 · ✍️ **Tác giả (Author):** GP247</sub>
