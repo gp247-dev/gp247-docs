@@ -11,7 +11,7 @@ wired to `gp247/shop`'s money seams. After reading, you have a working plugin an
 functions so money is never recorded wrongly or twice.
 
 > 💡 **Working with an AI agent?** Use the **`gp247-payment-plugin-create`** skill from the
-> [gp247-skills](https://github.com/gp247net/gp247-skills) repository: it probes the site's version, asks for what it needs and
+> [gp247-skills](https://github.com/gp247-official/gp247-skills) repository: it probes the site's version, asks for what it needs and
 > builds the plugin following the steps below, and it is updated together with `gp247/shop`.
 
 ---

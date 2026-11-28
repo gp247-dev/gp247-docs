@@ -12,11 +12,11 @@ file dữ liệu đóng gói trong plugin. Phần 2 thêm **tra mã bưu chính*
 > ℹ️ **Có từ:** gp247/shop 3.15 (lớp địa chỉ, danh sách). Tra mã bưu chính: gp247/shop 3.15.1.
 
 > 💡 **Làm cùng AI agent?** Dùng skill **`gp247-plugin-create`** trong repo
-> [gp247-skills](https://github.com/gp247net/gp247-skills) để dựng khung plugin (dò phiên bản site, `gp247.json`, vòng đời an
+> [gp247-skills](https://github.com/gp247-official/gp247-skills) để dựng khung plugin (dò phiên bản site, `gp247.json`, vòng đời an
 > toàn khi cập nhật), rồi làm theo các bước dưới đây cho phần địa chỉ.
 
-> 📦 **Hai plugin mẫu hoàn chỉnh, miễn phí:** [AddressVN](https://github.com/gp247-plugin/AddressVN) (danh sách tỉnh →
-> phường/xã) và [AddressJP](https://github.com/gp247-plugin/AddressJP) (tra mã bưu chính, dữ liệu chia mảnh).
+> 📦 **Hai plugin mẫu hoàn chỉnh, miễn phí:** [AddressVN](https://github.com/gp247-official/AddressVN) (danh sách tỉnh →
+> phường/xã) và [AddressJP](https://github.com/gp247-official/AddressJP) (tra mã bưu chính, dữ liệu chia mảnh).
 
 ---
 
@@ -416,7 +416,7 @@ template của bạn.
 - Template cần chạy cả trên shop cũ: bọc bằng `@if (class_exists(\GP247\Shop\Address\View\AddressBlock::class))` và giữ ô cũ
   ở nhánh `@else`.
 - Hợp đồng đầy đủ: mục "Address forms" trong skill `gp247-template-create` của
-  [gp247-skills](https://github.com/gp247net/gp247-skills).
+  [gp247-skills](https://github.com/gp247-official/gp247-skills).
 
 ---
 

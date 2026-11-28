@@ -93,7 +93,7 @@ php artisan gp247:update
 - *（独自テンプレート）* マイページに **私のデータ** を追加 — 標準テーマと GP247-EC 1.0.7 以降は対応済み
 - *（Laravel 7 形式の `factory()` を使うサイトのコード）* `composer require laravel/legacy-factories` を実行
 
-<sub>含まれるもの: core 3.19.0 · front 3.15.0 · shop 3.16.0 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.12.0)</sub>
+<sub>含まれるもの: core 3.19.0 · front 3.15.0 · shop 3.16.0 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247-official/s-cart/releases/tag/3.12.0)</sub>
 
 ### S-Cart 3.11.0 — 2026-11-23
 **複製は元の SEO を引き継がず、新規インストールは S-Cart の名前とロゴ入り。**
@@ -115,7 +115,7 @@ php artisan gp247:update
 - *（独自テンプレート）* Facebook のリンクが `fanpage_url` を読んでいる場合は `group_url` を読み、`fanpage_url` を予備として残してください
 - *（ニュースプラグインを使うサイト）* 記事を複製するには News を 3.2.0 以上に更新してください
 
-<sub>含まれるパッケージ: core 3.18.0 · front 3.14.2 · shop 3.14.1 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.11.0)</sub>
+<sub>含まれるパッケージ: core 3.18.0 · front 3.14.2 · shop 3.14.1 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247-official/s-cart/releases/tag/3.11.0)</sub>
 
 ### S-Cart 3.10.0 — 2026-11-20
 **GA4・Meta ピクセルは ID を貼るだけ、Cookie バナー付き。商品はボタン 1 つで複製。**
@@ -146,7 +146,7 @@ php artisan gp247:update
   編集している場合は変更をマージしてください
 - *（独自テンプレート）* 計測コードと Cookie バナーを使うため、`<head>` 内の `<x-gp247-front::meta-head>` を残してください
 
-<sub>含まれるパッケージ: core 3.16.0 · front 3.12.0 · shop 3.13.0 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.10.0)</sub>
+<sub>含まれるパッケージ: core 3.16.0 · front 3.12.0 · shop 3.13.0 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247-official/s-cart/releases/tag/3.10.0)</sub>
 
 ### S-Cart 3.9.0 — 2026-11-18
 **SEO 機能を標準で完備。商品ごとの SEO タブ、URL 変更時の自動 301、SEOチェック画面。**
@@ -175,7 +175,7 @@ php artisan gp247:update
   [テンプレートの SEO 契約](../seo/seo-for-developers_ja.md#テンプレートの-seo-契約) に合わせて更新
 - *（ニュース（News）プラグインを使っているサイト）* ニュースの SEO タブを使うため、News を 3.1.0 以上に更新
 
-<sub>含まれるパッケージ: core 3.15.0 · front 3.11.0 · shop 3.12.0 · mcp 2.1.0 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.9.0)</sub>
+<sub>含まれるパッケージ: core 3.15.0 · front 3.11.0 · shop 3.12.0 · mcp 2.1.0 · [GitHub Release](https://github.com/gp247-official/s-cart/releases/tag/3.9.0)</sub>
 
 ### S-Cart 3.8.0 — 2026-11-15
 **お客様が好きな順に商品を並び替え。拡張機能ライブラリは全件表示し、必要なコアを明示。**
@@ -195,23 +195,23 @@ php artisan gp247:update
 - サンプルの共有画像 `org.jpg` は廃止しました。リンク共有時に画像を表示したい場合は **サイト情報** で独自の画像を設定してください
 - *(`sort_asc` / `sort_desc` を含む古いリンク)* 管理画面で設定した既定の並び順で表示されます
 
-<sub>含まれるパッケージ: core 3.14.0 · front 3.9.1 · shop 3.11.1 · mcp 2.0.3 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.8.0)</sub>
+<sub>含まれるパッケージ: core 3.14.0 · front 3.9.1 · shop 3.11.1 · mcp 2.0.3 · [GitHub Release](https://github.com/gp247-official/s-cart/releases/tag/3.8.0)</sub>
 
 ### 以前のリリース
 | リリース | 日付 | 概要 |
 | --- | --- | --- |
-| [S-Cart 3.7.0](https://github.com/gp247net/s-cart/releases/tag/3.7.0) | 2026-11-13 | 名前や内容が入力したとおりに表示されます。`&amp;` はもう出ません |
-| [S-Cart 3.6.1](https://github.com/gp247net/s-cart/releases/tag/3.6.1) | 2026-11-11 | 本番サイトと共有ホスティング向けにバックアップと復元を強化 |
-| [S-Cart 3.6.0](https://github.com/gp247net/s-cart/releases/tag/3.6.0) | 2026-11-09 | バックアップと復元を S-Cart に標準搭載、共有ホスティングでも動作 |
-| [S-Cart 3.5.2](https://github.com/gp247net/s-cart/releases/tag/3.5.2) | 2026-11-07 | Docker で運用するサイトや、プロキシ / CDN の背後のサイト向けの改善 |
-| [S-Cart 3.5.1](https://github.com/gp247net/s-cart/releases/tag/3.5.1) | 2026-11-05 | 安全でない設定を管理画面が通知、Web インストーラーを簡素化 |
-| [S-Cart 3.5.0](https://github.com/gp247net/s-cart/releases/tag/3.5.0) | 2026-11-03 | MCP サーバーを組み込み、AI エージェントでショップに質問・管理 |
-| [S-Cart 3.4.0](https://github.com/gp247net/s-cart/releases/tag/3.4.0) | 2026-11-02 | 独自アプリでの販売と、REST API による ERP 連携 |
-| [S-Cart 3.3.1](https://github.com/gp247net/s-cart/releases/tag/3.3.1) | 2026-10-29 | 受信箱付きのお問い合わせフォーム、管理画面からの REST API のオン／オフ |
-| [S-Cart 3.2](https://github.com/gp247net/s-cart/releases/tag/3.2) | 2026-10-23 | 日本語対応、送り状付きの標準配送、パッケージと一緒に更新されるストアフロントテーマ |
-| [S-Cart 3.1](https://github.com/gp247net/s-cart/releases/tag/3.1) | 2026-10-03 | カート外の支払い依頼、保存済みパスワード・決済キーの暗号化 |
-| [S-Cart 3.0.1](https://github.com/gp247net/s-cart/releases/tag/3.0.1) | 2026-09-04 | 旧 `sc:*` コマンドを削除、`gp247:*` コマンドを使用 — [コマンド一覧](../cli/cli-introduction_ja.md) |
-| [S-Cart 3.0](https://github.com/gp247net/s-cart/releases/tag/3.0) | 2026-08-30 | 3.x 系の最初のリリース: 注文ごとの支払台帳、割引は税の前に差し引き |
+| [S-Cart 3.7.0](https://github.com/gp247-official/s-cart/releases/tag/3.7.0) | 2026-11-13 | 名前や内容が入力したとおりに表示されます。`&amp;` はもう出ません |
+| [S-Cart 3.6.1](https://github.com/gp247-official/s-cart/releases/tag/3.6.1) | 2026-11-11 | 本番サイトと共有ホスティング向けにバックアップと復元を強化 |
+| [S-Cart 3.6.0](https://github.com/gp247-official/s-cart/releases/tag/3.6.0) | 2026-11-09 | バックアップと復元を S-Cart に標準搭載、共有ホスティングでも動作 |
+| [S-Cart 3.5.2](https://github.com/gp247-official/s-cart/releases/tag/3.5.2) | 2026-11-07 | Docker で運用するサイトや、プロキシ / CDN の背後のサイト向けの改善 |
+| [S-Cart 3.5.1](https://github.com/gp247-official/s-cart/releases/tag/3.5.1) | 2026-11-05 | 安全でない設定を管理画面が通知、Web インストーラーを簡素化 |
+| [S-Cart 3.5.0](https://github.com/gp247-official/s-cart/releases/tag/3.5.0) | 2026-11-03 | MCP サーバーを組み込み、AI エージェントでショップに質問・管理 |
+| [S-Cart 3.4.0](https://github.com/gp247-official/s-cart/releases/tag/3.4.0) | 2026-11-02 | 独自アプリでの販売と、REST API による ERP 連携 |
+| [S-Cart 3.3.1](https://github.com/gp247-official/s-cart/releases/tag/3.3.1) | 2026-10-29 | 受信箱付きのお問い合わせフォーム、管理画面からの REST API のオン／オフ |
+| [S-Cart 3.2](https://github.com/gp247-official/s-cart/releases/tag/3.2) | 2026-10-23 | 日本語対応、送り状付きの標準配送、パッケージと一緒に更新されるストアフロントテーマ |
+| [S-Cart 3.1](https://github.com/gp247-official/s-cart/releases/tag/3.1) | 2026-10-03 | カート外の支払い依頼、保存済みパスワード・決済キーの暗号化 |
+| [S-Cart 3.0.1](https://github.com/gp247-official/s-cart/releases/tag/3.0.1) | 2026-09-04 | 旧 `sc:*` コマンドを削除、`gp247:*` コマンドを使用 — [コマンド一覧](../cli/cli-introduction_ja.md) |
+| [S-Cart 3.0](https://github.com/gp247-official/s-cart/releases/tag/3.0) | 2026-08-30 | 3.x 系の最初のリリース: 注文ごとの支払台帳、割引は税の前に差し引き |
 
 ## セキュリティ
 
@@ -236,7 +236,7 @@ PHP と Web サーバーの不具合は GP247 のリリースではなく各提�
   CVE-2026-109618 と CVE-2026-109619 が修正済みか事業者に確認してください。
 - **すぐに更新できない場合:** `php.ini` で `session.upload_progress.enabled = Off` を設定し（GP247 はこの機能を使いません）、
   PHP を再起動します。リスクは下がりますが、更新の代わりにはなりません。
-- **Docker で運用している場合:** [DOCKER.md](https://github.com/gp247net/s-cart/blob/master/DOCKER.md) の「Security updates」に
+- **Docker で運用している場合:** [DOCKER.md](https://github.com/gp247-official/s-cart/blob/master/DOCKER.md) の「Security updates」に
   従ってください。
 
 ## サードパーティライブラリ

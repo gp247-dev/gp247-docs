@@ -12,11 +12,11 @@ already does (form, checks, stored codes, the Address lists screen) and which da
 > ℹ️ **Available since:** gp247/shop 3.15 (address layer, lists). Postal code lookup: gp247/shop 3.15.1.
 
 > 💡 **Working with an AI agent?** Use the **`gp247-plugin-create`** skill in the
-> [gp247-skills](https://github.com/gp247net/gp247-skills) repo to scaffold the plugin (it probes the site version, writes
+> [gp247-skills](https://github.com/gp247-official/gp247-skills) repo to scaffold the plugin (it probes the site version, writes
 > `gp247.json`, keeps the lifecycle update-safe), then follow the steps below for the address part.
 
-> 📦 **Two complete, free example plugins:** [AddressVN](https://github.com/gp247-plugin/AddressVN) (province → ward lists) and
-> [AddressJP](https://github.com/gp247-plugin/AddressJP) (postal code lookup, sharded data).
+> 📦 **Two complete, free example plugins:** [AddressVN](https://github.com/gp247-official/AddressVN) (province → ward lists) and
+> [AddressJP](https://github.com/gp247-official/AddressJP) (postal code lookup, sharded data).
 
 ---
 
@@ -426,7 +426,7 @@ template calls this block instead of its own address fields, so every address pl
 - A template that must also run on an older shop: wrap it in
   `@if (class_exists(\GP247\Shop\Address\View\AddressBlock::class))` and keep the old fields in the `@else` branch.
 - Full contract: the "Address forms" section of the `gp247-template-create` skill in
-  [gp247-skills](https://github.com/gp247net/gp247-skills).
+  [gp247-skills](https://github.com/gp247-official/gp247-skills).
 
 ---
 

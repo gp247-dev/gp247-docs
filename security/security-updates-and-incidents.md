@@ -65,7 +65,7 @@ Bugs in PHP, nginx/Apache, MySQL and the operating system are patched by their o
 
 - **Hosting with a control panel**: choose the newest PHP version of the branch you use; ask your provider when a serious bug is announced.
 - **VPS**: install operating system updates regularly.
-- **Docker**: follow the "Security updates" section in [DOCKER.md](https://github.com/gp247net/s-cart/blob/master/DOCKER.md) — `docker compose up -d --build` does not re-download patched base images by itself.
+- **Docker**: follow the "Security updates" section in [DOCKER.md](https://github.com/gp247-official/s-cart/blob/master/DOCKER.md) — `docker compose up -d --build` does not re-download patched base images by itself.
 - Important PHP / web server patches are listed in the "Server software" section of the [release page](../release/release.md).
 
 ## Plugins and templates: install only from trusted sources

@@ -148,7 +148,7 @@ code mẫu — nằm ở:
   API: vận đơn, theo dõi, webhook, thu hộ); mục 5 tra cứu nhanh `gp247/shop` có sẵn gì, nằm ở đâu.
 
 > 💡 Làm cùng AI agent: dùng skill **`gp247-shipping-plugin-create`** trong repo
-> [gp247-skills](https://github.com/gp247net/gp247-skills) — skill tự dò phiên bản và năng lực của site, dựng plugin đúng
+> [gp247-skills](https://github.com/gp247-official/gp247-skills) — skill tự dò phiên bản và năng lực của site, dựng plugin đúng
 > hợp đồng của `gp247/shop`.
 
 ---

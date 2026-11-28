@@ -25,7 +25,7 @@ your kind of plugin.
 | Upgrading a plugin written for GP247 1.x | [Converting a plugin from v1 to v2](./convert-plugin-v1-to-v2.md) |
 | A storefront look (template), not a plugin | [Creating a template](./create-template.md) |
 
-> 💡 **Working with an AI agent?** Use GP247's skills from the [gp247-skills](https://github.com/gp247net/gp247-skills)
+> 💡 **Working with an AI agent?** Use GP247's skills from the [gp247-skills](https://github.com/gp247-official/gp247-skills)
 > repository (copy the skill folder into your agent's skills folder, for example `.claude/skills/` for Claude Code):
 > `gp247-plugin-create` (ordinary plugins), `gp247-payment-plugin-create` (payment), `gp247-shipping-plugin-create`
 > (shipping). Each skill probes the site's version and follows the steps below.

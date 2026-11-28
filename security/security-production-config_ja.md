@@ -197,7 +197,7 @@ S-Cart の Docker 構成には、本番環境向けの保護層がいくつか�
 - **ページのセキュリティヘッダーは GP247 が送信します** — 同梱の nginx は静的ファイルに `X-Content-Type-Options` を付けるだけなので、[セキュリティヘッダー](#セキュリティヘッダー)画面での切り替えが実際に反映されます。`default.conf` を独自に編集している場合は、更新時にこの変更を取り込んでください。
 
 あなたが行うこと：コンテナの**前段のプロキシで HTTPS を設定する**（構成内の nginx はポート 80 だけを待ち受けます）、すべてのサンプルパスワードを変更する、
-[DOCKER.md](https://github.com/gp247net/s-cart/blob/master/DOCKER.md) の「Security updates」の項目に沿ってイメージを更新する。本番マシンで
+[DOCKER.md](https://github.com/gp247-official/s-cart/blob/master/DOCKER.md) の「Security updates」の項目に沿ってイメージを更新する。本番マシンで
 `docker compose down -v` を実行しないでください — このコマンドは**データベースを含むボリュームを削除します**。同じサーバー上の HTTPS プロキシを
 使う場合は、[プロキシや CDN の背後で動くサイト](#プロキシや-cdn-の背後で動くサイト) のとおり `TRUSTED_PROXIES` を設定してください。
 

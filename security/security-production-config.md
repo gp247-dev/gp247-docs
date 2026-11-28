@@ -197,7 +197,7 @@ The S-Cart Docker setup has a few built-in protections for production:
 - **Page security headers come from GP247** — the bundled nginx only adds `X-Content-Type-Options` to static files, so switching headers on the [Security headers](#security-headers) screen really takes effect. If you edited `default.conf` yourself, merge this change when you update.
 
 Your part: put **HTTPS at the proxy in front of** the containers (the bundled nginx only listens on port 80), change every sample password, and update images following
-the "Security updates" section of [DOCKER.md](https://github.com/gp247net/s-cart/blob/master/DOCKER.md). Never run
+the "Security updates" section of [DOCKER.md](https://github.com/gp247-official/s-cart/blob/master/DOCKER.md). Never run
 `docker compose down -v` on a production machine — that command **deletes the volume that holds the database**. With an HTTPS proxy on the
 same server, set `TRUSTED_PROXIES` as in [Site behind a proxy or CDN](#site-behind-a-proxy-or-cdn).
 

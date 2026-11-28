@@ -54,8 +54,8 @@ Cả hai plugin đều **miễn phí, mã nguồn mở**, cài được trên m�
 
 | Plugin | Nước | Khách nhập thế nào | Dữ liệu đi kèm | Yêu cầu |
 | --- | --- | --- | --- | --- |
-| **AddressVN** — [mã nguồn](https://github.com/gp247-plugin/AddressVN) | Việt Nam | Chọn **Tỉnh/Thành phố** → **Phường/Xã** từ danh sách có ô tìm (gõ không dấu vẫn tìm được) | Địa giới hai cấp từ 01/7/2025 của Cục Thống kê: 34 tỉnh, 3.321 phường/xã/đặc khu | gp247/shop 3.15+ |
-| **AddressJP** — [mã nguồn](https://github.com/gp247-plugin/AddressJP) | Nhật Bản | Gõ **mã bưu chính** → **Tỉnh**, **Thành phố/Quận**, **Khu phố** tự điền; khách gõ tiếp số nhà | Dữ liệu mã bưu chính của Japan Post: 47 tỉnh, 120.721 mã | gp247/shop 3.15.1+ |
+| **AddressVN** — [mã nguồn](https://github.com/gp247-official/AddressVN) | Việt Nam | Chọn **Tỉnh/Thành phố** → **Phường/Xã** từ danh sách có ô tìm (gõ không dấu vẫn tìm được) | Địa giới hai cấp từ 01/7/2025 của Cục Thống kê: 34 tỉnh, 3.321 phường/xã/đặc khu | gp247/shop 3.15+ |
+| **AddressJP** — [mã nguồn](https://github.com/gp247-official/AddressJP) | Nhật Bản | Gõ **mã bưu chính** → **Tỉnh**, **Thành phố/Quận**, **Khu phố** tự điền; khách gõ tiếp số nhà | Dữ liệu mã bưu chính của Japan Post: 47 tỉnh, 120.721 mã | gp247/shop 3.15.1+ |
 
 Khách ở Việt Nam chọn tỉnh rồi phường/xã từ danh sách:
 

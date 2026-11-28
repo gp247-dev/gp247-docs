@@ -114,7 +114,7 @@ contract a plugin must follow, sample code — is in:
 - [Converting a plugin from v1 to v2](../../extension/convert-plugin-v1-to-v2.md), Step 8d — upgrading an old payment plugin.
 
 > 💡 Working with an AI agent: use the **`gp247-payment-plugin-create`** skill from the
-> [gp247-skills](https://github.com/gp247net/gp247-skills) repository — it builds the plugin on `gp247/shop`'s contract instead of letting the
+> [gp247-skills](https://github.com/gp247-official/gp247-skills) repository — it builds the plugin on `gp247/shop`'s contract instead of letting the
 > agent guess.
 
 ---

@@ -56,8 +56,8 @@ Both plugins are **free and open source**, and run on any hosting plan.
 
 | Plugin | Country | How customers enter it | Data shipped | Requires |
 | --- | --- | --- | --- | --- |
-| **AddressVN** — [source](https://github.com/gp247-plugin/AddressVN) | Vietnam | Pick **Province / City** → **Ward / Commune** from searchable lists (typing without accents works) | The two-level units in force since 2025-07-01, from the General Statistics Office: 34 provinces, 3,321 wards / communes / special zones | gp247/shop 3.15+ |
-| **AddressJP** — [source](https://github.com/gp247-plugin/AddressJP) | Japan | Type the **postal code** → **Prefecture**, **City / ward**, **Town** fill in; the customer adds the block number | Japan Post postal code data: 47 prefectures, 120,721 postal codes | gp247/shop 3.15.1+ |
+| **AddressVN** — [source](https://github.com/gp247-official/AddressVN) | Vietnam | Pick **Province / City** → **Ward / Commune** from searchable lists (typing without accents works) | The two-level units in force since 2025-07-01, from the General Statistics Office: 34 provinces, 3,321 wards / communes / special zones | gp247/shop 3.15+ |
+| **AddressJP** — [source](https://github.com/gp247-official/AddressJP) | Japan | Type the **postal code** → **Prefecture**, **City / ward**, **Town** fill in; the customer adds the block number | Japan Post postal code data: 47 prefectures, 120,721 postal codes | gp247/shop 3.15.1+ |
 
 Customers in Vietnam pick a province, then a ward, from lists:
 

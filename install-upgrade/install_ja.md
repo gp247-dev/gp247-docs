@@ -298,7 +298,7 @@ core だけのサイト（front を追加）や、GP247 CMS のサイト（shop 
 [S-Cart](#手順-s-cart) の手順 1〜2 を次に置き換えます。
 
 ```bash
-git clone https://github.com/gp247net/s-cart.git my-site
+git clone https://github.com/gp247-official/s-cart.git my-site
 cd my-site
 cp .env.example .env
 composer install
@@ -312,7 +312,7 @@ Docker 一式は S-Cart のソースコードに含まれており、PHP、Web �
 （開発環境）では:
 
 ```bash
-git clone https://github.com/gp247net/s-cart.git my-site
+git clone https://github.com/gp247-official/s-cart.git my-site
 cd my-site
 cp .env.example .env
 docker compose up -d --build
@@ -326,7 +326,7 @@ docker compose exec app php artisan gp247:install
   （`APP_ENV=production`、`APP_DEBUG=false`、DB 情報、コンテナを実行するユーザー）。`-f` を忘れると、開発用の設定（デバッグ有効、
   root 権限での実行）で動いてしまいます。
 - **詳しいガイド**（環境変数、データの保存場所、イメージの更新、1 台のサーバーで複数プロジェクト）:
-  [S-Cart with Docker](https://github.com/gp247net/s-cart/blob/master/DOCKER.md)（英語）。
+  [S-Cart with Docker](https://github.com/gp247-official/s-cart/blob/master/DOCKER.md)（英語）。
 
 ### コマンドラインのないホスティング（すべての構成）
 FTP と phpMyAdmin しかないホスティングでは、**お使いのパソコンで完全にインストール**してから、コードと DB を移します。

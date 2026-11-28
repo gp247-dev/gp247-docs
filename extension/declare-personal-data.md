@@ -18,7 +18,7 @@ owner has to handle it by hand. Read after [Creating a plugin](./create-plugin.m
 [Update-safe plugins](./create-plugin-update-safety.md).
 
 > 💡 **Working with an AI agent?** The `gp247-plugin-create`, `gp247-payment-plugin-create` and `gp247-shipping-plugin-create`
-> skills in the [gp247-skills](https://github.com/gp247net/gp247-skills) repository declare the plugin's tables the way this page
+> skills in the [gp247-skills](https://github.com/gp247-official/gp247-skills) repository declare the plugin's tables the way this page
 > describes (the skill's `references/personal-data.md`).
 
 **No declaration is needed** when the plugin keeps no customer data, or only writes into the platform's tables (orders,

@@ -133,7 +133,7 @@ php artisan gp247:info
    パッケージ（S-Cart 3.5 から）も追加します。
 
    > ℹ️ **情報:** 上の番号は S-Cart 3.10.0 の最低バージョンです。より新しい S-Cart ではこの値が上がることがあります —
-   > [最新の S-Cart の `composer.json`](https://github.com/gp247net/s-cart/blob/master/composer.json) と照らし合わせてください。
+   > [最新の S-Cart の `composer.json`](https://github.com/gp247-official/s-cart/blob/master/composer.json) と照らし合わせてください。
 
 4. **データを 3.x 系に変換**します。
 

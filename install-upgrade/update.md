@@ -121,7 +121,7 @@ docker compose restart queue scheduler
 ```
 
 The last line restarts the two background containers so they load the new code. Patching PHP / Nginx in the image itself is a
-separate task — see [S-Cart with Docker](https://github.com/gp247net/s-cart/blob/master/DOCKER.md).
+separate task — see [S-Cart with Docker](https://github.com/gp247-official/s-cart/blob/master/DOCKER.md).
 
 ### Hosting without a command line
 Update a **copy on your own computer**, then upload the result:

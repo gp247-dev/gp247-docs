@@ -8,7 +8,7 @@
 設定が消えない、データが壊れない、アンインストールして再インストールしてもテーブルがすべて揃う、という状態を目指します。
 更新がどう動くか、守るべき 6 つのルール、独自データテーブルの作り方、`update()` フックの書き方を説明します。[プラグイン作成ガイド](./create-plugin_ja.md) の後に読むことをおすすめします。
 
-> 💡 **AI エージェントと一緒に作業しますか？** [gp247-skills](https://github.com/gp247net/gp247-skills) リポジトリにある拡張機能作成スキル — `gp247-plugin-create`、`gp247-payment-plugin-create`、
+> 💡 **AI エージェントと一緒に作業しますか？** [gp247-skills](https://github.com/gp247-official/gp247-skills) リポジトリにある拡張機能作成スキル — `gp247-plugin-create`、`gp247-payment-plugin-create`、
 > `gp247-shipping-plugin-create`、`gp247-template-create` — は、どれも以下の安全な更新ルールに沿ってプラグイン／テンプレートを作ります。
 > コマンドラインでの拡張機能のインストール／更新／アンインストールには、スキル `gp247-extension-lifecycle` を使います。
 

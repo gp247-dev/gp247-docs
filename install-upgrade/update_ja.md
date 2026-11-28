@@ -121,7 +121,7 @@ docker compose restart queue scheduler
 ```
 
 最後の行は、バックグラウンドで動く 2 つのコンテナを再起動して新しいコードを読み込ませます。イメージ自体の PHP／Nginx の更新は
-別の作業です — [S-Cart with Docker](https://github.com/gp247net/s-cart/blob/master/DOCKER.md)（英語）を参照してください。
+別の作業です — [S-Cart with Docker](https://github.com/gp247-official/s-cart/blob/master/DOCKER.md)（英語）を参照してください。
 
 ### コマンドラインのないホスティング
 **お使いのパソコン上のコピー**で更新し、その結果をホスティングに反映します。

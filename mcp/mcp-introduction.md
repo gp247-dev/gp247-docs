@@ -124,7 +124,7 @@ sequenceDiagram
 MCP uses the official `laravel/mcp` library and a **session-less Streamable HTTP** endpoint (every request stands alone and returns JSON), so
 it runs on shared hosting. A store-partitioning plugin plugs into MCP through the same hook as the admin REST API (`gp247-config.api.admin_fence`)
 or the dedicated key `gp247-config.mcp.store_resolver` — see [Multi-store sites](./mcp-security.md#multi-store-sites). Source code:
-[github.com/gp247net/mcp](https://github.com/gp247net/mcp).
+[github.com/gp247-official/mcp](https://github.com/gp247-official/mcp).
 
 ## Q&A
 

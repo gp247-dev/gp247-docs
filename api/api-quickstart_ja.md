@@ -125,7 +125,7 @@ flowchart LR
 1. 仕様書のアドレスをコピーします。
 
    ```
-   https://raw.githubusercontent.com/gp247net/gp247-docs/main/api/openapi.json
+   https://raw.githubusercontent.com/gp247-official/gp247-docs/main/api/openapi.json
    ```
 
 2. ツールを 1 つ選びます。

@@ -24,7 +24,7 @@ xong, bạn có một plugin chạy được và biết cần đọc tiếp tran
 | Nâng cấp plugin viết cho GP247 1.x | [Chuyển đổi plugin v1 lên v2](./convert-plugin-v1-to-v2_vi.md) |
 | Giao diện cửa hàng (template), không phải plugin | [Tạo template](./create-template_vi.md) |
 
-> 💡 **Làm cùng AI agent?** Dùng skill của GP247 trong repo [gp247-skills](https://github.com/gp247net/gp247-skills) (chép
+> 💡 **Làm cùng AI agent?** Dùng skill của GP247 trong repo [gp247-skills](https://github.com/gp247-official/gp247-skills) (chép
 > thư mục skill vào thư mục skill của agent, ví dụ `.claude/skills/` với Claude Code):
 > `gp247-plugin-create` (plugin thông thường), `gp247-payment-plugin-create` (thanh toán), `gp247-shipping-plugin-create`
 > (vận chuyển). Skill tự dò phiên bản site và làm đúng các bước dưới đây.

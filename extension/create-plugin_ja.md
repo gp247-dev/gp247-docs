@@ -24,7 +24,7 @@ PHP／Laravel 開発者の**出発点**です。このページでは、設定�
 | GP247 1.x 向けに書かれたプラグインのアップグレード | [プラグインを v1 から v2 へ変換](./convert-plugin-v1-to-v2_ja.md) |
 | プラグインではなくストアの見た目（テンプレート） | [テンプレートの作成](./create-template_ja.md) |
 
-> 💡 **ヒント:** **AI エージェントと一緒に作業しますか？** [gp247-skills](https://github.com/gp247net/gp247-skills) リポジトリにある
+> 💡 **ヒント:** **AI エージェントと一緒に作業しますか？** [gp247-skills](https://github.com/gp247-official/gp247-skills) リポジトリにある
 > GP247 のスキルを使ってください（スキルのフォルダーをエージェントのスキルフォルダーにコピーします。例：Claude Code なら `.claude/skills/`）。
 > `gp247-plugin-create`（一般的なプラグイン）、`gp247-payment-plugin-create`（決済）、`gp247-shipping-plugin-create`
 > （配送）があります。スキルはサイトのバージョンを自動で調べ、下記の手順どおりに作業します。

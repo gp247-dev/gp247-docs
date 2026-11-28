@@ -109,7 +109,7 @@ theo, code mẫu — nằm ở:
 - [Chuyển đổi plugin v1 lên v2](../../extension/convert-plugin-v1-to-v2_vi.md), Bước 8d — nâng cấp plugin thanh toán cũ.
 
 > 💡 Làm cùng AI agent: dùng skill **`gp247-payment-plugin-create`** trong repo
-> [gp247-skills](https://github.com/gp247net/gp247-skills) — skill dựng plugin đúng hợp đồng của `gp247/shop` thay vì để
+> [gp247-skills](https://github.com/gp247-official/gp247-skills) — skill dựng plugin đúng hợp đồng của `gp247/shop` thay vì để
 > agent tự đoán.
 
 ---

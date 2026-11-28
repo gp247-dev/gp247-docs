@@ -17,7 +17,7 @@ into**, and be able to follow each step without needing a deep understanding of 
 > about **reworking the UI layer and a few configuration files**, while your logic/model code
 > stays almost untouched.
 
-> 💡 **Working with an AI agent?** The **`gp247-plugin-create`** skill from the [gp247-skills](https://github.com/gp247net/gp247-skills) repository knows the current plugin
+> 💡 **Working with an AI agent?** The **`gp247-plugin-create`** skill from the [gp247-skills](https://github.com/gp247-official/gp247-skills) repository knows the current plugin
 > format (Livewire + TailAdmin, update-safe) — use it when rewriting the UI layer; payment / shipping plugins use
 > `gp247-payment-plugin-create` / `gp247-shipping-plugin-create`.
 
@@ -455,7 +455,7 @@ checkout through `configCode` and `getInfo()`. When upgrading, also:
 
 Step-by-step guides with complete code: [Creating a payment plugin](create-payment-plugin.md), [Creating a shipping plugin](create-shipping-plugin.md).
 If you work with an AI agent, use the `gp247-payment-plugin-create` / `gp247-shipping-plugin-create` skill from
-the [gp247-skills](https://github.com/gp247net/gp247-skills) repository.
+the [gp247-skills](https://github.com/gp247-official/gp247-skills) repository.
 
 ---
 

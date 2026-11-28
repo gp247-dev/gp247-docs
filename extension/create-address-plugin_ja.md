@@ -11,12 +11,12 @@
 
 > ℹ️ **対応バージョン:** gp247/shop 3.15（住所レイヤー、一覧）。郵便番号検索は gp247/shop 3.15.1。
 
-> 💡 **AI エージェントと作業していますか？** [gp247-skills](https://github.com/gp247net/gp247-skills) リポジトリの
+> 💡 **AI エージェントと作業していますか？** [gp247-skills](https://github.com/gp247-official/gp247-skills) リポジトリの
 > **`gp247-plugin-create`** スキルでプラグインのひな形を作り（サイトのバージョン確認、`gp247.json`、更新に安全なライフサイクル）、
 > 住所の部分は以下の手順に沿って進めてください。
 
-> 📦 **無料の完成済みサンプル 2 つ:** [AddressVN](https://github.com/gp247-plugin/AddressVN)（省 → 坊・社の一覧）と
-> [AddressJP](https://github.com/gp247-plugin/AddressJP)（郵便番号検索、分割データ）。
+> 📦 **無料の完成済みサンプル 2 つ:** [AddressVN](https://github.com/gp247-official/AddressVN)（省 → 坊・社の一覧）と
+> [AddressJP](https://github.com/gp247-official/AddressJP)（郵便番号検索、分割データ）。
 
 ---
 
@@ -416,7 +416,7 @@ public function lookup(string $country, string $postcode, string $locale): array
   コピーしません。
 - 古いショップでも動かす必要があるテンプレートは、`@if (class_exists(\GP247\Shop\Address\View\AddressBlock::class))` で囲み、`@else` に
   従来の欄を残します。
-- 契約の全体: [gp247-skills](https://github.com/gp247net/gp247-skills) の `gp247-template-create` スキルの「Address forms」セクション。
+- 契約の全体: [gp247-skills](https://github.com/gp247-official/gp247-skills) の `gp247-template-create` スキルの「Address forms」セクション。
 
 ---
 

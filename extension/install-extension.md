@@ -173,7 +173,7 @@ Every way to update (library, command line, copying over) and what to do when fi
 
 ## 5. Method 4 — Command line (`gp247:ext-*`)
 
-> 💡 **Working with an AI agent?** Use the **`gp247-extension-lifecycle`** skill from the [gp247-skills](https://github.com/gp247net/gp247-skills) repository: it probes the
+> 💡 **Working with an AI agent?** Use the **`gp247-extension-lifecycle`** skill from the [gp247-skills](https://github.com/gp247-official/gp247-skills) repository: it probes the
 > site's version, uses only the commands and options the site really has, and reports each install / enable / disable /
 > update / remove step.
 

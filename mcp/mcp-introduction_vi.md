@@ -124,7 +124,7 @@ sequenceDiagram
 MCP dùng thư viện chính chủ `laravel/mcp`, endpoint **Streamable HTTP không phiên** (mỗi request độc lập, trả JSON) nên chạy được trên
 shared hosting. Plugin phân vùng cửa hàng nối vào MCP qua cùng điểm cắm của REST API quản trị (`gp247-config.api.admin_fence`) hoặc
 khoá riêng `gp247-config.mcp.store_resolver` — xem [Site nhiều cửa hàng](./mcp-security_vi.md#site-nhiều-cửa-hàng). Mã nguồn:
-[github.com/gp247net/mcp](https://github.com/gp247net/mcp).
+[github.com/gp247-official/mcp](https://github.com/gp247-official/mcp).
 
 ## Hỏi & Đáp (Q&A)
 

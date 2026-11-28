@@ -11,7 +11,7 @@ khung đã đặt đúng các điểm nối tiền của `gp247/shop`. Đọc xo
 phải dùng hàm có sẵn để tiền không bị ghi sai hay ghi hai lần.
 
 > 💡 **Làm cùng AI agent?** Dùng skill **`gp247-payment-plugin-create`** trong repo
-> [gp247-skills](https://github.com/gp247net/gp247-skills): skill tự dò phiên bản site, hỏi đủ thông tin rồi dựng plugin theo
+> [gp247-skills](https://github.com/gp247-official/gp247-skills): skill tự dò phiên bản site, hỏi đủ thông tin rồi dựng plugin theo
 > đúng các bước dưới đây, và được cập nhật cùng `gp247/shop`.
 
 ---

@@ -169,7 +169,7 @@ Mọi cách cập nhật (thư viện, dòng lệnh, chép đè) và cách xử 
 
 ## 5. Cách 4 — Dòng lệnh (`gp247:ext-*`)
 
-> 💡 **Làm cùng AI agent?** Dùng skill **`gp247-extension-lifecycle`** trong repo [gp247-skills](https://github.com/gp247net/gp247-skills): skill dò phiên bản site, chỉ
+> 💡 **Làm cùng AI agent?** Dùng skill **`gp247-extension-lifecycle`** trong repo [gp247-skills](https://github.com/gp247-official/gp247-skills): skill dò phiên bản site, chỉ
 > dùng lệnh và tuỳ chọn site thật sự có, rồi báo kết quả từng bước cài / bật / tắt / cập nhật / gỡ.
 
 Dành cho lập trình viên, CI/CD, Docker hoặc shared host có terminal: toàn bộ vòng đời extension làm

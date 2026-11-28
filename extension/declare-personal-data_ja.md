@@ -16,7 +16,7 @@
 宣言のないテーブルは「個人データの請求」画面の**「未申告の顧客データ」**に表示され、ショップ運営者が手作業で対応する
 ことになります。[プラグイン作成ガイド](./create-plugin_ja.md) と [更新に安全なプラグイン](./create-plugin-update-safety_ja.md) の後に読んでください。
 
-> 💡 **AI エージェントと作業する場合:** [gp247-skills](https://github.com/gp247net/gp247-skills) リポジトリのスキル
+> 💡 **AI エージェントと作業する場合:** [gp247-skills](https://github.com/gp247-official/gp247-skills) リポジトリのスキル
 > `gp247-plugin-create`、`gp247-payment-plugin-create`、`gp247-shipping-plugin-create` は、このページのとおりにプラグインの
 > テーブルを宣言します（スキルの `references/personal-data.md`）。
 

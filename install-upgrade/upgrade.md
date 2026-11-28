@@ -130,7 +130,7 @@ so they cannot break the site.
    also adds the MCP server package (included since S-Cart 3.5).
 
    > ℹ️ **Info:** the numbers above are the minimums of S-Cart 3.10.0. Newer S-Cart releases may raise them — compare with
-   > [the latest S-Cart `composer.json`](https://github.com/gp247net/s-cart/blob/master/composer.json).
+   > [the latest S-Cart `composer.json`](https://github.com/gp247-official/s-cart/blob/master/composer.json).
 
 4. **Convert the data to the 3.x line**:
 

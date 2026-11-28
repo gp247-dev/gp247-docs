@@ -124,7 +124,7 @@ sequenceDiagram
 MCP は公式ライブラリ `laravel/mcp` と、**セッションを持たない Streamable HTTP** のエンドポイント（各リクエストが独立し JSON を返す）を使うため、
 共有ホスティングでも動作します。ストアを分割するプラグインは、管理用 REST API と同じフック（`gp247-config.api.admin_fence`）または専用キー
 `gp247-config.mcp.store_resolver` で MCP に接続します。[複数ストアのサイト](./mcp-security_ja.md#複数ストアのサイト)を参照してください。ソースコード：
-[github.com/gp247net/mcp](https://github.com/gp247net/mcp)。
+[github.com/gp247-official/mcp](https://github.com/gp247-official/mcp)。
 
 ## よくある質問（Q&A）
 

@@ -12,7 +12,7 @@ không cần tài khoản bên ngoài. Phần 2 nối một **hãng vận chuy�
 > ℹ️ **Có từ:** gp247/shop 3.1.4 (hợp đồng vận chuyển chuẩn). Trên bản cũ hơn, plugin vẫn chạy theo cách cũ qua `getInfo()` — xem Bước 3.
 
 > 💡 **Làm cùng AI agent?** Dùng skill **`gp247-shipping-plugin-create`** trong repo
-> [gp247-skills](https://github.com/gp247net/gp247-skills): skill tự dò phiên bản và năng lực của site, hỏi đủ thông tin rồi dựng
+> [gp247-skills](https://github.com/gp247-official/gp247-skills): skill tự dò phiên bản và năng lực của site, hỏi đủ thông tin rồi dựng
 > plugin theo đúng các bước dưới đây, và được cập nhật cùng `gp247/shop`.
 
 ---

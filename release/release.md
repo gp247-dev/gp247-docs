@@ -94,7 +94,7 @@ gone can be removed with the **Forget** button and installed again as new; Compo
 - *(Your own template)* add **My data** to the account area — the default theme and GP247-EC ≥ 1.0.7 have it
 - *(Site code still calling Laravel 7 style `factory()`)* run `composer require laravel/legacy-factories`
 
-<sub>Includes core 3.19.0 · front 3.15.0 · shop 3.16.0 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.12.0)</sub>
+<sub>Includes core 3.19.0 · front 3.15.0 · shop 3.16.0 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247-official/s-cart/releases/tag/3.12.0)</sub>
 
 ### S-Cart 3.11.0 — 2026-11-23
 **Copies no longer carry the original's SEO; new installs come named and branded S-Cart.**
@@ -116,7 +116,7 @@ redirect-to-error item reports only targets still returning 404 in the last 7 da
 - *(Custom templates)* if the Facebook link reads `fanpage_url`, read `group_url` and keep `fanpage_url` as a fallback
 - *(Sites using the News plugin)* update News to 3.2.0 or later to duplicate articles
 
-<sub>Includes core 3.18.0 · front 3.14.2 · shop 3.14.1 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.11.0)</sub>
+<sub>Includes core 3.18.0 · front 3.14.2 · shop 3.14.1 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247-official/s-cart/releases/tag/3.11.0)</sub>
 
 ### S-Cart 3.10.0 — 2026-11-20
 **Add GA4 and Meta Pixel by pasting an ID, with a cookie banner; duplicate a product in one click.**
@@ -148,7 +148,7 @@ redirects also work for addresses that match no page (e.g. taken from the 404 lo
   file, merge the change
 - *(Custom templates)* keep `<x-gp247-front::meta-head>` in `<head>` to get the tracking code and the cookie banner
 
-<sub>Includes core 3.16.0 · front 3.12.0 · shop 3.13.0 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.10.0)</sub>
+<sub>Includes core 3.16.0 · front 3.12.0 · shop 3.13.0 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247-official/s-cart/releases/tag/3.10.0)</sub>
 
 ### S-Cart 3.9.0 — 2026-11-18
 **Full SEO built in: an SEO tab for every product, automatic 301s when an address changes, an SEO check screen.**
@@ -178,7 +178,7 @@ row on wide screens
 - *(Your own template, or an overridden `meta-head`)* follow the [template SEO contract](../seo/seo-for-developers.md#the-template-seo-contract) so robots, hreflang and verification tags are printed
 - *(Sites using the News plugin)* update News to 3.1.0 or later to get the SEO tab for news
 
-<sub>Includes core 3.15.0 · front 3.11.0 · shop 3.12.0 · mcp 2.1.0 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.9.0)</sub>
+<sub>Includes core 3.15.0 · front 3.11.0 · shop 3.12.0 · mcp 2.1.0 · [GitHub Release](https://github.com/gp247-official/s-cart/releases/tag/3.9.0)</sub>
 
 ### S-Cart 3.8.0 — 2026-11-15
 **Shoppers sort products their way; the extension library shows everything and which core each needs.**
@@ -199,23 +199,23 @@ work again; a fresh site no longer re-runs old upgrade migrations on its first `
 - The sample share image `org.jpg` is gone: set your own under **Website information** if you want an image when links are shared
 - *(Old links with `sort_asc` / `sort_desc`)* now show the default order set in the admin
 
-<sub>Includes core 3.14.0 · front 3.9.1 · shop 3.11.1 · mcp 2.0.3 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.8.0)</sub>
+<sub>Includes core 3.14.0 · front 3.9.1 · shop 3.11.1 · mcp 2.0.3 · [GitHub Release](https://github.com/gp247-official/s-cart/releases/tag/3.8.0)</sub>
 
 ### Older releases
 | Release | Date | Summary |
 | --- | --- | --- |
-| [S-Cart 3.7.0](https://github.com/gp247net/s-cart/releases/tag/3.7.0) | 2026-11-13 | Names and content show exactly as you type them — no more `&amp;` |
-| [S-Cart 3.6.1](https://github.com/gp247net/s-cart/releases/tag/3.6.1) | 2026-11-11 | Sturdier backup and restore for live sites and shared hosting |
-| [S-Cart 3.6.0](https://github.com/gp247net/s-cart/releases/tag/3.6.0) | 2026-11-09 | Backup and restore built into S-Cart, ready for shared hosting |
-| [S-Cart 3.5.2](https://github.com/gp247net/s-cart/releases/tag/3.5.2) | 2026-11-07 | Improvements for sites on Docker or behind a proxy / CDN |
-| [S-Cart 3.5.1](https://github.com/gp247net/s-cart/releases/tag/3.5.1) | 2026-11-05 | The admin flags unsafe settings; a simpler web installer |
-| [S-Cart 3.5.0](https://github.com/gp247net/s-cart/releases/tag/3.5.0) | 2026-11-03 | Built-in MCP server: ask and manage your shop with an AI agent |
-| [S-Cart 3.4.0](https://github.com/gp247net/s-cart/releases/tag/3.4.0) | 2026-11-02 | Sell through your own app and sync with your ERP over the REST API |
-| [S-Cart 3.3.1](https://github.com/gp247net/s-cart/releases/tag/3.3.1) | 2026-10-29 | Contact form with an inbox; REST API switched on and off from the admin |
-| [S-Cart 3.2](https://github.com/gp247net/s-cart/releases/tag/3.2) | 2026-10-23 | Japanese, standard shipping with shipments, storefront theme that updates with the package |
-| [S-Cart 3.1](https://github.com/gp247net/s-cart/releases/tag/3.1) | 2026-10-03 | Payment requests outside the cart; stored passwords and payment keys encrypted |
-| [S-Cart 3.0.1](https://github.com/gp247net/s-cart/releases/tag/3.0.1) | 2026-09-04 | Old `sc:*` commands removed, use the `gp247:*` commands — [command list](../cli/cli-introduction.md) |
-| [S-Cart 3.0](https://github.com/gp247net/s-cart/releases/tag/3.0) | 2026-08-30 | Start of the 3.x line: a payment ledger per order, discounts taken before tax |
+| [S-Cart 3.7.0](https://github.com/gp247-official/s-cart/releases/tag/3.7.0) | 2026-11-13 | Names and content show exactly as you type them — no more `&amp;` |
+| [S-Cart 3.6.1](https://github.com/gp247-official/s-cart/releases/tag/3.6.1) | 2026-11-11 | Sturdier backup and restore for live sites and shared hosting |
+| [S-Cart 3.6.0](https://github.com/gp247-official/s-cart/releases/tag/3.6.0) | 2026-11-09 | Backup and restore built into S-Cart, ready for shared hosting |
+| [S-Cart 3.5.2](https://github.com/gp247-official/s-cart/releases/tag/3.5.2) | 2026-11-07 | Improvements for sites on Docker or behind a proxy / CDN |
+| [S-Cart 3.5.1](https://github.com/gp247-official/s-cart/releases/tag/3.5.1) | 2026-11-05 | The admin flags unsafe settings; a simpler web installer |
+| [S-Cart 3.5.0](https://github.com/gp247-official/s-cart/releases/tag/3.5.0) | 2026-11-03 | Built-in MCP server: ask and manage your shop with an AI agent |
+| [S-Cart 3.4.0](https://github.com/gp247-official/s-cart/releases/tag/3.4.0) | 2026-11-02 | Sell through your own app and sync with your ERP over the REST API |
+| [S-Cart 3.3.1](https://github.com/gp247-official/s-cart/releases/tag/3.3.1) | 2026-10-29 | Contact form with an inbox; REST API switched on and off from the admin |
+| [S-Cart 3.2](https://github.com/gp247-official/s-cart/releases/tag/3.2) | 2026-10-23 | Japanese, standard shipping with shipments, storefront theme that updates with the package |
+| [S-Cart 3.1](https://github.com/gp247-official/s-cart/releases/tag/3.1) | 2026-10-03 | Payment requests outside the cart; stored passwords and payment keys encrypted |
+| [S-Cart 3.0.1](https://github.com/gp247-official/s-cart/releases/tag/3.0.1) | 2026-09-04 | Old `sc:*` commands removed, use the `gp247:*` commands — [command list](../cli/cli-introduction.md) |
+| [S-Cart 3.0](https://github.com/gp247-official/s-cart/releases/tag/3.0) | 2026-08-30 | Start of the 3.x line: a payment ledger per order, discounts taken before tax |
 
 ## Security
 
@@ -241,7 +241,7 @@ Flaws in PHP and the web server are fixed by their own vendors, not by a GP247 r
 - **Cannot update yet:** set `session.upload_progress.enabled = Off` in `php.ini` (GP247 does not use this feature) and restart
   PHP. It lowers the risk; it does not replace the update.
 - **Running with Docker:** follow "Security updates" in
-  [DOCKER.md](https://github.com/gp247net/s-cart/blob/master/DOCKER.md).
+  [DOCKER.md](https://github.com/gp247-official/s-cart/blob/master/DOCKER.md).
 
 ## Third-party libraries
 Flaws in libraries GP247 uses (Livewire, Symfony…) are fixed by their own maintainers; GP247 raises its minimum when needed.

@@ -111,7 +111,7 @@ flowchart LR
 - [プラグインを v1 から v2 へ変換](../../extension/convert-plugin-v1-to-v2_ja.md)、ステップ 8d — 古い決済プラグインのアップグレード。
 
 > 💡 AI エージェントと作業する場合：リポジトリ
-> [gp247-skills](https://github.com/gp247net/gp247-skills) のスキル **`gp247-payment-plugin-create`** を使ってください。
+> [gp247-skills](https://github.com/gp247-official/gp247-skills) のスキル **`gp247-payment-plugin-create`** を使ってください。
 > エージェントに推測させず、`gp247/shop` の契約どおりにプラグインを作ります。
 
 ---

@@ -125,7 +125,7 @@ Thay vì gõ lệnh, bạn có thể nạp đặc tả `openapi.json` để th�
 1. Copy địa chỉ của đặc tả:
 
    ```
-   https://raw.githubusercontent.com/gp247net/gp247-docs/main/api/openapi.json
+   https://raw.githubusercontent.com/gp247-official/gp247-docs/main/api/openapi.json
    ```
 
 2. Chọn một công cụ:

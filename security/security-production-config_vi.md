@@ -197,7 +197,7 @@ Bộ Docker của S-Cart có sẵn vài lớp bảo vệ cho production:
 - **Header bảo mật của trang do GP247 gửi** — nginx của bộ chỉ thêm `X-Content-Type-Options` cho file tĩnh, nên bật / tắt trên màn [Header bảo mật](#header-bảo-mật) có tác dụng thật. Đã tự sửa `default.conf` thì gộp thay đổi này khi cập nhật.
 
 Phần bạn làm: đặt **HTTPS ở proxy phía trước** container (nginx trong bộ chỉ nghe cổng 80), đổi mọi mật khẩu mẫu, cập nhật image theo
-mục "Cập nhật bản vá bảo mật" của [DOCKER_vi.md](https://github.com/gp247net/s-cart/blob/master/DOCKER_vi.md). Không chạy
+mục "Cập nhật bản vá bảo mật" của [DOCKER_vi.md](https://github.com/gp247-official/s-cart/blob/master/DOCKER_vi.md). Không chạy
 `docker compose down -v` trên máy production — lệnh đó **xoá volume chứa cơ sở dữ liệu**. Proxy HTTPS trên cùng máy chủ thì khai
 `TRUSTED_PROXIES` theo mục [Site chạy sau proxy hoặc CDN](#site-chạy-sau-proxy-hoặc-cdn).
 

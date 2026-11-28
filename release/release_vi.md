@@ -92,7 +92,7 @@ Mới nhất ở trên. Bản *x.**Y*** có tính năng mới; bản *x.y.**Z***
 - *(Template tự viết)* thêm mục **Dữ liệu của tôi** vào khu tài khoản — giao diện mặc định và GP247-EC ≥ 1.0.7 có sẵn
 - *(Code của site còn gọi `factory()` kiểu Laravel 7)* chạy `composer require laravel/legacy-factories`
 
-<sub>Gồm core 3.19.0 · front 3.15.0 · shop 3.16.0 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.12.0)</sub>
+<sub>Gồm core 3.19.0 · front 3.15.0 · shop 3.16.0 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247-official/s-cart/releases/tag/3.12.0)</sub>
 
 ### S-Cart 3.11.0 — 2026-11-23
 **Bản sao không mang SEO của bản gốc; cài mới có sẵn tên và logo S-Cart.**
@@ -114,7 +114,7 @@ hướng tới trang lỗi chỉ báo khi đích còn 404 trong 7 ngày qua
 - *(Template tự viết)* link Facebook đang đọc `fanpage_url` thì đọc `group_url`, giữ `fanpage_url` làm dự phòng
 - *(Site dùng plugin Tin tức)* cập nhật News ≥ 3.2.0 để nhân bản bài viết
 
-<sub>Gồm core 3.18.0 · front 3.14.2 · shop 3.14.1 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.11.0)</sub>
+<sub>Gồm core 3.18.0 · front 3.14.2 · shop 3.14.1 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247-official/s-cart/releases/tag/3.11.0)</sub>
 
 ### S-Cart 3.10.0 — 2026-11-20
 **Gắn GA4, Meta Pixel chỉ bằng dán ID, có banner cookie; nhân bản sản phẩm một nút.**
@@ -145,7 +145,7 @@ với đường dẫn không còn trang nào (vd lấy từ Nhật ký 404); tra
   gộp thay đổi
 - *(Template tự viết)* giữ `<x-gp247-front::meta-head>` trong `<head>` để có mã đo lường và banner cookie
 
-<sub>Gồm core 3.16.0 · front 3.12.0 · shop 3.13.0 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.10.0)</sub>
+<sub>Gồm core 3.16.0 · front 3.12.0 · shop 3.13.0 · mcp 2.1.1 · [GitHub Release](https://github.com/gp247-official/s-cart/releases/tag/3.10.0)</sub>
 
 ### S-Cart 3.9.0 — 2026-11-18
 **SEO có sẵn đầy đủ: tab SEO cho từng sản phẩm, tự 301 khi đổi đường dẫn, màn Kiểm tra SEO.**
@@ -173,7 +173,7 @@ với đường dẫn không còn trang nào (vd lấy từ Nhật ký 404); tra
 - *(Template tự viết hoặc ghi đè `meta-head`)* đồng bộ theo [hợp đồng SEO của template](../seo/seo-for-developers_vi.md#hợp-đồng-seo-của-template) để in thẻ robots, hreflang, mã xác minh
 - *(Site dùng plugin Tin tức)* cập nhật News ≥ 3.1.0 để có tab SEO cho tin
 
-<sub>Gồm core 3.15.0 · front 3.11.0 · shop 3.12.0 · mcp 2.1.0 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.9.0)</sub>
+<sub>Gồm core 3.15.0 · front 3.11.0 · shop 3.12.0 · mcp 2.1.0 · [GitHub Release](https://github.com/gp247-official/s-cart/releases/tag/3.9.0)</sub>
 
 ### S-Cart 3.8.0 — 2026-11-15
 **Khách sắp xếp sản phẩm theo ý mình; thư viện extension hiện đủ, ghi rõ bản cần core mới.**
@@ -194,23 +194,23 @@ trở lại; site cài mới không chạy lại migration cũ ở lần `gp247:
 - Ảnh chia sẻ mẫu `org.jpg` đã bỏ: muốn có ảnh khi chia sẻ link, đặt ảnh của bạn ở **Thông tin website**
 - *(Link cũ có `sort_asc` / `sort_desc`)* nay hiển thị theo thứ tự mặc định do quản trị đặt
 
-<sub>Gồm core 3.14.0 · front 3.9.1 · shop 3.11.1 · mcp 2.0.3 · [GitHub Release](https://github.com/gp247net/s-cart/releases/tag/3.8.0)</sub>
+<sub>Gồm core 3.14.0 · front 3.9.1 · shop 3.11.1 · mcp 2.0.3 · [GitHub Release](https://github.com/gp247-official/s-cart/releases/tag/3.8.0)</sub>
 
 ### Các bản cũ hơn
 | Bản | Ngày | Tóm tắt |
 | --- | --- | --- |
-| [S-Cart 3.7.0](https://github.com/gp247net/s-cart/releases/tag/3.7.0) | 2026-11-13 | Tên và nội dung hiển thị đúng như bạn gõ — hết `&amp;` |
-| [S-Cart 3.6.1](https://github.com/gp247net/s-cart/releases/tag/3.6.1) | 2026-11-11 | Sao lưu và phục hồi chắc hơn cho site thật và shared host |
-| [S-Cart 3.6.0](https://github.com/gp247net/s-cart/releases/tag/3.6.0) | 2026-11-09 | Sao lưu và phục hồi có sẵn trong S-Cart, chạy được cả trên shared host |
-| [S-Cart 3.5.2](https://github.com/gp247net/s-cart/releases/tag/3.5.2) | 2026-11-07 | Cải tiến cho site chạy Docker hoặc đứng sau proxy / CDN |
-| [S-Cart 3.5.1](https://github.com/gp247net/s-cart/releases/tag/3.5.1) | 2026-11-05 | Trang quản trị tự báo cấu hình chưa an toàn; cài đặt qua web gọn hơn |
-| [S-Cart 3.5.0](https://github.com/gp247net/s-cart/releases/tag/3.5.0) | 2026-11-03 | MCP server có sẵn: hỏi và quản lý cửa hàng bằng AI agent |
-| [S-Cart 3.4.0](https://github.com/gp247net/s-cart/releases/tag/3.4.0) | 2026-11-02 | Bán hàng qua ứng dụng riêng và đồng bộ ERP qua REST API |
-| [S-Cart 3.3.1](https://github.com/gp247net/s-cart/releases/tag/3.3.1) | 2026-10-29 | Form liên hệ có hộp thư; bật/tắt REST API trong trang quản trị |
-| [S-Cart 3.2](https://github.com/gp247net/s-cart/releases/tag/3.2) | 2026-10-23 | Thêm tiếng Nhật, vận chuyển chuẩn có vận đơn, giao diện tự cập nhật theo package |
-| [S-Cart 3.1](https://github.com/gp247net/s-cart/releases/tag/3.1) | 2026-10-03 | Yêu cầu thanh toán ngoài giỏ hàng; mã hoá mật khẩu, khoá thanh toán đã lưu |
-| [S-Cart 3.0.1](https://github.com/gp247net/s-cart/releases/tag/3.0.1) | 2026-09-04 | Gỡ lệnh `sc:*` cũ, dùng lệnh `gp247:*` — [danh sách lệnh](../cli/cli-introduction_vi.md) |
-| [S-Cart 3.0](https://github.com/gp247net/s-cart/releases/tag/3.0) | 2026-08-30 | Mở đầu dòng 3.x: sổ thanh toán từng đơn, giảm giá trừ trước thuế |
+| [S-Cart 3.7.0](https://github.com/gp247-official/s-cart/releases/tag/3.7.0) | 2026-11-13 | Tên và nội dung hiển thị đúng như bạn gõ — hết `&amp;` |
+| [S-Cart 3.6.1](https://github.com/gp247-official/s-cart/releases/tag/3.6.1) | 2026-11-11 | Sao lưu và phục hồi chắc hơn cho site thật và shared host |
+| [S-Cart 3.6.0](https://github.com/gp247-official/s-cart/releases/tag/3.6.0) | 2026-11-09 | Sao lưu và phục hồi có sẵn trong S-Cart, chạy được cả trên shared host |
+| [S-Cart 3.5.2](https://github.com/gp247-official/s-cart/releases/tag/3.5.2) | 2026-11-07 | Cải tiến cho site chạy Docker hoặc đứng sau proxy / CDN |
+| [S-Cart 3.5.1](https://github.com/gp247-official/s-cart/releases/tag/3.5.1) | 2026-11-05 | Trang quản trị tự báo cấu hình chưa an toàn; cài đặt qua web gọn hơn |
+| [S-Cart 3.5.0](https://github.com/gp247-official/s-cart/releases/tag/3.5.0) | 2026-11-03 | MCP server có sẵn: hỏi và quản lý cửa hàng bằng AI agent |
+| [S-Cart 3.4.0](https://github.com/gp247-official/s-cart/releases/tag/3.4.0) | 2026-11-02 | Bán hàng qua ứng dụng riêng và đồng bộ ERP qua REST API |
+| [S-Cart 3.3.1](https://github.com/gp247-official/s-cart/releases/tag/3.3.1) | 2026-10-29 | Form liên hệ có hộp thư; bật/tắt REST API trong trang quản trị |
+| [S-Cart 3.2](https://github.com/gp247-official/s-cart/releases/tag/3.2) | 2026-10-23 | Thêm tiếng Nhật, vận chuyển chuẩn có vận đơn, giao diện tự cập nhật theo package |
+| [S-Cart 3.1](https://github.com/gp247-official/s-cart/releases/tag/3.1) | 2026-10-03 | Yêu cầu thanh toán ngoài giỏ hàng; mã hoá mật khẩu, khoá thanh toán đã lưu |
+| [S-Cart 3.0.1](https://github.com/gp247-official/s-cart/releases/tag/3.0.1) | 2026-09-04 | Gỡ lệnh `sc:*` cũ, dùng lệnh `gp247:*` — [danh sách lệnh](../cli/cli-introduction_vi.md) |
+| [S-Cart 3.0](https://github.com/gp247-official/s-cart/releases/tag/3.0) | 2026-08-30 | Mở đầu dòng 3.x: sổ thanh toán từng đơn, giảm giá trừ trước thuế |
 
 ## Bảo mật
 
@@ -236,7 +236,7 @@ Lỗi của PHP và web server do chính nhà phát hành của chúng vá, khô
 - **Chưa cập nhật được ngay:** đặt `session.upload_progress.enabled = Off` trong `php.ini` (GP247 không dùng tính năng này)
   rồi khởi động lại PHP. Cách này giảm rủi ro, không thay được việc cập nhật.
 - **Chạy bằng Docker:** làm theo mục "Cập nhật bản vá bảo mật" trong
-  [DOCKER_vi.md](https://github.com/gp247net/s-cart/blob/master/DOCKER_vi.md).
+  [DOCKER_vi.md](https://github.com/gp247-official/s-cart/blob/master/DOCKER_vi.md).
 
 ## Thư viện bên thứ ba
 Lỗi của thư viện mà GP247 dùng (Livewire, Symfony…) do chính nhà phát hành thư viện vá; GP247 nâng mức tối thiểu khi cần.

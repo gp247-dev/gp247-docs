@@ -65,7 +65,7 @@ Lỗi của PHP, nginx/Apache, MySQL, hệ điều hành do chính nhà phát h�
 
 - **Hosting có bảng điều khiển**: chọn phiên bản PHP mới nhất của nhánh đang dùng; hỏi nhà cung cấp khi có lỗi nghiêm trọng được công bố.
 - **VPS**: cài bản cập nhật của hệ điều hành định kỳ.
-- **Docker**: làm theo mục "Cập nhật bản vá bảo mật" trong [DOCKER_vi.md](https://github.com/gp247net/s-cart/blob/master/DOCKER_vi.md) — `docker compose up -d --build` không tự tải lại image gốc đã vá.
+- **Docker**: làm theo mục "Cập nhật bản vá bảo mật" trong [DOCKER_vi.md](https://github.com/gp247-official/s-cart/blob/master/DOCKER_vi.md) — `docker compose up -d --build` không tự tải lại image gốc đã vá.
 - Bản vá PHP / web server quan trọng được ghi ở mục "Phần mềm máy chủ" của [trang phát hành](../release/release_vi.md).
 
 ## Plugin và giao diện: chỉ cài từ nguồn tin cậy

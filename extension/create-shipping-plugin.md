@@ -13,7 +13,7 @@ reading, you have a working plugin and know which parts `gp247/shop` already doe
 > through `getInfo()` — see Step 3.
 
 > 💡 **Working with an AI agent?** Use the **`gp247-shipping-plugin-create`** skill from the
-> [gp247-skills](https://github.com/gp247net/gp247-skills) repository: it probes the site's version and capabilities, asks for what
+> [gp247-skills](https://github.com/gp247-official/gp247-skills) repository: it probes the site's version and capabilities, asks for what
 > it needs and builds the plugin following the steps below, and it is updated together with `gp247/shop`.
 
 ---

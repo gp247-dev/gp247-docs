@@ -65,7 +65,7 @@ PHP、nginx／Apache、MySQL、OS の不具合は、それぞれの提供元が�
 
 - **コントロールパネルのあるホスティング**：使用中の系列で最新の PHP バージョンを選びます。深刻な不具合が公表されたら、事業者に問い合わせてください。
 - **VPS**：OS の更新を定期的にインストールします。
-- **Docker**：[DOCKER.md](https://github.com/gp247net/s-cart/blob/master/DOCKER.md) の「Security updates」の項目に従ってください — `docker compose up -d --build` では、パッチ済みのベースイメージは自動で再取得されません。
+- **Docker**：[DOCKER.md](https://github.com/gp247-official/s-cart/blob/master/DOCKER.md) の「Security updates」の項目に従ってください — `docker compose up -d --build` では、パッチ済みのベースイメージは自動で再取得されません。
 - 重要な PHP／Web サーバーのパッチは、[リリースページ](../release/release_ja.md)の「サーバーソフトウェア」の項目に記載されます。
 
 ## プラグインとテンプレート：信頼できる提供元からのみインストール

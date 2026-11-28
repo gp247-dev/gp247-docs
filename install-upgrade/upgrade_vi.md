@@ -127,7 +127,7 @@ Plugin khai báo bản core mà nó chạy được; plugin viết cho core 2.x 
    Composer in danh sách gói đã đổi, trong đó `gp247/core` lên `3.x`. Dòng S-Cart thêm luôn gói MCP server (có từ S-Cart 3.5).
 
    > ℹ️ **Thông tin:** các số trên là mức tối thiểu của S-Cart 3.10.0. Bản S-Cart mới hơn có thể nâng mức này — đối chiếu
-   > [`composer.json` của S-Cart mới nhất](https://github.com/gp247net/s-cart/blob/master/composer.json).
+   > [`composer.json` của S-Cart mới nhất](https://github.com/gp247-official/s-cart/blob/master/composer.json).
 
 4. **Chuyển đổi dữ liệu sang dòng 3.x**:
 

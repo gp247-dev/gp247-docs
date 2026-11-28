@@ -295,7 +295,7 @@ Ba cách này cho ra cùng một site như cách chuẩn; mỗi mục dưới đ
 Thay bước 1–2 của [S-Cart](#các-bước-s-cart) bằng:
 
 ```bash
-git clone https://github.com/gp247net/s-cart.git my-site
+git clone https://github.com/gp247-official/s-cart.git my-site
 cd my-site
 cp .env.example .env
 composer install
@@ -308,7 +308,7 @@ Rồi làm tiếp **bước 3 → 6**.
 Bộ Docker có sẵn trong mã nguồn S-Cart: chạy sẵn PHP, web server và MySQL trong container. Trên máy của bạn (môi trường dev):
 
 ```bash
-git clone https://github.com/gp247net/s-cart.git my-site
+git clone https://github.com/gp247-official/s-cart.git my-site
 cd my-site
 cp .env.example .env
 docker compose up -d --build
@@ -322,7 +322,7 @@ Mở site tại <http://localhost:8000>.
   (`APP_ENV=production`, `APP_DEBUG=false`, thông tin CSDL, người dùng chạy container). Quên `-f` là chạy nhầm cấu hình dev
   (bật debug, chạy quyền root).
 - **Hướng dẫn đầy đủ** (biến môi trường, dữ liệu lưu ở đâu, vá image, nhiều dự án một máy chủ):
-  [S-Cart với Docker](https://github.com/gp247net/s-cart/blob/master/DOCKER_vi.md).
+  [S-Cart với Docker](https://github.com/gp247-official/s-cart/blob/master/DOCKER_vi.md).
 
 ### Hosting không có dòng lệnh (mọi bộ cài)
 Hosting chỉ có FTP và phpMyAdmin thì **cài trọn vẹn trên máy tính của bạn**, rồi chuyển code và CSDL lên:

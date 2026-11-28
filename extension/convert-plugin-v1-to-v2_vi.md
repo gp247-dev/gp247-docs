@@ -16,7 +16,7 @@ hiểu sâu toàn bộ hệ thống.
 > — layout cũ đã bị xóa, jQuery không còn được nạp. Việc chuyển đổi chủ yếu là **sửa lại
 > tầng giao diện và một vài file cấu hình**, còn phần logic/model của bạn hầu như giữ nguyên.
 
-> 💡 **Làm cùng AI agent?** Skill **`gp247-plugin-create`** trong repo [gp247-skills](https://github.com/gp247net/gp247-skills) nắm chuẩn plugin hiện hành (Livewire +
+> 💡 **Làm cùng AI agent?** Skill **`gp247-plugin-create`** trong repo [gp247-skills](https://github.com/gp247-official/gp247-skills) nắm chuẩn plugin hiện hành (Livewire +
 > TailAdmin, cập nhật an toàn) — dùng nó khi viết lại tầng giao diện; plugin thanh toán / vận chuyển dùng
 > `gp247-payment-plugin-create` / `gp247-shipping-plugin-create`.
 
@@ -449,7 +449,7 @@ Plugin thanh toán (`configCode: "Payment"`) và vận chuyển (`configCode: "S
 
 Hướng dẫn từng bước có code đầy đủ: [Tạo plugin thanh toán](create-payment-plugin_vi.md), [Tạo plugin vận chuyển](create-shipping-plugin_vi.md).
 Nếu làm cùng AI agent, dùng skill `gp247-payment-plugin-create` / `gp247-shipping-plugin-create` của repo
-[gp247-skills](https://github.com/gp247net/gp247-skills).
+[gp247-skills](https://github.com/gp247-official/gp247-skills).
 
 ---
 

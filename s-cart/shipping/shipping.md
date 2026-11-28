@@ -151,7 +151,7 @@ capability-based carrier contract, sample code — is in:
   and where.
 
 > 💡 Working with an AI agent: use the **`gp247-shipping-plugin-create`** skill from the
-> [gp247-skills](https://github.com/gp247net/gp247-skills) repository — it probes the site's version and capabilities and builds the plugin on
+> [gp247-skills](https://github.com/gp247-official/gp247-skills) repository — it probes the site's version and capabilities and builds the plugin on
 > `gp247/shop`'s contract.
 
 ---

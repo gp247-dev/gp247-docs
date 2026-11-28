@@ -149,7 +149,7 @@ sequenceDiagram
   業者：送り状、追跡、Webhook、代金引換）。セクション 5 は `gp247/shop` に何が用意され、どこにあるかの早見表です。
 
 > 💡 AI エージェントと作業する場合：リポジトリ
-> [gp247-skills](https://github.com/gp247net/gp247-skills) のスキル **`gp247-shipping-plugin-create`** を使ってください。
+> [gp247-skills](https://github.com/gp247-official/gp247-skills) のスキル **`gp247-shipping-plugin-create`** を使ってください。
 > サイトのバージョンと機能を自動で調べ、`gp247/shop` の契約どおりにプラグインを作ります。
 
 ---

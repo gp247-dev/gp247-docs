@@ -113,7 +113,7 @@ flowchart TB
 - **AI コーディングエージェント向けの Agent Skills** — AI エージェント（Claude Code など）が、GP247 の流儀どおりにプラグイン、
   決済プラグイン、配送プラグイン、テンプレートを構築し、コマンドラインで拡張機能を管理し、インストール済みのプラグインや
   テンプレートを新しいリリースに更新できるスキル集です。各スキルは作業の前に
-  サイトの core バージョンを自動で判別します。詳しくは [gp247-skills](https://github.com/gp247net/gp247-skills) をご覧ください。
+  サイトの core バージョンを自動で判別します。詳しくは [gp247-skills](https://github.com/gp247-official/gp247-skills) をご覧ください。
 
 ## 構成コンポーネント
 
@@ -139,15 +139,15 @@ GP247 のエコシステムは、次の主要コンポーネントで構成さ�
 
 詳しい情報とソースコードは、以下でご覧いただけます。
 
-- **GP247/core**: <https://github.com/gp247net/core>
-- **GP247/front**: <https://github.com/gp247net/front>
-- **GP247/shop**: <https://github.com/gp247net/shop>
-- **GP247/mcp**: <https://github.com/gp247net/mcp>
-- **GP247/s-cart**: <https://github.com/gp247net/s-cart>
-- **GP247/cms**: <https://github.com/gp247net/cms>
-- **プラグイン**: <https://github.com/gp247-plugin>
-- **ドキュメント**: <https://github.com/gp247net/gp247-docs>
-- **Agent Skills**: <https://github.com/gp247net/gp247-skills>
+- **GP247/core**: <https://github.com/gp247-official/core>
+- **GP247/front**: <https://github.com/gp247-official/front>
+- **GP247/shop**: <https://github.com/gp247-official/shop>
+- **GP247/mcp**: <https://github.com/gp247-official/mcp>
+- **GP247/s-cart**: <https://github.com/gp247-official/s-cart>
+- **GP247/cms**: <https://github.com/gp247-official/cms>
+- **プラグイン**: <https://github.com/gp247-official>
+- **ドキュメント**: <https://github.com/gp247-official/gp247-docs>
+- **Agent Skills**: <https://github.com/gp247-official/gp247-skills>
 
 ## お問い合わせ先
 

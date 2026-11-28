@@ -125,7 +125,7 @@ Instead of typing commands, you can load the `openapi.json` specification to see
 1. Copy the address of the specification:
 
    ```
-   https://raw.githubusercontent.com/gp247net/gp247-docs/main/api/openapi.json
+   https://raw.githubusercontent.com/gp247-official/gp247-docs/main/api/openapi.json
    ```
 
 2. Pick a tool:

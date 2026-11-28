@@ -298,7 +298,7 @@ These give the same site as the standard steps; each part below only lists what 
 Replace steps 1–2 of [S-Cart](#steps-s-cart) with:
 
 ```bash
-git clone https://github.com/gp247net/s-cart.git my-site
+git clone https://github.com/gp247-official/s-cart.git my-site
 cd my-site
 cp .env.example .env
 composer install
@@ -312,7 +312,7 @@ The Docker setup ships with the S-Cart source: PHP, the web server and MySQL run
 environment):
 
 ```bash
-git clone https://github.com/gp247net/s-cart.git my-site
+git clone https://github.com/gp247-official/s-cart.git my-site
 cd my-site
 cp .env.example .env
 docker compose up -d --build
@@ -326,7 +326,7 @@ Open the site at <http://localhost:8000>.
   (`APP_ENV=production`, `APP_DEBUG=false`, database details, the user that runs the containers). Forgetting `-f` runs the dev
   configuration by mistake (debug on, running as root).
 - **Full guide** (environment variables, where data is stored, image patching, several projects on one server):
-  [S-Cart with Docker](https://github.com/gp247net/s-cart/blob/master/DOCKER.md).
+  [S-Cart with Docker](https://github.com/gp247-official/s-cart/blob/master/DOCKER.md).
 
 ### Hosting without a command line (any set)
 If your hosting only has FTP and phpMyAdmin, **install everything on your own computer**, then move the code and database up:

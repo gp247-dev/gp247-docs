@@ -17,7 +17,7 @@ Bảng không khai báo hiện trong màn "Yêu cầu dữ liệu cá nhân" ở
 xử lý bằng tay. Nên đọc sau [Hướng dẫn tạo plugin](./create-plugin_vi.md) và [Plugin an toàn khi cập nhật](./create-plugin-update-safety_vi.md).
 
 > 💡 **Làm cùng AI agent?** Skill `gp247-plugin-create`, `gp247-payment-plugin-create` và `gp247-shipping-plugin-create` trong repo
-> [gp247-skills](https://github.com/gp247net/gp247-skills) khai báo bảng của plugin theo đúng trang này (tham chiếu
+> [gp247-skills](https://github.com/gp247-official/gp247-skills) khai báo bảng của plugin theo đúng trang này (tham chiếu
 > `references/personal-data.md` của skill).
 
 **Không cần khai báo** khi plugin không giữ dữ liệu của khách, hoặc chỉ ghi vào bảng của nền tảng (đơn hàng, thanh toán,

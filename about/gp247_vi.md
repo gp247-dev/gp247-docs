@@ -107,7 +107,7 @@ Xem [Bảo mật hệ thống GP247](https://gp247.net/vi/docs/security/security
 - **Agent Skills cho AI agent lập trình** — bộ skill giúp AI agent (như Claude Code) dựng plugin, plugin thanh toán, plugin vận
   chuyển, template, quản lý extension qua dòng lệnh và cập nhật plugin, template đang cài lên bản mới, theo đúng chuẩn GP247; skill
   tự nhận phiên bản core của site trước khi làm.
-  Xem [gp247-skills](https://github.com/gp247net/gp247-skills).
+  Xem [gp247-skills](https://github.com/gp247-official/gp247-skills).
 
 ## Các thành phần
 
@@ -133,15 +133,15 @@ của riêng mình.
 
 Tìm hiểu thêm và xem mã nguồn tại:
 
-- **GP247/core**: <https://github.com/gp247net/core>
-- **GP247/front**: <https://github.com/gp247net/front>
-- **GP247/shop**: <https://github.com/gp247net/shop>
-- **GP247/mcp**: <https://github.com/gp247net/mcp>
-- **GP247/s-cart**: <https://github.com/gp247net/s-cart>
-- **GP247/cms**: <https://github.com/gp247net/cms>
-- **Plugin**: <https://github.com/gp247-plugin>
-- **Tài liệu**: <https://github.com/gp247net/gp247-docs>
-- **Agent Skills**: <https://github.com/gp247net/gp247-skills>
+- **GP247/core**: <https://github.com/gp247-official/core>
+- **GP247/front**: <https://github.com/gp247-official/front>
+- **GP247/shop**: <https://github.com/gp247-official/shop>
+- **GP247/mcp**: <https://github.com/gp247-official/mcp>
+- **GP247/s-cart**: <https://github.com/gp247-official/s-cart>
+- **GP247/cms**: <https://github.com/gp247-official/cms>
+- **Plugin**: <https://github.com/gp247-official>
+- **Tài liệu**: <https://github.com/gp247-official/gp247-docs>
+- **Agent Skills**: <https://github.com/gp247-official/gp247-skills>
 
 ## Thông tin liên hệ
 

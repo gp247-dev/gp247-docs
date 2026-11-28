@@ -9,7 +9,7 @@
 商品価格の変更、管理メニューの追加を扱います。[プラグイン作成ガイド](./create-plugin_ja.md) の後に読むことをおすすめします。決済プラグインと配送プラグインには
 専用のガイドがあります：[決済](./create-payment-plugin_ja.md)、[配送](./create-shipping-plugin_ja.md)。
 
-> 💡 **AI エージェントと一緒に作業しますか？** [gp247-skills](https://github.com/gp247net/gp247-skills) リポジトリのスキル **`gp247-plugin-create`** を使ってください（スキルのフォルダーを
+> 💡 **AI エージェントと一緒に作業しますか？** [gp247-skills](https://github.com/gp247-official/gp247-skills) リポジトリのスキル **`gp247-plugin-create`** を使ってください（スキルのフォルダーを
 > エージェントのスキルフォルダー、たとえば Claude Code なら `.claude/skills/` にコピーします）。スキルはサイトのバージョンを自動で調べ、以下の内容（ストアごとの設定、秘密鍵、
 > ストアフロントのフックなど）を適用します。決済／配送プラグインは `gp247-payment-plugin-create` / `gp247-shipping-plugin-create` を使います。
 

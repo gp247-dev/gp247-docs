@@ -117,7 +117,7 @@ docker compose restart queue scheduler
 ```
 
 Dòng cuối khởi động lại hai container chạy nền để chúng nạp code mới. Vá PHP / Nginx của chính image là việc riêng — xem
-[S-Cart với Docker](https://github.com/gp247net/s-cart/blob/master/DOCKER_vi.md).
+[S-Cart với Docker](https://github.com/gp247-official/s-cart/blob/master/DOCKER_vi.md).
 
 ### Hosting không có dòng lệnh
 Cập nhật trên **bản sao ở máy bạn**, rồi đưa kết quả lên hosting:

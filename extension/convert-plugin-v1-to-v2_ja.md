@@ -16,7 +16,7 @@
 > — 旧レイアウトは削除され、jQuery も読み込まれなくなりました。変換作業の中心は **UI 層といくつかの設定ファイルの修正**です。
 > ロジック／モデルのコードはほぼそのまま使えます。
 
-> 💡 **ヒント:** **AI エージェントと一緒に作業しますか？** [gp247-skills](https://github.com/gp247net/gp247-skills) リポジトリのスキル **`gp247-plugin-create`** は、
+> 💡 **ヒント:** **AI エージェントと一緒に作業しますか？** [gp247-skills](https://github.com/gp247-official/gp247-skills) リポジトリのスキル **`gp247-plugin-create`** は、
 > 現行のプラグイン標準（Livewire ＋ TailAdmin、更新に安全）を把握しています。UI 層を書き直すときに使ってください。
 > 決済／配送プラグインには `gp247-payment-plugin-create`／`gp247-shipping-plugin-create` を使います。
 
@@ -442,7 +442,7 @@ v1 の決済（`configCode: "Payment"`）と配送（`configCode: "Shipping"`）
    コントラクトに従って `ShippingProvider` ドライバーを追加します。
 
 完全なコード付きの手順ガイド：[決済プラグインの作成](create-payment-plugin_ja.md)、[配送プラグインの作成](create-shipping-plugin_ja.md)。
-AI エージェントと作業する場合は、[gp247-skills](https://github.com/gp247net/gp247-skills) リポジトリのスキル
+AI エージェントと作業する場合は、[gp247-skills](https://github.com/gp247-official/gp247-skills) リポジトリのスキル
 `gp247-payment-plugin-create`／`gp247-shipping-plugin-create` を使います。
 
 ---
